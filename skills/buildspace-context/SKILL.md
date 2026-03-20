@@ -27,3 +27,4 @@ This applies regardless of what the immediate task is. A video script, a slide d
 ## Tone Across All Work
 
 Confident, direct, no fluff. Content should feel like it comes from someone who has done the work and is bringing people along — not selling at them.
+
