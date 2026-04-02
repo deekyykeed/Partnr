@@ -4,6 +4,15 @@
 
 ---
 
+## Next Session
+
+- [ ] Build the AMC Africa Framer concept (priority — Edwin is waiting)
+- [ ] Follow up on 2 replies: NGM Consulting Engineers + Nolands Zambia
+- [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (it's stale)
+- [ ] Merge `claude/inspiring-dhawan` branch into main (video reorganisation)
+
+---
+
 ## What is Partnr
 
 A web design + AI agency targeting established SMEs in Zambia (Kitwe & Lusaka). Offer: website refresh + AI layer (AIOS). Go-to-market via cold email outreach.
