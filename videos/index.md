@@ -1,3 +1,9 @@
+---
+type: index
+tags: [videos, content, index]
+updated: 2026-04-06
+---
+
 # Videos
 
 Tracking all video projects — scripts, outlines, notes, and references.

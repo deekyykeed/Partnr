@@ -1,3 +1,12 @@
+---
+type: deal
+status: active
+tags: [deal, active, kitwe, mining, client]
+contact: Edwin Mukonka
+updated: 2026-04-02
+related: "[[amc-africa]], [[amc-call-prep-31mar]]"
+---
+
 # AMC Africa — Client File
 
 **Status:** Active Deal · Website Redesign Concept in Progress

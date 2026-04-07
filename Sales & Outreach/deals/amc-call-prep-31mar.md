@@ -1,3 +1,12 @@
+---
+type: call-prep
+status: done
+tags: [deal, call, kitwe, mining, amc]
+contact: Edwin Mukonka
+date: 2026-03-31
+related: "[[AMC Africa Client File]], [[amc-africa]]"
+---
+
 # AMC Africa — Call Prep
 **Edwin Mukonka, Principal Consultant**
 **📞 Today, 4:30 PM — +260 96 682 5144**

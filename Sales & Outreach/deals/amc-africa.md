@@ -1,3 +1,12 @@
+---
+type: deal
+status: active
+tags: [deal, active, kitwe, mining, client]
+contact: Edwin Mukonka
+updated: 2026-04-01
+related: "[[AMC Africa Client File]], [[amc-call-prep-31mar]]"
+---
+
 # African Mining Consultants Ltd (AMC Africa)
 
 **Status:** 🟡 Active — Website concept requested

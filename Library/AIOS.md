@@ -1,3 +1,10 @@
+---
+type: framework
+tags: [aios, strategy, product, framework]
+source: "[[Lee Moly — AIOS Framework Breakdown]]"
+updated: 2026-03-01
+---
+
 # AIOS — AI Operating System
 
 **What it is:** A personal AI infrastructure built on top of tools like Claude that offloads tedious mental work — so the business owner can focus on high-value decisions and execution.
@@ -21,7 +28,7 @@ The AIOS acts as a second brain and operations layer — it handles the recurrin
 
 ## The 5 Build Layers
 
-*(Framework from Lee Moly — adapted for Khadzika/Partnr context)*
+*(Framework from [[Lee Moly — AIOS Framework Breakdown]] — adapted for Khadzika/Partnr context)*
 
 | Layer | What it is | Khadzika Status |
 |-------|-----------|----------------|

@@ -1,3 +1,9 @@
+---
+type: index
+tags: [library, knowledge, index]
+updated: 2026-03-01
+---
+
 # Partnr Library
 
 A personal knowledge base — content I've consumed and want to draw from in the business.
@@ -19,7 +25,7 @@ A personal knowledge base — content I've consumed and want to draw from in the
 
 | Title | Source | Topic | Added |
 |-------|--------|-------|-------|
-| Lee Moly — AIOS Framework Breakdown | YouTube | AIOS methodology, 5 layers, 3 KPIs, operator trap | Mar 2026 |
+| [[Lee Moly — AIOS Framework Breakdown]] | YouTube | AIOS methodology, 5 layers, 3 KPIs, operator trap | Mar 2026 |
 
 ---
 

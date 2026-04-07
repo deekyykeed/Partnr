@@ -1,3 +1,12 @@
+---
+type: template
+tags: [outreach, email, template]
+updated: 2026-04-02
+superseded-by: "[[cold-email-principles]]"
+---
+
+> **Note:** This is the fill-in-the-blanks version. For the principles behind it, see [[cold-email-principles]].
+
 # Partnr Cold Email — Template v2
 *For the 30 new prospects added April 2026*
 
@@ -28,7 +37,7 @@ Worth a look?
 
 Deeky
 Partnr
-+260 972 213 144
++260 763 665 966
 
 ---
 

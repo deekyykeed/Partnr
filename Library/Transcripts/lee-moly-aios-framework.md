@@ -1,3 +1,11 @@
+---
+type: transcript
+tags: [aios, framework, strategy, lee-moly]
+source: YouTube
+added: 2026-03-01
+related: "[[AIOS]]"
+---
+
 # Lee Moly — AIOS Framework Breakdown
 
 **Source:** YouTube
@@ -92,7 +100,7 @@ This is the exact Partnr model — build the AIOS for Khadzika, package the skil
 
 ---
 
-## How to Apply This to Partnr / Khadzika
+## How to Apply This to [[AIOS|Partnr / Khadzika]]
 
 - The 5-layer framework is the build roadmap — Khadzika is currently at Layer 2/3 (Context done, Data in progress, Intelligence next)
 - The operator trap story is the core Partnr pitch — every SME owner in Zambia will recognise it immediately
