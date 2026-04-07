@@ -1,20 +1,22 @@
 ---
 type: index
 tags: [partnr, status, active]
-updated: 2026-04-08
+updated: 2026-04-07
 ---
 
 # Partnr — Project Memory
 
-**Last updated:** 8 April 2026
+**Last updated:** 7 April 2026
 
 ---
 
 ## Next Session
 
-- [ ] Get real stats from Edwin: projects completed, client retention %, ROI figures, team size — needed to fill 5 placeholder stat cards on the website
-- [ ] Continue AMC website section by section — next up: About section stats, then remaining sections
-- [ ] Follow up on 2 replies: NGM Consulting Engineers + Nolands Zambia
+- [ ] **M&J Zambia — reply to Tamuka's challenge**: review mjgroup.africa and write 5 specific, page-level improvements (HOT lead, don't delay)
+- [ ] **NGM — check updated ngmzambia.com and respond to Serge**: acknowledge what improved, find what's still missing
+- [ ] **AMC — continue website build**: get real stats from Edwin (5 placeholders), continue section by section
+- [ ] **Nolands — pitch Access Learning Hub to Kelvin Chungu** (+260 211 355267 / kelvinc@nolands.co.zm)
+- [ ] Follow up Aston AIR (Kalasa) if no reply by end of week
 - [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (it's stale)
 - [ ] Merge `claude/inspiring-dhawan` branch into main (video reorganisation)
 
@@ -37,15 +39,21 @@ A web design + AI agency targeting established SMEs in Zambia (Kitwe & Lusaka). 
 
 ---
 
-## Outreach Summary (as of 2 Apr 2026)
+## Outreach Summary (as of 7 Apr 2026)
 
 | Status | Count |
 |---|---|
 | Active Deal | 1 (AMC Africa) |
-| Replied | 2 (NGM Consulting Engineers, Nolands Zambia) |
-| Sent | 39 |
-| Not Contacted | 69 |
+| Replied — warm | 3 (M&J Zambia, Aston AIR, NGM) |
+| Replied — cold/no reply | 2 (FY Cargo — dead, Malisa & Partners — auto-receipt only) |
+| Replied — pending angle | 1 (Nolands — Access Learning Hub, Kelvin Chungu +260 211 355267) |
+| Sent | ~45 |
+| Not Contacted | ~65 |
 | **Total in pipeline** | **111** |
+
+**Contacts saved this session:**
+- Kelvin Chungu (Nolands Zambia, Managing Partner): kelvinc@nolands.co.zm · +260 211 355267
+- Tamuka James Chinzvende (M&J Zambia): tj@mjgroup.africa · +260 630 372 410
 
 **Source of truth:** `Outreach/partnr_leads_master.xlsx`  
 Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 leads) — needs syncing.
@@ -54,16 +62,29 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 
 ## Pending / Next Session
 
-- [ ] Get real stats from Edwin (projects, retention, ROI, team size) — 5 stat placeholders on site
-- [ ] Continue AMC website copy — About section, remaining sections
-- [ ] Follow up on 2 replies: NGM Consulting Engineers, Nolands Zambia
+- [ ] M&J Zambia — reply to Tamuka with 5 specific site improvements (HOT)
+- [ ] NGM — check updated site, respond to Serge
+- [ ] AMC — get real stats from Edwin (5 placeholders), continue section by section
+- [ ] Nolands — pitch Access Learning Hub angle to Kelvin Chungu
+- [ ] Follow up Aston AIR (Kalasa) if no reply end of week
 - [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` with `Outreach/` version
 - [ ] Gather AMC team member names/bios for website
-- [ ] Merge `claude/inspiring-dhawan` branch into main (video reorganisation changes)
+- [ ] Merge `claude/inspiring-dhawan` branch into main
 
 ---
 
 ## Session Log
+
+### 7 Apr 2026
+- Read 7 email replies — full inbox audit:
+  - **M&J Zambia (Tamuka James Chinzvende)** — HOT. Challenged us to list 5 specific, page-level improvements before engaging. Needs a credible reply.
+  - **NGM Consulting Engineers (Serge)** — Updated their site, sent us to check it. No response sent yet.
+  - **Aston AIR (Kalasa)** — Soft positive: "well received, will get back to you." Hold.
+  - **Nolands Zambia (Kelvin Chungu)** — Interested in Access Learning Hub specifically. Main Nolands site handled overseas. Saved his number: +260 211 355267.
+  - **FY Cargo Kitwe** — Dead lead: "we'll contact you if we need." Move on.
+  - **Malisa & Partners** — Auto-confirmation only, no human reply yet.
+  - **AMC (Edwin)** — Thread contains call reminder messages only. Concept build still pending.
+- No replies sent this session — review only.
 
 ### 8 Apr 2026
 - Set up Unframer MCP server — connected Claude directly to AMC's Framer project (amc2.framer.ai)
