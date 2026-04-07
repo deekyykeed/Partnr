@@ -1,12 +1,19 @@
+---
+type: index
+tags: [partnr, status, active]
+updated: 2026-04-08
+---
+
 # Partnr — Project Memory
 
-**Last updated:** 2 April 2026
+**Last updated:** 8 April 2026
 
 ---
 
 ## Next Session
 
-- [ ] Build the AMC Africa Framer concept (priority — Edwin is waiting)
+- [ ] Get real stats from Edwin: projects completed, client retention %, ROI figures, team size — needed to fill 5 placeholder stat cards on the website
+- [ ] Continue AMC website section by section — next up: About section stats, then remaining sections
 - [ ] Follow up on 2 replies: NGM Consulting Engineers + Nolands Zambia
 - [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (it's stale)
 - [ ] Merge `claude/inspiring-dhawan` branch into main (video reorganisation)
@@ -21,7 +28,7 @@ A web design + AI agency targeting established SMEs in Zambia (Kitwe & Lusaka). 
 
 ## Active Deal
 
-### AMC Africa (African Mining Consultants Ltd)
+### [[AMC Africa Client File|AMC Africa]] (African Mining Consultants Ltd)
 - **Status:** Active Deal — website redesign concept in progress
 - **Contact:** Edwin Mukonka, GM / Principal Consultant — emukonka@amc-africa.com · +260 96 682 5144
 - **History:** Cold email sent ~late Mar 2026 → Edwin replied same day (24 Mar) → Call 1 Apr (underprepared) → Call 2 Apr (green light to build concept)
@@ -47,7 +54,8 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 
 ## Pending / Next Session
 
-- [ ] Build Framer website concept for AMC Africa (priority)
+- [ ] Get real stats from Edwin (projects, retention, ROI, team size) — 5 stat placeholders on site
+- [ ] Continue AMC website copy — About section, remaining sections
 - [ ] Follow up on 2 replies: NGM Consulting Engineers, Nolands Zambia
 - [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` with `Outreach/` version
 - [ ] Gather AMC team member names/bios for website
@@ -56,6 +64,16 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 ---
 
 ## Session Log
+
+### 8 Apr 2026
+- Set up Unframer MCP server — connected Claude directly to AMC's Framer project (amc2.framer.ai)
+- Established ground rules: Claude = copywriter only, no structural/layout changes
+- Completed copy rewrites for 4 homepage sections:
+  - **Hero** — new headline "Africa's Leading Mining & Exploration Experts", punchy subheading, 6 tags updated to AMC services
+  - **Services** — heading + description + all 6 service cards rewritten for AMC's actual services
+  - **Bento grid ("What Sets AMC Apart")** — all 13 text nodes updated
+  - **Achievements** — heading, description, award card updated
+- Flagged 5 stat placeholders requiring real numbers from Edwin: hero revenue card, About stats (×3), bento Card 3, bento Card 6, achievements 300%/95%
 
 ### 2 Apr 2026
 - Audited both leads master files — found `Outreach/` file is the live one with 42 leads touched
