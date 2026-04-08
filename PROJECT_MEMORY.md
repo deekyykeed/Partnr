@@ -1,18 +1,18 @@
 ---
 type: index
 tags: [partnr, status, active]
-updated: 2026-04-07
+updated: 2026-04-08
 ---
 
 # Partnr — Project Memory
 
-**Last updated:** 7 April 2026
+**Last updated:** 8 April 2026
 
 ---
 
 ## Next Session
 
-- [ ] **M&J Zambia — reply to Tamuka's challenge**: review mjgroup.africa and write 5 specific, page-level improvements (HOT lead, don't delay)
+- [ ] **M&J Zambia — send reply to Tamuka**: 5 specific improvements drafted + offer framing ready. Draft the email and send (or create draft).
 - [ ] **NGM — check updated ngmzambia.com and respond to Serge**: acknowledge what improved, find what's still missing
 - [ ] **AMC — continue website build**: get real stats from Edwin (5 placeholders), continue section by section
 - [ ] **Nolands — pitch Access Learning Hub to Kelvin Chungu** (+260 211 355267 / kelvinc@nolands.co.zm)
@@ -85,6 +85,17 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
   - **Malisa & Partners** — Auto-confirmation only, no human reply yet.
   - **AMC (Edwin)** — Thread contains call reminder messages only. Concept build still pending.
 - No replies sent this session — review only.
+
+### 8 Apr 2026 (session 2)
+- **$100M Offers + $100M Leads (Hormozi)** — both audiobook transcripts loaded into Library/Books/, each split into 10 and 20 parts respectively for context-safe reading
+- **M&J Zambia** — pulled Tamuka's full reply from Gmail. He challenged Deeky to list 5 specific, page-level improvements. Fetched mjgroup.africa and identified all 5 real pain points from live screenshots:
+  1. No hero headline — carousel opener with product pitches, no commanding value prop
+  2. "Why Choose Us" is generic filler (Fast/Efficient/Reliable etc.) — zero differentiation
+  3. Social proof mislabeled — "Technology Partners" are software vendors, not clients. Zero testimonials or case studies.
+  4. "Our Presence" overclaims — "all of Africa" with two offices
+  5. About copy is interchangeable with any consultancy — no names, no story, no owned insight
+- **Strategy framing** — reply should not just answer his question. It should answer it AND attach a grand slam offer (Hormozi framework: make it so good saying no feels stupid). Reframe: the real cost is lost deals they'll never know about.
+- Read $100M Offers Part 1 — key tactic extracted: offer is the lifeblood, stack value so price isn't the comparison
 
 ### 8 Apr 2026
 - Set up Unframer MCP server — connected Claude directly to AMC's Framer project (amc2.framer.ai)
