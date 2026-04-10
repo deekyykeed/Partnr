@@ -6,15 +6,16 @@ updated: 2026-04-08
 
 # Partnr — Project Memory
 
-**Last updated:** 8 April 2026
+**Last updated:** 10 April 2026
 
 ---
 
 ## Next Session
 
+- [ ] **AMC — continue Framer build**: Services, Benefits, Reviews, FAQ, Nav, Footer — see `Clients/AMC Africa/_Website_Copy.md`
+- [ ] **AMC — get real stats from Edwin**: Successful Projects, Industry Partners, Client Satisfaction (3 placeholders in Mission section)
 - [ ] **M&J Zambia — send reply to Tamuka**: 5 specific improvements drafted + offer framing ready. Draft the email and send (or create draft).
 - [ ] **NGM — check updated ngmzambia.com and respond to Serge**: acknowledge what improved, find what's still missing
-- [ ] **AMC — continue website build**: get real stats from Edwin (5 placeholders), continue section by section
 - [ ] **Nolands — pitch Access Learning Hub to Kelvin Chungu** (+260 211 355267 / kelvinc@nolands.co.zm)
 - [ ] Follow up Aston AIR (Kalasa) if no reply by end of week
 - [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (it's stale)
@@ -85,6 +86,18 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
   - **Malisa & Partners** — Auto-confirmation only, no human reply yet.
   - **AMC (Edwin)** — Thread contains call reminder messages only. Concept build still pending.
 - No replies sent this session — review only.
+
+### 10 Apr 2026
+- **AMC Framer build** — switched from amc2.framer.ai to template project (jubilant-radish-333710.framer.app). Decision: better show of skill to build from a quality template than the previous project.
+- **Approach locked:** word/phrase swaps only — keep template energy and structure, adapt to AMC language. No layout changes.
+- **AMC offer extracted** — scanned amc-africa.com (homepage, /services, /about). Full offer documented in `_Website_Copy.md`:
+  - Founded 1994 by ex-ZCCM engineers. 30+ years experience. HQ Kitwe + Lubumbashi office.
+  - 6 services: Mining, Exploration & Geological, GIS & Environmental, Metallurgical, Geotechnical, Strategy & Investment Advisory
+  - Clients: Glencore, Anglo American, FQM, Lonmin, Rio Algom
+  - Tagline: "Africa's Exploration, Mining & Environmental Engineering Experts"
+- **Hero section** — Tag: "Mining Consulting" | Headline: "Africa's Mining Experts" | Description: "Thirty years of mining, exploration, and environmental expertise — built on the Zambian Copperbelt, trusted across sub-Saharan Africa."
+- **Mission section** — Description updated to 30-year heritage framing. Years of Experience stat: 12 → 30+. Three other stats (Successful Projects/150, Industry Partners/40, Client Satisfaction/98%) remain as placeholders — need real numbers from Edwin.
+- **Files created:** `Clients/AMC Africa/_Website_Copy.md` — full record of all section copy, done and pending.
 
 ### 8 Apr 2026 (session 2)
 - **$100M Offers + $100M Leads (Hormozi)** — both audiobook transcripts loaded into Library/Books/, each split into 10 and 20 parts respectively for context-safe reading
