@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMC Africa — African Mining Consultants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Epilogue:wght@300;400;500&family=Syne+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:      #0A0A0A;
+      --white:      #FAFAFA;
+      --blue:       #4285F4;
+      --blue-dark:  #104EB3;
+      --g1:         #F3F3F3;
+      --g2:         #E4E4E4;
+      --g3:         #999;
+      --g4:         #444;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Epilogue', sans-serif;
+      font-weight: 300;
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAV ──────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 64px;
+      transition: background 0.3s, padding 0.3s, border-color 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(250,250,250,0.95);
+      backdrop-filter: blur(14px);
+      padding: 15px 64px;
+      border-bottom: 1px solid var(--g2);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 14px; }
+    .nav-brand-mark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 17px;
+      color: var(--black); letter-spacing: 0.06em;
+    }
+    .nav-brand-rule { width: 1px; height: 18px; background: var(--g2); }
+    .nav-brand-name {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9.5px; color: var(--g3);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12.5px; font-weight: 400;
+      letter-spacing: 0.03em; color: var(--g4);
+      text-decoration: none; transition: color 0.18s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); background: var(--black);
+      padding: 10px 22px; text-decoration: none;
+      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      min-height: 100dvh; background: var(--white);
+      position: relative;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 120px 64px 88px;
+      overflow: hidden;
+    }
+
+    /* Survey-grid overlay */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(66,133,244,0.042) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(66,133,244,0.042) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    /* Top row — discipline tag + coordinates */
+    .hero-top {
+      display: flex; justify-content: space-between; align-items: center;
+      position: relative; z-index: 1;
+      animation: heroFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+    }
+    .hero-coords {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10.5px; line-height: 1.85;
+      color: rgba(66,133,244,0.5);
+      letter-spacing: 0.08em; text-align: right;
+    }
+
+    /* Rotated discipline label — far left */
+    .hero-side {
+      position: absolute; left: 22px; top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-family: 'Syne Mono', monospace;
+      font-size: 9px; color: var(--g3);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      animation: heroFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    }
+
+    /* Hero load animations */
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(74px, 11.5vw, 164px);
+      line-height: 0.87; letter-spacing: -0.035em;
+      color: var(--black);
+      margin-bottom: 44px;
+    }
+    .hero-headline .hl-blue { color: var(--blue); }
+
+    .hero-foot {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 48px;
+    }
+    .hero-desc {
+      font-size: 16px; font-weight: 300;
+      line-height: 1.75; color: var(--g4);
+      max-width: 430px;
+    }
+    .hero-btns { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .btn-solid {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); background: var(--black);
+      padding: 14px 28px; text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-solid:hover { background: var(--blue); transform: translateY(-2px); }
+    .btn-solid:active { transform: translateY(1px) scale(0.98); }
+    .btn-ghost {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--black); background: transparent;
+      border: 1.5px solid var(--g2);
+      padding: 14px 28px; text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-ghost:hover { border-color: var(--black); color: var(--black); }
+    .btn-ghost:active { transform: scale(0.98); }
+
+    /* ── MARQUEE ──────────────────────────────────────── */
+    .marquee {
+      background: var(--black); padding: 13px 0;
+      overflow: hidden; white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: scroll 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .m-item {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      padding: 0 36px;
+    }
+    .m-item.hi { color: var(--blue); }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SHARED ───────────────────────────────────────── */
+    .mono-tag {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--blue);
+      display: block; margin-bottom: 10px;
+    }
+    .section-h {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(36px, 4.5vw, 58px);
+      line-height: 1.0; letter-spacing: -0.03em;
+      color: var(--black);
+      text-wrap: balance;
+    }
+    .section-h.light { color: var(--white); }
+
+    /* ── MISSION ──────────────────────────────────────── */
+    .mission { background: var(--white); padding: 120px 64px; }
+    .mission-grid {
+      display: grid; grid-template-columns: 1fr 1.15fr;
+      gap: 80px; align-items: start;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .m-big-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(120px, 16vw, 200px);
+      line-height: 0.82; letter-spacing: -0.05em;
+      color: var(--g2); margin-bottom: -12px;
+    }
+    .m-big-label {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--black);
+    }
+    .m-big-label .accent { color: var(--blue); }
+    .m-body {
+      font-size: 15.5px; font-weight: 300;
+      line-height: 1.8; color: var(--g4);
+      margin: 22px 0 40px;
+    }
+    .stat-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--g2); border: 1px solid var(--g2);
+    }
+    .stat-cell {
+      background: var(--white); padding: 28px 26px;
+    }
+    .stat-cell .sv {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 44px;
+      line-height: 1; letter-spacing: -0.04em;
+      color: var(--black);
+    }
+    .stat-cell .sl {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--g3);
+      display: block; margin-top: 6px;
+    }
+
+    /* ── SERVICES ─────────────────────────────────────── */
+    .services { background: var(--g1); padding: 120px 64px; }
+    .services-inner { max-width: 1200px; margin: 0 auto; }
+    .svc-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      padding-bottom: 28px; border-bottom: 1px solid var(--g2);
+      margin-bottom: 0;
+    }
+    .svc-head-note {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10px; color: var(--g3);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .svc-row {
+      display: grid; grid-template-columns: 56px 1fr 1.4fr 36px;
+      gap: 28px; align-items: center;
+      padding: 26px 0; border-bottom: 1px solid var(--g2);
+      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: default;
+    }
+    .svc-row:hover {
+      background: var(--white);
+      padding-left: 20px; padding-right: 20px;
+      margin-left: -20px; margin-right: -20px;
+    }
+    .svc-n {
+      font-family: 'Syne Mono', monospace;
+      font-size: 11px; color: var(--g3); letter-spacing: 0.1em;
+    }
+    .svc-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 16px;
+      color: var(--black); letter-spacing: -0.01em;
+    }
+    .svc-desc {
+      font-size: 13px; font-weight: 300;
+      line-height: 1.65; color: var(--g4);
+    }
+    .svc-arrow {
+      font-size: 16px; color: var(--g3);
+      transition: color 0.2s, transform 0.2s;
+      text-align: right;
+    }
+    .svc-row:hover .svc-arrow { color: var(--blue); transform: translateX(5px); }
+
+    /* ── CLIENTS ──────────────────────────────────────── */
+    .clients { background: var(--white); padding: 120px 64px; }
+    .clients-inner { max-width: 1200px; margin: 0 auto; }
+    .clients-top {
+      display: grid; grid-template-columns: 1fr 1.8fr;
+      gap: 80px; align-items: start; margin-bottom: 56px;
+    }
+
+    .clients-top p {
+      font-size: 15.5px; font-weight: 300;
+      line-height: 1.8; color: var(--g4); padding-top: 6px;
+    }
+    .clients-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--g2); border: 1px solid var(--g2);
+    }
+    .client-cell {
+      background: var(--white); padding: 20px 22px;
+      font-size: 13px; font-weight: 400;
+      color: var(--g4); transition: background 0.2s, color 0.2s;
+    }
+    .client-cell:hover { background: var(--blue); color: white; }
+
+    /* ── WHY AMC ──────────────────────────────────────── */
+    .why { background: var(--black); padding: 120px 64px; }
+    .why-inner { max-width: 1200px; margin: 0 auto; }
+    .why-head { margin-bottom: 60px; }
+    .why-head .section-h span { color: var(--blue); }
+    .why-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: rgba(255,255,255,0.07);
+    }
+    .why-card {
+      background: var(--black); padding: 48px 40px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.28s;
+    }
+    .why-card:hover { border-bottom-color: var(--blue); }
+    .why-ref {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10px; color: var(--blue);
+      letter-spacing: 0.18em; display: block; margin-bottom: 28px;
+    }
+    .why-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 21px;
+      color: var(--white); letter-spacing: -0.02em;
+      margin-bottom: 14px; line-height: 1.1;
+    }
+    .why-card p {
+      font-size: 13.5px; font-weight: 300;
+      line-height: 1.78; color: rgba(255,255,255,0.42);
+    }
+
+    /* ── FAQ ──────────────────────────────────────────── */
+    .faq { background: var(--g1); padding: 120px 64px; }
+    .faq-inner { max-width: 820px; margin: 0 auto; }
+    .faq-inner .section-h { margin-bottom: 52px; }
+    .faq-item { border-bottom: 1px solid var(--g2); }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; cursor: pointer; gap: 20px;
+      font-size: 15px; font-weight: 400; color: var(--black);
+      user-select: none; transition: color 0.18s;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-ic {
+      width: 17px; height: 17px; min-width: 17px;
+      color: var(--g3); transition: transform 0.24s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-ic { transform: rotate(45deg); color: var(--blue); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.34s ease;
+      font-size: 14px; font-weight: 300;
+      line-height: 1.82; color: var(--g4);
+    }
+    .faq-item.open .faq-a { max-height: 260px; padding-bottom: 20px; }
+
+    /* ── CTA ──────────────────────────────────────────── */
+    .cta-band { background: var(--blue); padding: 120px 64px; }
+    .cta-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 60px;
+    }
+    .cta-inner h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 5.5vw, 70px);
+      letter-spacing: -0.03em; color: white;
+      line-height: 1.0;
+    }
+    .cta-inner h2 em { font-style: italic; font-weight: 400; }
+    .cta-right { display: flex; flex-direction: column; gap: 14px; min-width: 220px; }
+    .btn-white {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue); background: white;
+      padding: 14px 28px; text-decoration: none;
+      display: inline-block; text-align: center;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+    .cta-email {
+      font-family: 'Syne Mono', monospace;
+      font-size: 11px; color: rgba(255,255,255,0.58);
+      text-align: center; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cta-email:hover { color: white; }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer { background: var(--black); padding: 64px 64px 38px; }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 64px; padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 28px;
+    }
+    .f-mark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 20px;
+      color: white; letter-spacing: 0.06em;
+      display: block; margin-bottom: 4px;
+    }
+    .f-mark-sub {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9px; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.26); display: block; margin-bottom: 16px;
+    }
+    .f-blurb {
+      font-size: 12.5px; font-weight: 300;
+      line-height: 1.72; color: rgba(255,255,255,0.38);
+    }
+    .f-col-h {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9px; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28); margin-bottom: 16px;
+    }
+    .f-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .f-list a {
+      font-size: 12.5px; font-weight: 300;
+      color: rgba(255,255,255,0.46); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .f-list a:hover { color: white; }
+    .f-offices { display: flex; flex-direction: column; gap: 20px; }
+    .f-office-n {
+      font-size: 12px; font-weight: 500;
+      color: white; margin-bottom: 4px;
+    }
+    .f-office-a {
+      font-size: 12px; font-weight: 300;
+      line-height: 1.65; color: rgba(255,255,255,0.32);
+    }
+    .footer-bot {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .f-copy { font-size: 11.5px; font-weight: 300; color: rgba(255,255,255,0.2); }
+    .f-link {
+      font-family: 'Syne Mono', monospace;
+      font-size: 11px; color: rgba(255,255,255,0.32);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .f-link:hover { color: var(--blue); }
+
+    /* ── REVEAL ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 1080px) {
+      nav, nav.scrolled { padding-left: 40px; padding-right: 40px; }
+      .hero { padding: 110px 40px 80px; }
+      .mission, .services, .clients, .why, .faq, .cta-band, footer { padding-left: 40px; padding-right: 40px; }
+      .mission-grid { grid-template-columns: 1fr; gap: 48px; }
+      .clients-top { grid-template-columns: 1fr; gap: 20px; }
+      .clients-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-cards { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      .svc-row { grid-template-columns: 48px 1fr; }
+      .svc-desc, .svc-arrow { display: none; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 80px; }
+      .hero-side { display: none; }
+      .hero-coords { display: none; }
+      .hero-foot { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .hero-btns { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .mission, .services, .clients, .why, .faq, .cta-band, footer { padding-left: 24px; padding-right: 24px; }
+      .why-cards { grid-template-columns: 1fr; }
+      .clients-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bot { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-brand">
+      <span class="nav-brand-mark">AMC</span>
+      <div class="nav-brand-rule"></div>
+      <span class="nav-brand-name">African Mining Consultants</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Consultation</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-side">Mining · Exploration · Environment</div>
+
+    <div class="hero-top">
+      <span class="mono-tag" style="margin-bottom:0">— Mining &amp; Exploration Consultants</span>
+      <span class="hero-coords">12°48′S 28°13′E &nbsp;·&nbsp; Kitwe, Zambia &nbsp;·&nbsp; Est. 1994</span>
+    </div>
+
+    <div class="hero-inner">
+      <h1 class="hero-headline">
+        AFRICA'S<br>
+        MINING<br>
+        <span class="hl-blue">EXPERTS</span>
+      </h1>
+      <div class="hero-foot">
+        <p class="hero-desc">
+          Thirty years of mining, exploration, and environmental expertise — built on the Zambian Copperbelt, trusted across sub-Saharan Africa.
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-solid">Book a Consultation</a>
+          <a href="#services" class="btn-ghost">Our Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="m-item hi">AMC Africa</span>
+      <span class="m-item">Est. 1994</span>
+      <span class="m-item hi">Kitwe · Zambia</span>
+      <span class="m-item">30+ Years</span>
+      <span class="m-item hi">Glencore</span>
+      <span class="m-item">Anglo American</span>
+      <span class="m-item hi">First Quantum Minerals</span>
+      <span class="m-item">Ivanhoe Mines</span>
+      <span class="m-item hi">150+ Projects</span>
+      <span class="m-item">Zambia · DRC</span>
+      <span class="m-item hi">6 Disciplines</span>
+      <span class="m-item">Sub-Saharan Africa</span>
+      <span class="m-item hi">AMC Africa</span>
+      <span class="m-item">Est. 1994</span>
+      <span class="m-item hi">Kitwe · Zambia</span>
+      <span class="m-item">30+ Years</span>
+      <span class="m-item hi">Glencore</span>
+      <span class="m-item">Anglo American</span>
+      <span class="m-item hi">First Quantum Minerals</span>
+      <span class="m-item">Ivanhoe Mines</span>
+      <span class="m-item hi">150+ Projects</span>
+      <span class="m-item">Zambia · DRC</span>
+      <span class="m-item hi">6 Disciplines</span>
+      <span class="m-item">Sub-Saharan Africa</span>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <section class="mission" id="about">
+    <div class="mission-grid">
+      <div class="reveal">
+        <div class="m-big-num">30</div>
+        <div class="m-big-label">Years on<br><span class="accent">the ground</span></div>
+      </div>
+      <div>
+        <span class="mono-tag reveal">— About Us</span>
+        <h2 class="section-h reveal d1">Our Mission</h2>
+        <p class="m-body reveal d2">
+          Our approach is built on 30 years of on-the-ground experience — understanding the technical, regulatory, and commercial realities that define African mining. Founded by engineers from ZCCM, we deliver work that meets international standards while remaining grounded in African context.
+        </p>
+        <div class="stat-grid reveal d3">
+          <div class="stat-cell">
+            <div class="sv">150</div>
+            <span class="sl">Successful Projects</span>
+          </div>
+          <div class="stat-cell">
+            <div class="sv">40</div>
+            <span class="sl">Industry Partners</span>
+          </div>
+          <div class="stat-cell">
+            <div class="sv">30+</div>
+            <span class="sl">Years Experience</span>
+          </div>
+          <div class="stat-cell">
+            <div class="sv">98%</div>
+            <span class="sl">Client Satisfaction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="svc-head reveal">
+        <h2 class="section-h">Our Services</h2>
+        <span class="svc-head-note">6 disciplines · Full-cycle capability</span>
+      </div>
+      <div class="reveal d1">
+        <div class="svc-row">
+          <span class="svc-n">01</span>
+          <span class="svc-name">Mining Services</span>
+          <span class="svc-desc">Open pit &amp; underground mine design, resource/reserve estimation, production scheduling, feasibility studies, mining software training.</span>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="svc-row">
+          <span class="svc-n">02</span>
+          <span class="svc-name">Exploration &amp; Geological Services</span>
+          <span class="svc-desc">Geological mapping, geochemical sampling, ground geophysics, drilling program management, statutory government reporting.</span>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="svc-row">
+          <span class="svc-n">03</span>
+          <span class="svc-name">GIS &amp; Environmental Services</span>
+          <span class="svc-desc">Environmental baseline assessments, ESIAs, environmental auditing, compliance reporting, drone mapping and surveying.</span>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="svc-row">
+          <span class="svc-n">04</span>
+          <span class="svc-name">Metallurgical Services</span>
+          <span class="svc-desc">Process design, supply of flotation reagents &amp; flocculants, technical support, plant optimisation for mineral processing operations.</span>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="svc-row">
+          <span class="svc-n">05</span>
+          <span class="svc-name">Geotechnical Engineering</span>
+          <span class="svc-desc">Waste dump &amp; tailings dam design, rock mass evaluation, numerical modelling, slope stability analysis, site investigations.</span>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="svc-row">
+          <span class="svc-n">06</span>
+          <span class="svc-name">Strategy &amp; Investment Advisory</span>
+          <span class="svc-desc">Market entry, financial modelling, valuations, investment structuring, organisational enhancement, ESG advisory.</span>
+          <span class="svc-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients" id="clients">
+    <div class="clients-inner">
+      <div class="clients-top reveal">
+        <div>
+          <span class="mono-tag">— Our Portfolio</span>
+          <h2 class="section-h">Trusted by<br>Industry Leaders</h2>
+        </div>
+        <p>From global majors to emerging producers — a client list built over 30 years of precision, reliability, and bankable results across sub-Saharan Africa.</p>
+      </div>
+      <div class="clients-grid reveal d1">
+        <div class="client-cell">Anglo American Corporation</div>
+        <div class="client-cell">Glencore</div>
+        <div class="client-cell">First Quantum Minerals</div>
+        <div class="client-cell">Ivanhoe Mines</div>
+        <div class="client-cell">Konkola Copper Mines</div>
+        <div class="client-cell">Mopani Copper Mines</div>
+        <div class="client-cell">Rio Algom</div>
+        <div class="client-cell">Jubilee Metals</div>
+        <div class="client-cell">WSP Group</div>
+        <div class="client-cell">Metorex</div>
+        <div class="client-cell">Chambishi Metals</div>
+        <div class="client-cell">Zamare Minerals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY AMC -->
+  <section class="why">
+    <div class="why-inner">
+      <div class="why-head reveal">
+        <h2 class="section-h light">The <span>AMC</span> Difference</h2>
+      </div>
+      <div class="why-cards">
+        <div class="why-card reveal d1">
+          <span class="why-ref">REF — 01</span>
+          <h3>Local Knowledge</h3>
+          <p>Founded by ex-ZCCM engineers with direct experience on the Zambian Copperbelt. We understand the regulatory environment, the geology, and the people — not just the theory.</p>
+        </div>
+        <div class="why-card reveal d2">
+          <span class="why-ref">REF — 02</span>
+          <h3>International Standards</h3>
+          <p>Our work meets the standards expected by Glencore, Anglo American, and FQM. Bankable feasibility studies, JORC-compliant resource estimates, and rigorous ESIAs — with precision.</p>
+        </div>
+        <div class="why-card reveal d3">
+          <span class="why-ref">REF — 03</span>
+          <h3>Full-Cycle Capability</h3>
+          <p>From early-stage exploration through to environmental compliance and investment advisory — AMC covers every technical dimension of a mining project under one team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <h2 class="section-h reveal">Frequently Asked</h2>
+      <div class="reveal d1">
+
+        <div class="faq-item">
+          <div class="faq-q">
+            What industries do you serve?
+            <span class="faq-ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg></span>
+          </div>
+          <div class="faq-a">We primarily serve the mining and minerals sector — base metals (copper, cobalt, zinc), gold, and related industries. We also work on energy infrastructure projects including solar and hydropower, where our geotechnical and environmental capabilities directly apply.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Do you work across Africa or only in Zambia?
+            <span class="faq-ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg></span>
+          </div>
+          <div class="faq-a">We are based in Kitwe, Zambia, with a second office in Lubumbashi, DRC. We have delivered projects across multiple countries in sub-Saharan Africa and continue to expand wherever the project demands.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Can you produce bankable feasibility studies?
+            <span class="faq-ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg></span>
+          </div>
+          <div class="faq-a">Yes. We have delivered bankable-standard feasibility studies, prefeasibility studies, and JORC-compliant resource and reserve estimates for projects financed by international institutions. Our work has been signed off by independent technical experts and submitted to regulatory bodies across Zambia and the DRC.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Do you work with junior miners or only majors?
+            <span class="faq-ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg></span>
+          </div>
+          <div class="faq-a">We work across the full spectrum. While our track record includes world-class clients like Glencore and Anglo American, we also partner with junior explorers, emerging producers, and development-stage projects. The rigour we apply is the same regardless of company size.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            What is the typical engagement process?
+            <span class="faq-ic"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/></svg></span>
+          </div>
+          <div class="faq-a">We begin with a consultation to understand your project scope, timeline, and technical requirements. We then propose a defined scope of work with clear deliverables and pricing. Most engagements move from consultation to proposal within one to two weeks.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" id="contact">
+    <div class="cta-inner">
+      <h2>Ready to Start<br><em>Your Next Project?</em></h2>
+      <div class="cta-right">
+        <a href="mailto:info@amc-africa.com" class="btn-white">Book a Consultation</a>
+        <a href="mailto:info@amc-africa.com" class="cta-email">info@amc-africa.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <span class="f-mark">AMC</span>
+        <span class="f-mark-sub">African Mining Consultants Limited</span>
+        <p class="f-blurb">Africa's Exploration, Mining &amp; Environmental Engineering Experts. Built on the Copperbelt since 1994.</p>
+      </div>
+      <div>
+        <p class="f-col-h">Services</p>
+        <ul class="f-list">
+          <li><a href="#services">Mining Services</a></li>
+          <li><a href="#services">Exploration &amp; Geology</a></li>
+          <li><a href="#services">GIS &amp; Environment</a></li>
+          <li><a href="#services">Metallurgy</a></li>
+          <li><a href="#services">Geotechnical</a></li>
+          <li><a href="#services">Investment Advisory</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="f-col-h">Company</p>
+        <ul class="f-list">
+          <li><a href="#about">About AMC</a></li>
+          <li><a href="#clients">Our Clients</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="f-col-h">Offices</p>
+        <div class="f-offices">
+          <div>
+            <p class="f-office-n">Kitwe, Zambia</p>
+            <p class="f-office-a">Units D&amp;E, 1st Floor, Building 2<br>ECL Business Park, Freedom Avenue<br>P.O. Box 20106</p>
+          </div>
+          <div>
+            <p class="f-office-n">Lubumbashi, DRC</p>
+            <p class="f-office-a">Democratic Republic of Congo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <p class="f-copy">&copy; 2024 African Mining Consultants Limited. All rights reserved.</p>
+      <a href="mailto:info@amc-africa.com" class="f-link">info@amc-africa.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

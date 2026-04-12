@@ -1,24 +1,24 @@
 ---
 type: index
 tags: [partnr, status, active]
-updated: 2026-04-08
+updated: 2026-04-12
 ---
 
 # Partnr — Project Memory
 
-**Last updated:** 10 April 2026
+**Last updated:** 12 April 2026
 
 ---
 
 ## Next Session
 
-- [ ] **AMC — continue Framer build**: Services, Benefits, Reviews, FAQ, Nav, Footer — see `Clients/AMC Africa/_Website_Copy.md`
-- [ ] **AMC — get real stats from Edwin**: Successful Projects, Industry Partners, Client Satisfaction (3 placeholders in Mission section)
-- [ ] **M&J Zambia — send reply to Tamuka**: 5 specific improvements drafted + offer framing ready. Draft the email and send (or create draft).
-- [ ] **NGM — check updated ngmzambia.com and respond to Serge**: acknowledge what improved, find what's still missing
+- [ ] **AMC — present new HTML concept to Edwin**: `index.html` is a full taste-skill build — ready to show. Send link or screen-record a walkthrough.
+- [ ] **AMC — get real stats from Edwin**: Successful Projects, Industry Partners, Client Satisfaction (placeholders in Mission section of all builds)
+- [ ] **M&J Zambia — draft reply to Tamuka**: 5 specific improvements + grand slam offer framing — HOT, still unsent
+- [ ] **NGM — check updated ngmzambia.com and respond to Serge**
 - [ ] **Nolands — pitch Access Learning Hub to Kelvin Chungu** (+260 211 355267 / kelvinc@nolands.co.zm)
-- [ ] Follow up Aston AIR (Kalasa) if no reply by end of week
-- [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (it's stale)
+- [ ] Follow up Aston AIR (Kalasa) if no reply
+- [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (stale)
 - [ ] Merge `claude/inspiring-dhawan` branch into main (video reorganisation)
 
 ---
@@ -75,6 +75,22 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 ---
 
 ## Session Log
+
+### 12 Apr 2026
+- **Hero layout fixed** (`index.html`): resolved hero-coords collision with nav CTA — moved from `position: absolute` to in-flow `hero-top` row. Changed `justify-content: flex-end` → `space-between`. Fixed `100vh` → `100dvh`. Added cubic-bezier easing throughout, grain overlay, active/press states on all buttons, `text-wrap: balance` on headings, staggered hero load animation.
+- **Taste-skill suite installed** — 7 skills (taste, redesign, minimalist, soft, brutalist, output, stitch) installed globally to `~/.claude/skills/` from `Partnr Bucket/taste-skill-main/`.
+- **CLAUDE.md created** — project-root standing instructions file: skill usage guide, AMC design rules, standing rules (no sends, no emojis, etc.).
+- **AMC website rebuilt from scratch** (`index.html`) using taste-skill + output-skill:
+  - Previous version archived as `index-v2.html` (Syne/Epilogue light build); `index-v1.html` = original dark Cormorant Garamond version.
+  - New stack: Plus Jakarta Sans body (not Inter), Syne display, Syne Mono labels.
+  - New palette: off-black `#0B0B0B`, warm cream `#F4F1E9`, desaturated blue `#3572CC`.
+  - Hero: dark full-height, dot-grid background, sweep scan-line animation, "EXPERTS" in CSS outline stroke text, directional-fill CTA button (blue slides from bottom), staggered load-in.
+  - Services: numbered expandable list with hover/click expand + capability chips — not 3 cards.
+  - Clients: spotlight border effect (JS mouse-tracking radial gradient per cell).
+  - Stats: count-up animation on scroll entry (IntersectionObserver + rAF).
+  - Why AMC: zigzag 2-col layout + full-width third row — not 3 equal cards.
+  - Scroll progress bar (blue, top of page).
+  - Fully responsive down to 768px.
 
 ### 7 Apr 2026
 - Read 7 email replies — full inbox audit:

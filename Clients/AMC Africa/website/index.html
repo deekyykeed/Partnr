@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMC Africa — African Mining Consultants</title>
+  <meta name="description" content="Africa's leading mining, exploration, and environmental engineering consultancy. Founded 1994. Trusted by Glencore, Anglo American, and First Quantum Minerals.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Syne+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* ─── TOKENS ───────────────────────────────────────── */
+    :root {
+      --ink:    #0B0B0B;
+      --chalk:  #F4F1E9;
+      --white:  #FAFAFA;
+      --blue:   #3572CC;
+      --blue-d: #1B4B9C;
+      --g50:    #EFECE3;
+      --g100:   #E2DED4;
+      --g200:   #C4C0B5;
+      --g400:   #9A9790;
+      --g600:   #5E5A53;
+      --g800:   #2A2724;
+      --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ─── RESET ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--chalk);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── GRAIN OVERLAY ─────────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ─── SCROLL PROGRESS ────────────────────────────────── */
+    #progress {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--blue);
+      transform-origin: left; transform: scaleX(0);
+      z-index: 200; transition: transform 0.1s linear;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 64px;
+      transition: background 0.5s var(--ease),
+                  padding 0.5s var(--ease),
+                  border-color 0.5s var(--ease);
+    }
+    nav.scrolled {
+      background: rgba(244, 241, 233, 0.96);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 18px 64px;
+      border-bottom: 1px solid var(--g100);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none;
+    }
+    .nav-mark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 18px;
+      color: var(--white); letter-spacing: 0.06em;
+      transition: color 0.5s var(--ease);
+    }
+    nav.scrolled .nav-mark { color: var(--ink); }
+    .nav-rule {
+      width: 1px; height: 18px;
+      background: rgba(255,255,255,0.18);
+      transition: background 0.5s var(--ease);
+    }
+    nav.scrolled .nav-rule { background: var(--g200); }
+    .nav-sub {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9px; letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      transition: color 0.5s var(--ease);
+    }
+    nav.scrolled .nav-sub { color: var(--g400); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: color 0.24s var(--ease);
+    }
+    nav.scrolled .nav-links a { color: var(--g600); }
+    .nav-links a:hover { color: var(--white); }
+    nav.scrolled .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink); background: var(--white);
+      padding: 10px 22px; text-decoration: none;
+      transition: background 0.4s var(--ease),
+                  color 0.4s var(--ease),
+                  transform 0.2s var(--ease);
+    }
+    nav.scrolled .nav-cta { background: var(--ink); color: var(--white); }
+    .nav-cta:hover { background: var(--blue); color: var(--white); transform: translateY(-1px); }
+    .nav-cta:active { transform: scale(0.97); }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      min-height: 100dvh;
+      background: var(--ink);
+      position: relative;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      padding: 124px 64px 80px;
+      overflow: hidden;
+    }
+
+    /* Dot-grid survey background */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.065) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    /* Sweep scan-line effect */
+    .hero-scan {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-scan::after {
+      content: '';
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255,255,255,0.04) 25%,
+        rgba(255,255,255,0.07) 50%,
+        rgba(255,255,255,0.04) 75%,
+        transparent 100%
+      );
+      animation: scanLine 10s linear infinite;
+    }
+    @keyframes scanLine {
+      from { transform: translateY(-10px); }
+      to   { transform: translateY(100vh); }
+    }
+
+    /* Rotated vertical side label */
+    .hero-side {
+      position: absolute; left: 20px; top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-family: 'Syne Mono', monospace;
+      font-size: 9px; letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.16);
+      white-space: nowrap; pointer-events: none;
+    }
+
+    /* Top meta row */
+    .hero-top {
+      display: flex; justify-content: space-between; align-items: center;
+      position: relative; z-index: 1;
+      animation: heroFade 0.7s var(--ease) 0.05s both;
+    }
+    .hero-tag {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-tag-line {
+      display: block; width: 20px; height: 1px;
+      background: var(--blue);
+    }
+    .hero-tag-text {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.36);
+    }
+    .hero-coords {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10px; letter-spacing: 0.1em;
+      color: rgba(53,114,204,0.55);
+    }
+
+    /* Headline */
+    .hero-hl {
+      position: relative; z-index: 1;
+      animation: heroFade 0.95s var(--ease) 0.18s both;
+    }
+    .hero-hl h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(62px, 10.5vw, 152px);
+      line-height: 0.87;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .hl-outline {
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(250,250,250,0.82);
+    }
+
+    /* Bottom foot row */
+    .hero-foot {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; gap: 60px;
+      position: relative; z-index: 1;
+      animation: heroFade 0.95s var(--ease) 0.34s both;
+    }
+    .hero-desc {
+      font-size: 15.5px; font-weight: 300;
+      line-height: 1.82; color: rgba(255,255,255,0.48);
+      max-width: 400px;
+    }
+    .hero-desc strong { color: rgba(255,255,255,0.8); font-weight: 400; }
+    .hero-btns { display: flex; gap: 12px; flex-shrink: 0; }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 14px 26px; text-decoration: none;
+      display: inline-flex; align-items: center;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s var(--ease);
+    }
+    .btn:active { transform: scale(0.97) translateY(1px); }
+
+    /* Directional fill from bottom */
+    .btn-fill {
+      color: var(--ink); background: var(--white);
+    }
+    .btn-fill::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--blue);
+      transform: translateY(101%);
+      transition: transform 0.42s var(--ease);
+      z-index: 0;
+    }
+    .btn-fill:hover::after { transform: translateY(0); }
+    .btn-fill .btn-label {
+      position: relative; z-index: 1;
+      color: var(--ink);
+      transition: color 0.3s var(--ease) 0.08s;
+    }
+    .btn-fill:hover .btn-label { color: var(--white); }
+
+    .btn-ghost-light {
+      color: rgba(255,255,255,0.62);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: transparent;
+      transition: border-color 0.3s var(--ease),
+                  color 0.3s var(--ease),
+                  transform 0.2s var(--ease);
+    }
+    .btn-ghost-light:hover {
+      border-color: rgba(255,255,255,0.55);
+      color: var(--white);
+    }
+
+    .btn-ghost-dark {
+      color: var(--g600);
+      border: 1px solid var(--g200);
+      background: transparent;
+      transition: border-color 0.3s var(--ease),
+                  color 0.3s var(--ease),
+                  transform 0.2s var(--ease);
+    }
+    .btn-ghost-dark:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* ─── MARQUEE ─────────────────────────────────────────── */
+    .marquee {
+      background: var(--g800);
+      padding: 14px 0;
+      overflow: hidden; white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: scrollMq 38s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .mq-item {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10.5px; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.26);
+      padding: 0 40px;
+    }
+    .mq-item.hi { color: var(--blue); }
+    @keyframes scrollMq {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── SHARED ──────────────────────────────────────────── */
+    .section-tag {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--blue);
+      display: block; margin-bottom: 14px;
+    }
+    .section-h {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.02; letter-spacing: -0.03em;
+      color: var(--ink); text-wrap: balance;
+    }
+    .section-h.light { color: var(--white); }
+
+    /* ─── MISSION ─────────────────────────────────────────── */
+    .mission { background: var(--chalk); padding: 128px 64px; }
+    .mission-inner {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 88px; align-items: start;
+      max-width: 1280px; margin: 0 auto;
+    }
+    .mission-wm {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(120px, 17vw, 220px);
+      line-height: 0.8; letter-spacing: -0.06em;
+      color: var(--g100); margin-bottom: -16px;
+      user-select: none; pointer-events: none;
+    }
+    .mission-hl {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1.08; letter-spacing: -0.025em;
+      color: var(--ink); margin-bottom: 18px;
+    }
+    .mission-hl .accent { color: var(--blue); }
+    .mission-body {
+      font-size: 15.5px; font-weight: 300;
+      line-height: 1.84; color: var(--g600);
+      max-width: 50ch; margin-bottom: 36px;
+    }
+    .stat-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--g100);
+      border: 1px solid var(--g100);
+      margin-bottom: 48px;
+    }
+    .stat-cell { background: var(--chalk); padding: 30px 28px; }
+    .stat-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 46px;
+      line-height: 1; letter-spacing: -0.04em;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-label {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9.5px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--g400);
+      display: block; margin-top: 7px;
+    }
+    .mission-note {
+      font-size: 15px; font-weight: 300;
+      line-height: 1.82; color: var(--g600);
+    }
+
+    /* ─── SERVICES ────────────────────────────────────────── */
+    .services { background: var(--g50); padding: 128px 64px; }
+    .services-inner { max-width: 1280px; margin: 0 auto; }
+    .svc-hd {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      padding-bottom: 30px; border-bottom: 1px solid var(--g200);
+    }
+    .svc-hd-note {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10px; color: var(--g400);
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .svc-row {
+      display: grid;
+      grid-template-columns: 64px 1fr 24px;
+      gap: 0 32px; align-items: start;
+      padding: 28px 0 28px 0;
+      border-bottom: 1px solid var(--g100);
+      border-left: 2px solid transparent;
+      cursor: default;
+      transition:
+        border-left-color 0.35s var(--ease),
+        background 0.35s var(--ease),
+        padding-left 0.35s var(--ease);
+    }
+    .svc-row:hover {
+      border-left-color: var(--blue);
+      background: rgba(250,250,250,0.55);
+      padding-left: 18px;
+    }
+    .svc-num {
+      font-family: 'Syne Mono', monospace;
+      font-size: 12px; color: var(--g200);
+      letter-spacing: 0.1em; padding-top: 3px;
+      transition: color 0.3s var(--ease);
+    }
+    .svc-row:hover .svc-num { color: var(--blue); }
+    .svc-body { min-width: 0; }
+    .svc-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 17px;
+      color: var(--ink); letter-spacing: -0.01em;
+      display: block;
+    }
+    .svc-expand {
+      font-size: 13.5px; font-weight: 300;
+      line-height: 1.72; color: var(--g600);
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition:
+        max-height 0.48s var(--ease),
+        opacity 0.36s var(--ease),
+        margin-top 0.32s var(--ease);
+      margin-top: 0;
+    }
+    .svc-row:hover .svc-expand,
+    .svc-row.open .svc-expand {
+      max-height: 100px; opacity: 1; margin-top: 8px;
+    }
+    .svc-chips {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition:
+        max-height 0.48s var(--ease),
+        opacity 0.4s var(--ease) 0.06s,
+        margin-top 0.32s var(--ease);
+      margin-top: 0;
+    }
+    .svc-row:hover .svc-chips,
+    .svc-row.open .svc-chips {
+      max-height: 60px; opacity: 1; margin-top: 10px;
+    }
+    .svc-chip {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--blue);
+      border: 1px solid rgba(53,114,204,0.25);
+      padding: 3px 9px;
+    }
+    .svc-arrow {
+      font-size: 17px; color: var(--g200);
+      padding-top: 3px; align-self: start;
+      transition: color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+    .svc-row:hover .svc-arrow { color: var(--blue); transform: translateX(5px); }
+
+    /* ─── CLIENTS ─────────────────────────────────────────── */
+    .clients { background: var(--white); padding: 128px 64px; }
+    .clients-inner { max-width: 1280px; margin: 0 auto; }
+    .clients-top {
+      display: grid; grid-template-columns: 1fr 1.7fr;
+      gap: 80px; align-items: end; margin-bottom: 56px;
+    }
+    .clients-top p {
+      font-size: 15.5px; font-weight: 300;
+      line-height: 1.82; color: var(--g600);
+    }
+    .clients-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--g100);
+      border: 1px solid var(--g100);
+    }
+    .client-cell {
+      background: var(--white); padding: 22px 24px;
+      font-size: 13px; font-weight: 500; color: var(--g600);
+      position: relative; overflow: hidden; cursor: default;
+      transition: color 0.3s var(--ease);
+    }
+    /* Spotlight hover effect — JS feeds --mx/--my */
+    .client-cell::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(
+        circle 88px at var(--mx, 50%) var(--my, 50%),
+        rgba(53,114,204,0.09),
+        transparent 80%
+      );
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+    }
+    .client-cell:hover { color: var(--ink); }
+    .client-cell:hover::before { opacity: 1; }
+
+    /* ─── WHY AMC ─────────────────────────────────────────── */
+    .why { background: var(--ink); padding: 128px 64px; }
+    .why-inner { max-width: 1280px; margin: 0 auto; }
+    .why-hd {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 64px;
+    }
+    .why-hd p {
+      font-size: 15px; font-weight: 300;
+      line-height: 1.74; color: rgba(255,255,255,0.35);
+      max-width: 42ch;
+    }
+    /* Zigzag grid — NOT 3 equal cards */
+    .why-rows {
+      display: flex; flex-direction: column; gap: 2px;
+      background: rgba(255,255,255,0.055);
+    }
+    .why-pair {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .why-cell {
+      background: var(--ink); padding: 56px 52px;
+      transition: background 0.32s var(--ease);
+    }
+    .why-cell:hover { background: #171614; }
+    .why-ref {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10px; color: var(--blue);
+      letter-spacing: 0.18em; display: block;
+      margin-bottom: 28px;
+    }
+    .why-cell h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 22px;
+      color: var(--white); letter-spacing: -0.02em;
+      line-height: 1.1; margin-bottom: 16px;
+    }
+    .why-cell p {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.82; color: rgba(255,255,255,0.36);
+    }
+    /* Full-width third row */
+    .why-full {
+      grid-column: 1 / -1;
+      background: var(--ink); padding: 56px 52px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+      transition: background 0.32s var(--ease);
+    }
+    .why-full:hover { background: #171614; }
+    .why-full-body {
+      font-size: 14.5px; font-weight: 300;
+      line-height: 1.84; color: rgba(255,255,255,0.36);
+    }
+
+    /* ─── FAQ ─────────────────────────────────────────────── */
+    .faq { background: var(--chalk); padding: 128px 64px; }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-hd { margin-bottom: 52px; }
+    .faq-item { border-bottom: 1px solid var(--g100); }
+    .faq-q {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 20px;
+      padding: 22px 0; cursor: pointer;
+      font-size: 15.5px; font-weight: 400; color: var(--ink);
+      user-select: none;
+      transition: color 0.24s var(--ease);
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-icon {
+      width: 18px; height: 18px; min-width: 18px;
+      color: var(--g400); flex-shrink: 0;
+      transition: transform 0.3s var(--ease), color 0.24s var(--ease);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--blue); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.42s var(--ease);
+      font-size: 14.5px; font-weight: 300;
+      line-height: 1.86; color: var(--g600);
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 22px; }
+
+    /* ─── CTA BAND ────────────────────────────────────────── */
+    .cta-band { background: var(--blue); padding: 100px 64px; }
+    .cta-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 80px;
+    }
+    .cta-h {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(36px, 5.2vw, 66px);
+      letter-spacing: -0.03em; color: var(--white);
+      line-height: 1.02; text-wrap: balance;
+    }
+    .cta-h em {
+      font-style: italic;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 300;
+    }
+    .cta-side {
+      display: flex; flex-direction: column;
+      gap: 14px; min-width: 240px;
+    }
+    .btn-white {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue); background: var(--white);
+      padding: 14px 28px; text-decoration: none;
+      display: block; text-align: center;
+      transition: transform 0.22s var(--ease),
+                  box-shadow 0.32s var(--ease);
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.22);
+    }
+    .btn-white:active { transform: scale(0.97); }
+    .cta-email {
+      font-family: 'Syne Mono', monospace;
+      font-size: 10.5px; color: rgba(255,255,255,0.52);
+      text-decoration: none; text-align: center;
+      transition: color 0.22s;
+    }
+    .cta-email:hover { color: var(--white); }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer { background: var(--ink); padding: 72px 64px 40px; }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.3fr;
+      gap: 64px; padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 28px;
+    }
+    .f-mark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 20px;
+      color: var(--white); letter-spacing: 0.06em;
+      display: block; margin-bottom: 4px;
+    }
+    .f-sub {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9px; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      display: block; margin-bottom: 18px;
+    }
+    .f-blurb {
+      font-size: 12.5px; font-weight: 300;
+      line-height: 1.76; color: rgba(255,255,255,0.3);
+    }
+    .f-col h4 {
+      font-family: 'Syne Mono', monospace;
+      font-size: 9px; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.22); margin-bottom: 18px;
+    }
+    .f-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .f-list a {
+      font-size: 12.5px; font-weight: 300;
+      color: rgba(255,255,255,0.4); text-decoration: none;
+      transition: color 0.22s;
+    }
+    .f-list a:hover { color: var(--white); }
+    .f-office { margin-bottom: 20px; }
+    .f-office-name {
+      font-size: 12.5px; font-weight: 500;
+      color: var(--white); margin-bottom: 5px;
+    }
+    .f-office-addr {
+      font-size: 12px; font-weight: 300;
+      line-height: 1.72; color: rgba(255,255,255,0.26);
+    }
+    .footer-bot {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .f-copy {
+      font-size: 11.5px; font-weight: 300;
+      color: rgba(255,255,255,0.16);
+    }
+    .f-link {
+      font-family: 'Syne Mono', monospace;
+      font-size: 11px; color: rgba(255,255,255,0.26);
+      text-decoration: none; transition: color 0.22s;
+    }
+    .f-link:hover { color: var(--blue); }
+
+    /* ─── SCROLL REVEAL ───────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1080px) {
+      nav, nav.scrolled { padding-left: 40px; padding-right: 40px; }
+      .hero { padding: 112px 40px 72px; }
+      .mission, .services, .clients, .why,
+      .faq, .cta-band, footer { padding-left: 40px; padding-right: 40px; }
+      .mission-inner { grid-template-columns: 1fr; gap: 48px; }
+      .clients-top { grid-template-columns: 1fr; gap: 24px; }
+      .clients-grid { grid-template-columns: repeat(3, 1fr); }
+      .why-hd { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .why-full { grid-template-columns: 1fr; gap: 24px; }
+      .cta-inner { flex-direction: column; align-items: flex-start; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 22px 24px; }
+      nav.scrolled { padding: 16px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hero { padding: 100px 24px 72px; }
+      .hero-side, .hero-coords { display: none; }
+      .hero-foot { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .hero-btns { flex-wrap: wrap; }
+      .mission, .services, .clients, .why,
+      .faq, .cta-band, footer { padding-left: 24px; padding-right: 24px; }
+      .mission, .services, .clients, .why,
+      .faq { padding-top: 80px; padding-bottom: 80px; }
+      .svc-row { grid-template-columns: 48px 1fr; }
+      .svc-arrow { display: none; }
+      .clients-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-pair { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bot { flex-direction: column; gap: 8px; text-align: center; }
+      .cta-side { width: 100%; }
+      .btn-white { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress" aria-hidden="true"></div>
+
+  <!-- ── NAV ───────────────────────────────────────────── -->
+  <nav id="nav">
+    <a href="#home" class="nav-brand">
+      <span class="nav-mark">AMC</span>
+      <div class="nav-rule"></div>
+      <span class="nav-sub">African Mining Consultants</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Consultation</a>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <div class="hero-scan" aria-hidden="true"></div>
+    <div class="hero-side" aria-hidden="true">Mining · Exploration · Environment · Zambia</div>
+
+    <div class="hero-top">
+      <div class="hero-tag">
+        <span class="hero-tag-line" aria-hidden="true"></span>
+        <span class="hero-tag-text">Mining Consulting</span>
+      </div>
+      <span class="hero-coords">12°48′S 28°13′E &nbsp;·&nbsp; Kitwe, Zambia &nbsp;·&nbsp; Est. 1994</span>
+    </div>
+
+    <div class="hero-hl">
+      <h1>
+        Africa's<br>
+        Mining<br>
+        <span class="hl-outline">Experts</span>
+      </h1>
+    </div>
+
+    <div class="hero-foot">
+      <p class="hero-desc">
+        <strong>Thirty years</strong> of mining, exploration, and environmental expertise — built on the Zambian Copperbelt, trusted across sub-Saharan Africa.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-fill"><span class="btn-label">Book a Consultation</span></a>
+        <a href="#services" class="btn btn-ghost-light">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ────────────────────────────────────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="mq-item hi">AMC Africa</span>
+      <span class="mq-item">Est. 1994</span>
+      <span class="mq-item hi">Glencore</span>
+      <span class="mq-item">Anglo American</span>
+      <span class="mq-item hi">First Quantum Minerals</span>
+      <span class="mq-item">Ivanhoe Mines</span>
+      <span class="mq-item hi">30+ Years</span>
+      <span class="mq-item">Kitwe · Zambia</span>
+      <span class="mq-item hi">150+ Projects</span>
+      <span class="mq-item">Sub-Saharan Africa</span>
+      <span class="mq-item hi">6 Disciplines</span>
+      <span class="mq-item">Zambia · DRC</span>
+      <span class="mq-item hi">AMC Africa</span>
+      <span class="mq-item">Est. 1994</span>
+      <span class="mq-item hi">Glencore</span>
+      <span class="mq-item">Anglo American</span>
+      <span class="mq-item hi">First Quantum Minerals</span>
+      <span class="mq-item">Ivanhoe Mines</span>
+      <span class="mq-item hi">30+ Years</span>
+      <span class="mq-item">Kitwe · Zambia</span>
+      <span class="mq-item hi">150+ Projects</span>
+      <span class="mq-item">Sub-Saharan Africa</span>
+      <span class="mq-item hi">6 Disciplines</span>
+      <span class="mq-item">Zambia · DRC</span>
+    </div>
+  </div>
+
+  <!-- ── MISSION ────────────────────────────────────────── -->
+  <section class="mission" id="about">
+    <div class="mission-inner">
+      <div class="reveal">
+        <div class="mission-wm" aria-hidden="true">30</div>
+        <h2 class="mission-hl">Years on<br><span class="accent">the ground</span></h2>
+        <p class="mission-body">
+          Our approach is built on 30 years of on-the-ground experience — understanding the technical, regulatory, and commercial realities that define African mining. Founded by engineers from ZCCM, we deliver work that meets international standards while remaining grounded in African context.
+        </p>
+        <a href="#contact" class="btn btn-ghost-dark">Speak to the team</a>
+      </div>
+      <div>
+        <span class="section-tag reveal">— About AMC</span>
+        <h2 class="section-h reveal d1" style="margin-bottom:40px">Our Mission</h2>
+        <div class="stat-grid reveal d2">
+          <div class="stat-cell">
+            <div class="stat-val" data-count="150">0</div>
+            <span class="stat-label">Successful Projects</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-val" data-count="40">0</div>
+            <span class="stat-label">Industry Partners</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-val" data-count="30" data-count-suffix="+">0</div>
+            <span class="stat-label">Years of Experience</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-val" data-count="98" data-count-suffix="%">0</div>
+            <span class="stat-label">Client Satisfaction</span>
+          </div>
+        </div>
+        <p class="mission-note reveal d3">
+          From early-stage exploration through environmental compliance to investment advisory — AMC covers every technical dimension of a mining project under one roof. Our associate team of 30+ professionals bring international-grade rigour to every engagement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ───────────────────────────────────────── -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="svc-hd reveal">
+        <h2 class="section-h">Our Services</h2>
+        <span class="svc-hd-note">6 disciplines · Full-cycle capability</span>
+      </div>
+      <div class="reveal d1">
+
+        <div class="svc-row">
+          <span class="svc-num">01</span>
+          <div class="svc-body">
+            <span class="svc-name">Mining Services</span>
+            <span class="svc-expand">Open pit and underground mine design, resource and reserve estimation, production scheduling, feasibility studies, and mining software training.</span>
+            <div class="svc-chips">
+              <span class="svc-chip">Mine Design</span>
+              <span class="svc-chip">Feasibility Studies</span>
+              <span class="svc-chip">Resource Estimation</span>
+            </div>
+          </div>
+          <span class="svc-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="svc-row">
+          <span class="svc-num">02</span>
+          <div class="svc-body">
+            <span class="svc-name">Exploration &amp; Geological Services</span>
+            <span class="svc-expand">Geological mapping, geochemical sampling, ground geophysics, drilling program management, and statutory government reporting.</span>
+            <div class="svc-chips">
+              <span class="svc-chip">Geological Mapping</span>
+              <span class="svc-chip">Geophysics</span>
+              <span class="svc-chip">Drilling Programs</span>
+            </div>
+          </div>
+          <span class="svc-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="svc-row">
+          <span class="svc-num">03</span>
+          <div class="svc-body">
+            <span class="svc-name">GIS &amp; Environmental Services</span>
+            <span class="svc-expand">Environmental baseline assessments, ESIAs, environmental auditing, compliance reporting, drone mapping, and surveying.</span>
+            <div class="svc-chips">
+              <span class="svc-chip">ESIA</span>
+              <span class="svc-chip">Compliance Reporting</span>
+              <span class="svc-chip">Drone Mapping</span>
+            </div>
+          </div>
+          <span class="svc-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="svc-row">
+          <span class="svc-num">04</span>
+          <div class="svc-body">
+            <span class="svc-name">Metallurgical Services</span>
+            <span class="svc-expand">Process design, supply of flotation reagents and flocculants, technical support, and plant optimisation for mineral processing operations.</span>
+            <div class="svc-chips">
+              <span class="svc-chip">Process Design</span>
+              <span class="svc-chip">Plant Optimisation</span>
+              <span class="svc-chip">Reagent Supply</span>
+            </div>
+          </div>
+          <span class="svc-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="svc-row">
+          <span class="svc-num">05</span>
+          <div class="svc-body">
+            <span class="svc-name">Geotechnical Engineering</span>
+            <span class="svc-expand">Waste dump and tailings dam design, rock mass evaluation, numerical modelling, slope stability analysis, and site investigations.</span>
+            <div class="svc-chips">
+              <span class="svc-chip">Slope Stability</span>
+              <span class="svc-chip">Tailings Design</span>
+              <span class="svc-chip">Rock Mass Evaluation</span>
+            </div>
+          </div>
+          <span class="svc-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="svc-row">
+          <span class="svc-num">06</span>
+          <div class="svc-body">
+            <span class="svc-name">Strategy &amp; Investment Advisory</span>
+            <span class="svc-expand">Market entry, financial modelling, project valuations, investment structuring, organisational enhancement, and ESG advisory.</span>
+            <div class="svc-chips">
+              <span class="svc-chip">Financial Modelling</span>
+              <span class="svc-chip">ESG Advisory</span>
+              <span class="svc-chip">Investment Structuring</span>
+            </div>
+          </div>
+          <span class="svc-arrow" aria-hidden="true">→</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLIENTS ────────────────────────────────────────── -->
+  <section class="clients" id="clients">
+    <div class="clients-inner">
+      <div class="clients-top reveal">
+        <div>
+          <span class="section-tag">— Our Portfolio</span>
+          <h2 class="section-h">Trusted by<br>Industry Leaders</h2>
+        </div>
+        <p>A client list built over 30 years of precision, reliability, and bankable results — from global majors to emerging producers across sub-Saharan Africa.</p>
+      </div>
+      <div class="clients-grid reveal d1">
+        <div class="client-cell">Anglo American Corporation</div>
+        <div class="client-cell">Glencore</div>
+        <div class="client-cell">First Quantum Minerals</div>
+        <div class="client-cell">Ivanhoe Mines</div>
+        <div class="client-cell">Konkola Copper Mines</div>
+        <div class="client-cell">Mopani Copper Mines</div>
+        <div class="client-cell">Rio Algom</div>
+        <div class="client-cell">Jubilee Metals</div>
+        <div class="client-cell">WSP Group</div>
+        <div class="client-cell">Metorex</div>
+        <div class="client-cell">Chambishi Metals</div>
+        <div class="client-cell">Zamare Minerals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY AMC ────────────────────────────────────────── -->
+  <section class="why">
+    <div class="why-inner">
+      <div class="why-hd reveal">
+        <h2 class="section-h light">The <span style="color:var(--blue)">AMC</span> Difference</h2>
+        <p>Local knowledge at international standards. What separates rigorous consulting from generic advice.</p>
+      </div>
+      <div class="why-rows reveal d1">
+
+        <div class="why-pair">
+          <div class="why-cell">
+            <span class="why-ref">REF — 01</span>
+            <h3>Local Knowledge, Global Rigour</h3>
+            <p>Founded by ex-ZCCM engineers with direct Copperbelt experience. We understand the regulatory environment, the geology, and the operating realities of African mining — not just the theory.</p>
+          </div>
+          <div class="why-cell">
+            <span class="why-ref">REF — 02</span>
+            <h3>Bankable Standards</h3>
+            <p>Our work meets the standards expected by Glencore, Anglo American, and FQM. JORC-compliant resource estimates, rigorous ESIAs, and bankable feasibility studies — with the precision that financiers require.</p>
+          </div>
+        </div>
+
+        <div class="why-pair">
+          <div class="why-full">
+            <div>
+              <span class="why-ref">REF — 03</span>
+              <h3>Full-Cycle Capability</h3>
+            </div>
+            <p class="why-full-body">From early-stage exploration through environmental compliance to investment advisory — AMC covers every technical dimension of a mining project under one team. One engagement, every phase, no handoffs.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────── -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <div class="faq-hd reveal">
+        <span class="section-tag">— Questions</span>
+        <h2 class="section-h">Frequently Asked</h2>
+      </div>
+      <div class="reveal d1">
+
+        <div class="faq-item">
+          <div class="faq-q" role="button" tabindex="0">
+            What industries do you serve?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="10" y1="3" x2="10" y2="17"/>
+              <line x1="3" y1="10" x2="17" y2="10"/>
+            </svg>
+          </div>
+          <div class="faq-a">We primarily serve the mining and minerals sector — base metals (copper, cobalt, zinc), gold, and related industries. We also support energy infrastructure projects including solar and hydropower, where our geotechnical and environmental expertise directly applies.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" role="button" tabindex="0">
+            Do you work across Africa or only in Zambia?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="10" y1="3" x2="10" y2="17"/>
+              <line x1="3" y1="10" x2="17" y2="10"/>
+            </svg>
+          </div>
+          <div class="faq-a">We are based in Kitwe, Zambia, with a second office in Lubumbashi, DRC. We have delivered projects across multiple countries in sub-Saharan Africa and continue to expand wherever the project demands.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" role="button" tabindex="0">
+            Can you produce bankable feasibility studies?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="10" y1="3" x2="10" y2="17"/>
+              <line x1="3" y1="10" x2="17" y2="10"/>
+            </svg>
+          </div>
+          <div class="faq-a">Yes. We have delivered bankable-standard feasibility studies, prefeasibility studies, and JORC-compliant resource and reserve estimates for projects financed by international institutions. Our work has been signed off by independent technical experts and submitted to regulatory bodies across Zambia and the DRC.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" role="button" tabindex="0">
+            Do you work with junior miners or only the majors?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="10" y1="3" x2="10" y2="17"/>
+              <line x1="3" y1="10" x2="17" y2="10"/>
+            </svg>
+          </div>
+          <div class="faq-a">We work across the full spectrum. While our track record includes world-class clients like Glencore and Anglo American, we also partner with junior explorers, emerging producers, and development-stage projects. The rigour we apply is the same regardless of company size.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" role="button" tabindex="0">
+            What is the typical engagement process?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="10" y1="3" x2="10" y2="17"/>
+              <line x1="3" y1="10" x2="17" y2="10"/>
+            </svg>
+          </div>
+          <div class="faq-a">We begin with a consultation to understand your project scope, timeline, and technical requirements. We then propose a defined scope of work with clear deliverables and pricing. Most engagements move from consultation to proposal within one to two weeks.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────── -->
+  <section class="cta-band" id="contact">
+    <div class="cta-inner">
+      <h2 class="cta-h">Ready to start<br><em>your next project?</em></h2>
+      <div class="cta-side">
+        <a href="mailto:info@amc-africa.com" class="btn-white">Book a Consultation</a>
+        <a href="mailto:info@amc-africa.com" class="cta-email">info@amc-africa.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <span class="f-mark">AMC</span>
+        <span class="f-sub">African Mining Consultants Limited</span>
+        <p class="f-blurb">Africa's Exploration, Mining &amp; Environmental Engineering Experts. Built on the Copperbelt since 1994.</p>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <ul class="f-list">
+          <li><a href="#services">Mining Services</a></li>
+          <li><a href="#services">Exploration &amp; Geology</a></li>
+          <li><a href="#services">GIS &amp; Environment</a></li>
+          <li><a href="#services">Metallurgy</a></li>
+          <li><a href="#services">Geotechnical</a></li>
+          <li><a href="#services">Investment Advisory</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Company</h4>
+        <ul class="f-list">
+          <li><a href="#about">About AMC</a></li>
+          <li><a href="#clients">Our Clients</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Offices</h4>
+        <div class="f-office">
+          <p class="f-office-name">Kitwe, Zambia</p>
+          <p class="f-office-addr">Units D&amp;E, 1st Floor, Building 2<br>ECL Business Park, Freedom Avenue<br>P.O. Box 20106</p>
+        </div>
+        <div class="f-office">
+          <p class="f-office-name">Lubumbashi, DRC</p>
+          <p class="f-office-addr">Democratic Republic of Congo</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <p class="f-copy">&copy; 2024 African Mining Consultants Limited. All rights reserved.</p>
+      <a href="mailto:info@amc-africa.com" class="f-link">info@amc-africa.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Scroll progress bar ────────────────────────────────
+    const progressBar = document.getElementById('progress');
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = 'scaleX(' + (window.scrollY / max) + ')';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    // ── Nav scroll state ───────────────────────────────────
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // ── Scroll reveal ──────────────────────────────────────
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // ── Stat counter animation ─────────────────────────────
+    function animateCount(el) {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.countSuffix || '';
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const t = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCount(e.target);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+    // ── Client spotlight (mouse-tracking radial gradient) ──
+    document.querySelectorAll('.client-cell').forEach(cell => {
+      cell.addEventListener('mousemove', (e) => {
+        const r = cell.getBoundingClientRect();
+        cell.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        cell.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+
+    // ── Service row expand (click for touch / mobile) ──────
+    document.querySelectorAll('.svc-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const isOpen = row.classList.contains('open');
+        document.querySelectorAll('.svc-row').forEach(r => r.classList.remove('open'));
+        if (!isOpen) row.classList.add('open');
+      });
+    });
+
+    // ── FAQ accordion ──────────────────────────────────────
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+      q.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          q.click();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

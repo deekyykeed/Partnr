@@ -23,6 +23,7 @@
 | 2 Apr 2026 | Call 2 — green light to build concept |
 | 8 Apr 2026 | Unframer MCP connected. 4 sections rewritten: Hero, Services, Bento, Achievements |
 | 10 Apr 2026 | Switched to template project (jubilant-radish). Full AMC offer extracted from amc-africa.com. Hero + Mission sections updated. |
+| 12 Apr 2026 | Standalone HTML concept built from scratch using taste-skill. Full site: hero, mission, services, clients, why, FAQ, CTA, footer. Ready to present to Edwin. |
 
 ---
 
@@ -32,7 +33,7 @@
 **Approach:** Word/phrase swaps only — keep template energy and structure, swap to AMC language. No layout changes.
 **Copy reference:** `_Website_Copy.md` (full record of all section copy)
 
-### Sections Completed
+### Framer Sections Status
 | Section | Status | Notes |
 |---|---|---|
 | Hero | ✅ Done | Tag, headline, description updated |
@@ -43,6 +44,31 @@
 | Blog | ⬜ Pending | — |
 | FAQ | ⬜ Pending | — |
 | Navigation / Footer | ⬜ Pending | — |
+
+---
+
+## Standalone HTML Concept (`website/index.html`)
+
+Built 12 Apr 2026 using taste-skill from scratch. Intended as a presentation asset / alternative concept for Edwin.
+
+**Stack:** Vanilla HTML/CSS/JS — no framework, no build step
+**Fonts:** Syne (display) · Plus Jakarta Sans (body) · Syne Mono (labels)
+**Palette:** `#0B0B0B` ink · `#F4F1E9` chalk · `#3572CC` blue
+
+| Section | Status |
+|---|---|
+| Nav | ✅ Done |
+| Hero (dark, outlined type, dot-grid) | ✅ Done |
+| Marquee | ✅ Done |
+| Mission + Stats | ✅ Done |
+| Services (expandable rows) | ✅ Done |
+| Clients (spotlight hover) | ✅ Done |
+| Why AMC (zigzag layout) | ✅ Done |
+| FAQ | ✅ Done |
+| CTA Band | ✅ Done |
+| Footer | ✅ Done |
+
+**Version history:** `index-v1.html` (Cormorant Garamond dark) · `index-v2.html` (Syne/Epilogue light) · `index.html` (current taste-skill build)
 
 ### Pending — Awaiting Real Numbers from Edwin
 | Section | Placeholder | Notes |

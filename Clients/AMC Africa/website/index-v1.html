@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMC Africa — African Mining Consultants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark:       #0D1117;
+      --dark-2:     #161C27;
+      --blue:       #4285F4;
+      --blue-dark:  #104EB3;
+      --copper:     #C4903A;
+      --light-bg:   #F7FAFC;
+      --white:      #FFFFFF;
+      --text-dark:  #414141;
+      --text-muted: #878787;
+      --footer-bg:  #505050;
+      --warm:       #F2EEE2;
+      --navy:       #2D3E50;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVIGATION ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 64px;
+      transition: background 0.3s, backdrop-filter 0.3s, padding 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(13,17,23,0.93);
+      backdrop-filter: blur(14px);
+      padding: 16px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+    .nav-logo .logo-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700; font-size: 22px;
+      color: white; letter-spacing: 0.06em;
+    }
+    .nav-logo .logo-sub {
+      font-size: 9px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.62); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: white; }
+    .nav-cta {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: white; background: var(--blue);
+      padding: 10px 22px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 130px 64px 100px;
+      overflow: hidden;
+    }
+
+    /* Subtle cross-hatch engineering texture */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Blue radial glow — top right */
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(66,133,244,0.1) 0%, transparent 68%);
+      top: -150px; right: 80px;
+      pointer-events: none;
+    }
+
+    /* Large AMC watermark */
+    .hero-watermark {
+      position: absolute;
+      right: -20px; top: 50%; transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700; font-size: 28vw;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.035);
+      line-height: 1; user-select: none; pointer-events: none;
+      letter-spacing: -0.03em;
+    }
+
+    /* Copper horizontal rule accent */
+    .hero-rule {
+      width: 48px; height: 2px;
+      background: var(--copper);
+      margin-bottom: 28px;
+    }
+
+    .hero-tag {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(68px, 9vw, 118px);
+      line-height: 0.9;
+      color: white;
+      letter-spacing: -0.025em;
+      margin-bottom: 36px;
+      max-width: 820px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .hero-description {
+      font-size: 17px; font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+      max-width: 500px; margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center;
+      gap: 18px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: white; background: var(--blue);
+      padding: 15px 30px; text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .btn-ghost {
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 15px 30px; text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.55); color: white; }
+
+    /* Bottom stats strip */
+    .hero-stats {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .hero-stat {
+      padding: 26px 40px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .sn {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 34px;
+      color: white; line-height: 1; display: block;
+    }
+    .hero-stat .sl {
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.32); display: block; margin-top: 5px;
+    }
+
+    /* ── SHARED SECTION STYLES ──────────────────────── */
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 18px;
+    }
+    .tag::before {
+      content: ''; display: block;
+      width: 22px; height: 1px; background: var(--blue);
+    }
+    .tag.copper { color: var(--copper); }
+    .tag.copper::before { background: var(--copper); }
+    .tag.center { justify-content: center; }
+    .tag.center::before { display: none; }
+
+    .sh {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(38px, 4.5vw, 60px);
+      line-height: 1.02; letter-spacing: -0.025em;
+      color: var(--dark);
+    }
+    .sh.light { color: white; }
+
+    /* ── MISSION ─────────────────────────────────────── */
+    .mission {
+      background: var(--white);
+      padding: 110px 64px;
+    }
+    .mission-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .mission-body {
+      font-size: 17px; font-weight: 300; line-height: 1.8;
+      color: var(--text-muted);
+      margin: 24px 0 40px;
+    }
+    .stat-block {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: #E0E4EA;
+      border: 1px solid #E0E4EA;
+    }
+    .stat-cell {
+      background: white; padding: 36px 32px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700; font-size: 52px;
+      line-height: 1; color: var(--dark);
+    }
+    .stat-lbl {
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── SERVICES ────────────────────────────────────── */
+    .services {
+      background: var(--light-bg);
+      padding: 110px 64px;
+    }
+    .services-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 56px;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: #D8DDE5;
+    }
+    .svc {
+      background: white; padding: 44px 36px;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .svc:hover { transform: translateY(-3px); }
+    .svc::after {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--blue); transform: scaleY(0);
+      transform-origin: bottom; transition: transform 0.35s ease;
+    }
+    .svc:hover::after { transform: scaleY(1); }
+    .svc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px; color: var(--text-muted);
+      letter-spacing: 0.12em; margin-bottom: 18px;
+    }
+    .svc-icon {
+      width: 36px; height: 36px;
+      color: var(--blue); margin-bottom: 18px;
+    }
+    .svc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 21px;
+      line-height: 1.2; color: var(--dark); margin-bottom: 10px;
+    }
+    .svc-desc {
+      font-size: 13.5px; font-weight: 300;
+      line-height: 1.7; color: var(--text-muted);
+    }
+
+    /* ── CLIENTS ─────────────────────────────────────── */
+    .clients {
+      background: var(--white);
+      padding: 110px 64px; text-align: center;
+    }
+    .clients-sub {
+      font-size: 16px; font-weight: 300;
+      color: var(--text-muted); margin: 12px 0 56px;
+    }
+    .clients-wrap {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 10px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .client-chip {
+      padding: 11px 22px;
+      border: 1px solid #DDE2EA;
+      font-size: 13px; font-weight: 400;
+      letter-spacing: 0.03em; color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .client-chip:hover {
+      border-color: var(--blue);
+      color: var(--dark);
+      background: rgba(66,133,244,0.04);
+    }
+
+    /* ── WHY AMC ─────────────────────────────────────── */
+    .why {
+      background: var(--dark);
+      padding: 110px 64px;
+    }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: rgba(255,255,255,0.04);
+      margin-top: 56px;
+    }
+    .why-card {
+      background: var(--dark);
+      padding: 48px 36px;
+      border-top: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .why-card:hover { border-top-color: var(--copper); }
+    .why-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 300;
+      color: rgba(255,255,255,0.08); line-height: 1;
+      margin-bottom: 22px;
+    }
+    .why-t {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 600;
+      color: white; margin-bottom: 14px;
+    }
+    .why-p {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.75; color: rgba(255,255,255,0.45);
+    }
+
+    /* ── FAQ ─────────────────────────────────────────── */
+    .faq {
+      background: var(--light-bg);
+      padding: 110px 64px;
+    }
+    .faq-inner { max-width: 780px; margin: 0 auto; }
+    .faq-head { text-align: center; margin-bottom: 56px; }
+    .faq-item { border-bottom: 1px solid #D8DDE4; }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 0; cursor: pointer; gap: 20px;
+      font-size: 15.5px; font-weight: 400; color: var(--dark);
+      user-select: none; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-ic {
+      width: 18px; height: 18px; min-width: 18px;
+      color: var(--text-muted); transition: transform 0.25s, color 0.2s;
+    }
+    .faq-item.open .faq-ic { transform: rotate(45deg); color: var(--blue); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease;
+      font-size: 14.5px; font-weight: 300;
+      line-height: 1.8; color: var(--text-muted);
+    }
+    .faq-item.open .faq-a { max-height: 260px; padding-bottom: 22px; }
+
+    /* ── CTA ─────────────────────────────────────────── */
+    .cta-band {
+      background: var(--blue);
+      padding: 110px 64px; text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 5.5vw, 72px);
+      font-weight: 700; color: white;
+      letter-spacing: -0.025em; line-height: 1.02;
+      margin-bottom: 18px;
+    }
+    .cta-band h2 em { font-style: italic; font-weight: 300; }
+    .cta-band p {
+      font-size: 16px; font-weight: 300;
+      color: rgba(255,255,255,0.7); margin-bottom: 40px;
+    }
+    .btn-white {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue); background: white;
+      padding: 16px 32px; text-decoration: none;
+      display: inline-block;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--footer-bg);
+      padding: 68px 64px 40px;
+      color: var(--warm);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 64px; padding-bottom: 52px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 32px;
+    }
+    .f-logo-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700; font-size: 24px;
+      color: white; letter-spacing: 0.06em;
+      display: block; margin-bottom: 4px;
+    }
+    .f-logo-sub {
+      font-size: 9px; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3); display: block; margin-bottom: 18px;
+    }
+    .f-tagline {
+      font-size: 13px; font-weight: 300;
+      line-height: 1.7; color: rgba(242,238,226,0.5);
+      max-width: 280px;
+    }
+    .f-col-h {
+      font-size: 9px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 18px;
+    }
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .f-links a {
+      font-size: 13px; font-weight: 300;
+      color: rgba(242,238,226,0.55); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .f-links a:hover { color: white; }
+    .f-offices { display: flex; flex-direction: column; gap: 22px; }
+    .f-office-name {
+      font-size: 12px; font-weight: 500;
+      color: white; letter-spacing: 0.04em; margin-bottom: 4px;
+    }
+    .f-office-addr {
+      font-size: 12px; font-weight: 300;
+      line-height: 1.65; color: rgba(242,238,226,0.45);
+    }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .f-copy { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.28); }
+    .f-email {
+      font-size: 13px; font-weight: 300;
+      color: rgba(242,238,226,0.45); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .f-email:hover { color: white; }
+
+    /* ── REVEAL ANIMATIONS ───────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(26px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+    .d5 { transition-delay: 0.5s; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1080px) {
+      nav, nav.scrolled { padding-left: 40px; padding-right: 40px; }
+      .hero { padding: 120px 40px 90px; }
+      .mission, .services, .clients, .why, .faq, .cta-band, footer { padding-left: 40px; padding-right: 40px; }
+      .mission-grid { grid-template-columns: 1fr; gap: 56px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 90px; }
+      .hero-stats { display: none; }
+      .mission, .services, .clients, .why, .faq, .cta-band, footer { padding-left: 24px; padding-right: 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-logo">
+      <span class="logo-main">AMC</span>
+      <span class="logo-sub">African Mining Consultants</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Consultation</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-glow"></div>
+    <div class="hero-watermark">AMC</div>
+
+    <div class="hero-rule"></div>
+    <p class="hero-tag">Mining Consulting &nbsp;·&nbsp; Since 1994</p>
+
+    <h1 class="hero-headline">
+      Africa's<br>
+      Mining<br>
+      <em>Experts</em>
+    </h1>
+
+    <p class="hero-description">
+      Thirty years of mining, exploration, and environmental expertise — built on the Zambian Copperbelt, trusted across sub-Saharan Africa.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Consultation</a>
+      <a href="#services" class="btn-ghost">View Our Services</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="sn">30+</span>
+        <span class="sl">Years of Experience</span>
+      </div>
+      <div class="hero-stat">
+        <span class="sn">150+</span>
+        <span class="sl">Projects Completed</span>
+      </div>
+      <div class="hero-stat">
+        <span class="sn">40+</span>
+        <span class="sl">Industry Partners</span>
+      </div>
+      <div class="hero-stat">
+        <span class="sn">6</span>
+        <span class="sl">Service Disciplines</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission" id="about">
+    <div class="section-inner mission-grid">
+      <div>
+        <p class="tag reveal">About Us</p>
+        <h2 class="sh reveal d1">Our Mission</h2>
+        <p class="mission-body reveal d2">
+          Our approach is built on 30 years of on-the-ground experience — understanding the technical, regulatory, and commercial realities that define African mining. Founded by engineers from ZCCM, we deliver work that meets international standards while remaining grounded in African context.
+        </p>
+        <a href="#contact" class="btn-primary reveal d3" style="display:inline-block;">More about us</a>
+      </div>
+      <div class="reveal d2">
+        <div class="stat-block">
+          <div class="stat-cell">
+            <span class="stat-val">150</span>
+            <span class="stat-lbl">Successful Projects</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-val">40</span>
+            <span class="stat-lbl">Industry Partners</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-val">30+</span>
+            <span class="stat-lbl">Years of Experience</span>
+          </div>
+          <div class="stat-cell">
+            <span class="stat-val">98%</span>
+            <span class="stat-lbl">Client Satisfaction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <div>
+          <p class="tag">What We Do</p>
+          <h2 class="sh">Our Services</h2>
+        </div>
+      </div>
+      <div class="services-grid">
+
+        <div class="svc reveal">
+          <p class="svc-num">01</p>
+          <svg class="svc-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="30" height="22" rx="1"/>
+            <path d="M7 30V6l4 4 4-6 4 6 4-4v24"/>
+            <line x1="3" y1="20" x2="33" y2="20"/>
+          </svg>
+          <h3 class="svc-name">Mining Services</h3>
+          <p class="svc-desc">Open pit and underground mine design, resource and reserve estimation, production scheduling, feasibility studies, and mining software training.</p>
+        </div>
+
+        <div class="svc reveal d1">
+          <p class="svc-num">02</p>
+          <svg class="svc-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="18" cy="18" r="13"/>
+            <circle cx="18" cy="18" r="5"/>
+            <line x1="18" y1="5" x2="18" y2="2"/>
+            <line x1="18" y1="34" x2="18" y2="31"/>
+            <line x1="5" y1="18" x2="2" y2="18"/>
+            <line x1="34" y1="18" x2="31" y2="18"/>
+            <line x1="9" y1="9" x2="7" y2="7"/>
+            <line x1="29" y1="29" x2="27" y2="27"/>
+          </svg>
+          <h3 class="svc-name">Exploration & Geological Services</h3>
+          <p class="svc-desc">Geological mapping, geochemical sampling, ground geophysics, drilling program management, core sampling, and statutory government reporting.</p>
+        </div>
+
+        <div class="svc reveal d2">
+          <p class="svc-num">03</p>
+          <svg class="svc-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="30" height="30" rx="1"/>
+            <polyline points="3,22 10,14 16,18 22,10 33,17"/>
+            <line x1="18" y1="3" x2="18" y2="33"/>
+            <line x1="3" y1="18" x2="33" y2="18"/>
+          </svg>
+          <h3 class="svc-name">GIS & Environmental Services</h3>
+          <p class="svc-desc">Environmental baseline assessments, ESIAs, environmental auditing, compliance reporting, drone mapping and surveying across project sites.</p>
+        </div>
+
+        <div class="svc reveal d1">
+          <p class="svc-num">04</p>
+          <svg class="svc-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 28 Q10 18 16 20 Q22 22 26 12 Q30 4 33 10"/>
+            <circle cx="6" cy="28" r="2" fill="currentColor" stroke="none"/>
+            <circle cx="33" cy="10" r="2" fill="currentColor" stroke="none"/>
+            <line x1="6" y1="33" x2="33" y2="33"/>
+          </svg>
+          <h3 class="svc-name">Metallurgical Services</h3>
+          <p class="svc-desc">Process design, supply of flotation reagents and flocculants, technical support, and plant optimisation for mineral processing operations.</p>
+        </div>
+
+        <div class="svc reveal d2">
+          <p class="svc-num">05</p>
+          <svg class="svc-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="18,3 33,12 33,24 18,33 3,24 3,12"/>
+            <polygon points="18,10 26,15 26,21 18,26 10,21 10,15"/>
+            <circle cx="18" cy="18" r="3"/>
+          </svg>
+          <h3 class="svc-name">Geotechnical Engineering</h3>
+          <p class="svc-desc">Waste dump and tailings dam design, rock mass evaluation, numerical modelling, slope stability analysis, site investigations, and foundation assessments.</p>
+        </div>
+
+        <div class="svc reveal d3">
+          <p class="svc-num">06</p>
+          <svg class="svc-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="16" width="26" height="17" rx="1"/>
+            <path d="M12 16V11a6 6 0 0112 0v5"/>
+            <circle cx="18" cy="24" r="3"/>
+            <line x1="18" y1="27" x2="18" y2="30"/>
+          </svg>
+          <h3 class="svc-name">Strategy & Investment Advisory</h3>
+          <p class="svc-desc">Market entry, financial modelling, valuations, investment structuring, organisational enhancement, and ESG advisory for mining projects.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients" id="clients">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="tag center">Our Portfolio</p>
+        <h2 class="sh" style="text-align:center;">Trusted by Industry Leaders</h2>
+        <p class="clients-sub">From majors to emerging producers — clients who demand precision, reliability, and bankable results.</p>
+      </div>
+      <div class="clients-wrap reveal d1">
+        <div class="client-chip">Anglo American Corporation</div>
+        <div class="client-chip">Glencore</div>
+        <div class="client-chip">First Quantum Minerals</div>
+        <div class="client-chip">Ivanhoe Mines</div>
+        <div class="client-chip">Rio Algom</div>
+        <div class="client-chip">Konkola Copper Mines</div>
+        <div class="client-chip">Mopani Copper Mines</div>
+        <div class="client-chip">Jubilee Metals</div>
+        <div class="client-chip">Metorex</div>
+        <div class="client-chip">WSP Group</div>
+        <div class="client-chip">Chambishi Metals</div>
+        <div class="client-chip">Ruashi Sprl</div>
+        <div class="client-chip">Zamare Minerals</div>
+        <div class="client-chip">Musamu Resources</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY AMC -->
+  <section class="why">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="tag copper">Why AMC</p>
+        <h2 class="sh light">The AMC Difference</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal d1">
+          <div class="why-n">01</div>
+          <h3 class="why-t">Local Knowledge</h3>
+          <p class="why-p">Founded by ex-ZCCM engineers with direct experience on the Zambian Copperbelt. We understand the regulatory environment, the geology, and the people — not just the theory.</p>
+        </div>
+        <div class="why-card reveal d2">
+          <div class="why-n">02</div>
+          <h3 class="why-t">International Standards</h3>
+          <p class="why-p">Our work meets the standards expected by Glencore, Anglo American, and FQM. Bankable feasibility studies, JORC-compliant resource estimates, and rigorous ESIAs — delivered with precision.</p>
+        </div>
+        <div class="why-card reveal d3">
+          <div class="why-n">03</div>
+          <h3 class="why-t">Full-Cycle Capability</h3>
+          <p class="why-p">From early-stage exploration through to environmental compliance and investment advisory — AMC covers every technical dimension of a mining project under one team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <div class="faq-head reveal">
+        <p class="tag center">Common Questions</p>
+        <h2 class="sh" style="text-align:center; margin-top:6px;">Frequently Asked</h2>
+      </div>
+      <div class="reveal d1">
+
+        <div class="faq-item">
+          <div class="faq-q">
+            What industries do you serve?
+            <span class="faq-ic">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/>
+              </svg>
+            </span>
+          </div>
+          <div class="faq-a">We primarily serve the mining and minerals sector — base metals (copper, cobalt, zinc), gold, and related industries. We also work on energy infrastructure projects including solar and hydropower, where our geotechnical and environmental capabilities directly apply.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Do you work across Africa or only in Zambia?
+            <span class="faq-ic">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/>
+              </svg>
+            </span>
+          </div>
+          <div class="faq-a">We are based in Kitwe, Zambia, with a second office in Lubumbashi, DRC. We have delivered projects across multiple countries in sub-Saharan Africa and continue to expand our presence wherever the project demands.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Can you produce bankable feasibility studies?
+            <span class="faq-ic">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/>
+              </svg>
+            </span>
+          </div>
+          <div class="faq-a">Yes. We have delivered bankable-standard feasibility studies, prefeasibility studies, and JORC-compliant resource and reserve estimates for projects financed by international institutions. Our work has been signed off by independent technical experts and submitted to regulatory bodies across Zambia and the DRC.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Do you work with junior miners or only majors?
+            <span class="faq-ic">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/>
+              </svg>
+            </span>
+          </div>
+          <div class="faq-a">We work across the full spectrum. While our track record includes world-class clients like Glencore and Anglo American, we also partner with junior explorers, emerging producers, and development-stage projects. The technical rigour we apply is the same regardless of company size.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            What is the typical engagement process?
+            <span class="faq-ic">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="10" y1="3" x2="10" y2="17"/><line x1="3" y1="10" x2="17" y2="10"/>
+              </svg>
+            </span>
+          </div>
+          <div class="faq-a">We begin with a consultation to understand your project scope, timeline, and technical requirements. We then propose a defined scope of work with clear deliverables and pricing. Most engagements move from initial consultation to proposal within one to two weeks.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" id="contact">
+    <h2>Ready to Start<br><em>Your Next Project?</em></h2>
+    <p>Speak directly with our team about your exploration, mining, or environmental challenge.</p>
+    <a href="mailto:info@amc-africa.com" class="btn-white">Book a Consultation</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <span class="f-logo-main">AMC</span>
+        <span class="f-logo-sub">African Mining Consultants</span>
+        <p class="f-tagline">Africa's Exploration, Mining &amp; Environmental Engineering Experts. Built on the Copperbelt since 1994.</p>
+      </div>
+      <div>
+        <p class="f-col-h">Services</p>
+        <ul class="f-links">
+          <li><a href="#services">Mining Services</a></li>
+          <li><a href="#services">Exploration & Geology</a></li>
+          <li><a href="#services">GIS & Environment</a></li>
+          <li><a href="#services">Metallurgy</a></li>
+          <li><a href="#services">Geotechnical</a></li>
+          <li><a href="#services">Investment Advisory</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="f-col-h">Company</p>
+        <ul class="f-links">
+          <li><a href="#about">About AMC</a></li>
+          <li><a href="#clients">Our Clients</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="f-col-h">Offices</p>
+        <div class="f-offices">
+          <div>
+            <p class="f-office-name">Kitwe, Zambia</p>
+            <p class="f-office-addr">Units D&amp;E, 1st Floor, Building 2<br>ECL Business Park, Freedom Avenue<br>P.O. Box 20106</p>
+          </div>
+          <div>
+            <p class="f-office-name">Lubumbashi, DRC</p>
+            <p class="f-office-addr">Democratic Republic of Congo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="f-copy">&copy; 2024 African Mining Consultants Limited. All rights reserved.</p>
+      <a href="mailto:info@amc-africa.com" class="f-email">info@amc-africa.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
