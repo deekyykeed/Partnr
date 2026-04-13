@@ -12,27 +12,18 @@
   <style>
     /* ─── TOKENS ─────────────────────────────────────────────── */
     :root {
-      /* Light */
       --bg:        #F7F6F5;
       --bg-alt:    #EDEBE8;
-      --bg-cream:  #F0EAD8;
       --ink:       #2E1A06;
       --ink-70:    rgba(46, 26, 6, 0.70);
       --ink-40:    rgba(46, 26, 6, 0.40);
       --ink-10:    rgba(46, 26, 6, 0.10);
       --ink-05:    rgba(46, 26, 6, 0.05);
-      --border:    rgba(46, 26, 6, 0.10);
-      /* Dark */
-      --navy:      #071624;
-      --navy-2:    #030E18;
-      --on-dark:         rgba(247, 246, 245, 0.92);
-      --on-dark-60:      rgba(247, 246, 245, 0.60);
-      --on-dark-35:      rgba(247, 246, 245, 0.35);
-      --on-dark-12:      rgba(247, 246, 245, 0.12);
-      --on-dark-06:      rgba(247, 246, 245, 0.06);
-      /* Accent */
       --orange:    #FF6600;
       --orange-12: rgba(255, 102, 0, 0.12);
+      --border:    rgba(46, 26, 6, 0.10);
+      --dark:      #1C0E02;
+      --dark-2:    #140A01;
       --ease:      cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -46,10 +37,15 @@
       background: var(--bg);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
+    /* ─── GRAIN OVERLAY ──────────────────────────────────────── */
     body::after {
-      content: ''; position: fixed; inset: 0;
-      pointer-events: none; z-index: 9999; opacity: 0.022;
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      opacity: 0.022;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
@@ -63,24 +59,28 @@
 
     /* ─── NAV — FLOATING PILL ────────────────────────────────── */
     nav {
-      position: fixed; top: 18px; left: 50%;
+      position: fixed;
+      top: 18px; left: 50%;
       transform: translateX(-50%);
       z-index: 200;
       display: flex; align-items: center; gap: 4px;
       padding: 8px 8px 8px 20px;
       background: rgba(247, 246, 245, 0.70);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-radius: 100px;
       border: 1px solid var(--border);
       box-shadow:
-        0 0.6px 0.6px rgba(46,26,6,0.14),
-        0 2.3px 2.3px rgba(46,26,6,0.10),
-        0 10px 10px  rgba(46,26,6,0.05);
+        0 0.6px 0.6px rgba(46, 26, 6, 0.14),
+        0 2.3px 2.3px rgba(46, 26, 6, 0.10),
+        0 10px 10px  rgba(46, 26, 6, 0.05);
       transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
       white-space: nowrap;
     }
+    /* Grain on nav */
     nav::before {
-      content: ''; position: absolute; inset: 0; border-radius: 100px;
+      content: '';
+      position: absolute; inset: 0; border-radius: 100px;
       pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
       opacity: 0.045;
@@ -88,26 +88,33 @@
     nav.scrolled {
       background: rgba(247, 246, 245, 0.94);
       box-shadow:
-        0 1px 1px   rgba(46,26,6,0.16),
-        0 4px 4px   rgba(46,26,6,0.12),
-        0 16px 16px rgba(46,26,6,0.06);
+        0 1px 1px   rgba(46, 26, 6, 0.16),
+        0 4px 4px   rgba(46, 26, 6, 0.12),
+        0 16px 16px rgba(46, 26, 6, 0.06);
     }
     .nav-brand {
       font-family: 'Headland One', Georgia, serif;
-      font-size: 15px; color: var(--ink); letter-spacing: 0.01em;
+      font-size: 15px; font-weight: 400;
+      color: var(--ink); letter-spacing: 0.01em;
       text-decoration: none; margin-right: 8px;
     }
-    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links {
+      display: flex; align-items: center; gap: 2px;
+      list-style: none;
+    }
     .nav-links a {
-      font-size: 13.5px; font-weight: 450; color: var(--ink-70);
-      text-decoration: none; padding: 7px 13px; border-radius: 100px;
+      font-size: 13.5px; font-weight: 450;
+      color: var(--ink-70); text-decoration: none;
+      padding: 7px 13px; border-radius: 100px;
       transition: color 0.2s, background 0.2s;
     }
     .nav-links a:hover { color: var(--ink); background: var(--ink-05); }
     .nav-cta {
-      font-size: 13.5px; font-weight: 550; color: #fff;
-      background: var(--orange); border: none; border-radius: 100px;
-      padding: 8px 18px; cursor: pointer; text-decoration: none;
+      font-size: 13.5px; font-weight: 550;
+      color: #fff; background: var(--orange);
+      border: none; border-radius: 100px;
+      padding: 8px 18px; cursor: pointer;
+      text-decoration: none;
       display: inline-flex; align-items: center;
       transition: opacity 0.2s, transform 0.15s;
     }
@@ -116,51 +123,67 @@
 
     /* ─── HERO ───────────────────────────────────────────────── */
     .hero {
-      display: grid; grid-template-columns: 53% 47%;
-      min-height: 100dvh; overflow: hidden;
-      background: var(--bg);
+      display: grid;
+      grid-template-columns: 53% 47%;
+      min-height: 100dvh;
+      overflow: hidden;
     }
     .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
+      display: flex; flex-direction: column;
+      justify-content: center;
       padding: 148px 64px 80px 88px;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--ink-05); border: 1px solid var(--border);
-      border-radius: 100px; padding: 5px 14px 5px 8px;
+      background: var(--ink-05);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 5px 14px 5px 8px;
       margin-bottom: 32px; width: fit-content;
     }
     .hero-badge-dot {
-      width: 7px; height: 7px; background: var(--orange);
-      border-radius: 50%; box-shadow: 0 0 0 2px var(--orange-12);
+      width: 7px; height: 7px;
+      background: var(--orange); border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--orange-12);
     }
     .hero-badge span {
+      font-size: 12px; font-weight: 500;
+      color: var(--ink-70); letter-spacing: 0.05em;
+      text-transform: uppercase;
       font-family: 'DM Mono', monospace;
-      font-size: 12px; font-weight: 500; color: var(--ink-70);
-      letter-spacing: 0.05em; text-transform: uppercase;
     }
     .hero-headline {
       font-family: 'Headland One', Georgia, serif;
       font-size: clamp(48px, 5.2vw, 76px);
       font-weight: 400; line-height: 1.04;
-      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px;
+      letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 24px;
     }
     .hero-headline .word {
-      display: inline-block; opacity: 0; filter: blur(10px);
+      display: inline-block;
+      opacity: 0; filter: blur(10px);
       transform: translateY(14px);
       animation: word-reveal 0.72s var(--ease) forwards;
     }
-    @keyframes word-reveal { to { opacity: 1; filter: blur(0); transform: translateY(0); } }
+    @keyframes word-reveal {
+      to { opacity: 1; filter: blur(0); transform: translateY(0); }
+    }
     .hero-headline em { font-style: italic; color: var(--orange); }
     .hero-desc {
-      font-size: 16px; font-weight: 350; color: var(--ink-70);
-      line-height: 1.65; max-width: 46ch; margin-bottom: 36px;
+      font-size: 16px; font-weight: 350;
+      color: var(--ink-70); line-height: 1.65;
+      max-width: 46ch; margin-bottom: 36px;
     }
-    .hero-actions { display: flex; align-items: center; gap: 10px; margin-bottom: 60px; }
+    .hero-actions {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 60px;
+    }
     .btn-primary {
-      font-size: 15px; font-weight: 550; color: #fff;
-      background: var(--orange); border: none; border-radius: 100px;
-      padding: 13px 22px; cursor: pointer; text-decoration: none;
+      font-size: 15px; font-weight: 550;
+      color: #fff; background: var(--orange);
+      border: none; border-radius: 100px;
+      padding: 13px 22px;
+      cursor: pointer; text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
       transition: opacity 0.2s, transform 0.15s;
     }
@@ -169,38 +192,53 @@
     .btn-primary svg { transition: transform 0.2s var(--ease); }
     .btn-primary:hover svg { transform: translateX(3px); }
     .btn-secondary {
-      font-size: 15px; font-weight: 450; color: var(--ink-70);
-      background: transparent; border: 1px solid var(--border);
-      border-radius: 100px; padding: 12px 20px; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 450;
+      color: var(--ink-70); background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 100px; padding: 12px 20px;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
       transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
-    .btn-secondary:hover { color: var(--ink); background: var(--ink-05); border-color: var(--ink-10); }
+    .btn-secondary:hover {
+      color: var(--ink); background: var(--ink-05);
+      border-color: var(--ink-10);
+    }
     .hero-meta {
       display: flex; align-items: center; gap: 20px;
-      padding-top: 28px; border-top: 1px solid var(--border);
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
     }
     .hero-meta-item { display: flex; flex-direction: column; gap: 3px; }
     .hero-meta-value {
       font-family: 'Headland One', Georgia, serif;
-      font-size: 22px; color: var(--ink); letter-spacing: -0.01em; line-height: 1;
+      font-size: 22px; font-weight: 400;
+      color: var(--ink); letter-spacing: -0.01em; line-height: 1;
     }
     .hero-meta-label {
       font-family: 'DM Mono', monospace;
-      font-size: 10.5px; color: var(--ink-40); text-transform: uppercase; letter-spacing: 0.06em;
+      font-size: 10.5px; font-weight: 400;
+      color: var(--ink-40); text-transform: uppercase; letter-spacing: 0.06em;
     }
-    .hero-meta-div { width: 1px; height: 30px; background: var(--border); flex-shrink: 0; }
+    .hero-meta-div {
+      width: 1px; height: 30px; background: var(--border);
+      flex-shrink: 0;
+    }
 
-    /* ─── HERO RIGHT ─────────────────────────────────────────── */
-    .hero-right { position: relative; overflow: hidden; }
+    /* ─── HERO RIGHT (IMAGE) ─────────────────────────────────── */
+    .hero-right {
+      position: relative; overflow: hidden;
+    }
     .hero-right img {
       position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
     }
     .hr-fade-left {
       position: absolute; inset: 0; pointer-events: none;
       background: linear-gradient(to right, var(--bg) 0%, transparent 16%);
     }
+    /* Progressive bottom depth blur — 5 layers */
     .hr-blur-1 {
       position: absolute; inset: 0; pointer-events: none;
       backdrop-filter: blur(1.5px); -webkit-backdrop-filter: blur(1.5px);
@@ -225,17 +263,20 @@
       mask-image: linear-gradient(to bottom, transparent 88%, black 99%);
       -webkit-mask-image: linear-gradient(to bottom, transparent 88%, black 99%);
     }
+    /* Location card */
     .hero-card {
       position: absolute; bottom: 28px; right: 24px;
       background: rgba(247, 246, 245, 0.86);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(46,26,6,0.10); border-radius: 14px;
-      padding: 14px 18px;
-      box-shadow: 0 4px 24px rgba(46,26,6,0.10);
+      border: 1px solid rgba(46, 26, 6, 0.10);
+      border-radius: 14px; padding: 14px 18px;
+      box-shadow: 0 4px 24px rgba(46, 26, 6, 0.10);
     }
     .hero-card-label {
-      font-family: 'DM Mono', monospace; font-size: 10px;
-      color: var(--ink-40); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 400;
+      color: var(--ink-40); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 4px;
     }
     .hero-card-value {
       font-family: 'Headland One', Georgia, serif;
@@ -245,11 +286,14 @@
     /* ─── STATS BAND ─────────────────────────────────────────── */
     .stats-band {
       background: var(--bg-alt);
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
     }
     .stat-item {
-      padding: 40px 48px; border-right: 1px solid var(--border);
+      padding: 40px 48px;
+      border-right: 1px solid var(--border);
       opacity: 0; transform: translateY(16px);
       transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
     }
@@ -257,85 +301,109 @@
     .stat-item.visible { opacity: 1; transform: translateY(0); }
     .stat-num {
       font-family: 'Headland One', Georgia, serif;
-      font-size: 48px; color: var(--ink); line-height: 1;
+      font-size: 48px; font-weight: 400;
+      color: var(--ink); line-height: 1;
       letter-spacing: -0.025em; margin-bottom: 8px;
     }
     .stat-num em { font-style: normal; color: var(--orange); }
     .stat-label {
-      font-family: 'DM Mono', monospace; font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 400;
       color: var(--ink-40); text-transform: uppercase; letter-spacing: 0.06em;
     }
 
-    /* ─── SHARED CONTAINER ───────────────────────────────────── */
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+    /* ─── LAYOUT WRAPPERS ────────────────────────────────────── */
+    .container {
+      max-width: 1280px; margin: 0 auto; padding: 0 80px;
+    }
     .section-tag {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500;
       color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em;
       margin-bottom: 18px;
     }
     .section-tag::before {
-      content: ''; display: block; width: 14px; height: 1px; background: var(--orange);
+      content: ''; display: block;
+      width: 14px; height: 1px; background: var(--orange);
     }
 
-    /* ─── SERVICES SECTION — DARK NAVY ──────────────────────── */
-    .services-section {
-      background: var(--navy);
-      padding: 96px 0;
-    }
+    /* ─── SERVICES ───────────────────────────────────────────── */
+    .services-section { padding: 96px 0; }
     .services-header {
       display: flex; align-items: flex-end;
-      justify-content: space-between; gap: 40px; margin-bottom: 52px;
+      justify-content: space-between;
+      gap: 40px; margin-bottom: 52px;
     }
     .services-heading {
       font-family: 'Headland One', Georgia, serif;
-      font-size: clamp(34px, 3.2vw, 50px); line-height: 1.08;
-      letter-spacing: -0.02em; color: var(--on-dark); max-width: 16ch;
+      font-size: clamp(34px, 3.2vw, 50px);
+      font-weight: 400; line-height: 1.08;
+      letter-spacing: -0.02em; color: var(--ink);
+      max-width: 16ch;
     }
     .services-subtext {
       font-size: 15px; font-weight: 350;
-      color: var(--on-dark-60); line-height: 1.65; max-width: 40ch;
+      color: var(--ink-70); line-height: 1.65;
+      max-width: 40ch;
     }
-    .services-list { border-top: 1px solid var(--on-dark-12); }
+    .services-list { border-top: 1px solid var(--border); }
     .service-row {
-      display: grid; grid-template-columns: 52px 260px 1fr 44px;
+      display: grid;
+      grid-template-columns: 52px 260px 1fr 44px;
       align-items: center; gap: 24px;
-      padding: 20px 0; border-bottom: 1px solid var(--on-dark-12);
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
       transition: background 0.2s var(--ease), padding 0.2s var(--ease), margin 0.2s var(--ease);
       border-radius: 8px; cursor: default;
     }
     .service-row:hover {
-      background: var(--on-dark-06);
-      padding-left: 14px; padding-right: 14px; margin: 0 -14px;
+      background: var(--ink-05);
+      padding-left: 14px; padding-right: 14px;
+      margin: 0 -14px;
     }
     .service-num {
-      font-family: 'DM Mono', monospace; font-size: 11.5px;
-      color: var(--on-dark-35);
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px; color: var(--ink-40); font-weight: 400;
     }
     .service-name {
       font-family: 'Headland One', Georgia, serif;
-      font-size: 18px; color: var(--on-dark); transition: color 0.2s;
+      font-size: 18px; color: var(--ink); font-weight: 400;
+      transition: color 0.2s;
     }
     .service-row:hover .service-name { color: var(--orange); }
-    .service-desc { font-size: 13.5px; color: var(--on-dark-35); line-height: 1.55; }
+    .service-desc {
+      font-size: 13.5px; color: var(--ink-40);
+      font-weight: 400; line-height: 1.55;
+    }
     .service-arrow {
-      width: 34px; height: 34px; border: 1px solid var(--on-dark-12); border-radius: 50%;
+      width: 34px; height: 34px;
+      border: 1px solid var(--border); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      color: var(--on-dark-35); justify-self: end;
+      color: var(--ink-40); justify-self: end;
       transition: border-color 0.2s, color 0.2s, transform 0.25s var(--ease);
     }
-    .service-row:hover .service-arrow { border-color: var(--orange); color: var(--orange); transform: rotate(45deg); }
-    .service-arrow svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+    .service-row:hover .service-arrow {
+      border-color: var(--orange); color: var(--orange);
+      transform: rotate(45deg);
+    }
+    .service-arrow svg {
+      width: 13px; height: 13px;
+      stroke: currentColor; fill: none; stroke-width: 1.8;
+    }
 
-    /* ─── CLIENTS MARQUEE — DARKEST ─────────────────────────── */
+    /* ─── CLIENTS MARQUEE ────────────────────────────────────── */
     .clients-section {
       padding: 60px 0; overflow: hidden;
-      background: var(--navy-2);
+      background: var(--dark);
     }
     .clients-label {
-      text-align: center; font-family: 'DM Mono', monospace;
-      font-size: 11px; color: rgba(255,255,255,0.25);
-      text-transform: uppercase; letter-spacing: 0.10em; margin-bottom: 28px;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      color: rgba(255, 255, 255, 0.28);
+      text-transform: uppercase; letter-spacing: 0.10em;
+      margin-bottom: 28px;
     }
     .marquee-track {
       display: flex; align-items: center; overflow: hidden;
@@ -344,225 +412,203 @@
     }
     .marquee-set {
       display: flex; align-items: center;
-      animation: marquee 40s linear infinite; flex-shrink: 0;
+      animation: marquee 40s linear infinite;
+      flex-shrink: 0;
     }
     .marquee-item {
-      font-family: 'Headland One', Georgia, serif; font-size: 15px;
-      color: rgba(255,255,255,0.42);
-      padding: 0 32px; white-space: nowrap; letter-spacing: 0.02em;
+      font-family: 'Headland One', Georgia, serif;
+      font-size: 15px; font-weight: 400;
+      color: rgba(255, 255, 255, 0.45);
+      padding: 0 32px; white-space: nowrap;
+      letter-spacing: 0.02em;
     }
     .marquee-sep {
       font-family: 'DM Mono', monospace; font-size: 11px;
       color: var(--orange); opacity: 0.6; user-select: none;
     }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ─── ACTIVE PROJECTS — LIGHT ────────────────────────────── */
-    .projects-section { background: var(--bg); padding: 96px 0; }
-    .projects-header {
-      display: flex; align-items: flex-end;
-      justify-content: space-between; gap: 40px; margin-bottom: 52px;
-    }
-    .projects-heading {
-      font-family: 'Headland One', Georgia, serif;
-      font-size: clamp(34px, 3.2vw, 50px); line-height: 1.08;
-      letter-spacing: -0.02em; color: var(--ink); max-width: 16ch;
-    }
-    .projects-subtext {
-      font-size: 15px; font-weight: 350; color: var(--ink-70);
-      line-height: 1.65; max-width: 40ch;
-    }
-    .projects-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: 16px;
-      overflow: hidden; margin-bottom: 2px;
-    }
-    .project-card {
-      background: var(--bg); padding: 28px 28px 24px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: background 0.2s;
-      cursor: default;
-    }
-    .project-card:hover { background: #FFFFFF; }
-    .project-card-top {
-      display: flex; align-items: center;
-      justify-content: space-between; gap: 12px;
-    }
-    .project-status {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: 'DM Mono', monospace; font-size: 10.5px; font-weight: 400;
-      text-transform: uppercase; letter-spacing: 0.06em;
-      padding: 4px 10px 4px 8px; border-radius: 100px;
-    }
-    .project-status::before {
-      content: ''; display: block; width: 6px; height: 6px;
-      border-radius: 50%; flex-shrink: 0;
-    }
-    .project-status.active {
-      background: rgba(34, 197, 94, 0.10);
-      color: rgb(22, 163, 74);
-    }
-    .project-status.active::before { background: rgb(34, 197, 94); }
-    .project-status.review {
-      background: rgba(245, 158, 11, 0.10);
-      color: rgb(180, 115, 0);
-    }
-    .project-status.review::before { background: rgb(245, 158, 11); }
-    .project-status.early {
-      background: var(--orange-12);
-      color: var(--orange);
-    }
-    .project-status.early::before { background: var(--orange); }
-    .project-location {
-      font-family: 'DM Mono', monospace; font-size: 10.5px;
-      color: var(--ink-40); letter-spacing: 0.03em;
-    }
-    .project-name {
-      font-family: 'Headland One', Georgia, serif;
-      font-size: 17px; line-height: 1.3; color: var(--ink);
-    }
-    .project-meta {
-      display: flex; align-items: center;
-      justify-content: space-between; gap: 8px;
-      padding-top: 14px; border-top: 1px solid var(--border);
-    }
-    .project-discipline {
-      font-size: 12.5px; font-weight: 400; color: var(--ink-40);
-    }
-    .project-client {
-      font-family: 'DM Mono', monospace; font-size: 11px;
-      color: var(--orange); letter-spacing: 0.02em;
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
-    /* ─── FIELD LOCATIONS STRIP ──────────────────────────────── */
-    .locations-strip {
-      margin-top: 48px; padding-top: 40px;
-      border-top: 1px solid var(--border);
+    /* ─── WHY AMC ────────────────────────────────────────────── */
+    .why-section { padding: 96px 0; }
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px; align-items: start;
     }
-    .locations-label {
-      font-family: 'DM Mono', monospace; font-size: 11px;
-      color: var(--ink-40); text-transform: uppercase; letter-spacing: 0.10em;
-      margin-bottom: 24px;
-    }
-    .locations-row {
-      display: flex; align-items: stretch; gap: 0;
-      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-    }
-    .location-item {
-      flex: 1; padding: 20px 24px;
-      border-right: 1px solid var(--border);
-      display: flex; flex-direction: column; gap: 6px;
-      background: var(--bg);
-      transition: background 0.2s;
-    }
-    .location-item:last-child { border-right: none; }
-    .location-item:hover { background: #FFFFFF; }
-    .location-head {
-      display: flex; align-items: center; gap: 8px;
-    }
-    .location-dot {
-      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
-    }
-    .location-dot.hq { background: var(--orange); box-shadow: 0 0 0 2px var(--orange-12); }
-    .location-dot.field { background: rgb(34, 197, 94); box-shadow: 0 0 0 2px rgba(34,197,94,0.15); }
-    .location-dot.admin { background: rgb(99, 102, 241); box-shadow: 0 0 0 2px rgba(99,102,241,0.15); }
-    .location-name {
-      font-family: 'Headland One', Georgia, serif;
-      font-size: 15px; color: var(--ink);
-    }
-    .location-role {
-      font-family: 'DM Mono', monospace; font-size: 10.5px;
-      color: var(--ink-40); text-transform: uppercase; letter-spacing: 0.06em;
-      padding-left: 15px;
-    }
-
-    /* ─── WHY AMC — CREAM ────────────────────────────────────── */
-    .why-section { background: var(--bg-cream); padding: 96px 0; }
-    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
     .why-heading {
       font-family: 'Headland One', Georgia, serif;
-      font-size: clamp(34px, 3.2vw, 52px); line-height: 1.06;
-      letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px;
+      font-size: clamp(34px, 3.2vw, 52px);
+      font-weight: 400; line-height: 1.06;
+      letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 24px;
     }
     .why-heading em { font-style: italic; color: var(--orange); }
     .why-desc {
-      font-size: 15px; font-weight: 350; color: var(--ink-70);
-      line-height: 1.65; margin-bottom: 32px; max-width: 44ch;
+      font-size: 15px; font-weight: 350;
+      color: var(--ink-70); line-height: 1.65;
+      margin-bottom: 32px; max-width: 44ch;
     }
     .why-pillars { display: flex; flex-direction: column; }
     .why-pillar {
-      padding: 26px 0; border-bottom: 1px solid rgba(46,26,6,0.12);
+      padding: 26px 0;
+      border-bottom: 1px solid var(--border);
       opacity: 0; transform: translateX(18px);
       transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
     }
-    .why-pillar:first-child { border-top: 1px solid rgba(46,26,6,0.12); }
+    .why-pillar:first-child { border-top: 1px solid var(--border); }
     .why-pillar.visible { opacity: 1; transform: translateX(0); }
-    .why-pillar-head { display: flex; align-items: center; gap: 14px; margin-bottom: 9px; }
-    .why-pillar-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--orange); min-width: 18px; }
-    .why-pillar-title { font-family: 'Headland One', Georgia, serif; font-size: 17.5px; color: var(--ink); }
-    .why-pillar-body { font-size: 13.5px; color: var(--ink-40); line-height: 1.6; padding-left: 32px; }
+    .why-pillar-head {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 9px;
+    }
+    .why-pillar-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--orange); font-weight: 400;
+      min-width: 18px;
+    }
+    .why-pillar-title {
+      font-family: 'Headland One', Georgia, serif;
+      font-size: 17.5px; color: var(--ink); font-weight: 400;
+    }
+    .why-pillar-body {
+      font-size: 13.5px; color: var(--ink-40);
+      line-height: 1.6; font-weight: 400;
+      padding-left: 32px;
+    }
 
-    /* ─── CTA — DARK NAVY ────────────────────────────────────── */
-    .cta-section { background: var(--navy); position: relative; overflow: hidden; }
+    /* ─── CTA ────────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--dark);
+      position: relative; overflow: hidden;
+    }
     .cta-watermark {
-      position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
-      font-family: 'Headland One', Georgia, serif; font-size: 200px;
-      color: rgba(255,255,255,0.025); letter-spacing: -0.04em;
-      user-select: none; pointer-events: none; white-space: nowrap; line-height: 1;
+      position: absolute; right: -10px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Headland One', Georgia, serif;
+      font-size: 200px; font-weight: 400;
+      color: rgba(255, 255, 255, 0.025);
+      letter-spacing: -0.04em;
+      user-select: none; pointer-events: none;
+      white-space: nowrap; line-height: 1;
     }
     .cta-inner {
-      max-width: 1280px; margin: 0 auto; padding: 96px 80px;
-      display: flex; align-items: center; justify-content: space-between; gap: 60px;
+      max-width: 1280px; margin: 0 auto;
+      padding: 96px 80px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 60px;
     }
     .cta-left { flex: 1; }
     .cta-tag {
-      font-family: 'DM Mono', monospace; font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 400;
       color: var(--orange); text-transform: uppercase; letter-spacing: 0.10em;
-      margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
     }
-    .cta-tag::before { content: ''; display: block; width: 14px; height: 1px; background: var(--orange); }
+    .cta-tag::before {
+      content: ''; display: block;
+      width: 14px; height: 1px; background: var(--orange);
+    }
     .cta-heading {
       font-family: 'Headland One', Georgia, serif;
-      font-size: clamp(38px, 3.8vw, 60px); line-height: 1.05;
-      letter-spacing: -0.02em; color: var(--on-dark); max-width: 14ch;
+      font-size: clamp(38px, 3.8vw, 60px);
+      font-weight: 400; line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: rgba(247, 246, 245, 0.94);
+      max-width: 14ch;
     }
     .cta-heading em { font-style: italic; color: var(--orange); }
-    .cta-right { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; max-width: 420px; }
-    .cta-desc { font-size: 15px; font-weight: 350; color: var(--on-dark-60); line-height: 1.65; }
+    .cta-right {
+      display: flex; flex-direction: column;
+      gap: 20px; align-items: flex-start;
+      max-width: 420px;
+    }
+    .cta-desc {
+      font-size: 15px; font-weight: 350;
+      color: rgba(247, 246, 245, 0.50);
+      line-height: 1.65;
+    }
     .cta-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn-ghost {
-      font-size: 15px; font-weight: 450; color: var(--on-dark-60);
-      background: transparent; border: 1px solid var(--on-dark-12);
-      border-radius: 100px; padding: 12px 20px; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 450;
+      color: rgba(247, 246, 245, 0.60);
+      background: transparent;
+      border: 1px solid rgba(247, 246, 245, 0.14);
+      border-radius: 100px; padding: 12px 20px;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
       transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
-    .btn-ghost:hover { color: var(--on-dark); border-color: var(--on-dark-35); background: var(--on-dark-06); }
+    .btn-ghost:hover {
+      color: rgba(247, 246, 245, 0.9);
+      border-color: rgba(247, 246, 245, 0.28);
+      background: rgba(247, 246, 245, 0.06);
+    }
 
-    /* ─── FOOTER — DARKEST ───────────────────────────────────── */
-    footer { background: var(--navy-2); }
-    .footer-inner { max-width: 1280px; margin: 0 auto; padding: 64px 80px 40px; }
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer { background: var(--dark-2); }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 64px 80px 40px;
+    }
     .footer-grid {
-      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px;
-      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.055); margin-bottom: 28px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px; padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+      margin-bottom: 28px;
     }
-    .footer-brand { font-family: 'Headland One', Georgia, serif; font-size: 17px; color: var(--on-dark); margin-bottom: 12px; }
-    .footer-tagline { font-size: 13.5px; font-weight: 350; color: var(--on-dark-35); line-height: 1.6; max-width: 28ch; }
+    .footer-brand {
+      font-family: 'Headland One', Georgia, serif;
+      font-size: 17px; font-weight: 400;
+      color: rgba(247, 246, 245, 0.90);
+      margin-bottom: 12px;
+    }
+    .footer-tagline {
+      font-size: 13.5px; font-weight: 350;
+      color: rgba(247, 246, 245, 0.36);
+      line-height: 1.6; max-width: 28ch;
+    }
     .footer-col-title {
-      font-family: 'DM Mono', monospace; font-size: 10.5px; font-weight: 500;
-      color: var(--on-dark-35); text-transform: uppercase; letter-spacing: 0.10em; margin-bottom: 16px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px; font-weight: 500;
+      color: rgba(247, 246, 245, 0.28);
+      text-transform: uppercase; letter-spacing: 0.10em;
+      margin-bottom: 16px;
     }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul a { font-size: 13.5px; font-weight: 350; color: var(--on-dark-60); text-decoration: none; transition: color 0.2s; }
-    .footer-col ul a:hover { color: var(--on-dark); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(247,246,245,0.22); }
-    .footer-offices { display: flex; gap: 20px; }
-    .footer-office { font-family: 'DM Mono', monospace; font-size: 10.5px; color: rgba(247,246,245,0.22); }
+    .footer-col ul {
+      list-style: none; display: flex;
+      flex-direction: column; gap: 10px;
+    }
+    .footer-col ul a {
+      font-size: 13.5px; font-weight: 350;
+      color: rgba(247, 246, 245, 0.46);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: rgba(247, 246, 245, 0.88); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 400;
+      color: rgba(247, 246, 245, 0.22);
+    }
+    .footer-offices {
+      display: flex; gap: 20px;
+    }
+    .footer-office {
+      font-family: 'DM Mono', monospace; font-size: 10.5px;
+      color: rgba(247, 246, 245, 0.22);
+    }
 
-    /* ─── REVEAL ─────────────────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    /* ─── SCROLL REVEAL ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
@@ -583,13 +629,9 @@
       .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
       .stat-item { padding: 28px 24px; }
       .container { padding: 0 24px; }
-      .services-header, .projects-header { flex-direction: column; align-items: flex-start; }
+      .services-header { flex-direction: column; align-items: flex-start; }
       .service-row { grid-template-columns: 40px 1fr 36px; }
       .service-desc { display: none; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .locations-row { flex-direction: column; }
-      .location-item { border-right: none; border-bottom: 1px solid var(--border); }
-      .location-item:last-child { border-bottom: none; }
       .why-inner { grid-template-columns: 1fr; gap: 48px; }
       .cta-inner { flex-direction: column; padding: 64px 24px; gap: 40px; }
       .cta-watermark { display: none; }
@@ -608,22 +650,25 @@
     <a href="#" class="nav-brand">AMC Africa</a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#clients">Clients</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Book a consultation</a>
   </nav>
 
-  <!-- ── SECTION 1 — HERO (LIGHT) ──────────────────────────── -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
         <span>Mining Consulting</span>
       </div>
+
       <h1 class="hero-headline">Africa's <em>Mining</em> Experts.</h1>
+
       <p class="hero-desc">Thirty years of mining, exploration, and environmental expertise — built on the Zambian Copperbelt, trusted across sub-Saharan Africa.</p>
+
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">
           Book a consultation
@@ -631,6 +676,7 @@
         </a>
         <a href="#services" class="btn-secondary">View services</a>
       </div>
+
       <div class="hero-meta">
         <div class="hero-meta-item">
           <span class="hero-meta-value">30+</span>
@@ -653,8 +699,13 @@
         </div>
       </div>
     </div>
+
     <div class="hero-right">
-      <img src="https://picsum.photos/seed/copper-mine-zambia/900/1200" alt="Mining operations on the Zambian Copperbelt" loading="eager">
+      <img
+        src="https://picsum.photos/seed/copper-mine-zambia/900/1200"
+        alt="Mining operations on the Zambian Copperbelt"
+        loading="eager"
+      >
       <div class="hr-fade-left"></div>
       <div class="hr-blur-1"></div>
       <div class="hr-blur-2"></div>
@@ -667,7 +718,7 @@
     </div>
   </section>
 
-  <!-- ── SECTION 2 — STATS BAND (LIGHT-ALT) ────────────────── -->
+  <!-- STATS BAND -->
   <div class="stats-band" id="about">
     <div class="stat-item">
       <div class="stat-num" data-target="150">0</div>
@@ -687,7 +738,7 @@
     </div>
   </div>
 
-  <!-- ── SECTION 3 — SERVICES (DARK NAVY) ──────────────────── -->
+  <!-- SERVICES -->
   <section class="services-section" id="services">
     <div class="container">
       <div class="services-header">
@@ -697,6 +748,7 @@
         </div>
         <p class="services-subtext reveal">From exploration to environmental compliance — we cover the full spectrum of technical consulting that African mining operations demand.</p>
       </div>
+
       <div class="services-list">
         <div class="service-row reveal">
           <span class="service-num">01</span>
@@ -738,7 +790,7 @@
     </div>
   </section>
 
-  <!-- ── SECTION 4 — CLIENTS MARQUEE (DARKEST) ─────────────── -->
+  <!-- CLIENTS MARQUEE -->
   <div class="clients-section" id="clients">
     <p class="clients-label">Trusted by Africa's leading mining operations</p>
     <div class="marquee-track">
@@ -763,137 +815,15 @@
     </div>
   </div>
 
-  <!-- ── SECTION 5 — ACTIVE PROJECTS + FIELD LOCATIONS (LIGHT) -->
-  <section class="projects-section" id="projects">
-    <div class="container">
-      <div class="projects-header">
-        <div>
-          <div class="section-tag">Active Engagements</div>
-          <h2 class="projects-heading reveal">Work currently in progress.</h2>
-        </div>
-        <p class="projects-subtext reveal">A snapshot of ongoing project work across the region — from pre-feasibility studies to on-site geotechnical assessments.</p>
-      </div>
-
-      <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="project-card-top">
-            <span class="project-status active">Active</span>
-            <span class="project-location">Chingola, Copperbelt</span>
-          </div>
-          <h3 class="project-name">Nchanga Open Pit — Phase III Geotechnical Assessment</h3>
-          <div class="project-meta">
-            <span class="project-discipline">Geotechnical Engineering</span>
-            <span class="project-client">Glencore</span>
-          </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-top">
-            <span class="project-status active">Active</span>
-            <span class="project-location">Solwezi, NW Province</span>
-          </div>
-          <h3 class="project-name">Kansanshi South Geological Survey & Resource Update</h3>
-          <div class="project-meta">
-            <span class="project-discipline">Exploration & Geology</span>
-            <span class="project-client">First Quantum</span>
-          </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-top">
-            <span class="project-status review">In Review</span>
-            <span class="project-location">Lumwana, NW Province</span>
-          </div>
-          <h3 class="project-name">Lumwana North Environmental Impact Assessment</h3>
-          <div class="project-meta">
-            <span class="project-discipline">GIS & Environment</span>
-            <span class="project-client">Barrick Gold</span>
-          </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-top">
-            <span class="project-status active">Active</span>
-            <span class="project-location">Chambishi, Copperbelt</span>
-          </div>
-          <h3 class="project-name">Chambishi Underground Ground Control Review</h3>
-          <div class="project-meta">
-            <span class="project-discipline">Mining Services</span>
-            <span class="project-client">CNMC Zambia</span>
-          </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-top">
-            <span class="project-status active">Active</span>
-            <span class="project-location">Kitwe, Copperbelt</span>
-          </div>
-          <h3 class="project-name">Copper Tailings Reprocessing — Metallurgical Test Programme</h3>
-          <div class="project-meta">
-            <span class="project-discipline">Metallurgical Services</span>
-            <span class="project-client">Undisclosed</span>
-          </div>
-        </div>
-        <div class="project-card reveal">
-          <div class="project-card-top">
-            <span class="project-status early">Early Stage</span>
-            <span class="project-location">Southern Province</span>
-          </div>
-          <h3 class="project-name">South Kafue Basin Pre-Feasibility Study</h3>
-          <div class="project-meta">
-            <span class="project-discipline">Mining Services + Strategy</span>
-            <span class="project-client">Private Client</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Field Locations Strip -->
-      <div class="locations-strip">
-        <p class="locations-label">Current field presence</p>
-        <div class="locations-row">
-          <div class="location-item">
-            <div class="location-head">
-              <span class="location-dot hq"></span>
-              <span class="location-name">Kitwe</span>
-            </div>
-            <span class="location-role">Principal Office</span>
-          </div>
-          <div class="location-item">
-            <div class="location-head">
-              <span class="location-dot admin"></span>
-              <span class="location-name">Lusaka</span>
-            </div>
-            <span class="location-role">Regulatory & Admin</span>
-          </div>
-          <div class="location-item">
-            <div class="location-head">
-              <span class="location-dot field"></span>
-              <span class="location-name">Solwezi</span>
-            </div>
-            <span class="location-role">Active Field Ops</span>
-          </div>
-          <div class="location-item">
-            <div class="location-head">
-              <span class="location-dot field"></span>
-              <span class="location-name">Lumwana</span>
-            </div>
-            <span class="location-role">Active Field Ops</span>
-          </div>
-          <div class="location-item">
-            <div class="location-head">
-              <span class="location-dot field"></span>
-              <span class="location-name">Chingola</span>
-            </div>
-            <span class="location-role">Active Field Ops</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 6 — WHY AMC (CREAM) ───────────────────────── -->
+  <!-- WHY AMC -->
   <section class="why-section">
     <div class="container">
       <div class="why-inner">
         <div class="why-left">
           <div class="section-tag">Why AMC</div>
-          <h2 class="why-heading reveal">Built on the ground.<br><em>Not in a boardroom.</em></h2>
+          <h2 class="why-heading reveal">
+            Built on the ground.<br><em>Not in a boardroom.</em>
+          </h2>
           <p class="why-desc reveal">Our principals came up through ZCCM — they know the Copperbelt from underground. That operational foundation is what makes our technical advice different from consultancies that have never been on-site.</p>
           <a href="#contact" class="btn-primary reveal" style="margin-top: 4px;">
             Talk to our team
@@ -927,13 +857,15 @@
     </div>
   </section>
 
-  <!-- ── SECTION 7 — CTA (DARK NAVY) ───────────────────────── -->
+  <!-- CTA -->
   <section class="cta-section" id="contact">
     <div class="cta-watermark">AMC</div>
     <div class="cta-inner">
       <div class="cta-left reveal">
         <div class="cta-tag">Get Started</div>
-        <h2 class="cta-heading">Ready to work with <em>Africa's best?</em></h2>
+        <h2 class="cta-heading">
+          Ready to work with <em>Africa's best?</em>
+        </h2>
       </div>
       <div class="cta-right reveal">
         <p class="cta-desc">Whether you're scoping a greenfield project or need independent technical oversight — our team is ready to engage. No obligation, first call is on us.</p>
@@ -948,7 +880,7 @@
     </div>
   </section>
 
-  <!-- ── SECTION 8 — FOOTER (DARKEST) ──────────────────────── -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-grid">
@@ -971,7 +903,6 @@
           <div class="footer-col-title">Company</div>
           <ul>
             <li><a href="#about">About AMC</a></li>
-            <li><a href="#projects">Active Projects</a></li>
             <li><a href="#clients">Our Clients</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -1005,11 +936,14 @@
       nav.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
-    // ── WORD BLUR REVEAL ──────────────────────────────────────
+    // ── WORD BLUR REVEAL (hero headline) ──────────────────────
     const headline = document.querySelector('.hero-headline');
     if (headline) {
+      const clone = document.createDocumentFragment();
+      const text = headline.innerHTML;
+      // Parse keeping <em> intact
       const parser = new DOMParser();
-      const doc = parser.parseFromString('<div>' + headline.innerHTML + '</div>', 'text/html');
+      const doc = parser.parseFromString('<div>' + text + '</div>', 'text/html');
       const root = doc.body.firstChild;
       let delay = 0.2;
       const out = [];
@@ -1035,34 +969,42 @@
       headline.innerHTML = out.join('');
     }
 
-    // ── INTERSECTION OBSERVERS ────────────────────────────────
-    const revealObs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.10 }
-    );
+    // ── INTERSECTION OBSERVER — REVEALS ───────────────────────
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.10 });
+
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-    const statObs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.15 }
-    );
+    // ── STAT ITEMS — STAGGER + REVEAL ─────────────────────────
+    const statObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+
     document.querySelectorAll('.stat-item').forEach((el, i) => {
       el.style.transitionDelay = `${i * 0.09}s`;
       statObs.observe(el);
     });
 
-    const pillarObs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
-    );
+    // ── WHY PILLARS — STAGGER ─────────────────────────────────
+    const pillarObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
     document.querySelectorAll('.why-pillar').forEach((el, i) => {
       el.style.transitionDelay = `${i * 0.14}s`;
       pillarObs.observe(el);
     });
 
-    // ── COUNT-UP ──────────────────────────────────────────────
+    // ── COUNT-UP ANIMATION ────────────────────────────────────
     function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-    const countObs = new IntersectionObserver(entries => {
+    const countObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
@@ -1079,6 +1021,7 @@
         countObs.unobserve(el);
       });
     }, { threshold: 0.5 });
+
     document.querySelectorAll('.stat-num[data-target]').forEach(el => countObs.observe(el));
   </script>
 

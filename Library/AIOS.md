@@ -1,115 +1,34 @@
----
-type: framework
-tags: [aios, strategy, product, framework]
-source: "[[Lee Moly — AIOS Framework Breakdown]]"
-updated: 2026-03-01
----
-
-# AIOS — AI Operating System
-
-**What it is:** A personal AI infrastructure built on top of tools like Claude that offloads tedious mental work — so the business owner can focus on high-value decisions and execution.
-
-The AIOS is not a single tool. It's a set of connected "engines" that together handle the cognitive overhead of running a business.
+### **The Bottom Line**
+An AIOS (AI Operating System) is **not a new business model**. It is a digital wrapper you build around your existing business. Its sole purpose is to handle your daily, repetitive tasks so you can stop firefighting and start focusing entirely on growth and new initiatives.
 
 ---
 
-## The Core Idea
+### **The Problem: The Operator Trap**
+Most founders are stuck spending **80% of their time IN the business** (admin, operations, answering questions) and only **20% of their time ON the business** (launching new products, scaling, strategy). 
 
-Most SME owners are brilliant at what they do — but they spend the majority of their time *on* the business rather than *in* it. Not because they want to, but because:
+The goal of the AIOS is to flip that ratio. By heavily augmenting or automating your tasks, you reclaim your bandwidth. 
 
-- Admin, emails, and follow-ups never stop
-- Things fall through the cracks without a system
-- There's no one to delegate thinking to
-- Every decision requires mental energy to re-frame from scratch
+### **The 5-Layer Playbook**
+You don't build this all at once. You build it in layers to gradually remove operational overhead:
 
-The AIOS acts as a second brain and operations layer — it handles the recurring, the routine, and the mentally exhausting, so the owner stays focused on growth.
+1. **Context:** Feed the AI the core rules of the business—who you are, what you sell, your team, and your strategy.
+2. **Data:** Connect your live numbers (CRM, revenue, analytics) so the system can pull reports and track goals instantly. 
+3. **Intelligence:** Pipe in your daily communications (Slack, meeting transcripts). This powers the **Daily Brief**—a morning summary of everything that happened yesterday, highlighting key signals and opportunities.
+4. **Automate:** Audit your daily tasks and use the AI to systematically automate the repetitive ones.
+5. **Build:** Take the massive amount of free time you just gained and pour it into high-leverage growth projects.
 
----
-
-## The 5 Build Layers
-
-*(Framework from [[Lee Moly — AIOS Framework Breakdown]] — adapted for Khadzika/Partnr context)*
-
-| Layer | What it is | Khadzika Status |
-|-------|-----------|----------------|
-| **1. Context** | Business knowledge — who you are, what you sell, your team, your strategy | ✅ Done |
-| **2. Data** | All data sources connected and queryable — revenue, CRM, pipeline | 🔄 In progress |
-| **3. Intelligence** | Meetings + comms logged and queryable → powers the daily brief | ⬜ Next priority |
-| **4. Automate** | Task audit → identify what to remove or speed up → build automations | 🔄 In progress |
-| **5. Build** | Use freed-up bandwidth to launch new initiatives, products, markets | ⬜ Pending |
-
-## The Four Activity Domains
-
-| Domain | What it covers | Status |
-|--------|---------------|--------|
-| **Admin & Comms** | Emails, follow-ups, messages, scheduling, inbox triage | Active (Khadzika) |
-| **Sales & CRM** | Lead tracking, quotes, deal follow-ups, pipeline visibility | Active (Khadzika) |
-| **Ops & Delivery** | Project management, job tracking, workflows, task delegation | Active (Khadzika) |
-| **Thinking & Strategy** | Research, planning, decision support, content, documentation | Active (Khadzika) |
+### **How to Measure Success (The 3 KPIs)**
+Forget traditional vanity metrics. In an AI-driven business, you track these three things:
+* **Away-from-desk autonomy:** Can you effectively run the entire business from your phone while you are out living your life?
+* **Task automation %:** Have you hit the target of automating or heavily augmenting 60–70% of your task list?
+* **Revenue per employee:** This is the ultimate efficiency metric. Revenue should climb while headcount stays flat or shrinks. 
 
 ---
 
-## How It Works
+### **The Gameplan for Khadzika & Partnr**
+This framework perfectly validates the trajectory for Khadzika and what Partnr is aiming to productize. 
 
-The AIOS runs through a combination of:
-
-- **Claude** — the primary intelligence layer (reasoning, writing, analysis, decisions)
-- **ClickUp** — task and project management backbone
-- **Gmail + Google Calendar** — communications and scheduling
-- **Apify** — web scraping and data gathering
-- **Slack** — team/async comms
-- **Supabase** — data storage (where applicable)
-- **Google Drive** — document storage
-
-These tools are connected through AI agents and automation, not used in isolation.
-
----
-
-## The Khadzika Proof of Concept
-
-Khadzika Enterprises Limited is the live testing ground for the AIOS. Everything built there gets documented and refined before being packaged for other businesses through Partnr.
-
-Current engines running in Khadzika:
-- Email agent (daily Gmail + contacts check-in via ClickUp)
-- CRM pipeline (deals, leads, quotes, invoices tracked in ClickUp)
-- Project tracking (CEC contracts, tenders, jobs)
-- Quotation generation (automated via skill)
-
----
-
-## The Partnr Play
-
-Once the AIOS is proven end-to-end in Khadzika, Partnr packages and sells it to other SME owners who are in the same position — wearing too many hats, drowning in mental overhead, great at their core work but struggling to scale.
-
-**Target customer:** SME owners in Zambia (Kitwe → Lusaka → expand)
-**Model:** To be determined (done-for-you / consulting / packaged system)
-**Timeline:** Proof of concept first, then sell
-
----
-
-## The 3 KPIs to Track
-
-| KPI | What it measures | Target |
-|-----|-----------------|--------|
-| **Away-from-desk autonomy** | Can you run Khadzika/Partnr fully from your phone? | 100% of tasks doable remotely |
-| **Task automation %** | How many tasks from your audit are now automated or heavily augmented | 60–70% |
-| **Revenue per employee** | Efficiency metric — revenue up, headcount flat or down | Continuously improving |
-
-## The Operator Trap (The Problem We're Solving)
-
-Most SME owners: **80% of time IN the business** (maintaining, firefighting), **20% ON it** (growing).
-
-The AIOS goal is to flip this — get the "in the business" work down to 20% or less, freeing up 80% to pour into growth, new products, new markets.
-
-This is the exact story Partnr tells to prospects.
-
-## Notes & Ideas
-
-- The more documented the AIOS, the easier it is to sell
-- Every engine built = one more thing to show a prospect
-- The story is: "I built this for my own business. Here's what changed."
-- Cold email outreach is the first Partnr growth channel being tested
-
----
-
-*Last updated: March 2026*
+* **Your Current Status:** You are currently bridging Layers 2 and 3. The context is set, and data integration is underway. 
+* **Next Immediate Win:** Build the Daily Brief. Getting a concise morning summary via WhatsApp covering CRM updates and project statuses will immediately cut down manual check-ins.
+* **The Task Audit:** Document the day-to-day tasks currently bogging down the team. This will serve as your primary case study for how the system creates efficiency.
+* **Packaging the Product:** The transcript talks about packaging workflows as "skills." For your ecosystem, these are your **Source Files**. Once you map out exactly how Khadzika automates a process, that exact Source File becomes the product Partnr can sell and install for other SME owners. 
