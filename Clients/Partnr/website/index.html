@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnr — Web Design &amp; AI for Zambian SMEs</title>
+  <meta name="description" content="Partnr is a web design and AI agency helping established Zambian businesses grow online. We build high-converting websites and deploy AI tools that save time and win clients." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,700&family=Parkinsans:wght@300;400;500;600;700;800&family=Fragment+Mono&family=Kaushan+Script&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #122e47;
+      --deep:      #071624;
+      --orange:    #d95d39;
+      --orange-2:  #e35c36;
+      --off-black: #292929;
+      --text:      #404040;
+      --light:     #f7f7f7;
+      --white:     #ffffff;
+      --muted:     #cccccc;
+      --border-dark: rgba(255,255,255,0.10);
+      --border-card: rgba(255,255,255,1);
+      --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--off-black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── SCROLL PROGRESS ──────────────────────────────── */
+    #progress {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: var(--orange); width: 0%; z-index: 1000;
+      transition: width 0.1s linear;
+    }
+
+    /* ─── NAV ──────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      background: var(--navy);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-brand {
+      font-family: 'Parkinsans', sans-serif;
+      font-weight: 700; font-size: 18px;
+      color: var(--white); letter-spacing: -0.02em;
+    }
+    .nav-left { display: flex; align-items: center; gap: 32px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.70);
+      padding: 6px 12px; border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav-right { display: flex; align-items: center; gap: 4px; }
+    .nav-right a {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.70);
+      padding: 6px 12px; border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-right a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      min-height: 100dvh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 120px 40px 80px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(217,93,57,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-dark);
+      border-radius: 100px; padding: 5px 14px 5px 10px;
+      margin-bottom: 32px;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4caf50;
+      box-shadow: 0 0 0 3px rgba(76,175,80,0.20);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(76,175,80,0.20); }
+      50% { box-shadow: 0 0 0 5px rgba(76,175,80,0.08); }
+    }
+    .hero-badge span {
+      font-family: 'Fragment Mono', monospace;
+      font-size: 11px; color: rgba(255,255,255,0.60);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .hero-headline {
+      font-family: 'Parkinsans', sans-serif;
+      font-weight: 700;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.06; letter-spacing: -0.03em;
+      color: var(--white); margin-bottom: 20px;
+      max-width: 800px;
+    }
+    .hero-desc {
+      font-size: 18px; font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65; max-width: 520px;
+      margin: 0 auto 40px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 64px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 15px; font-weight: 600; color: var(--white);
+      background: var(--orange);
+      border: 1.5px solid rgba(255,255,255,0.20);
+      border-radius: 8px; padding: 13px 22px; cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      box-shadow:
+        0px 1px 3px 0px rgba(227,92,54,0.02),
+        0px 2px 8px 0px rgba(227,92,54,0.04),
+        0px 4px 17px 0px rgba(227,92,54,0.08),
+        0px 7px 32px 0px rgba(227,92,54,0.15),
+        0px 14px 63px 0px rgba(227,92,54,0.30),
+        0px 30px 138px 0px rgba(227,92,54,0.65);
+    }
+    .btn-primary:hover { opacity: 0.90; }
+    .btn-primary:active { transform: scale(0.97) translateY(1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 15px; font-weight: 600; color: var(--off-black);
+      background: var(--white); border: none;
+      border-radius: 8px; padding: 13px 22px; cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { opacity: 0.88; }
+    .btn-secondary:active { transform: scale(0.97) translateY(1px); }
+    .btn-secondary .hover-label { display: none; color: var(--orange); }
+    .hero-stats {
+      display: flex; align-items: center; gap: 32px;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .hero-stat-divider {
+      width: 1px; height: 28px; background: var(--border-dark);
+    }
+    .stat-item {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .stat-icon { font-size: 18px; }
+    .stat-text {
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ─── TESTIMONIALS STRIP ───────────────────────────── */
+    .testimonials-strip {
+      background: var(--off-black);
+      padding: 20px 0; overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ticker-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: ticker 40s linear infinite;
+    }
+    .testimonials-strip:hover .ticker-track { animation-play-state: paused; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 0 48px;
+      font-size: 14px; font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      flex-shrink: 0;
+    }
+    .ticker-star {
+      color: var(--orange); font-size: 12px; letter-spacing: 1px;
+    }
+
+    /* ─── SECTION COMMON ───────────────────────────────── */
+    .section { padding: 96px 40px; }
+    .section-tag {
+      display: inline-flex; align-items: center;
+      font-family: 'Fragment Mono', monospace;
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--navy); margin-bottom: 24px;
+    }
+    .section-tag-dark {
+      color: rgba(255,255,255,0.55);
+    }
+    .section-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+    .section-header-left { text-align: left; max-width: 640px; margin: 0 0 64px; }
+    .section-h2 {
+      font-family: 'Parkinsans', sans-serif;
+      font-weight: 700; font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.10; letter-spacing: -0.02em;
+      color: var(--off-black); margin-bottom: 16px;
+    }
+    .section-h2-white { color: var(--white); }
+    .section-p {
+      font-size: 16px; font-weight: 400;
+      color: var(--text); line-height: 1.70;
+    }
+    .section-p-muted { color: var(--muted); }
+
+    /* ─── SERVICES ─────────────────────────────────────── */
+    .services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .service-card {
+      background: var(--light);
+      border: 4px solid var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    }
+    .service-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+    .service-icon-wrap {
+      width: 44px; height: 44px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 1px rgba(9,21,31,0.22), 0 2px 3px rgba(9,21,31,0.20), 0 4px 5px rgba(9,21,31,0.18), 0 8px 8px rgba(9,21,31,0.16);
+    }
+    .service-icon-wrap svg { color: var(--white); }
+    .service-num {
+      position: absolute; top: 20px; right: 24px;
+      font-family: 'Parkinsans', sans-serif;
+      font-size: 32px; font-weight: 800;
+      color: var(--orange); opacity: 0.9;
+      line-height: 1;
+    }
+    .service-card h5 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 17px; font-weight: 600;
+      color: var(--off-black); margin-bottom: 8px;
+    }
+    .service-card p {
+      font-size: 14px; font-weight: 400;
+      color: var(--text); line-height: 1.65;
+    }
+
+    /* ─── PROCESS ──────────────────────────────────────── */
+    .process { background: var(--light); }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1200px; margin: 0 auto;
+    }
+
+    /* ─── VALUE / ABOUT ────────────────────────────────── */
+    .value { background: var(--white); }
+    .value-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .value-img {
+      border-radius: 16px; overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--light);
+    }
+    .value-img img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .value-img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(145deg, #1a3a56 0%, #0d2033 100%);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 480px;
+    }
+    .value-img-placeholder svg { opacity: 0.15; }
+    .value-card {
+      background: var(--off-black);
+      border: 4px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 48px;
+    }
+    .value-card .section-tag { color: rgba(255,255,255,0.45); }
+    .value-card .section-h2 { color: var(--white); }
+    .value-card .section-p { color: rgba(255,255,255,0.60); }
+    .value-points { margin: 32px 0; display: flex; flex-direction: column; gap: 16px; }
+    .value-point {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .value-point-icon {
+      width: 24px; height: 24px; flex-shrink: 0;
+      background: var(--orange); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+    .value-point-icon svg { color: white; }
+    .value-point-text { font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.70); line-height: 1.55; }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 600; color: var(--white);
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.20);
+      border-radius: 8px; padding: 13px 22px; cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.35); }
+
+    /* ─── PRICING ──────────────────────────────────────── */
+    .pricing {
+      background: var(--deep);
+      padding: 96px 40px;
+    }
+    .pricing-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 320px 1fr;
+      gap: 64px; align-items: start;
+    }
+    .pricing-left { position: sticky; top: 80px; }
+    .pricing-tiers {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .tier {
+      background: var(--navy);
+      border: 4px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 28px;
+      display: flex; flex-direction: column; gap: 24px;
+      position: relative; overflow: hidden;
+    }
+    .tier.popular {
+      border-color: var(--orange);
+      background: var(--navy);
+    }
+    .tier-popular-badge {
+      position: absolute; top: 16px; right: -24px;
+      background: var(--orange); color: white;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 32px; transform: rotate(45deg);
+    }
+    .tier-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .tier-name {
+      font-family: 'Parkinsans', sans-serif;
+      font-size: 22px; font-weight: 700; color: var(--white);
+    }
+    .tier-price {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 22px; font-weight: 600; color: rgba(235,235,235,1);
+    }
+    .tier-desc {
+      font-size: 13px; font-weight: 400;
+      color: rgba(235,235,235,0.65); line-height: 1.5;
+    }
+    .tier-features { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .tier-feature {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13.5px; color: rgba(255,255,255,0.80); line-height: 1.5;
+    }
+    .tier-feature-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange); flex-shrink: 0; margin-top: 7px;
+    }
+    .tier-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 14px; font-weight: 600; color: var(--off-black);
+      background: var(--white); border: none; border-radius: 8px;
+      padding: 12px 16px; cursor: pointer; width: 100%;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .tier-btn:hover { opacity: 0.90; }
+    .tier-btn:active { transform: scale(0.98); }
+    .tier-btn-orange {
+      background: var(--orange); color: white;
+      box-shadow:
+        0px 4px 17px 0px rgba(227,92,54,0.25),
+        0px 14px 40px 0px rgba(227,92,54,0.40);
+    }
+
+    /* ─── TESTIMONIAL SECTION ──────────────────────────── */
+    .social-proof { background: var(--white); padding: 96px 40px; }
+    .testimonial-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .testimonial-card {
+      background: var(--light);
+      border: 4px solid var(--white);
+      border-radius: 16px; padding: 28px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .testimonial-stars { color: var(--orange); font-size: 14px; letter-spacing: 2px; }
+    .testimonial-text {
+      font-size: 15px; font-weight: 400;
+      color: var(--text); line-height: 1.65; flex: 1;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--navy); overflow: hidden; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .testimonial-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testimonial-name {
+      font-size: 14px; font-weight: 600; color: var(--off-black);
+    }
+    .testimonial-role { font-size: 12px; color: var(--text); }
+
+    /* ─── FAQ ──────────────────────────────────────────── */
+    .faq { background: var(--light); padding: 96px 40px; }
+    .faq-inner { max-width: 800px; margin: 0 auto; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; cursor: pointer;
+      font-size: 16px; font-weight: 600; color: var(--off-black);
+      gap: 16px; user-select: none;
+    }
+    .faq-icon {
+      width: 24px; height: 24px; flex-shrink: 0;
+      background: var(--navy); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.25s var(--ease);
+    }
+    .faq-icon svg { color: white; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.35s var(--ease), padding 0.25s;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p {
+      font-size: 15px; font-weight: 400;
+      color: var(--text); line-height: 1.70;
+      padding-bottom: 20px;
+    }
+
+    /* ─── CTA ──────────────────────────────────────────── */
+    .cta-section {
+      background: var(--navy); padding: 96px 40px;
+      text-align: center;
+    }
+    .cta-inner { max-width: 640px; margin: 0 auto; }
+    .cta-section .section-h2 { color: var(--white); margin-bottom: 16px; }
+    .cta-section .section-p { color: rgba(255,255,255,0.60); margin-bottom: 40px; }
+    .cta-actions { display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--deep); padding: 56px 40px 32px;
+      border-top: 1px solid var(--border-dark);
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+    .footer-brand {
+      font-family: 'Parkinsans', sans-serif;
+      font-weight: 700; font-size: 20px; color: var(--white);
+      margin-bottom: 10px;
+    }
+    .footer-tagline {
+      font-size: 13px; color: rgba(255,255,255,0.40); line-height: 1.6;
+    }
+    .footer-col-title {
+      font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.35); margin-bottom: 16px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-dark);
+      font-size: 13px; color: rgba(255,255,255,0.30);
+    }
+
+    /* ─── ANIMATIONS ───────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-inner { grid-template-columns: 1fr; gap: 40px; }
+      .pricing-left { position: static; }
+      .pricing-tiers { grid-template-columns: repeat(3, 1fr); }
+      .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+      .value-inner { grid-template-columns: 1fr; }
+      .value-img { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 64px; }
+      .hero-headline { font-size: clamp(32px, 8vw, 52px); }
+      .hero-stats { flex-direction: column; gap: 16px; }
+      .hero-stat-divider { width: 48px; height: 1px; }
+      .section { padding: 72px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .pricing-tiers { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-left">
+      <a href="#" class="nav-brand">Partnr</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <a href="mailto:hello@partnr.agency">Contact</a>
+      <a href="https://x.com/partnr" target="_blank" rel="noopener">X (Twitter)</a>
+      <a href="https://linkedin.com/company/partnr" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>3 spots left for this quarter</span>
+    </div>
+    <h1 class="hero-headline">Your partner in<br>business success</h1>
+    <p class="hero-desc">
+      With proven digital expertise and AI-powered tools, we help Zambian SMEs build their online presence and grow faster.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.38a16 16 0 0 0 6 6l1.27-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Let's build your strategy
+      </a>
+      <a href="#services" class="btn-secondary">
+        View our services
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-text" style="font-family:'Kaushan Script',cursive; font-size:15px; color:rgba(255,255,255,0.85);">3x</span>
+        <span class="stat-text">average client growth</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="stat-item">
+        <div style="display:flex; gap:3px; margin-right:4px;">
+          <img src="https://picsum.photos/seed/client1/40/40" width="28" height="28" style="border-radius:50%; border:2px solid var(--navy); margin-left:-8px;" alt="">
+          <img src="https://picsum.photos/seed/client2/40/40" width="28" height="28" style="border-radius:50%; border:2px solid var(--navy); margin-left:-8px;" alt="">
+          <img src="https://picsum.photos/seed/client3/40/40" width="28" height="28" style="border-radius:50%; border:2px solid var(--navy); margin-left:-8px;" alt="">
+        </div>
+        <span class="stat-text">50+ businesses transformed</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="stat-item">
+        <span style="color:#f5c518; font-size:13px; letter-spacing:1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="stat-text">5-star rated</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS TICKER -->
+  <div class="testimonials-strip">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "Partnr built us a website that actually brings in clients. Best investment we've made." &mdash; Chanda M., Kitwe</div>
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "The AI tools they set up save my team hours every week. Game-changing for our operations." &mdash; Nkosi T., Lusaka</div>
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "Finally a digital agency that understands the Zambian market. Highly recommend." &mdash; Grace B., Ndola</div>
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "Professional, fast, and they deliver exactly what they promise." &mdash; David K., Livingstone</div>
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "Our online enquiries tripled in the first month after launch. Incredible results." &mdash; Mwila C., Kitwe</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "Partnr built us a website that actually brings in clients. Best investment we've made." &mdash; Chanda M., Kitwe</div>
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "The AI tools they set up save my team hours every week. Game-changing for our operations." &mdash; Nkosi T., Lusaka</div>
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "Finally a digital agency that understands the Zambian market. Highly recommend." &mdash; Grace B., Ndola</div>
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "Professional, fast, and they deliver exactly what they promise." &mdash; David K., Livingstone</div>
+      <div class="ticker-item"><span class="ticker-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span> "Our online enquiries tripled in the first month after launch. Incredible results." &mdash; Mwila C., Kitwe</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section services" id="services">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="section-header reveal">
+        <div class="section-tag">What we offer</div>
+        <h2 class="section-h2">Your success<br>built on six pillars</h2>
+        <p class="section-p">From defining your digital strategy to deploying AI tools that save time — these six areas form the foundation of how we help Zambian businesses grow.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <span class="service-num">1</span>
+          <h5>Web Design & Development</h5>
+          <p>High-converting websites built to perform — designed to build trust, generate enquiries, and work around the clock for your business.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <span class="service-num">2</span>
+          <h5>AI Automation</h5>
+          <p>Deploy AI tools that handle repetitive tasks — lead qualification, customer responses, reporting — so your team focuses on what matters.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <span class="service-num">3</span>
+          <h5>Growth Strategy</h5>
+          <p>Structured digital roadmaps that turn your business goals into clear, measurable online actions with timelines that keep progress on track.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <span class="service-num">4</span>
+          <h5>Brand Positioning</h5>
+          <p>Define your unique edge online — from messaging to visual identity — so the right clients find you and choose you over the competition.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="service-num">5</span>
+          <h5>Ongoing Partnership</h5>
+          <p>We don't disappear after launch. Monthly check-ins, performance reviews, and continuous improvements keep your digital presence ahead.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="service-num">6</span>
+          <h5>Content & SEO</h5>
+          <p>Get found on Google by the clients you want. We build content strategies that position your business as the clear authority in your industry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE / ABOUT -->
+  <section class="section value">
+    <div class="value-inner">
+      <div class="value-img">
+        <div class="value-img-placeholder">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+      </div>
+      <div class="value-card reveal">
+        <div class="section-tag section-tag-dark">Why Partnr</div>
+        <h2 class="section-h2 section-h2-white" style="margin-bottom:16px;">Built for the<br>Zambian market.</h2>
+        <p class="section-p section-p-muted">We're not a generic global agency. We understand the local business environment, the trust dynamics, and the tools that actually work for Zambian SMEs. That's what makes the difference.</p>
+        <div class="value-points">
+          <div class="value-point">
+            <div class="value-point-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="value-point-text">Deep understanding of Zambian business culture and buyer behaviour</span>
+          </div>
+          <div class="value-point">
+            <div class="value-point-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="value-point-text">AI tools configured for low-bandwidth, mobile-first African users</span>
+          </div>
+          <div class="value-point">
+            <div class="value-point-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="value-point-text">Transparent pricing with clear deliverables — no hidden costs</span>
+          </div>
+          <div class="value-point">
+            <div class="value-point-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="value-point-text">Results-focused — we track enquiries, not just design awards</span>
+          </div>
+        </div>
+        <a href="#pricing" class="btn-outline-white">
+          See how we work
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section process" id="process">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="section-header reveal">
+        <div class="section-tag">How we do it</div>
+        <h2 class="section-h2">From challenges<br>to growth in three steps</h2>
+        <p class="section-p">A proven framework that turns obstacles into opportunities. Our 3-step approach makes digital growth simple, structured, and achievable for any SME.</p>
+      </div>
+      <div class="process-grid">
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <span class="service-num">1</span>
+          <h5>Discover</h5>
+          <p>We start with a deep dive into your business — your goals, your customers, your competitors — to uncover where the real opportunities lie.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <span class="service-num">2</span>
+          <h5>Strategize</h5>
+          <p>We build a tailored digital roadmap — website, AI tools, content — with clear milestones and measurable outcomes aligned to your business goals.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <span class="service-num">3</span>
+          <h5>Build &amp; Grow</h5>
+          <p>We execute the plan — design, build, deploy — then stay on as your partner, tracking results and adjusting to ensure sustainable growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-inner">
+      <div class="pricing-left reveal">
+        <div class="section-tag section-tag-dark">A fraction of your growth</div>
+        <h2 class="section-h2 section-h2-white">Invest in growth.<br>Not guesswork.</h2>
+        <p class="section-p section-p-muted" style="margin-top:16px;">Three options designed to fit your business stage, goals, and level of support required.</p>
+      </div>
+      <div class="pricing-tiers reveal">
+        <!-- Starter -->
+        <div class="tier">
+          <div class="tier-header">
+            <span class="tier-name">Starter</span>
+            <span class="tier-price">$499</span>
+          </div>
+          <p class="tier-desc">For businesses that need a professional online presence to start winning clients.</p>
+          <div class="tier-features">
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Custom 5-page website</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Mobile-first responsive design</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Basic SEO setup</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Contact form integration</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>30-day post-launch support</div>
+          </div>
+          <button class="tier-btn" onclick="window.location.href='mailto:hello@partnr.agency'">
+            Get started
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <!-- Growth (Popular) -->
+        <div class="tier popular">
+          <div class="tier-popular-badge">Popular</div>
+          <div class="tier-header">
+            <span class="tier-name">Growth</span>
+            <span class="tier-price">$1,499</span>
+          </div>
+          <p class="tier-desc">For established SMEs ready to scale with a full digital presence and AI tools.</p>
+          <div class="tier-features">
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Custom website (up to 12 pages)</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>AI chatbot / lead capture tool</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Full SEO optimisation</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Google Analytics setup</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>2x monthly strategy check-ins</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>90-day growth roadmap</div>
+          </div>
+          <button class="tier-btn tier-btn-orange" onclick="window.location.href='mailto:hello@partnr.agency'">
+            Get started
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <!-- Enterprise -->
+        <div class="tier">
+          <div class="tier-header">
+            <span class="tier-name">Enterprise</span>
+            <span class="tier-price">Custom</span>
+          </div>
+          <p class="tier-desc">For organisations that need full-stack digital transformation and ongoing AI integration.</p>
+          <div class="tier-features">
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Full custom web application</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>AI automation across operations</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Staff training on AI tools</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Dedicated account manager</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Weekly performance reporting</div>
+            <div class="tier-feature"><span class="tier-feature-dot"></span>Continuous strategy optimisation</div>
+          </div>
+          <button class="tier-btn" onclick="window.location.href='mailto:hello@partnr.agency'">
+            Book a call
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="social-proof">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="section-header reveal">
+        <div class="section-tag">What clients say</div>
+        <h2 class="section-h2">Results that speak<br>for themselves</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Partnr delivered a website that completely changed how clients perceive us. We went from invisible to getting calls every week."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://picsum.photos/seed/t1/80/80" alt="Client">
+            </div>
+            <div>
+              <div class="testimonial-name">Chanda Mutale</div>
+              <div class="testimonial-role">CEO, Copperfield Logistics</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"The AI automation they set up saves my team 12 hours a week on admin. That's time we now spend on actual client work."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://picsum.photos/seed/t2/80/80" alt="Client">
+            </div>
+            <div>
+              <div class="testimonial-name">Nkosi Tembo</div>
+              <div class="testimonial-role">Director, Tembo &amp; Associates</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Finally an agency that understands Zambian business. They didn't just build a website — they built us a sales tool."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://picsum.photos/seed/t3/80/80" alt="Client">
+            </div>
+            <div>
+              <div class="testimonial-name">Grace Banda</div>
+              <div class="testimonial-role">MD, Ndola Dental Group</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faqs">
+    <div class="faq-inner">
+      <div class="section-header reveal" style="margin-bottom:48px;">
+        <div class="section-tag">Got questions</div>
+        <h2 class="section-h2">Frequently asked</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            How long does a website take to build?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer"><p>Most websites are delivered within 2–4 weeks from the start date. Timeline depends on the scope and how quickly you provide feedback. We keep you updated at every stage.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Do you work with businesses outside Zambia?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer"><p>Yes — we work with clients across sub-Saharan Africa. Our primary focus is Zambia, but we've supported businesses in Zimbabwe, Kenya, and South Africa as well.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            What AI tools do you typically deploy?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer"><p>Depending on your needs, we deploy AI chatbots for lead capture, automated email follow-up sequences, AI-powered content tools, and operations automation. We use tools that are practical and affordable for SME budgets.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Will I be able to update my website myself?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer"><p>Yes. We build with user-friendly CMS options where appropriate, and we provide a handover session and documentation so you can make basic updates independently.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            What happens after my website launches?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer"><p>We offer ongoing retainer partnerships that include monthly performance reviews, content updates, SEO improvements, and technical maintenance. You're never left to figure it out alone.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            How do I get started?
+            <div class="faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer"><p>Send us an email or click "Let's build your strategy" — we'll schedule a free 30-minute discovery call to understand your business and recommend the right plan for you.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <div class="section-tag section-tag-dark" style="justify-content:center; margin-bottom:20px;">Ready to grow</div>
+      <h2 class="section-h2" style="color:var(--white); margin-bottom:16px;">Let's build something<br>that works for you.</h2>
+      <p class="section-p" style="color:rgba(255,255,255,0.60); margin-bottom:40px;">Whether you're starting from scratch or upgrading what you have — the first call is free. No obligation, no pressure.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@partnr.agency" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Book a free discovery call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Partnr</div>
+          <p class="footer-tagline">Web design &amp; AI for<br>Zambian businesses.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Web Design</a></li>
+            <li><a href="#services">AI Automation</a></li>
+            <li><a href="#services">Growth Strategy</a></li>
+            <li><a href="#services">Brand Positioning</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="mailto:hello@partnr.agency">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Connect</div>
+          <ul class="footer-links">
+            <li><a href="https://x.com/partnr" target="_blank" rel="noopener">X (Twitter)</a></li>
+            <li><a href="https://linkedin.com/company/partnr" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:hello@partnr.agency">hello@partnr.agency</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Partnr. All rights reserved.</span>
+        <span>Built in Zambia, for Zambia.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById('progress').style.width = scrolled + '%';
+    });
+
+    // Reveal on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // FAQ toggle
+    function toggleFaq(el) {
+      const item = el.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
