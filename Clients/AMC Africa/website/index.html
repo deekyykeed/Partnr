@@ -173,13 +173,24 @@
 
   /* ---------- HERO ---------- */
   .hero {
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 0;
     height: 100dvh;
     min-height: 580px;
     overflow: hidden;
     background: #0a0a0a url(hero-visual.webp) center/cover no-repeat;
     display: flex;
     flex-direction: column;
+    transform-origin: center 40%;
+    will-change: filter, transform;
+  }
+
+  /* sections layer on top of the sticky hero */
+  .services, .cases, .metrics, .map-section,
+  .team, .insights, .clients-section, .contact, footer {
+    position: relative;
+    z-index: 1;
   }
   .hero::before {
     content: "";
@@ -1096,7 +1107,23 @@
   root.setAttribute('data-theme',   t.theme   || 'light');
 })();
 
-/* ---------- 1) Topographic hero background ---------- */
+/* ---------- 1) Hero scroll — blur + shrink ---------- */
+(function heroScroll() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  function update() {
+    const h = hero.offsetHeight;
+    const t = Math.min(window.scrollY / h, 1);
+    const blur  = t * 12;
+    const scale = 1 - t * 0.06;
+    hero.style.filter    = t > 0 ? `blur(${blur.toFixed(2)}px)` : '';
+    hero.style.transform = t > 0 ? `scale(${scale.toFixed(4)})` : '';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+/* ---------- 2) Topographic hero background ---------- */
 (function topo() {
   const svg = document.getElementById('hero-topo');
   if (!svg) return;
@@ -1140,7 +1167,7 @@
   svg.innerHTML = frag.join('');
 })();
 
-/* ---------- 2) Nav scroll state ---------- */
+/* ---------- 3) Nav scroll state ---------- */
 (function navScroll() {
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 20);
