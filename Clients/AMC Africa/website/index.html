@@ -763,6 +763,8 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
+    .hero { position: relative; }
+    .hero-bg { will-change: auto; }
     .hero-grid, .section-head, .svc-grid, .map-wrap, .contact-grid, .metrics-inner, .ins-grid, .team-grid, .foot-inner, .clients-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
     .nav-links { display: none; }
@@ -1137,6 +1139,7 @@
 (function heroScroll() {
   const bg = document.querySelector('.hero-bg');
   if (!bg) return;
+  if (window.innerWidth <= 900) return;
   function update() {
     const h = bg.parentElement.offsetHeight;
     const t = Math.min(window.scrollY / h, 1);
