@@ -99,7 +99,9 @@
   [data-theme="dark"][data-accent="oxblood"] { --accent:#C26666; --accent-ink:#E3B3B3; --accent-soft:#3A1E1E; }
 
   * { box-sizing: border-box; }
+  html { scroll-snap-type: y proximity; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  header, section, footer { scroll-snap-align: start; }
   body {
     font-family: var(--font-body);
     font-size: 16px;
