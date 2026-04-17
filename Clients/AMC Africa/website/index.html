@@ -198,14 +198,14 @@
   .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
   .hero h1 {
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(48px, 7.2vw, 108px);
+    font-weight: 600;
+    font-size: clamp(44px, 6.4vw, 96px);
     line-height: .98;
     letter-spacing: -.03em;
     margin: 0 0 40px;
-    color: var(--ink);
+    color: #0D0F0E;
   }
-  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
   .hero h1 .underline { position: relative; white-space: nowrap; }
   .hero h1 .underline::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: -.08em;
@@ -238,9 +238,12 @@
   }
   .hero-visual img {
     width: 100%;
-    max-width: 480px;
-    height: auto;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
     display: block;
+    border-radius: 10px;
+    box-shadow: 0 8px 48px rgba(0,0,0,.18);
   }
   .hero-panel h4 {
     font-family: var(--font-body);
@@ -748,6 +751,25 @@
     .svc-content { grid-template-columns: 1fr; }
     .hero-meta { grid-template-columns: 1fr 1fr; }
     .metrics-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Hero mobile */
+    .hero { padding: 120px 0 72px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-grid > div { align-items: center; text-align: center; }
+    .hero-sub { max-width: 100%; }
+    .hero-actions { justify-content: center; flex-wrap: wrap; }
+    .hero-visual { order: -1; }
+    .hero-visual img { height: 260px; border-radius: 8px; }
+    .hero-meta { grid-template-columns: 1fr 1fr; margin-top: 48px; }
+    .hero-meta .kpi { padding: var(--gap); border-right: none; border-bottom: 1px solid var(--line); }
+    .hero-meta .kpi:nth-child(odd) { border-right: 1px solid var(--line); }
+    .hero-meta .kpi:nth-last-child(-n+2) { border-bottom: none; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-visual img { height: 200px; }
+    .hero h1 { font-size: clamp(36px, 10vw, 52px); }
+    .hero-sub { font-size: 16px; }
   }
 </style>
 </head>
