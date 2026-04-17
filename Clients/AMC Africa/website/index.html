@@ -233,15 +233,14 @@
   .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
   .btn-ghost:hover { border-color: var(--ink); }
 
-  .hero-panel {
-    background: #fff;
-    border: 1px solid var(--line);
-    padding: 28px 32px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--ink-2);
-    border-radius: 8px;
-    box-shadow: 0 2px 24px rgba(0,0,0,.07), 0 0 0 1px rgba(0,0,0,.04);
+  .hero-visual {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-visual img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    display: block;
   }
   .hero-panel h4 {
     font-family: var(--font-body);
@@ -801,18 +800,9 @@
         </div>
       </div>
 
-      <aside class="hero-panel" aria-label="Commodity prices">
-        <h4>
-          <span>Commodities · LME</span>
-          <span class="live">LIVE</span>
-        </h4>
-        <div class="ticker-row"><span class="ticker-sym">Cu · Copper</span><span class="ticker-px">$9,842/t</span><span class="ticker-ch up">+1.24%</span></div>
-        <div class="ticker-row"><span class="ticker-sym">Au · Gold</span><span class="ticker-px">$2,418/oz</span><span class="ticker-ch up">+0.58%</span></div>
-        <div class="ticker-row"><span class="ticker-sym">Li · Lithium</span><span class="ticker-px">$14,200/t</span><span class="ticker-ch down">−2.10%</span></div>
-        <div class="ticker-row"><span class="ticker-sym">Fe · Iron ore</span><span class="ticker-px">$118.6/t</span><span class="ticker-ch up">+0.42%</span></div>
-        <div class="ticker-row"><span class="ticker-sym">REE · NdPr</span><span class="ticker-px">$69,400/t</span><span class="ticker-ch down">−0.81%</span></div>
-        <div class="ticker-row"><span class="ticker-sym">U · Uranium</span><span class="ticker-px">$86.50/lb</span><span class="ticker-ch up">+1.95%</span></div>
-      </aside>
+      <div class="hero-visual">
+        <img src="hero-visual.webp" alt="AMC advisory platform" />
+      </div>
     </div>
 
     <div class="hero-meta">
