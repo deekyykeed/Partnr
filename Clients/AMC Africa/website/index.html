@@ -246,14 +246,25 @@
     display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
   }
   .h-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 14px 28px;
-    font-family: var(--font-body); font-size: 14px; font-weight: 500;
-    border-radius: 16px; cursor: pointer; text-decoration: none;
-    transition: all .22s;
+    display: inline-flex; align-items: center;
+    padding: 12px 24px;
+    font-family: "Inter Tight", system-ui, sans-serif;
+    font-size: 16px; font-weight: 600;
+    letter-spacing: 0;
+    border-radius: 100px;
+    cursor: pointer; text-decoration: none;
+    overflow: hidden;
+    transition: opacity .22s;
   }
-  .h-btn-primary { background: #fff; color: #111; border: none; }
-  .h-btn-primary:hover { background: #F4C97A; transform: translateY(-1px); }
+  .h-btn-primary { background: rgb(28, 28, 28); color: #fff; border: none; }
+  .h-btn-primary:hover { opacity: .88; }
+  .h-btn-primary .btn-slide {
+    display: flex; flex-direction: column;
+    height: 1.5em; overflow: hidden;
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  .h-btn-primary:hover .btn-slide { transform: translateY(-50%); }
+  .h-btn-primary .btn-slide span { display: block; line-height: 1.5; }
 
   .hero-stats {
     position: relative; z-index: 1;
@@ -795,8 +806,10 @@
     <p class="hero-sub">Independent technical advisors to mining companies, investors, and governments — turning geology into bankable decisions across sub-Saharan Africa.</p>
     <div class="hero-actions">
       <a href="#contact" class="h-btn h-btn-primary">
-        Commission a study
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="btn-slide">
+          <span>Commission a study</span>
+          <span>Commission a study</span>
+        </span>
       </a>
     </div>
   </div>
