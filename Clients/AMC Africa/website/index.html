@@ -175,134 +175,109 @@
   .hero {
     position: relative;
     height: 100dvh;
-    display: flex; align-items: center;
+    min-height: 580px;
     overflow: hidden;
-    background: #111 url(hero-visual.webp) center/cover no-repeat;
-    border-bottom: none;
+    background: #0a0a0a url(hero-visual.webp) center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
   }
   .hero::before {
     content: "";
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,.52) 0%, rgba(0,0,0,.38) 60%, rgba(0,0,0,.62) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,.48) 0%, rgba(0,0,0,.22) 55%, rgba(0,0,0,.72) 100%);
     pointer-events: none;
+    z-index: 0;
   }
   .hero-topo { display: none; }
 
-  .hero-grid {
-    position: relative;
-    display: flex; flex-direction: column; align-items: center;
+  .hero-content {
+    position: relative; z-index: 1;
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
     text-align: center;
-    max-width: 860px; margin: 0 auto;
+    padding: 60px 40px 32px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
   }
   .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 14px;
-    font-family: var(--font-mono); font-size: 11.5px;
-    letter-spacing: .14em; text-transform: uppercase;
-    color: rgba(255,255,255,.65);
-    margin-bottom: 40px;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+    margin-bottom: 28px;
   }
-  .hero-sub { max-width: 560px; }
-  .hero-actions { justify-content: center; }
-  .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.2); }
+  .hero-eyebrow::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: #F4C97A; flex-shrink: 0;
+  }
   .hero h1 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(44px, 6.4vw, 96px);
-    line-height: .98;
+    font-size: clamp(46px, 6.8vw, 96px);
+    line-height: .97;
     letter-spacing: -.03em;
-    margin: 0 0 40px;
     color: #fff;
+    margin: 0 0 28px;
   }
   .hero h1 em { font-style: italic; color: #F4C97A; font-weight: 500; }
-  .hero h1 .underline { position: relative; white-space: nowrap; }
-  .hero h1 .underline::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: -.08em;
-    height: 2px; background: var(--accent); transform-origin: left; transform: scaleX(0);
-    animation: grow 1.2s .6s cubic-bezier(.2,.8,.2,1) forwards;
-  }
-  @keyframes grow { to { transform: scaleX(1); } }
-
   .hero-sub {
-    max-width: 560px;
-    font-size: 19px; line-height: 1.5;
-    color: var(--ink-2);
-    margin-bottom: 48px;
+    font-size: 18px; line-height: 1.55;
+    color: rgba(255,255,255,.75);
+    max-width: 540px;
+    margin: 0 0 40px;
   }
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-actions {
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  }
+  .h-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 26px;
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    border-radius: 999px; cursor: pointer; text-decoration: none;
+    transition: all .22s;
+  }
+  .h-btn-primary { background: #fff; color: #111; border: none; }
+  .h-btn-primary:hover { background: #F4C97A; transform: translateY(-1px); }
+  .h-btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.4); }
+  .h-btn-ghost:hover { border-color: #fff; }
+
+  .hero-stats {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(255,255,255,.18);
+  }
+  .h-stat {
+    padding: 22px 32px;
+    border-right: 1px solid rgba(255,255,255,.18);
+  }
+  .h-stat:last-child { border-right: none; }
+  .h-stat-num {
+    font-family: var(--font-body);
+    font-size: clamp(26px, 2.8vw, 40px);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    color: #fff;
+    line-height: 1;
+  }
+  .h-stat-lbl {
+    margin-top: 4px;
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    letter-spacing: .02em;
+  }
+
+  /* btn kept for rest-of-page sections */
   .btn {
     display: inline-flex; align-items: center; gap: 12px;
-    padding: 15px 24px;
-    font-size: 14px; font-weight: 500;
-    border-radius: 999px;
-    transition: all .25s;
+    padding: 15px 24px; font-size: 14px; font-weight: 500;
+    border-radius: 999px; transition: all .25s;
   }
   .btn-primary { background: var(--ink); color: var(--bg); }
   .btn-primary:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
   .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
   .btn-ghost:hover { border-color: var(--ink); }
-
-  .hero-visual { display: none; }
-  .hero .hero-sub { color: rgba(255,255,255,.8); }
-  .hero .btn-primary { background: #fff; color: #111; }
-  .hero .btn-primary:hover { background: var(--accent); color: #fff; }
-  .hero .btn-ghost { border-color: rgba(255,255,255,.4); color: #fff; }
-  .hero .btn-ghost:hover { border-color: #fff; }
-  .hero-meta {
-    position: relative;
-    border-top-color: rgba(255,255,255,.2);
-  }
-  .hero-meta .kpi { border-right-color: rgba(255,255,255,.2); }
-  .hero-meta .k-num { color: #fff; }
-  .hero-meta .k-lbl { color: rgba(255,255,255,.55); }
-  .hero-panel h4 {
-    font-family: var(--font-body);
-    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--ink-4); font-weight: 500;
-    margin: 0 0 18px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .hero-panel h4 .live { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
-  .hero-panel h4 .live::before {
-    content: ""; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 1.6s infinite;
-  }
-  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .3 } }
-  .ticker-row {
-    display: grid; grid-template-columns: 1fr auto auto; gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px dashed var(--line-2);
-  }
-  .ticker-row:last-child { border: none; }
-  .ticker-sym { color: var(--ink); letter-spacing: .02em; }
-  .ticker-px { color: var(--ink-2); }
-  .ticker-ch.up   { color: var(--accent); }
-  .ticker-ch.down { color: #B0552B; }
-
-  .hero-meta {
-    margin-top: 80px;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    padding-top: 40px;
-    border-top: 1px solid var(--line);
-  }
-  .hero-meta .kpi {
-    position: relative;
-    padding: 0 var(--gap);
-    border-right: 1px solid var(--line);
-  }
-  .hero-meta .kpi:first-child { padding-left: 0; }
-  .hero-meta .kpi:last-child { border-right: none; }
-  .hero-meta .k-num {
-    font-family: var(--font-body);
-    font-size: clamp(28px, 3.2vw, 44px);
-    letter-spacing: -.03em; line-height: 1;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .hero-meta .k-lbl {
-    margin-top: 6px; font-size: 13px; color: var(--ink-3);
-    letter-spacing: .01em;
-  }
 
   /* ---------- SECTION CHROME ---------- */
   section { padding: var(--section) 0; }
@@ -762,20 +737,16 @@
     .metrics-grid { grid-template-columns: 1fr 1fr; }
 
     /* Hero mobile */
-    .hero { padding: 140px 0 80px; }
-    .hero-grid { max-width: 100%; }
-    .hero-sub { max-width: 100%; }
-    .hero-actions { justify-content: center; flex-wrap: wrap; }
-    .hero-meta { grid-template-columns: 1fr 1fr; margin-top: 48px; }
-    .hero-meta .kpi { padding: var(--gap); border-right: none; border-bottom: 1px solid var(--line); }
-    .hero-meta .kpi:nth-child(odd) { border-right: 1px solid var(--line); }
-    .hero-meta .kpi:nth-last-child(-n+2) { border-bottom: none; }
+    .hero-content { padding: 80px 24px 28px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .h-stat:nth-child(2) { border-right: none; }
+    .h-stat:nth-child(1), .h-stat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.18); }
   }
 
   @media (max-width: 480px) {
-    .hero-visual img { height: 200px; }
     .hero h1 { font-size: clamp(36px, 10vw, 52px); }
     .hero-sub { font-size: 16px; }
+    .h-stat { padding: 16px 18px; }
   }
 </style>
 </head>
@@ -805,37 +776,23 @@
 
 <!-- =========== HERO =========== -->
 <header class="hero" data-screen-label="Hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow">
-          <span class="dot"></span>
-          <span>Technical advisory · Est. 1998 · 47 countries</span>
-        </div>
-        <h1>
-          Where ground<br/>
-          becomes <em>certainty.</em>
-        </h1>
-        <p class="hero-sub">
-          Thirty years of mining, exploration, and environmental expertise — built on the Copperbelt, trusted across sub-Saharan Africa.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">
-            Commission a study
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#cases" class="btn btn-ghost">Our projects</a>
-        </div>
-      </div>
-
+  <div class="hero-content">
+    <div class="hero-eyebrow">Mining &amp; Exploration Advisory · Est. 1998 · 47 Countries</div>
+    <h1>Where ground<br/>becomes <em>certainty.</em></h1>
+    <p class="hero-sub">Independent technical advisors to mining companies, investors, and governments — turning geology into bankable decisions across sub-Saharan Africa.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="h-btn h-btn-primary">
+        Commission a study
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#cases" class="h-btn h-btn-ghost">Our projects</a>
     </div>
-
-    <div class="hero-meta">
-      <div class="kpi"><div class="k-num" data-count="340">0</div><div class="k-lbl">Projects delivered</div></div>
-      <div class="kpi"><div class="k-num" data-count="47">0</div><div class="k-lbl">Countries</div></div>
-      <div class="kpi"><div class="k-num" data-count="14.2" data-suffix="B" data-prefix="$">0</div><div class="k-lbl">Capex advised</div></div>
-      <div class="kpi"><div class="k-num" data-count="92">0</div><div class="k-lbl">Senior engineers</div></div>
-    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="h-stat"><div class="h-stat-num" data-count="340">0</div><div class="h-stat-lbl">Projects delivered</div></div>
+    <div class="h-stat"><div class="h-stat-num" data-count="47">0</div><div class="h-stat-lbl">Countries</div></div>
+    <div class="h-stat"><div class="h-stat-num" data-count="14.2" data-prefix="$" data-suffix="B">0</div><div class="h-stat-lbl">Capex advised</div></div>
+    <div class="h-stat"><div class="h-stat-num" data-count="30" data-suffix="+">0</div><div class="h-stat-lbl">Years experience</div></div>
   </div>
 </header>
 
