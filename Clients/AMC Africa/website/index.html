@@ -179,11 +179,21 @@
     height: 100dvh;
     min-height: 580px;
     overflow: hidden;
-    background: #0a0a0a url(hero-visual.webp) center/cover no-repeat;
+    background: #0a0a0a;
     display: flex;
     flex-direction: column;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url(hero-visual.webp) center/cover no-repeat;
     transform-origin: center 40%;
     will-change: filter, transform;
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,.48) 0%, rgba(0,0,0,.22) 55%, rgba(0,0,0,.72) 100%);
   }
 
   /* sections layer on top of the sticky hero */
@@ -191,13 +201,6 @@
   .team, .insights, .clients-section, .contact, footer {
     position: relative;
     z-index: 1;
-  }
-  .hero::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,.48) 0%, rgba(0,0,0,.22) 55%, rgba(0,0,0,.72) 100%);
-    pointer-events: none;
-    z-index: 0;
   }
   .hero-topo { display: none; }
 
@@ -785,6 +788,7 @@
 
 <!-- =========== HERO =========== -->
 <header class="hero" data-screen-label="Hero">
+  <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Mining &amp; Exploration Advisory · Est. 1998 · 47 Countries</div>
     <h1>Where ground<br/>becomes <em>certainty.</em></h1>
@@ -1106,15 +1110,13 @@
 
 /* ---------- 1) Hero scroll — blur + shrink ---------- */
 (function heroScroll() {
-  const hero = document.querySelector('.hero');
-  if (!hero) return;
+  const bg = document.querySelector('.hero-bg');
+  if (!bg) return;
   function update() {
-    const h = hero.offsetHeight;
+    const h = bg.parentElement.offsetHeight;
     const t = Math.min(window.scrollY / h, 1);
-    const blur  = t * 12;
-    const scale = 1 - t * 0.06;
-    hero.style.filter    = t > 0 ? `blur(${blur.toFixed(2)}px)` : '';
-    hero.style.transform = t > 0 ? `scale(${scale.toFixed(4)})` : '';
+    bg.style.filter    = t > 0 ? `blur(${(t * 14).toFixed(2)}px)` : '';
+    bg.style.transform = t > 0 ? `scale(${(1 - t * 0.07).toFixed(4)})` : '';
   }
   window.addEventListener('scroll', update, { passive: true });
   update();
