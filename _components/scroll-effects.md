@@ -59,11 +59,13 @@ html { scroll-snap-type: y proximity; }
 header, section, footer { scroll-snap-align: start; }
 ```
 
-**To snap only hero → section 2 (recommended for mixed-height pages):**
+**To snap only hero → section 2, triggering at 50% visible:**
 ```css
 html { scroll-snap-type: y proximity; }
-.hero, .services { scroll-snap-align: start; }
+.hero { scroll-snap-align: start; }
+.services { scroll-snap-align: center; }
 ```
+`center` = snaps when the section's midpoint hits the viewport midpoint — feels like it pulls in once it's halfway on screen.
 
 **Modes:**
 | `mandatory` | Always snaps — only use if every section is ~100dvh |
