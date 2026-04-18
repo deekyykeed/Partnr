@@ -493,10 +493,12 @@
     font-size: 14px; color: var(--ink-3); line-height: 1.6; margin: 0;
   }
   .svc-card-asset {
-    flex: 1; height: 170px;
+    flex: 1; width: 1px; height: 170px;
+    display: block;
     background: #ebebeb;
     border-radius: 10px;
     border: 1px dashed #e8e8e8;
+    overflow: clip;
   }
   .svc-bullets { list-style: none; padding: 0; margin: 0; }
   .svc-bullets li {
@@ -977,9 +979,7 @@
     </div>
   </div>
   <div class="hero-visual">
-    <video class="hero-truck-img" autoplay loop muted playsinline>
-      <source src="hero-truck.mp4" type="video/mp4" />
-    </video>
+    <img class="hero-truck-img" src="hero-visual.webp" alt="AMC advisory visual" />
   </div>
   <div class="client-ticker" id="clientTicker" aria-label="Clients">
     <div class="ticker-track" id="tickerTrack">
@@ -1486,7 +1486,7 @@
 (function services() {
   const services = [
     { title: 'Resource estimation & geology',
-      body: 'From drill-core logging to JORC-compliant resource models. We build geological models that hold up to lender scrutiny and to the rock underneath.',
+      body: 'Drill results in hand. A JORC-compliant resource that satisfies your lenders is a different document entirely.',
       bullets: ['Mineral resource estimation (Measured · Indicated · Inferred)','Ore body modelling — implicit and explicit','Drill campaign design and QA/QC','Qualified Persons (JORC 2012, NI 43-101, SAMREC)','Independent technical review & audits'],
       visual: 'drill' },
     { title: 'Feasibility studies',
