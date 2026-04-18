@@ -468,7 +468,6 @@
   .svc-card {
     background: #fff;
     border-radius: 12px;
-    display: grid; grid-template-columns: 1fr 1fr;
     overflow: hidden;
     border: 1px solid rgba(0,0,0,.06);
     position: sticky; top: 80px;
@@ -872,8 +871,7 @@
     .svc-sticky-wrap { grid-template-columns: 1fr; padding: 0 24px; }
     .svc-left { position: static; padding: 60px 0 32px; }
     .svc-right { padding: 0 0 60px; }
-    .svc-card { grid-template-columns: 1fr; }
-    .svc-card-visual { min-height: 160px; }
+    .svc-card-info { padding: 28px 24px; }
     .hero-bg { will-change: auto; }
     .hero-grid, .section-head, .svc-grid, .map-wrap, .contact-grid, .metrics-inner, .ins-grid, .team-grid, .foot-inner, .clients-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
@@ -1535,8 +1533,7 @@
           '<h3>'+s.title+'</h3>' +
           '<p>'+s.body+'</p>' +
         '</div>' +
-      '</div>' +
-      '<div class="svc-card-visual">'+svcVisual(s.visual)+'</div>';
+      '</div>';
     cardsEl.appendChild(card);
   });
 })();
