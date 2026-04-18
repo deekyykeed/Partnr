@@ -488,14 +488,16 @@
   .svc-card-icon {
     width: 24px; height: 24px;
     display: flex; align-items: center; justify-content: center;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,.18));
+  }
+  .svc-card-icon img {
+    width: 24px; height: 24px; display: block;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,.22));
     transition: filter .25s, transform .25s;
   }
-  .svc-card:hover .svc-card-icon {
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,.22));
-    transform: translateY(-3px);
+  .svc-card:hover .svc-card-icon img {
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,.28));
+    transform: translateY(-2px);
   }
-  .svc-card-icon img { width: 24px; height: 24px; display: block; }
   .svc-card-info {
     padding: 0 28px 32px;
     display: flex; flex-direction: column; gap: 10px;
@@ -995,7 +997,7 @@
     </div>
   </div>
   <div class="hero-visual">
-    <video class="hero-truck-img" autoplay loop muted playsinline>
+    <video class="hero-truck-img" autoplay loop muted playsinline preload="auto" webkit-playsinline x-webkit-airplay="deny">
       <source src="hero-truck.mp4" type="video/mp4" />
     </video>
   </div>
@@ -1389,6 +1391,20 @@
       menu.classList.remove('open');
       document.body.style.overflow = '';
     });
+  });
+})();
+
+/* ---------- 0) Mobile video autoplay ---------- */
+(function mobileVideo() {
+  const v = document.querySelector('.hero-truck-img');
+  if (!v) return;
+  v.play().catch(() => {});
+  document.addEventListener('touchstart', function tryPlay() {
+    v.play().catch(() => {});
+    document.removeEventListener('touchstart', tryPlay);
+  }, { once: true, passive: true });
+  v.addEventListener('pause', function() {
+    if (!document.hidden) v.play().catch(() => {});
   });
 })();
 
