@@ -438,52 +438,59 @@
     margin-top: 24px; line-height: 1.55;
   }
 
-  /* ---------- SERVICES (tabbed) ---------- */
-  .services { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .svc-grid { display: grid; grid-template-columns: 320px 1fr; gap: 60px; }
-  .svc-tabs { display: flex; flex-direction: column; }
-  .svc-tab {
-    text-align: left;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line-2);
-    display: grid; grid-template-columns: 40px 1fr 20px; gap: 14px; align-items: center;
-    font-family: var(--font-display); font-size: 22px; font-weight: 400;
-    letter-spacing: -.01em;
-    color: var(--ink-3);
-    transition: color .25s, padding .25s;
-    position: relative;
+  /* ---------- SERVICES (sticky-left / scroll-right) ---------- */
+  .services { background: #F2F1ED; padding: 0; }
+  .svc-sticky-wrap {
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: start;
+    max-width: var(--max); margin: 0 auto; padding: 0 80px;
   }
-  .svc-tab .idx {
-    font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: .08em;
+  .svc-left {
+    position: sticky; top: 80px;
+    padding: 100px 60px 100px 0;
   }
-  .svc-tab .chev { opacity: 0; transform: translateX(-6px); transition: all .25s; color: var(--accent); }
-  .svc-tab:hover { color: var(--ink); }
-  .svc-tab.active { color: var(--ink); }
-  .svc-tab.active .chev { opacity: 1; transform: translateX(0); }
-  .svc-tab::before {
-    content: ""; position: absolute; left: -40px; top: 50%; width: 24px; height: 1px;
-    background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform .3s;
-  }
-  .svc-tab.active::before { transform: scaleX(1); transform-origin: left; }
-
-  .svc-panel {
-    position: relative;
-    min-height: 440px;
-  }
-  .svc-content {
-    position: absolute; inset: 0;
-    opacity: 0; transform: translateY(8px);
-    transition: opacity .35s, transform .35s;
-    pointer-events: none;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-  }
-  .svc-content.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .svc-content h3 {
+  .svc-left .section-label { margin-bottom: 28px; }
+  .svc-left h2 {
     font-family: var(--font-display); font-weight: 400;
-    font-size: 42px; line-height: 1.05; letter-spacing: -.02em;
+    font-size: clamp(32px, 3.8vw, 54px);
+    line-height: 1.08; letter-spacing: -.025em;
     margin: 0 0 20px;
   }
-  .svc-content p { color: var(--ink-2); font-size: 16px; line-height: 1.6; margin: 0 0 28px; }
+  .svc-left h2 em { font-style: italic; color: var(--ink-3); }
+  .svc-left p {
+    font-size: 16px; color: var(--ink-3); line-height: 1.6;
+    max-width: 380px; margin: 0 0 36px;
+  }
+  .svc-right {
+    padding: 80px 0;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .svc-card {
+    background: #fff;
+    border-radius: 12px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .svc-card-info {
+    padding: 36px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .svc-card-info h3 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: 22px; line-height: 1.15; letter-spacing: -.01em;
+    margin: 0 0 12px;
+  }
+  .svc-card-info p {
+    font-size: 14px; color: var(--ink-3); line-height: 1.6; margin: 0;
+  }
+  .svc-card-visual {
+    background: #F6F5F1;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 180px; overflow: hidden;
+    color: var(--ink);
+  }
+  .svc-card-visual svg { width: 100%; height: 100%; }
   .svc-bullets { list-style: none; padding: 0; margin: 0; }
   .svc-bullets li {
     padding: 12px 0 12px 28px;
@@ -860,6 +867,11 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
+    .svc-sticky-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+    .svc-left { position: static; padding: 60px 0 32px; }
+    .svc-right { padding: 0 0 60px; }
+    .svc-card { grid-template-columns: 1fr; }
+    .svc-card-visual { min-height: 160px; }
     .hero-bg { will-change: auto; }
     .hero-grid, .section-head, .svc-grid, .map-wrap, .contact-grid, .metrics-inner, .ins-grid, .team-grid, .foot-inner, .clients-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
@@ -990,21 +1002,16 @@
 
 <!-- =========== SERVICES =========== -->
 <section class="services" id="services" data-screen-label="Services">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-label"><span class="n">01 /</span> Practice areas</div>
-      </div>
-      <div>
-        <h2 class="section-title">Four practices, one methodology.</h2>
-        <p class="section-lede">Each engagement is led by a senior principal with twenty-plus years operating in the field. We publish our assumptions, defend them in front of your lenders, and stand by them through construction.</p>
-      </div>
+  <div class="svc-sticky-wrap">
+    <div class="svc-left reveal">
+      <div class="section-label"><span class="n">01 /</span> Practice areas</div>
+      <h2>The right study <em>changes</em> a project's trajectory.</h2>
+      <p>Each engagement is led by a senior principal with twenty-plus years in the field. We publish our assumptions, defend them to your lenders, and stand by them through construction.</p>
+      <a href="#contact" class="btn btn-primary">Book a consultation
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
-
-    <div class="svc-grid reveal">
-      <div class="svc-tabs" role="tablist"></div>
-      <div class="svc-panel" id="svc-panel"></div>
-    </div>
+    <div class="svc-right" id="svc-cards"></div>
   </div>
 </section>
 
@@ -1468,7 +1475,7 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
 
-/* ---------- 5) Services (tabbed) ---------- */
+/* ---------- 5) Services (sticky scroll cards) ---------- */
 (function services() {
   const services = [
     { title: 'Resource estimation & geology',
@@ -1488,8 +1495,7 @@
       bullets: ['Long-term price forecasts (2026 – 2045)','Global cost-curve positioning','Demand scenarios by end-use','Supply disruption probability modelling','Quarterly subscriber memos'],
       visual: 'chart' }
   ];
-  const tabsEl = document.querySelector('.svc-tabs');
-  const panel = document.getElementById('svc-panel');
+  const cardsEl = document.getElementById('svc-cards');
 
   function svcVisual(k) {
     if (k === 'drill') return '<svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width=".6" opacity=".25"/></pattern></defs><g fill="none" stroke="currentColor"><path d="M0 80 Q100 60 200 95 T400 90 L400 130 Q300 120 200 140 T0 130 Z" fill="currentColor" opacity=".05"/><path d="M0 140 Q100 130 200 150 T400 145 L400 200 Q300 190 200 210 T0 200 Z" fill="currentColor" opacity=".08"/><path d="M0 210 Q100 205 200 220 T400 215 L400 280 Q300 275 200 285 T0 275 Z" fill="currentColor" opacity=".12" stroke-dasharray="2 3"/><path d="M0 285 L400 278 L400 360 L0 360 Z" fill="url(#hatch)"/><line x1="200" y1="40" x2="200" y2="340" stroke-width="1.5" stroke-dasharray="4 2"/><circle cx="200" cy="40" r="6" fill="currentColor"/><g font-family="JetBrains Mono, monospace" font-size="9" fill="currentColor"><text x="210" y="95">OVERBURDEN 18m</text><text x="210" y="165">SHALE 42m</text><text x="210" y="245">ORE ZONE 74m · 1.84% Cu</text><text x="210" y="320">BASALT</text></g></g></svg>';
@@ -1518,24 +1524,18 @@
   }
 
   services.forEach((s, i) => {
-    const b = document.createElement('button');
-    b.className = 'svc-tab' + (i === 0 ? ' active' : '');
-    b.dataset.i = i;
-    b.innerHTML = '<span class="idx">0'+(i+1)+'</span><span>'+s.title+'</span><span class="chev">→</span>';
-    tabsEl.appendChild(b);
-
-    const c = document.createElement('div');
-    c.className = 'svc-content' + (i === 0 ? ' active' : '');
-    c.dataset.i = i;
-    c.innerHTML = '<div><h3>'+s.title+'</h3><p>'+s.body+'</p><ul class="svc-bullets">'+s.bullets.map(x => '<li>'+x+'</li>').join('')+'</ul></div><div class="svc-visual"><div class="tag">Fig. '+(i+1)+'.0</div>'+svcVisual(s.visual)+'</div>';
-    panel.appendChild(c);
-  });
-
-  tabsEl.addEventListener('click', (e) => {
-    const tab = e.target.closest('.svc-tab'); if (!tab) return;
-    const i = tab.dataset.i;
-    tabsEl.querySelectorAll('.svc-tab').forEach(t => t.classList.toggle('active', t.dataset.i === i));
-    panel.querySelectorAll('.svc-content').forEach(c => c.classList.toggle('active', c.dataset.i === i));
+    const card = document.createElement('div');
+    card.className = 'svc-card reveal';
+    card.innerHTML =
+      '<div class="svc-card-info">' +
+        '<div>' +
+          '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:12px;">0'+(i+1)+'</div>' +
+          '<h3>'+s.title+'</h3>' +
+          '<p>'+s.body+'</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="svc-card-visual">'+svcVisual(s.visual)+'</div>';
+    cardsEl.appendChild(card);
   });
 })();
 
