@@ -115,7 +115,7 @@
 
   /* ---------- NAV ---------- */
   .nav {
-    display: none;
+    display: block;
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
     backdrop-filter: blur(14px);
@@ -803,6 +803,7 @@
     .hero-grid, .section-head, .svc-grid, .map-wrap, .contact-grid, .metrics-inner, .ins-grid, .team-grid, .foot-inner, .clients-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .nav-inner { padding: 14px 24px; }
     .case { grid-template-columns: 1fr; gap: 8px; }
     .svc-content { grid-template-columns: 1fr; }
     .hero-meta { grid-template-columns: 1fr 1fr; }
@@ -811,11 +812,11 @@
     /* Hero mobile */
     .hero-bg { background-image: url(hero-visual-mobile.webp); background-position: center center; }
     .hero-bg::after { background: linear-gradient(to bottom, transparent 40%, rgba(15,14,12,0.72) 100%); }
-    .hero-content { padding: 72px 24px 40px; align-items: flex-start; text-align: left; justify-content: flex-start; }
+    .hero-content { padding: 84px 24px 40px; align-items: flex-start; text-align: left; justify-content: flex-start; }
     .hero h1 { color: #1c1c1c; }
     .hero h1 em { color: #1c1c1c; }
     .hero-sub { color: #1c1c1c; font-weight: 600; }
-    .hero-eyebrow { color: #6B6560; }
+    .hero-eyebrow { display: none; }
     .hero-stats { display: none; }
     .hero-input-wrap { flex-direction: row; border-radius: 100px; padding: 8px 8px 8px 20px; align-items: center; background: #fff; border: 1px solid var(--line); box-shadow: 0 1px 4px rgba(0,0,0,.06); gap: 6px; }
     .hero-input { padding: 0; background: transparent; color: var(--ink); font-size: 15px; }
