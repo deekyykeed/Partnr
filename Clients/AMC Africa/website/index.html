@@ -451,7 +451,7 @@
     max-width: var(--max); margin: 0 auto;
   }
   .svc-left {
-    flex: 1;
+    flex: 0 0 30%;
     display: flex; flex-direction: column;
     align-items: flex-start; gap: 30px;
     position: sticky; top: 80px;
@@ -472,6 +472,7 @@
     display: flex; flex-direction: column;
     align-items: stretch; gap: 16px;
     padding: 0 0 100px;
+    min-width: 0;
   }
   .svc-card {
     width: 100%;
@@ -512,6 +513,14 @@
 
   /* ---------- CASES ---------- */
   .cases { background: var(--ink); color: var(--bg); }
+  .cases .svc-sticky-wrap { padding: 100px 60px; }
+  .cases .svc-left h2, .cases .svc-left-title {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(32px, 3.8vw, 54px);
+    line-height: 1.08; letter-spacing: -.025em;
+    margin: 0; color: var(--bg);
+  }
+  .cases .svc-left p { color: color-mix(in oklab, var(--bg) 60%, transparent); max-width: 320px; }
   .cases .section-label { color: color-mix(in oklab, var(--bg) 45%, transparent); }
   .cases .section-label .n { color: var(--accent); }
   .cases .section-title { color: var(--bg); }
@@ -1027,17 +1036,14 @@
 
 <!-- =========== CASES =========== -->
 <section class="cases" id="cases" data-screen-label="Projects">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <h2 class="section-title">Selected Projects</h2>
-      </div>
-      <div>
-        <p class="section-lede">Fifty-six studies brought to investment decision since 2019. A sample of public engagements — most of our work is under NDA; references available on request.</p>
-      </div>
+  <div class="svc-sticky-wrap">
+    <div class="svc-left reveal">
+      <h2 class="svc-left-title">Selected Projects</h2>
+      <p>Fifty-six studies brought to investment decision since 2019. Most of our work is under NDA — references available on request.</p>
     </div>
-
-    <div class="case-list reveal" id="case-list"></div>
+    <div class="svc-right">
+      <div class="case-list reveal" id="case-list"></div>
+    </div>
   </div>
 </section>
 
