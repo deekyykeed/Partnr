@@ -488,6 +488,12 @@
   .svc-card-icon {
     width: 24px; height: 24px;
     display: flex; align-items: center; justify-content: center;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.18));
+    transition: filter .25s, transform .25s;
+  }
+  .svc-card:hover .svc-card-icon {
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,.22));
+    transform: translateY(-3px);
   }
   .svc-card-icon img { width: 24px; height: 24px; display: block; }
   .svc-card-info {
