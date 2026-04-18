@@ -174,7 +174,7 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    min-height: 100dvh;
+    height: 100dvh;
     background: #ffffff;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -860,12 +860,12 @@
     .hero-sub { max-width: 100%; }
     .hero-visual { grid-column: 1; grid-row: 2; justify-content: center; overflow: hidden; width: 100%; }
     .hero-truck-img { width: 100%; height: auto; }
-    .hero-stats { grid-column: 1; grid-row: 3; }
+    .hero { height: auto; }
+    .hero-stats { grid-column: 1; grid-row: 3; display: grid; grid-template-columns: 1fr 1fr; }
     .hero h1 { color: #1c1c1c; }
     .hero h1 em { color: #1c1c1c; }
     .hero-sub { color: #1c1c1c; font-weight: 600; }
     .hero-eyebrow { display: none; }
-    .hero-stats { display: none; }
     .hero-input-wrap { flex-direction: row; border-radius: 100px; padding: 8px 8px 8px 20px; align-items: center; background: #fff; border: 1px solid var(--line); box-shadow: 0 1px 4px rgba(0,0,0,.06); gap: 6px; width: 100%; }
     .hero-input { display: block; padding: 0; background: transparent; color: var(--ink); font-size: 15px; flex: 1; }
     .hero-input::placeholder { color: var(--ink-4); }
