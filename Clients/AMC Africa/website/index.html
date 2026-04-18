@@ -312,11 +312,14 @@
   .hero-stats {
     position: relative; z-index: 1;
     display: grid; grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--line);
+    border-top: 1px solid rgba(0,0,0,.1);
+    background: rgba(246,244,239,0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
   .h-stat {
     padding: 22px 32px;
-    border-right: 1px solid var(--line);
+    border-right: 1px solid rgba(0,0,0,.08);
   }
   .h-stat:last-child { border-right: none; }
   .h-stat-num {
