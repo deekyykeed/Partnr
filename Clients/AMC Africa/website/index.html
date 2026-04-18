@@ -807,10 +807,11 @@
     .metrics-grid { grid-template-columns: 1fr 1fr; }
 
     /* Hero mobile */
-    .hero-content { padding: 80px 24px 28px; }
+    .hero-bg { background-image: url(hero-visual-mobile.webp); background-position: center bottom; }
+    .hero-content { padding: 80px 24px 28px; align-items: flex-start; text-align: left; justify-content: flex-start; }
     .hero-stats { grid-template-columns: 1fr 1fr; }
     .h-stat:nth-child(2) { border-right: none; }
-    .h-stat:nth-child(1), .h-stat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.18); }
+    .h-stat:nth-child(1), .h-stat:nth-child(2) { border-bottom: 1px solid rgba(0,0,0,.08); }
   }
 
   @media (max-width: 480px) {
