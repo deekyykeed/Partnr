@@ -441,57 +441,63 @@
   /* ---------- SERVICES (sticky-left / scroll-right) ---------- */
   .services { background: #F2F1ED; padding: 0; }
   .svc-sticky-wrap {
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: start;
-    max-width: var(--max); margin: 0 auto; padding: 0 80px;
+    display: flex; flex-direction: row;
+    justify-content: center; align-items: flex-start;
+    padding: 100px 60px; gap: 60px;
+    overflow: visible;
+    max-width: var(--max); margin: 0 auto;
   }
   .svc-left {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: flex-start; gap: 30px;
     position: sticky; top: 80px;
-    padding: 100px 60px 100px 0;
   }
-  .svc-left .section-label { margin-bottom: 28px; }
   .svc-left h2 {
     font-family: var(--font-display); font-weight: 400;
     font-size: clamp(32px, 3.8vw, 54px);
     line-height: 1.08; letter-spacing: -.025em;
-    margin: 0 0 20px;
+    margin: 0;
   }
   .svc-left h2 em { font-style: italic; color: var(--ink-3); }
   .svc-left p {
     font-size: 16px; color: var(--ink-3); line-height: 1.6;
-    max-width: 380px; margin: 0 0 36px;
+    max-width: 380px; margin: 0;
   }
   .svc-right {
-    padding: 80px 0 160px;
-    display: flex; flex-direction: column; gap: 20px;
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 10px;
+    padding: 0 0 160px;
   }
   .svc-card {
+    width: 100%;
     background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 20px;
+    border: 1px dashed #e8e8e8;
+    display: flex; flex-direction: row;
+    padding: 10px; gap: 10px;
     position: sticky; top: 80px;
-    box-shadow: 0 8px 40px rgba(0,0,0,.10);
   }
   .svc-card-info {
-    padding: 36px;
-    display: flex; flex-direction: column; justify-content: space-between;
+    flex: 1;
+    display: flex; flex-direction: column;
+    gap: 10px; padding: 10px;
   }
   .svc-card-info h3 {
     font-family: var(--font-display); font-weight: 400;
-    font-size: 22px; line-height: 1.15; letter-spacing: -.01em;
-    margin: 0 0 12px;
+    font-size: 20px; line-height: 1.15; letter-spacing: -.01em;
+    margin: 0;
   }
   .svc-card-info p {
     font-size: 14px; color: var(--ink-3); line-height: 1.6; margin: 0;
   }
-  .svc-card-visual {
-    background: #F6F5F1;
-    display: flex; align-items: center; justify-content: center;
-    min-height: 180px; overflow: hidden;
-    color: var(--ink);
+  .svc-card-asset {
+    flex: 1; height: 170px;
+    background: #ebebeb;
+    border-radius: 10px;
+    border: 1px dashed #e8e8e8;
   }
-  .svc-card-visual svg { width: 100%; height: 100%; }
   .svc-bullets { list-style: none; padding: 0; margin: 0; }
   .svc-bullets li {
     padding: 12px 0 12px 28px;
@@ -868,10 +874,11 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
-    .svc-sticky-wrap { grid-template-columns: 1fr; padding: 0 24px; }
-    .svc-left { position: static; padding: 60px 0 32px; }
-    .svc-right { padding: 0 0 60px; }
-    .svc-card-info { padding: 28px 24px; }
+    .svc-sticky-wrap { flex-direction: column; padding: 60px 24px; gap: 32px; }
+    .svc-left { position: static; width: 100%; }
+    .svc-right { width: 100%; padding: 0 0 60px; }
+    .svc-card { flex-direction: column; }
+    .svc-card-asset { height: 140px; }
     .hero-bg { will-change: auto; }
     .hero-grid, .section-head, .svc-grid, .map-wrap, .contact-grid, .metrics-inner, .ins-grid, .team-grid, .foot-inner, .clients-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
@@ -1528,12 +1535,11 @@
     card.className = 'svc-card';
     card.innerHTML =
       '<div class="svc-card-info">' +
-        '<div>' +
-          '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:12px;">0'+(i+1)+'</div>' +
-          '<h3>'+s.title+'</h3>' +
-          '<p>'+s.body+'</p>' +
-        '</div>' +
-      '</div>';
+        '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">0'+(i+1)+'</div>' +
+        '<h3>'+s.title+'</h3>' +
+        '<p>'+s.body+'</p>' +
+      '</div>' +
+      '<div class="svc-card-asset"></div>';
     cardsEl.appendChild(card);
   });
 })();
