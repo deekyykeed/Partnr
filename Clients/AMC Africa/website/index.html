@@ -175,16 +175,25 @@
   .hero {
     position: relative;
     overflow: hidden;
-    background: #F6F4EF;
+    background: #f0eeea;
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid var(--line);
   }
   .hero-bg {
     position: absolute; inset: 0;
+    background: url(hero-visual.webp) center/cover no-repeat;
     transform-origin: center 40%;
     will-change: filter, transform;
     z-index: 0;
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(255,255,255,.15) 0%,
+      rgba(255,255,255,.0) 50%,
+      rgba(240,238,234,.7) 100%);
   }
 
   /* sections layer on top of the sticky hero */
