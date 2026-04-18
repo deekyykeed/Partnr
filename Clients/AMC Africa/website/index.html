@@ -353,29 +353,49 @@
     width: fit-content;
   }
 
-  .hero-stats {
+  .client-ticker {
     grid-column: 1 / -1;
     grid-row: 2;
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 0;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     background: #ffffff;
+    border-top: 1px solid rgba(0,0,0,.07);
+    cursor: grab;
+    user-select: none;
   }
-  .h-stat {
-    padding: 22px 36px;
-    flex: 0 0 auto;
+  .client-ticker::-webkit-scrollbar { display: none; }
+  .client-ticker.grabbing { cursor: grabbing; }
+  .ticker-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    padding: 0;
   }
-  .h-stat-num {
-    font-family: var(--font-body);
-    font-size: clamp(26px, 2.8vw, 40px);
-    font-weight: 700;
-    letter-spacing: -.03em;
-    color: #0D0F0E;
-    line-height: 1;
-  }
-  .h-stat-lbl {
-    margin-top: 4px;
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 40px;
+    font-family: var(--font-mono);
     font-size: 12px;
-    color: #6B6560;
-    letter-spacing: .02em;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #9A9590;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(0,0,0,.07);
+    transition: color .2s;
+  }
+  .ticker-item:hover { color: #1c1c1c; }
+  .ticker-item::before {
+    content: "";
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    opacity: .5;
   }
 
   /* btn kept for rest-of-page sections */
@@ -859,8 +879,7 @@
     .hero-visual { grid-column: 1; grid-row: 2; justify-content: center; overflow: hidden; width: 100%; min-height: 240px; }
     .hero-truck-img { width: 100%; height: 100%; object-fit: cover; }
     .hero { height: auto; }
-    .hero-stats { grid-column: 1; grid-row: 3; justify-content: flex-start; }
-    .h-stat { text-align: center; flex: 1 1 45%; }
+    .client-ticker { grid-column: 1; grid-row: 3; }
     .hero h1 { color: #1c1c1c; }
     .hero h1 em { color: #1c1c1c; }
     .hero-sub { color: #1c1c1c; font-weight: 600; }
@@ -939,11 +958,29 @@
       <source src="hero-truck.mp4" type="video/mp4" />
     </video>
   </div>
-  <div class="hero-stats">
-    <div class="h-stat"><div class="h-stat-num" data-count="340">0</div><div class="h-stat-lbl">Projects delivered</div></div>
-    <div class="h-stat"><div class="h-stat-num" data-count="47">0</div><div class="h-stat-lbl">Countries</div></div>
-    <div class="h-stat"><div class="h-stat-num" data-count="14.2" data-prefix="$" data-suffix="B">0</div><div class="h-stat-lbl">Capex advised</div></div>
-    <div class="h-stat"><div class="h-stat-num" data-count="30" data-suffix="+">0</div><div class="h-stat-lbl">Years experience</div></div>
+  <div class="client-ticker" id="clientTicker" aria-label="Clients">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="ticker-item">Glencore</span>
+      <span class="ticker-item">Anglo American</span>
+      <span class="ticker-item">First Quantum Minerals</span>
+      <span class="ticker-item">Lonmin</span>
+      <span class="ticker-item">Rio Algom</span>
+      <span class="ticker-item">Ivanhoe Mines</span>
+      <span class="ticker-item">Vedanta Resources</span>
+      <span class="ticker-item">Barrick Gold</span>
+      <span class="ticker-item">ZCCM-IH</span>
+      <span class="ticker-item">African Rainbow Minerals</span>
+      <span class="ticker-item">Glencore</span>
+      <span class="ticker-item">Anglo American</span>
+      <span class="ticker-item">First Quantum Minerals</span>
+      <span class="ticker-item">Lonmin</span>
+      <span class="ticker-item">Rio Algom</span>
+      <span class="ticker-item">Ivanhoe Mines</span>
+      <span class="ticker-item">Vedanta Resources</span>
+      <span class="ticker-item">Barrick Gold</span>
+      <span class="ticker-item">ZCCM-IH</span>
+      <span class="ticker-item">African Rainbow Minerals</span>
+    </div>
   </div>
 </header>
 
@@ -1236,6 +1273,66 @@
 /* =============================================================
    African Mining Consultants — interactions (inlined)
    ============================================================= */
+
+/* ---------- 0) Client ticker ---------- */
+(function clientTicker() {
+  const ticker = document.getElementById('clientTicker');
+  const track  = document.getElementById('tickerTrack');
+  if (!ticker || !track) return;
+
+  const SPEED = 0.6; // px per frame
+  let rafId = null;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+
+  function autoScroll() {
+    if (isDragging) return;
+    ticker.scrollLeft += SPEED;
+    const half = track.scrollWidth / 2;
+    if (ticker.scrollLeft >= half) ticker.scrollLeft -= half;
+    rafId = requestAnimationFrame(autoScroll);
+  }
+
+  rafId = requestAnimationFrame(autoScroll);
+
+  ticker.addEventListener('mousedown', e => {
+    isDragging = true;
+    cancelAnimationFrame(rafId);
+    dragStartX = e.pageX;
+    dragStartScroll = ticker.scrollLeft;
+    ticker.classList.add('grabbing');
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    ticker.scrollLeft = dragStartScroll - (e.pageX - dragStartX);
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    ticker.classList.remove('grabbing');
+    rafId = requestAnimationFrame(autoScroll);
+  });
+
+  ticker.addEventListener('touchstart', e => {
+    isDragging = true;
+    cancelAnimationFrame(rafId);
+    dragStartX = e.touches[0].pageX;
+    dragStartScroll = ticker.scrollLeft;
+  }, { passive: true });
+
+  ticker.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    ticker.scrollLeft = dragStartScroll - (e.touches[0].pageX - dragStartX);
+  }, { passive: true });
+
+  ticker.addEventListener('touchend', () => {
+    isDragging = false;
+    rafId = requestAnimationFrame(autoScroll);
+  });
+})();
 
 /* ---------- 0) Apply saved tweaks ---------- */
 (function applyTweaks() {
