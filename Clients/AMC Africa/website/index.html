@@ -174,47 +174,43 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    height: 100dvh;
-    min-height: 580px;
+    min-height: 100dvh;
+    background: #FAFAF8;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
     overflow: hidden;
-    background: #f0eeea;
-    display: flex;
-    flex-direction: column;
     border-bottom: 1px solid var(--line);
   }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background: url(hero-visual.webp) center/cover no-repeat;
-    transform-origin: center 40%;
-    will-change: filter, transform;
-    z-index: 0;
-  }
-  .hero-bg::after {
-    content: "";
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom,
-      rgba(255,255,255,.15) 0%,
-      rgba(255,255,255,.0) 50%,
-      rgba(240,238,234,.7) 100%);
-  }
-
-  /* sections layer on top of the sticky hero */
-  .services, .cases, .metrics, .map-section,
-  .team, .insights, .clients-section, .contact, footer {
-    position: relative;
-    z-index: 1;
-  }
+  .hero-bg { display: none; }
   .hero-topo { display: none; }
 
   .hero-content {
-    position: relative; z-index: 1;
-    flex: 1;
+    grid-column: 1;
+    grid-row: 1;
     display: flex; flex-direction: column;
     align-items: flex-start; justify-content: center;
     text-align: left;
-    padding: 60px 40px 32px;
-    max-width: 560px;
-    width: 100%;
+    padding: 120px 48px 60px 80px;
+  }
+
+  .hero-visual {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  .hero-truck-img {
+    width: 115%;
+    max-width: none;
+    display: block;
+    mix-blend-mode: multiply;
+    position: relative;
+    right: -40px;
+    bottom: 0;
   }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
@@ -362,12 +358,11 @@
   }
 
   .hero-stats {
-    position: relative; z-index: 1;
+    grid-column: 1 / -1;
+    grid-row: 2;
     display: grid; grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid rgba(0,0,0,.1);
-    background: linear-gradient(to bottom, rgba(246,244,239,0.88) 0%, rgba(246,244,239,0) 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--line);
+    background: #FAFAF8;
   }
   .h-stat {
     padding: 22px 32px;
@@ -864,9 +859,11 @@
     .metrics-grid { grid-template-columns: 1fr 1fr; }
 
     /* Hero mobile */
-    .hero-bg { background-image: url(hero-visual-mobile.webp); background-position: center center; }
-    .hero-bg::after { background: linear-gradient(to bottom, transparent 40%, rgba(15,14,12,0.72) 100%); }
-    .hero-content { padding: 84px 24px 40px; align-items: flex-start; text-align: left; justify-content: flex-start; }
+    .hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+    .hero-content { grid-column: 1; grid-row: 1; padding: 84px 24px 32px; align-items: flex-start; text-align: left; justify-content: flex-start; }
+    .hero-visual { grid-column: 1; grid-row: 2; justify-content: center; overflow: visible; }
+    .hero-truck-img { width: 100%; right: 0; }
+    .hero-stats { grid-column: 1; grid-row: 3; }
     .hero h1 { color: #1c1c1c; }
     .hero h1 em { color: #1c1c1c; }
     .hero-sub { color: #1c1c1c; font-weight: 600; }
@@ -940,6 +937,9 @@
         </button>
       </div>
     </div>
+  </div>
+  <div class="hero-visual">
+    <img src="hero-truck.png" alt="Komatsu 930E haul truck" class="hero-truck-img" />
   </div>
   <div class="hero-stats">
     <div class="h-stat"><div class="h-stat-num" data-count="340">0</div><div class="h-stat-lbl">Projects delivered</div></div>
