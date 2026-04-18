@@ -189,9 +189,9 @@
     grid-column: 1;
     grid-row: 1;
     display: flex; flex-direction: column;
-    align-items: flex-start; justify-content: center;
-    text-align: left;
-    padding: 120px 48px 60px 80px;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 64px 40px;
   }
 
   .hero-visual {
@@ -228,25 +228,25 @@
     line-height: 120%;
     letter-spacing: -0.06em;
     color: #1c1c1c;
-    text-align: left;
+    text-align: center;
     max-width: 450px;
     word-wrap: break-word;
     word-break: break-word;
-    margin: 0 0 28px;
+    margin: 0 0 16px;
   }
   .hero h1 em { font-family: "DM Serif Text", serif; font-style: italic; font-weight: 400; color: #1c1c1c; }
   .hero-sub {
     font-size: 18px; line-height: 1.55;
     font-weight: 600;
     color: #1c1c1c;
-    max-width: 540px;
-    margin: 0 0 40px;
+    max-width: 480px;
+    margin: 0 0 24px;
   }
   .hero-cta {
     width: min(450px, 100%);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 6px;
   }
   .hero-input-wrap {
@@ -854,10 +854,10 @@
 
     /* Hero mobile */
     .hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto; overflow: hidden; }
-    .hero-content { grid-column: 1; grid-row: 1; padding: 84px 24px 32px; align-items: flex-start; text-align: left; justify-content: flex-start; width: 100%; min-width: 0; box-sizing: border-box; }
+    .hero-content { grid-column: 1; grid-row: 1; padding: 96px 24px 24px; align-items: center; text-align: center; justify-content: flex-start; width: 100%; min-width: 0; box-sizing: border-box; }
     .hero-sub { max-width: 100%; }
-    .hero-visual { grid-column: 1; grid-row: 2; justify-content: center; overflow: hidden; width: 100%; }
-    .hero-truck-img { width: 100%; height: auto; }
+    .hero-visual { grid-column: 1; grid-row: 2; justify-content: center; overflow: hidden; width: 100%; min-height: 240px; }
+    .hero-truck-img { width: 100%; height: 100%; object-fit: cover; }
     .hero { height: auto; }
     .hero-stats { grid-column: 1; grid-row: 3; justify-content: flex-start; }
     .h-stat { text-align: center; flex: 1 1 45%; }
