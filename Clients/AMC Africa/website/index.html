@@ -356,15 +356,14 @@
   .hero-stats {
     grid-column: 1 / -1;
     grid-row: 2;
-    display: grid; grid-template-columns: repeat(4, 1fr);
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0;
     border-top: 1px solid var(--line);
     background: #ffffff;
   }
   .h-stat {
-    padding: 22px 32px;
-    border-right: 1px solid rgba(0,0,0,.08);
+    padding: 22px 36px;
+    flex: 0 0 auto;
   }
-  .h-stat:last-child { border-right: none; }
   .h-stat-num {
     font-family: var(--font-body);
     font-size: clamp(26px, 2.8vw, 40px);
@@ -861,8 +860,8 @@
     .hero-visual { grid-column: 1; grid-row: 2; justify-content: center; overflow: hidden; width: 100%; }
     .hero-truck-img { width: 100%; height: auto; }
     .hero { height: auto; }
-    .hero-stats { grid-column: 1; grid-row: 3; display: grid; grid-template-columns: 1fr 1fr; }
-    .h-stat { text-align: center; }
+    .hero-stats { grid-column: 1; grid-row: 3; justify-content: flex-start; }
+    .h-stat { text-align: center; flex: 1 1 45%; }
     .hero h1 { color: #1c1c1c; }
     .hero h1 em { color: #1c1c1c; }
     .hero-sub { color: #1c1c1c; font-weight: 600; }
