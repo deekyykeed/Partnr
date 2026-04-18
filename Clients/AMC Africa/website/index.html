@@ -311,6 +311,62 @@
   .h-btn-primary .btn-slide span { display: block; line-height: 1.5; }
   .btn-icon { display: none; }
 
+  /* ---------- MOBILE NAV ---------- */
+  .nav-burger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 36px; height: 36px;
+    background: none; border: none; cursor: pointer; padding: 0;
+  }
+  .nav-burger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--ink);
+    transition: transform .3s, opacity .3s;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .nav-mobile-menu {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 99;
+    padding: 80px 24px 40px;
+    background: color-mix(in oklab, var(--bg) 97%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    gap: 0;
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: opacity .25s, transform .25s;
+    pointer-events: none;
+  }
+  .nav-mobile-menu.open {
+    opacity: 1; transform: translateY(0); pointer-events: auto;
+  }
+  .nav-mobile-link {
+    display: block;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-display);
+    font-size: 28px;
+    letter-spacing: -.02em;
+    color: var(--ink);
+  }
+  .nav-mobile-cta {
+    margin-top: 28px;
+    border-bottom: none;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex; align-items: center;
+    padding: 13px 22px;
+    background: var(--ink); color: var(--bg);
+    border-radius: 999px;
+    width: fit-content;
+  }
+
   .hero-stats {
     position: relative; z-index: 1;
     display: grid; grid-template-columns: repeat(4, 1fr);
@@ -803,6 +859,10 @@
     .hero-grid, .section-head, .svc-grid, .map-wrap, .contact-grid, .metrics-inner, .ins-grid, .team-grid, .foot-inner, .clients-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .brand-tag { display: none; }
+    .nav-burger { display: flex; }
+    .nav-mobile-menu { display: flex; }
     .nav-inner { padding: 14px 24px; }
     .case { grid-template-columns: 1fr; gap: 8px; }
     .svc-content { grid-template-columns: 1fr; }
@@ -853,8 +913,19 @@
       Request advisory
       <svg class="arr" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="navMenu">
+  <a href="#services" class="nav-mobile-link">Services</a>
+  <a href="#cases" class="nav-mobile-link">Projects</a>
+  <a href="#map" class="nav-mobile-link">Footprint</a>
+  <a href="#team" class="nav-mobile-link">People</a>
+  <a href="#insights" class="nav-mobile-link">Insights</a>
+  <a href="#contact" class="nav-mobile-link nav-mobile-cta">Request advisory</a>
+</div>
 
 <!-- =========== HERO =========== -->
 <header class="hero" data-screen-label="Hero">
@@ -1184,6 +1255,25 @@
   root.setAttribute('data-type',    t.typePair || 'serif');
   root.setAttribute('data-density', t.density || 'roomy');
   root.setAttribute('data-theme',   t.theme   || 'light');
+})();
+
+/* ---------- 0) Mobile nav burger ---------- */
+(function mobileNav() {
+  const burger = document.getElementById('navBurger');
+  const menu = document.getElementById('navMenu');
+  if (!burger || !menu) return;
+  burger.addEventListener('click', () => {
+    const open = burger.classList.toggle('open');
+    menu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('.nav-mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 })();
 
 /* ---------- 1) Hero scroll — blur + shrink ---------- */
