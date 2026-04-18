@@ -438,8 +438,8 @@
     margin-top: 24px; line-height: 1.55;
   }
 
-  /* ---------- SERVICES (sticky-left / scroll-right) ---------- */
-  .services { background: #F2F1ED; padding: 0; }
+  /* ---------- SERVICES ---------- */
+  .services { background: #fff; padding: 0; }
   .svc-sticky-wrap {
     display: flex; flex-direction: row;
     justify-content: center; align-items: flex-start;
@@ -467,67 +467,66 @@
   .svc-right {
     flex: 1;
     display: flex; flex-direction: column;
-    align-items: center; gap: 10px;
-    padding: 0 0 160px;
+    align-items: stretch; gap: 16px;
+    padding: 0 0 100px;
   }
   .svc-card {
     width: 100%;
-    background: #fff;
-    border-radius: 20px;
-    border: 1px dashed #e8e8e8;
-    display: flex; flex-direction: row;
-    padding: 10px; gap: 10px;
-    position: sticky; top: 80px;
-  }
-  .svc-card-info {
-    flex: 1;
+    background: var(--paper);
+    border-radius: 16px;
+    border: 1px solid var(--line);
     display: flex; flex-direction: column;
-    gap: 10px; padding: 10px;
+    overflow: hidden;
+  }
+  .svc-card-header {
+    padding: 24px 24px 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .svc-card-icon {
+    width: 40px; height: 40px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+  }
+  .svc-card-icon svg { width: 20px; height: 20px; }
+  .svc-card-info {
+    padding: 0 24px 24px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .svc-card-info .svc-num {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-4);
   }
   .svc-card-info h3 {
     font-family: var(--font-display); font-weight: 400;
-    font-size: 20px; line-height: 1.15; letter-spacing: -.01em;
+    font-size: 22px; line-height: 1.15; letter-spacing: -.01em;
     margin: 0;
   }
-  .svc-card-info p {
-    font-size: 14px; color: var(--ink-3); line-height: 1.6; margin: 0;
-  }
   .svc-card-asset {
-    flex: 1; width: 1px; height: 170px;
-    display: block;
-    background: #ebebeb;
-    border-radius: 10px;
-    border: 1px dashed #e8e8e8;
-    overflow: clip;
-  }
-  .svc-bullets { list-style: none; padding: 0; margin: 0; }
-  .svc-bullets li {
-    padding: 12px 0 12px 28px;
-    position: relative;
-    border-bottom: 1px dashed var(--line-2);
-    font-size: 14.5px;
-  }
-  .svc-bullets li::before {
-    content: ""; position: absolute; left: 0; top: 18px;
-    width: 14px; height: 1px; background: var(--accent);
-  }
-  .svc-visual {
+    width: 100%; height: 200px;
     background: var(--bg-2);
-    border: 1px solid var(--line);
-    position: relative; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-    min-height: 360px;
+    border-top: 1px solid var(--line);
+    overflow: clip;
+    color: var(--ink-3);
   }
-  .svc-visual svg { width: 100%; height: 100%; display: block; }
-  .svc-visual .tag {
-    position: absolute; top: 16px; left: 16px;
-    font-family: var(--font-mono); font-size: 11px;
-    color: var(--ink-3); letter-spacing: .08em; text-transform: uppercase;
-    background: var(--paper); padding: 6px 10px; border: 1px solid var(--line);
-  }
+  .svc-card-asset svg { width: 100%; height: 100%; display: block; }
 
   /* ---------- CASES ---------- */
-  .cases { }
+  .cases { background: var(--ink); color: var(--bg); }
+  .cases .section-label { color: color-mix(in oklab, var(--bg) 45%, transparent); }
+  .cases .section-label .n { color: var(--accent); }
+  .cases .section-title { color: var(--bg); }
+  .cases .section-lede { color: color-mix(in oklab, var(--bg) 60%, transparent); }
+  .cases .case-list { border-top-color: color-mix(in oklab, var(--bg) 15%, transparent); }
+  .cases .case { border-bottom-color: color-mix(in oklab, var(--bg) 12%, transparent); }
+  .cases .case-n { color: color-mix(in oklab, var(--bg) 30%, transparent); }
+  .cases .case-name { color: var(--bg); }
+  .cases .case-desc { color: color-mix(in oklab, var(--bg) 55%, transparent); }
+  .cases .case-meta { color: color-mix(in oklab, var(--bg) 45%, transparent); }
+  .cases .case-chev { color: color-mix(in oklab, var(--bg) 30%, transparent); }
+  .cases .case:hover::before { background: color-mix(in oklab, var(--accent) 18%, transparent); opacity: 1; }
+  .cases .case:hover .case-chev { color: var(--accent); }
   .case-list { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
   .case {
     display: grid; grid-template-columns: 60px 1.5fr 2fr 1fr 1fr 40px;
@@ -876,11 +875,12 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
-    .svc-sticky-wrap { flex-direction: column; padding: 60px 24px; gap: 32px; }
+    .svc-sticky-wrap { flex-direction: column; padding: 60px 24px 0; gap: 32px; }
     .svc-left { position: static; width: 100%; }
-    .svc-right { width: 100%; padding: 0 0 60px; }
-    .svc-card { flex-direction: column; }
-    .svc-card-asset { height: 140px; }
+    .svc-right { width: calc(100% + 48px); margin-left: -24px; padding: 0 0 60px; gap: 0; }
+    .svc-card { border-radius: 0; border-left: none; border-right: none; border-bottom: none; }
+    .svc-card:first-child { border-top: none; }
+    .svc-card-asset { height: 180px; }
     .hero-bg { will-change: auto; }
     .hero-grid, .section-head, .svc-grid, .map-wrap, .contact-grid, .metrics-inner, .ins-grid, .team-grid, .foot-inner, .clients-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
@@ -1532,16 +1532,24 @@
     return '';
   }
 
+  const icons = [
+    '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="3"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2"/></svg>',
+    '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 17l4-6 4 4 6-9"/></svg>',
+    '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 10h6M10 7v6"/></svg>',
+    '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg>'
+  ];
   services.forEach((s, i) => {
     const card = document.createElement('div');
     card.className = 'svc-card';
     card.innerHTML =
-      '<div class="svc-card-info">' +
-        '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">0'+(i+1)+'</div>' +
-        '<h3>'+s.title+'</h3>' +
-        '<p>'+s.body+'</p>' +
+      '<div class="svc-card-header">' +
+        '<div class="svc-card-icon">' + icons[i % icons.length] + '</div>' +
       '</div>' +
-      '<div class="svc-card-asset"></div>';
+      '<div class="svc-card-info">' +
+        '<div class="svc-num">0'+(i+1)+'</div>' +
+        '<h3>'+s.title+'</h3>' +
+      '</div>' +
+      '<div class="svc-card-asset">' + svcVisual(s.visual) + '</div>';
     cardsEl.appendChild(card);
   });
 })();
