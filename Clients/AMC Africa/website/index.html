@@ -99,7 +99,7 @@
   [data-theme="dark"][data-accent="oxblood"] { --accent:#C26666; --accent-ink:#E3B3B3; --accent-soft:#3A1E1E; }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); overflow-x: clip; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
   body {
     font-family: var(--font-body);
     font-size: 16px;
@@ -904,6 +904,7 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
+    body { overflow-x: hidden; }
     .wrap { padding: 0 24px; }
     .svc-sticky-wrap { grid-template-columns: 1fr; padding: 60px 24px 0; gap: 32px; }
     .svc-left { position: static; width: 100%; }
