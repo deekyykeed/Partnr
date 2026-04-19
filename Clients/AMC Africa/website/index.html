@@ -896,9 +896,10 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
-    .svc-sticky-wrap { flex-direction: column; padding: 60px 24px 0; gap: 32px; }
+    .svc-sticky-wrap { flex-direction: column; padding: 60px 24px 0; gap: 32px; overflow-x: clip; }
     .svc-left { position: static; flex: none; width: 100%; }
     .svc-right { width: calc(100% + 48px); margin-left: -24px; padding: 0 0 60px; gap: 0; }
+    .cases .svc-right { width: 100%; margin-left: 0; }
     .svc-card { border-radius: 0; border-left: none; border-right: none; border-bottom: none; }
     .svc-card:first-child { border-top: none; }
     .svc-card-asset { height: 180px; }
