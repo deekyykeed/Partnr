@@ -542,41 +542,51 @@
   .svc-card-asset svg { width: 100%; height: 100%; display: block; }
 
   /* ---------- CASES ---------- */
-  .cases { background: var(--ink); color: var(--bg); }
-  .cases .svc-sticky-wrap { padding: 100px 60px; }
-  .cases .svc-left h2 {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: clamp(32px, 3.8vw, 54px);
-    line-height: 1.08; letter-spacing: -.025em;
-    margin: 0; color: var(--bg);
-  }
-  .cases .svc-left h2 em { font-style: italic; color: color-mix(in oklab, var(--bg) 50%, transparent); }
-  .cases .svc-left p { color: color-mix(in oklab, var(--bg) 60%, transparent); max-width: 380px; }
-  .cases .section-label { color: color-mix(in oklab, var(--bg) 45%, transparent); }
-  .cases .section-label .n { color: var(--accent); }
-  .cases .section-title { color: var(--bg); }
-  .cases .section-lede { color: color-mix(in oklab, var(--bg) 60%, transparent); }
-  .case-list {
+  .cases { background: var(--bg); border-top: 1px solid var(--line); }
+  .cases .section-head { margin-bottom: 48px; }
+  .case-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .case-card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 14px; padding: 24px;
     display: flex; flex-direction: column;
-    border-top: 1px solid color-mix(in oklab, var(--bg) 12%, transparent);
-  }
-  .case {
-    display: grid; grid-template-columns: 40px 1fr auto;
-    gap: 32px; padding: 28px 0;
-    border-bottom: 1px solid color-mix(in oklab, var(--bg) 12%, transparent);
-    align-items: center;
     text-decoration: none; color: inherit; cursor: pointer;
-    transition: opacity .2s;
+    transition: border-color .2s, transform .25s, box-shadow .25s;
   }
-  .case:hover { opacity: .65; }
-  .case-n { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 28%, transparent); letter-spacing: .08em; flex-shrink: 0; }
-  .case-main { display: flex; flex-direction: column; gap: 5px; }
-  .case-name { font-family: var(--font-display); font-size: 22px; line-height: 1.2; letter-spacing: -.015em; color: var(--bg); }
-  .case-desc { font-size: 13px; color: color-mix(in oklab, var(--bg) 50%, transparent); line-height: 1.5; }
-  .case-meta { display: flex; gap: 20px; align-items: center; flex-shrink: 0; }
-  .case-loc { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 38%, transparent); letter-spacing: .06em; text-transform: uppercase; }
-  .case-tag { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: .06em; }
-  .case-yr  { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 25%, transparent); letter-spacing: .06em; }
+  .case-card:hover { border-color: var(--ink); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+  .case-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .case-com {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent-ink); background: var(--accent-soft);
+    padding: 5px 11px; border-radius: 999px;
+  }
+  .case-yr { font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: .06em; }
+  .case-loc-type { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
+  .case-name { font-family: var(--font-display); font-size: 22px; line-height: 1.2; letter-spacing: -.015em; color: var(--ink); margin-bottom: 20px; flex: 1; }
+  .case-stage { margin-bottom: 20px; }
+  .case-stage-labels {
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 9px;
+    color: var(--ink-4); letter-spacing: .05em; text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  .case-stage-bar { height: 3px; background: var(--line-2); border-radius: 999px; overflow: hidden; }
+  .case-stage-fill { height: 100%; background: var(--accent); border-radius: 999px; }
+  .case-bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-top: 16px; border-top: 1px solid var(--line);
+  }
+  .case-stat-num { font-family: var(--font-display); font-size: 22px; letter-spacing: -.01em; color: var(--ink); line-height: 1; }
+  .case-stat-lbl { font-family: var(--font-mono); font-size: 9px; color: var(--ink-4); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+  .case-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; color: var(--ink);
+    padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+    transition: background .2s, border-color .2s, color .2s;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .case-card:hover .case-cta { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .cases-foot { margin-top: 48px; display: flex; justify-content: center; }
 
   /* ---------- METRICS BAND ---------- */
   .metrics {
@@ -920,8 +930,7 @@
     .nav-burger { display: flex; }
     .nav-mobile-menu { display: flex; }
     .nav-inner { padding: 14px 24px; }
-    .case { grid-template-columns: 32px 1fr; gap: 16px; }
-    .case-meta { display: none; }
+    .case-grid { grid-template-columns: 1fr; }
     .svc-content { grid-template-columns: 1fr; }
     .hero-meta { grid-template-columns: 1fr 1fr; }
     .metrics-grid { grid-template-columns: 1fr 1fr; }
@@ -1060,13 +1069,17 @@
 
 <!-- =========== CASES =========== -->
 <section class="cases" id="cases" data-screen-label="Projects">
-  <div class="svc-sticky-wrap">
-    <div class="svc-left reveal">
-      <h2>Selected <em>Projects.</em></h2>
-      <p>56 engagements across 47 countries. Most are under NDA — references available on request.</p>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="section-label"><span class="n">02</span> Work</span></div>
+      <div>
+        <h2 class="section-title">Selected <em>Projects.</em></h2>
+        <p class="section-lede">56 engagements across 47 countries. Most are under NDA — references available on request.</p>
+      </div>
     </div>
-    <div class="svc-right">
-      <div class="case-list reveal" id="case-list"></div>
+    <div class="case-grid reveal" id="case-list"></div>
+    <div class="cases-foot reveal">
+      <a href="#contact" class="btn btn-ghost">See all engagements &nbsp;&rarr;</a>
     </div>
   </div>
 </section>
@@ -1598,25 +1611,29 @@
 /* ---------- 6) Cases ---------- */
 (function cases() {
   const data = [
-    { n:'01', name:'Kolwezi Copper Extension',  desc:'Pre-feasibility and resource update for 180Mt deposit',   loc:'DRC',          yr:'2025', tag:'Cu · PFS',    com:'cu'  },
-    { n:'02', name:'Oyapock Rare Earth Basin',  desc:'Greenfield exploration strategy and JORC code resources', loc:'Guyana',       yr:'2025', tag:'REE · SCOPE', com:'ree' },
-    { n:'03', name:'Kalahari Lithium Salars',   desc:'Definitive feasibility study, bankable',                  loc:'Botswana',     yr:'2024', tag:'Li · DFS',    com:'li'  },
-    { n:'04', name:'Witwatersrand Deep Gold',   desc:'Mine optimisation and geotechnical re-design',            loc:'South Africa', yr:'2024', tag:'Au · OPT',    com:'au'  },
-    { n:'05', name:'Nimba Iron Complex',        desc:'Technical due diligence for $1.2B acquisition',           loc:'Guinea',       yr:'2024', tag:'Fe · DD',     com:'fe'  },
-    { n:'06', name:'Barents Uranium Project',   desc:'Independent review for sovereign wealth fund',            loc:'Finland',      yr:'2023', tag:'U · IR',      com:'u'   }
+    { name:'Kolwezi Copper Extension',  loc:'DRC',          type:'Pre-feasibility',        yr:'2025', com:'Cu',  stage:50, stat:'180Mt',  statLbl:'Resource' },
+    { name:'Oyapock Rare Earth Basin',  loc:'Guyana',       type:'Scoping study',          yr:'2025', com:'REE', stage:25, stat:'Greenfield', statLbl:'Exploration' },
+    { name:'Kalahari Lithium Salars',   loc:'Botswana',     type:'Definitive feasibility', yr:'2024', com:'Li',  stage:75, stat:'$1.4B',  statLbl:'Capex est.' },
+    { name:'Witwatersrand Deep Gold',   loc:'South Africa', type:'Mine optimisation',      yr:'2024', com:'Au',  stage:90, stat:'3.2km',  statLbl:'Mine depth' },
+    { name:'Nimba Iron Complex',        loc:'Guinea',       type:'Technical due diligence',yr:'2024', com:'Fe',  stage:60, stat:'$1.2B',  statLbl:'Acquisition' },
+    { name:'Barents Uranium Project',   loc:'Finland',      type:'Independent review',     yr:'2023', com:'U',   stage:40, stat:'ISR',    statLbl:'Method' }
   ];
 
   document.getElementById('case-list').innerHTML = data.map(function(d) {
-    return '<a class="case" href="#">' +
-      '<span class="case-n">' + d.n + '</span>' +
-      '<div class="case-main">' +
-        '<div class="case-name">' + d.name + '</div>' +
-        '<div class="case-desc">' + d.desc + '</div>' +
-      '</div>' +
-      '<div class="case-meta">' +
-        '<span class="case-loc">' + d.loc + '</span>' +
-        '<span class="case-tag">' + d.tag + '</span>' +
+    return '<a class="case-card" href="#">' +
+      '<div class="case-card-top">' +
+        '<span class="case-com">' + d.com + '</span>' +
         '<span class="case-yr">' + d.yr + '</span>' +
+      '</div>' +
+      '<div class="case-loc-type">' + d.loc + ' &middot; ' + d.type + '</div>' +
+      '<div class="case-name">' + d.name + '</div>' +
+      '<div class="case-stage">' +
+        '<div class="case-stage-labels"><span>Scoping</span><span>PFS</span><span>DFS</span><span>Ops</span></div>' +
+        '<div class="case-stage-bar"><div class="case-stage-fill" style="width:' + d.stage + '%"></div></div>' +
+      '</div>' +
+      '<div class="case-bottom">' +
+        '<div><div class="case-stat-num">' + d.stat + '</div><div class="case-stat-lbl">' + d.statLbl + '</div></div>' +
+        '<span class="case-cta">Request brief &rarr;</span>' +
       '</div>' +
     '</a>';
   }).join('');
