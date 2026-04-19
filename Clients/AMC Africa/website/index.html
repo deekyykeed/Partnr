@@ -590,36 +590,45 @@
 
   /* ---------- METRICS BAND ---------- */
   .metrics {
-    background: var(--ink);
-    color: var(--bg);
-    padding: 100px 0;
-    position: relative; overflow: hidden;
+    background: var(--ink); color: var(--bg);
+    padding: 120px 0; position: relative; overflow: hidden;
   }
   .metrics::before {
     content: ""; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, color-mix(in oklab, var(--accent) 30%, transparent), transparent 60%);
+    background: radial-gradient(ellipse at 10% 80%, color-mix(in oklab, var(--accent) 20%, transparent), transparent 55%);
     pointer-events: none;
   }
   [data-theme="dark"] .metrics { background: var(--bg-2); }
-  .metrics-inner { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .metrics-lead {
-    font-family: var(--font-display); font-size: clamp(32px, 3.5vw, 44px);
-    line-height: 1.1; letter-spacing: -.02em;
-    font-weight: 400;
+  .metrics-inner { position: relative; }
+  .metrics-eyebrow {
+    font-family: var(--font-display); font-style: italic;
+    font-size: clamp(15px, 1.6vw, 19px);
+    color: color-mix(in oklab, var(--bg) 45%, transparent);
+    line-height: 1.5; letter-spacing: -.01em;
+    max-width: 520px; margin-bottom: 80px;
   }
-  .metrics-lead em { font-style: italic; color: color-mix(in oklab, var(--accent) 50%, #fff); }
-  .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 40px; }
-  .metric .m-num {
+  .metrics-eyebrow em { font-style: italic; color: color-mix(in oklab, var(--accent) 55%, #fff); }
+  .metrics-row {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid color-mix(in oklab, var(--bg) 12%, transparent);
+  }
+  .metric {
+    padding: 48px 40px 0 0;
+    border-right: 1px solid color-mix(in oklab, var(--bg) 12%, transparent);
+  }
+  .metric:last-child { border-right: none; padding-right: 0; }
+  .metric:not(:first-child) { padding-left: 40px; }
+  .m-num {
     font-family: var(--font-display);
-    font-size: clamp(48px, 5vw, 72px);
-    line-height: 1; letter-spacing: -.025em;
-    color: var(--bg);
+    font-size: clamp(44px, 5.5vw, 80px);
+    line-height: 1; letter-spacing: -.03em;
+    color: var(--bg); margin-bottom: 20px;
   }
-  .metric .m-lbl {
-    color: color-mix(in oklab, var(--bg) 60%, transparent);
-    font-size: 13px; margin-top: 12px;
-    border-top: 1px solid color-mix(in oklab, var(--bg) 25%, transparent);
-    padding-top: 12px;
+  .m-lbl {
+    font-family: var(--font-mono); font-size: 10.5px;
+    color: color-mix(in oklab, var(--bg) 40%, transparent);
+    letter-spacing: .1em; text-transform: uppercase;
+    line-height: 1.5;
   }
 
   /* ---------- MAP ---------- */
@@ -1087,10 +1096,8 @@
 <!-- =========== METRICS BAND =========== -->
 <section class="metrics" data-screen-label="Metrics">
   <div class="wrap metrics-inner">
-    <div class="metrics-lead reveal">
-      Geology is probability. <em>Engineering is evidence.</em> We work at the boundary where one becomes the other — and where investment decisions become defensible.
-    </div>
-    <div class="metrics-grid reveal">
+    <p class="metrics-eyebrow reveal">Geology is probability. <em>Engineering is evidence.</em> We work at the boundary where one becomes the other.</p>
+    <div class="metrics-row reveal">
       <div class="metric"><div class="m-num">28 yrs</div><div class="m-lbl">Average principal tenure</div></div>
       <div class="metric"><div class="m-num">JORC · NI 43-101</div><div class="m-lbl">Qualified persons on staff</div></div>
       <div class="metric"><div class="m-num">$14.2B</div><div class="m-lbl">Financed on our studies</div></div>
