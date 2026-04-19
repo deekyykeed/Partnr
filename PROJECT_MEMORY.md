@@ -1,25 +1,27 @@
 ---
 type: index
 tags: [partnr, status, active]
-updated: 2026-04-12
+updated: 2026-04-19
 ---
 
 # Partnr — Project Memory
 
-**Last updated:** 12 April 2026
+**Last updated:** 19 April 2026
 
 ---
 
 ## Next Session
 
-- [ ] **AMC — present new HTML concept to Edwin**: `index.html` is a full taste-skill build — ready to show. Send link or screen-record a walkthrough.
-- [ ] **AMC — get real stats from Edwin**: Successful Projects, Industry Partners, Client Satisfaction (placeholders in Mission section of all builds)
+- [ ] **AMC — send live URL to Edwin**: site is live at partnr-five.vercel.app — share and book review call
+- [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Senior engineers (count-up KPIs in hero; placeholders currently)
+- [ ] **AMC — add hero image**: placeholder right-column still needs a real mining/geology visual (user has reference webp in Downloads)
+- [ ] **AMC — style guide + component system**: build shared HTML/CSS component library for all Partnr clients
+- [ ] **New client Doc**: consulting monetization site — gather details (brand, niche, tone) and start build
 - [ ] **M&J Zambia — draft reply to Tamuka**: 5 specific improvements + grand slam offer framing — HOT, still unsent
 - [ ] **NGM — check updated ngmzambia.com and respond to Serge**
 - [ ] **Nolands — pitch Access Learning Hub to Kelvin Chungu** (+260 211 355267 / kelvinc@nolands.co.zm)
 - [ ] Follow up Aston AIR (Kalasa) if no reply
 - [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (stale)
-- [ ] Merge `claude/inspiring-dhawan` branch into main (video reorganisation)
 
 ---
 
@@ -32,10 +34,11 @@ A web design + AI agency targeting established SMEs in Zambia (Kitwe & Lusaka). 
 ## Active Deal
 
 ### [[AMC Africa Client File|AMC Africa]] (African Mining Consultants Ltd)
-- **Status:** Active Deal — website redesign concept in progress
+- **Status:** Active Deal — concept built and live, pending Edwin review
 - **Contact:** Edwin Mukonka, GM / Principal Consultant — emukonka@amc-africa.com · +260 96 682 5144
-- **History:** Cold email sent ~late Mar 2026 → Edwin replied same day (24 Mar) → Call 1 Apr (underprepared) → Call 2 Apr (green light to build concept)
-- **Next:** Build Framer concept for AMC, present to Edwin
+- **Live concept:** partnr-five.vercel.app
+- **History:** Cold email sent ~late Mar 2026 → Edwin replied same day (24 Mar) → Call 1 Apr (underprepared) → Call 2 Apr (green light to build concept) → Site built and deployed 19 Apr
+- **Next:** Send Edwin the live URL, book review call, get real stats for KPI placeholders
 - **Notes:** Edwin forwarded the cold email himself. First Partnr client to reply. Strong case study potential — clients include Glencore, Anglo American, FQM.
 
 ---
@@ -75,6 +78,15 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 ---
 
 ## Session Log
+
+### 19 Apr 2026
+- **Git cleanup** — deleted `master` branch (local + remote); `main` is now the sole branch. Removed stale `brave-nightingale` worktree. `claude/inspiring-dhawan` was never a real branch — removed from Next Session list.
+- **AMC website — full rebuild** (`Clients/AMC Africa/website/index.html`): replaced previous version entirely using Claude Design handoff bundle. New stack: Fraunces display serif + Inter Tight body + JetBrains Mono data. Palette: warm off-white `#F6F4EF`, near-black `#15181A`, forest-green accent `#2F5D3A`. Sections: Nav · Hero (commodity ticker + animated KPIs) · Tabbed services · Case studies · Metrics band · Interactive Africa footprint map · Team · Insights · Clients · Contact · Footer. Tweaks panel built-in (accent, type pair, density, dark mode).
+- **Hero iterations**: white background, topo overlay removed, text centered, copy updated to Monotree-style ("Put certainty first" with animated underline), stats row converted to Monotree-style with vertical dividers between KPIs, ticker card gets rounded corners + drop shadow.
+- **Deployed to Vercel**: auto-deploys via Git integration on push to `main`. Live URL: **partnr-five.vercel.app**
+- **Merged `claude/amc-second-section-fsF0U`**: services left-column (single para + 6-service bullet list) + projects section (2/5 ratio, card grid with image placeholders) + mobile fixes (overflow clipping, horizontal scroll, case card widths).
+- **New client noted**: Doc — consulting monetization site. No details gathered yet.
+- **Hero image**: user has Monotree-style product illustration webp in Downloads — to be used as hero right-column image next session.
 
 ### 12 Apr 2026
 - **Hero layout fixed** (`index.html`): resolved hero-coords collision with nav CTA — moved from `position: absolute` to in-flow `hero-top` row. Changed `justify-content: flex-end` → `space-between`. Fixed `100vh` → `100dvh`. Added cubic-bezier easing throughout, grain overlay, active/press states on all buttons, `text-wrap: balance` on headings, staggered hero load animation.
