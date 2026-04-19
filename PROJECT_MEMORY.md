@@ -13,8 +13,12 @@ updated: 2026-04-19
 ## Next Session
 
 - [ ] **AMC — send live URL to Edwin**: site is live at partnr-five.vercel.app — share and book review call
-- [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Senior engineers (count-up KPIs in hero; placeholders currently)
-- [ ] **AMC — add hero image**: placeholder right-column still needs a real mining/geology visual (user has reference webp in Downloads)
+- [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Senior engineers (count-up KPIs; hero placeholders still in)
+- [ ] **AMC — Map section decision**: keep (office footprint) or remove/replace? Ask Edwin or decide before next build session
+- [ ] **AMC — Contact section**: update from fictional JHB/London addresses to real AMC Kitwe details (emukonka@amc-africa.com)
+- [ ] **AMC — Clients section**: swap fictional logos (Katanga, Birimian…) for real clients (Glencore, Anglo American, FQM, Lonmin, Rio Algom)
+- [ ] **AMC — Nav "est. 1998"** → should be 1994 per copy doc
+- [ ] **AMC — Team section**: fictional names — replace with real AMC principals when Edwin provides them
 - [ ] **AMC — style guide + component system**: build shared HTML/CSS component library for all Partnr clients
 - [ ] **New client Doc**: consulting monetization site — gather details (brand, niche, tone) and start build
 - [ ] **M&J Zambia — draft reply to Tamuka**: 5 specific improvements + grand slam offer framing — HOT, still unsent
@@ -78,6 +82,17 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 ---
 
 ## Session Log
+
+### 19 Apr 2026 (session 2)
+- **Sticky fix** — `overflow-x: hidden` → `overflow-x: clip` on html/body, then flex → CSS grid on `.svc-sticky-wrap` with `align-self: start`. Left column now sticks correctly in Services and Projects sections.
+- **Nav button** — matched to hero button: Framer-style layered box-shadow, inner white glow, `font-weight: 600`, arrow hidden.
+- **Mobile padding** — standardised to `20px` across all sections (`.wrap`, `.svc-sticky-wrap`, `.nav-inner`, `.hero-content`).
+- **Folder restructure** — `website/` now: `assets/hero-truck.mp4`, `assets/icons/`, `pages/about.html`, `pages/contact.html`. `_Website_Copy.md` moved to `Clients/AMC Africa/` root. Asset paths updated in `index.html`.
+- **Services left column** — bullet list removed (duplicated right-side cards), paragraph trimmed. Sticky offset changed to `30vh`.
+- **Projects section — full redesign** — dark card grid with placeholder thumbnails replaced with a 3×2 white rounded card grid. Each card: commodity pill, year, location·type, project name (display serif), stage progress bar (Scoping→PFS→DFS→Ops), key stat + "Request brief →" CTA. "See all engagements" button below grid.
+- **Metrics band — redesign** — removed 2-col text+grid split. Short italic quote as eyebrow above a full-width 4-stat horizontal row with vertical dividers. Numbers scale to clamp(44px,5.5vw,80px).
+- **Section label** — `.section-label` given squircle styling: background, border, `border-radius: 8px`.
+- **Map section question raised** — user asked what it's for (vs Projects). Needs decision: keep, remove, or repurpose.
 
 ### 19 Apr 2026
 - **Git cleanup** — deleted `master` branch (local + remote); `main` is now the sole branch. Removed stale `brave-nightingale` worktree. `claude/inspiring-dhawan` was never a real branch — removed from Next Session list.

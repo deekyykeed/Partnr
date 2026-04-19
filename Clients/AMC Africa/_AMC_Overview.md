@@ -24,6 +24,7 @@
 | 8 Apr 2026 | Unframer MCP connected. 4 sections rewritten: Hero, Services, Bento, Achievements |
 | 10 Apr 2026 | Switched to template project (jubilant-radish). Full AMC offer extracted from amc-africa.com. Hero + Mission sections updated. |
 | 12 Apr 2026 | Standalone HTML concept built from scratch using taste-skill. Full site: hero, mission, services, clients, why, FAQ, CTA, footer. Ready to present to Edwin. |
+| 19 Apr 2026 (session 2) | Major site improvements: sticky fix (flex→grid), nav button restyled, mobile padding standardised, folder restructure, projects section full redesign (3×2 card grid + stage progress bars), metrics band redesign (full-width stat row), section label squircle styling. Live at partnr-five.vercel.app. |
 
 ---
 
@@ -49,33 +50,35 @@
 
 ## Standalone HTML Concept (`website/index.html`)
 
-Built 12 Apr 2026 using taste-skill from scratch. Intended as a presentation asset / alternative concept for Edwin.
+Live at **partnr-five.vercel.app** — auto-deploys on push to `main`.
 
 **Stack:** Vanilla HTML/CSS/JS — no framework, no build step
-**Fonts:** Syne (display) · Plus Jakarta Sans (body) · Syne Mono (labels)
-**Palette:** `#0B0B0B` ink · `#F4F1E9` chalk · `#3572CC` blue
+**Fonts:** Fraunces (display) · Inter Tight (body) · JetBrains Mono (labels)
+**Palette:** `#F6F4EF` bg · `#15181A` ink · `#2F5D3A` accent (forest, swappable via tweaks panel)
+**File structure:** `assets/hero-truck.mp4` · `assets/icons/` · `pages/about.html` · `pages/contact.html`
 
-| Section | Status |
-|---|---|
-| Nav | ✅ Done |
-| Hero (dark, outlined type, dot-grid) | ✅ Done |
-| Marquee | ✅ Done |
-| Mission + Stats | ✅ Done |
-| Services (expandable rows) | ✅ Done |
-| Clients (spotlight hover) | ✅ Done |
-| Why AMC (zigzag layout) | ✅ Done |
-| FAQ | ✅ Done |
-| CTA Band | ✅ Done |
-| Footer | ✅ Done |
-
-**Version history:** `index-v1.html` (Cormorant Garamond dark) · `index-v2.html` (Syne/Epilogue light) · `index.html` (current taste-skill build)
-
-### Pending — Awaiting Real Numbers from Edwin
-| Section | Placeholder | Notes |
+| Section | Status | Notes |
 |---|---|---|
-| Mission stats | Successful Projects / 150 | Need real project count |
-| Mission stats | Industry Partners / 40 | Need real partner count |
-| Mission stats | Client Satisfaction / 98% | Replace or confirm |
+| Nav | ✅ Done | Pill button matches hero style |
+| Hero | ✅ Done | Video right column, email CTA, client ticker |
+| Services | ✅ Done | Sticky left col, 4 service cards |
+| Projects | ✅ Done | 3×2 card grid, stage progress bar, commodity pills |
+| Metrics band | ✅ Done | Full-width 4-stat row, quote eyebrow |
+| Map (Africa footprint) | ⚠️ Decision needed | Keep / remove / repurpose? |
+| Team | ⚠️ Fictional | Replace with real AMC principals |
+| Insights | ⚠️ Placeholder | Replace with real AMC memos |
+| Clients | ⚠️ Fictional logos | Swap to Glencore, Anglo American, FQM, Lonmin, Rio Algom |
+| Contact | ⚠️ Wrong address | Update to real Kitwe address + emukonka@amc-africa.com |
+| Footer | ⚠️ Wrong details | "est. 1998" should be 1994; email/reg details wrong |
+
+### Pending — Awaiting Real Data from Edwin
+| Item | Placeholder | Notes |
+|---|---|---|
+| Hero KPIs | Placeholder numbers | Need real projects delivered, countries, capex, engineers |
+| Metrics band | 28 yrs · $14.2B · 0 | Invented — need real figures |
+| Team bios | Fictional names | Edwin to provide principals |
+| Clients section | Katanga, Birimian… | Replace with confirmed real clients |
+| Contact address | JHB/London | Real: Kitwe, Zambia |
 
 ---
 
