@@ -535,49 +535,42 @@
   /* ---------- CASES ---------- */
   .cases { background: var(--ink); color: var(--bg); }
   .cases .svc-sticky-wrap { padding: 100px 60px; }
-  .cases .svc-left h2, .cases .svc-left-title {
+  .cases .svc-left h2 {
     font-family: var(--font-display); font-weight: 400;
     font-size: clamp(32px, 3.8vw, 54px);
     line-height: 1.08; letter-spacing: -.025em;
     margin: 0; color: var(--bg);
   }
-  .cases .svc-left p { color: color-mix(in oklab, var(--bg) 60%, transparent); max-width: 320px; }
+  .cases .svc-left h2 em { font-style: italic; color: color-mix(in oklab, var(--bg) 50%, transparent); }
+  .cases .svc-left p { color: color-mix(in oklab, var(--bg) 60%, transparent); max-width: 380px; }
   .cases .section-label { color: color-mix(in oklab, var(--bg) 45%, transparent); }
   .cases .section-label .n { color: var(--accent); }
   .cases .section-title { color: var(--bg); }
   .cases .section-lede { color: color-mix(in oklab, var(--bg) 60%, transparent); }
-  .cases .case-list { border-top-color: color-mix(in oklab, var(--bg) 15%, transparent); }
-  .cases .case { border-bottom-color: color-mix(in oklab, var(--bg) 12%, transparent); }
-  .cases .case-n { color: color-mix(in oklab, var(--bg) 30%, transparent); }
-  .cases .case-name { color: var(--bg); }
-  .cases .case-desc { color: color-mix(in oklab, var(--bg) 55%, transparent); }
-  .cases .case-meta { color: color-mix(in oklab, var(--bg) 45%, transparent); }
-  .cases .case-chev { color: color-mix(in oklab, var(--bg) 30%, transparent); }
-  .cases .case:hover::before { background: color-mix(in oklab, var(--accent) 18%, transparent); opacity: 1; }
-  .cases .case:hover .case-chev { color: var(--accent); }
-  .case-list { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
+  .case-list {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: color-mix(in oklab, var(--bg) 10%, transparent);
+  }
   .case {
-    display: grid; grid-template-columns: 60px 1.5fr 2fr 1fr 1fr 40px;
-    gap: 32px; align-items: center;
-    padding: 32px 0;
-    border-bottom: 1px solid var(--line);
-    cursor: pointer;
-    position: relative;
-    transition: padding .3s;
+    background: var(--ink); display: flex; flex-direction: column;
+    cursor: pointer; overflow: hidden; text-decoration: none; color: inherit;
+    transition: background .25s;
   }
-  .case::before {
-    content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: 0;
-    background: var(--accent-soft); opacity: 0; transition: opacity .3s;
-    z-index: -1;
+  .case:hover { background: color-mix(in oklab, var(--ink) 88%, var(--bg)); }
+  .case-thumb { width: 100%; height: 160px; overflow: hidden; flex-shrink: 0; }
+  .case-thumb svg { width: 100%; height: 100%; display: block; }
+  .case-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .case-n { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 30%, transparent); letter-spacing: .08em; }
+  .case-name { font-family: var(--font-display); font-size: 20px; line-height: 1.2; letter-spacing: -.01em; color: var(--bg); }
+  .case-desc { font-size: 13px; color: color-mix(in oklab, var(--bg) 55%, transparent); line-height: 1.5; }
+  .case-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 12px; border-top: 1px solid color-mix(in oklab, var(--bg) 10%, transparent);
+    margin-top: 8px;
   }
-  .case:hover { padding-left: 24px; padding-right: 24px; }
-  .case:hover::before { opacity: 1; }
-  .case-n { font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); }
-  .case-name { font-family: var(--font-display); font-size: 24px; letter-spacing: -.015em; }
-  .case-desc { color: var(--ink-3); font-size: 14px; }
-  .case-meta { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); letter-spacing: .04em; text-transform: uppercase; }
-  .case-chev { color: var(--ink-4); transition: transform .3s, color .3s; }
-  .case:hover .case-chev { color: var(--accent); transform: translateX(4px); }
+  .case-loc { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 40%, transparent); letter-spacing: .06em; text-transform: uppercase; }
+  .case-tag { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: .06em; }
+  .case-yr  { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 28%, transparent); letter-spacing: .06em; }
 
   /* ---------- METRICS BAND ---------- */
   .metrics {
@@ -918,7 +911,7 @@
     .nav-burger { display: flex; }
     .nav-mobile-menu { display: flex; }
     .nav-inner { padding: 14px 24px; }
-    .case { grid-template-columns: 1fr; gap: 8px; }
+    .case-list { grid-template-columns: 1fr; }
     .svc-content { grid-template-columns: 1fr; }
     .hero-meta { grid-template-columns: 1fr 1fr; }
     .metrics-grid { grid-template-columns: 1fr 1fr; }
@@ -1067,8 +1060,8 @@
 <section class="cases" id="cases" data-screen-label="Projects">
   <div class="svc-sticky-wrap">
     <div class="svc-left reveal">
-      <h2 class="svc-left-title">Selected Projects</h2>
-      <p>56 studies. 47 countries. Most under NDA — references on request.</p>
+      <h2>Selected <em>Projects.</em></h2>
+      <p>56 engagements across 47 countries. Our work spans scoping studies through to bankable definitive feasibility — across base metals, precious metals, and critical minerals. Most are under NDA; references available on request.</p>
     </div>
     <div class="svc-right">
       <div class="case-list reveal" id="case-list"></div>
@@ -1603,16 +1596,73 @@
 /* ---------- 6) Cases ---------- */
 (function cases() {
   const data = [
-    { n:'01', name:'Kolwezi Copper Extension',  desc:'Pre-feasibility and resource update for 180Mt deposit',   loc:'DRC',          yr:'2025', tag:'Cu · PFS' },
-    { n:'02', name:'Oyapock Rare Earth Basin',  desc:'Greenfield exploration strategy and JORC code resources', loc:'Guyana',       yr:'2025', tag:'REE · SCOPE' },
-    { n:'03', name:'Kalahari Lithium Salars',   desc:'Definitive feasibility study, bankable (DFS)',            loc:'Botswana',     yr:'2024', tag:'Li · DFS' },
-    { n:'04', name:'Witwatersrand Deep Gold',   desc:'Mine optimisation and geotechnical re-design',            loc:'South Africa', yr:'2024', tag:'Au · OPT' },
-    { n:'05', name:'Nimba Iron Complex',        desc:'Technical due diligence for $1.2B acquisition',           loc:'Guinea',       yr:'2024', tag:'Fe · DD' },
-    { n:'06', name:'Barents Uranium Project',   desc:'Independent review for sovereign wealth fund',            loc:'Finland',      yr:'2023', tag:'U · IR' }
+    { n:'01', name:'Kolwezi Copper Extension',  desc:'Pre-feasibility and resource update for 180Mt deposit',   loc:'DRC',          yr:'2025', tag:'Cu · PFS',    com:'cu'  },
+    { n:'02', name:'Oyapock Rare Earth Basin',  desc:'Greenfield exploration strategy and JORC code resources', loc:'Guyana',       yr:'2025', tag:'REE · SCOPE', com:'ree' },
+    { n:'03', name:'Kalahari Lithium Salars',   desc:'Definitive feasibility study, bankable',                  loc:'Botswana',     yr:'2024', tag:'Li · DFS',    com:'li'  },
+    { n:'04', name:'Witwatersrand Deep Gold',   desc:'Mine optimisation and geotechnical re-design',            loc:'South Africa', yr:'2024', tag:'Au · OPT',    com:'au'  },
+    { n:'05', name:'Nimba Iron Complex',        desc:'Technical due diligence for $1.2B acquisition',           loc:'Guinea',       yr:'2024', tag:'Fe · DD',     com:'fe'  },
+    { n:'06', name:'Barents Uranium Project',   desc:'Independent review for sovereign wealth fund',            loc:'Finland',      yr:'2023', tag:'U · IR',      com:'u'   }
   ];
-  document.getElementById('case-list').innerHTML = data.map(d =>
-    '<a class="case" href="#"><span class="case-n">'+d.n+'</span><span class="case-name">'+d.name+'</span><span class="case-desc">'+d.desc+'</span><span class="case-meta">'+d.loc+'</span><span class="case-meta">'+d.tag+' · '+d.yr+'</span><span class="case-chev">→</span></a>'
-  ).join('');
+
+  function thumb(com) {
+    if (com === 'cu') {
+      return '<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="160" fill="#111413"/><path d="M0 0 Q200 8 400 0 L400 30 Q200 38 0 30Z" fill="#1E1914"/><path d="M0 30 Q200 42 400 32 L400 68 Q200 76 0 68Z" fill="#161210"/><path d="M0 68 Q200 78 400 70 L400 108 Q200 116 0 108Z" fill="#1C1812"/><path d="M0 108 Q200 116 400 110 L400 160 L0 160Z" fill="#121008"/><path d="M156 0 Q170 46 160 98 Q150 134 165 160" fill="none" stroke="#B87333" stroke-width="2.5" opacity=".9"/><path d="M162 0 Q176 46 166 98 Q156 134 171 160" fill="none" stroke="#D4935A" stroke-width=".8" opacity=".3"/><text x="14" y="149" font-family="JetBrains Mono,monospace" font-size="9" fill="#B87333" opacity=".6">Cu · DRC · 180Mt deposit</text></svg>';
+    }
+    if (com === 'ree') {
+      var g = '', dots = '';
+      for (var y = 26; y < 148; y += 26) g += '<line x1="0" y1="'+y+'" x2="400" y2="'+y+'" stroke="#3DBFBF" stroke-width=".4" opacity=".18"/>';
+      for (var x = 26; x < 400; x += 26) g += '<line x1="'+x+'" y1="0" x2="'+x+'" y2="148" stroke="#3DBFBF" stroke-width=".4" opacity=".18"/>';
+      for (var dy = 26; dy < 148; dy += 52) for (var dx = 26; dx < 400; dx += 52) dots += '<circle cx="'+dx+'" cy="'+dy+'" r="2.5" fill="#3DBFBF" opacity=".55"/>';
+      return '<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="160" fill="#0C1315"/>'+g+dots+'<text x="14" y="149" font-family="JetBrains Mono,monospace" font-size="9" fill="#3DBFBF" opacity=".6">REE · Guyana · Greenfield</text></svg>';
+    }
+    if (com === 'li') {
+      var lines = '';
+      for (var i = 0; i < 13; i++) {
+        var y = 14 + i * 10, w = Math.sin(i / 2.2) * 3;
+        lines += '<path d="M0 '+y+' Q100 '+(y+w)+' 200 '+y+' Q300 '+(y-w)+' 400 '+y+'" fill="none" stroke="#7BB8E8" stroke-width="'+(i < 8 ? 0.4 : 0.7)+'" opacity="'+(0.1 + i * 0.02)+'"/>';
+      }
+      return '<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="160" fill="#0E1218"/>'+lines+'<text x="14" y="149" font-family="JetBrains Mono,monospace" font-size="9" fill="#7BB8E8" opacity=".6">Li · Botswana · Salar DFS</text></svg>';
+    }
+    if (com === 'au') {
+      return '<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="160" fill="#121008"/><path d="M-50 28 L450 8 L450 48 L-50 68Z" fill="#1C1810"/><path d="M-50 68 L450 48 L450 88 L-50 108Z" fill="#141008"/><path d="M-50 108 L450 88 L450 128 L-50 148Z" fill="#1C1810"/><path d="M-50 148 L450 128 L450 160 L-50 160Z" fill="#100E06"/><path d="M82 0 L118 160" fill="none" stroke="#C9A84C" stroke-width="2.5" opacity=".9"/><path d="M88 0 L124 160" fill="none" stroke="#E8C86E" stroke-width=".8" opacity=".3"/><text x="14" y="149" font-family="JetBrains Mono,monospace" font-size="9" fill="#C9A84C" opacity=".6">Au · South Africa · UG optim.</text></svg>';
+    }
+    if (com === 'fe') {
+      var bands = '', y2 = 0;
+      [14,8,18,10,16,8,20,10,14,18,10,14].forEach(function(h, i) {
+        bands += '<rect x="0" y="'+y2+'" width="400" height="'+h+'" fill="'+(i%2===0?'#C45A3A':'#1A1412')+'" opacity="'+(i%2===0?0.38:0.9)+'"/>';
+        y2 += h;
+      });
+      return '<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="160" fill="#13100D"/>'+bands+'<text x="14" y="149" font-family="JetBrains Mono,monospace" font-size="9" fill="#C45A3A" opacity=".7">Fe · Guinea · $1.2B DD</text></svg>';
+    }
+    if (com === 'u') {
+      var circles = '', rays = '';
+      for (var r = 20; r <= 180; r += 20) circles += '<circle cx="200" cy="80" r="'+r+'" fill="none" stroke="#8BC34A" stroke-width=".5" opacity="'+(0.06 + (1 - r/180) * 0.22)+'"/>';
+      for (var a = 0; a < 360; a += 30) {
+        var rad = a * Math.PI / 180;
+        rays += '<line x1="200" y1="80" x2="'+(200 + Math.cos(rad)*200)+'" y2="'+(80 + Math.sin(rad)*160)+'" stroke="#8BC34A" stroke-width=".4" opacity=".1"/>';
+      }
+      return '<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="160" fill="#0E1208"/>'+rays+circles+'<circle cx="200" cy="80" r="5" fill="#8BC34A" opacity=".8"/><text x="14" y="149" font-family="JetBrains Mono,monospace" font-size="9" fill="#8BC34A" opacity=".6">U · Finland · Sovereign review</text></svg>';
+    }
+    return '';
+  }
+
+  document.getElementById('case-list').innerHTML = data.map(function(d) {
+    return '<a class="case" href="#">' +
+      '<div class="case-thumb">' + thumb(d.com) + '</div>' +
+      '<div class="case-body">' +
+        '<span class="case-n">' + d.n + '</span>' +
+        '<div class="case-name">' + d.name + '</div>' +
+        '<div class="case-desc">' + d.desc + '</div>' +
+        '<div class="case-footer">' +
+          '<span class="case-loc">' + d.loc + '</span>' +
+          '<span style="display:flex;gap:12px;align-items:center">' +
+            '<span class="case-tag">' + d.tag + '</span>' +
+            '<span class="case-yr">' + d.yr + '</span>' +
+          '</span>' +
+        '</div>' +
+      '</div>' +
+    '</a>';
+  }).join('');
 })();
 
 /* ---------- 7) Africa map ---------- */
