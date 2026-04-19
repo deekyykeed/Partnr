@@ -99,7 +99,7 @@
   [data-theme="dark"][data-accent="oxblood"] { --accent:#C26666; --accent-ink:#E3B3B3; --accent-soft:#3A1E1E; }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); overflow-x: hidden; }
   body {
     font-family: var(--font-body);
     font-size: 16px;
@@ -451,7 +451,7 @@
     max-width: var(--max); margin: 0 auto;
   }
   .svc-left {
-    flex: 0 0 30%;
+    flex: 0 0 40%;
     display: flex; flex-direction: column;
     align-items: flex-start; gap: 30px;
     position: sticky; top: 80px;
@@ -466,6 +466,19 @@
   .svc-left p {
     font-size: 16px; color: var(--ink-3); line-height: 1.6;
     max-width: 380px; margin: 0;
+  }
+  .svc-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .svc-list li {
+    font-size: 14px; color: var(--ink-3); line-height: 1.4;
+    padding-left: 16px; position: relative;
+  }
+  .svc-list li::before {
+    content: ''; position: absolute; left: 0; top: 7px;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent);
   }
   .svc-right {
     flex: 1;
@@ -522,49 +535,41 @@
   /* ---------- CASES ---------- */
   .cases { background: var(--ink); color: var(--bg); }
   .cases .svc-sticky-wrap { padding: 100px 60px; }
-  .cases .svc-left h2, .cases .svc-left-title {
+  .cases .svc-left h2 {
     font-family: var(--font-display); font-weight: 400;
     font-size: clamp(32px, 3.8vw, 54px);
     line-height: 1.08; letter-spacing: -.025em;
     margin: 0; color: var(--bg);
   }
-  .cases .svc-left p { color: color-mix(in oklab, var(--bg) 60%, transparent); max-width: 320px; }
+  .cases .svc-left h2 em { font-style: italic; color: color-mix(in oklab, var(--bg) 50%, transparent); }
+  .cases .svc-left p { color: color-mix(in oklab, var(--bg) 60%, transparent); max-width: 380px; }
   .cases .section-label { color: color-mix(in oklab, var(--bg) 45%, transparent); }
   .cases .section-label .n { color: var(--accent); }
   .cases .section-title { color: var(--bg); }
   .cases .section-lede { color: color-mix(in oklab, var(--bg) 60%, transparent); }
-  .cases .case-list { border-top-color: color-mix(in oklab, var(--bg) 15%, transparent); }
-  .cases .case { border-bottom-color: color-mix(in oklab, var(--bg) 12%, transparent); }
-  .cases .case-n { color: color-mix(in oklab, var(--bg) 30%, transparent); }
-  .cases .case-name { color: var(--bg); }
-  .cases .case-desc { color: color-mix(in oklab, var(--bg) 55%, transparent); }
-  .cases .case-meta { color: color-mix(in oklab, var(--bg) 45%, transparent); }
-  .cases .case-chev { color: color-mix(in oklab, var(--bg) 30%, transparent); }
-  .cases .case:hover::before { background: color-mix(in oklab, var(--accent) 18%, transparent); opacity: 1; }
-  .cases .case:hover .case-chev { color: var(--accent); }
-  .case-list { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
+  .case-list {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: color-mix(in oklab, var(--bg) 10%, transparent);
+  }
   .case {
-    display: grid; grid-template-columns: 60px 1.5fr 2fr 1fr 1fr 40px;
-    gap: 32px; align-items: center;
-    padding: 32px 0;
-    border-bottom: 1px solid var(--line);
-    cursor: pointer;
-    position: relative;
-    transition: padding .3s;
+    background: var(--ink); display: flex; flex-direction: column;
+    cursor: pointer; overflow: hidden; text-decoration: none; color: inherit;
+    transition: background .25s;
   }
-  .case::before {
-    content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: 0;
-    background: var(--accent-soft); opacity: 0; transition: opacity .3s;
-    z-index: -1;
+  .case:hover { background: color-mix(in oklab, var(--ink) 88%, var(--bg)); }
+  .case-thumb { width: 100%; height: 160px; flex-shrink: 0; background: #2E3430; }
+  .case-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .case-n { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 30%, transparent); letter-spacing: .08em; }
+  .case-name { font-family: var(--font-display); font-size: 20px; line-height: 1.2; letter-spacing: -.01em; color: var(--bg); }
+  .case-desc { font-size: 13px; color: color-mix(in oklab, var(--bg) 55%, transparent); line-height: 1.5; }
+  .case-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 12px; border-top: 1px solid color-mix(in oklab, var(--bg) 10%, transparent);
+    margin-top: 8px;
   }
-  .case:hover { padding-left: 24px; padding-right: 24px; }
-  .case:hover::before { opacity: 1; }
-  .case-n { font-family: var(--font-mono); font-size: 12px; color: var(--ink-4); }
-  .case-name { font-family: var(--font-display); font-size: 24px; letter-spacing: -.015em; }
-  .case-desc { color: var(--ink-3); font-size: 14px; }
-  .case-meta { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); letter-spacing: .04em; text-transform: uppercase; }
-  .case-chev { color: var(--ink-4); transition: transform .3s, color .3s; }
-  .case:hover .case-chev { color: var(--accent); transform: translateX(4px); }
+  .case-loc { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 40%, transparent); letter-spacing: .06em; text-transform: uppercase; }
+  .case-tag { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: .06em; }
+  .case-yr  { font-family: var(--font-mono); font-size: 11px; color: color-mix(in oklab, var(--bg) 28%, transparent); letter-spacing: .06em; }
 
   /* ---------- METRICS BAND ---------- */
   .metrics {
@@ -890,9 +895,10 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
-    .svc-sticky-wrap { flex-direction: column; padding: 60px 24px 0; gap: 32px; }
-    .svc-left { position: static; width: 100%; }
+    .svc-sticky-wrap { flex-direction: column; padding: 60px 24px 0; gap: 32px; overflow-x: clip; }
+    .svc-left { position: static; flex: none; width: 100%; }
     .svc-right { width: calc(100% + 48px); margin-left: -24px; padding: 0 0 60px; gap: 0; }
+    .cases .svc-right { width: calc(100% + 48px); margin-left: -24px; }
     .svc-card { border-radius: 0; border-left: none; border-right: none; border-bottom: none; }
     .svc-card:first-child { border-top: none; }
     .svc-card-asset { height: 180px; }
@@ -905,7 +911,7 @@
     .nav-burger { display: flex; }
     .nav-mobile-menu { display: flex; }
     .nav-inner { padding: 14px 24px; }
-    .case { grid-template-columns: 1fr; gap: 8px; }
+    .case-list { grid-template-columns: 1fr; }
     .svc-content { grid-template-columns: 1fr; }
     .hero-meta { grid-template-columns: 1fr 1fr; }
     .metrics-grid { grid-template-columns: 1fr 1fr; }
@@ -1031,8 +1037,16 @@
 <section class="services" id="services" data-screen-label="Services">
   <div class="svc-sticky-wrap">
     <div class="svc-left reveal">
-<h2>What we <em>do.</em></h2>
-      <p>Senior-led. Bankable. No sub-consultants.</p>
+      <h2>What we <em>do.</em></h2>
+      <p>Senior-led, bankable work — from first drill hole to final report. Our principals carry every engagement and sign every document.</p>
+      <ul class="svc-list">
+        <li>Mining Services</li>
+        <li>Exploration &amp; Geological Services</li>
+        <li>GIS &amp; Environmental Services</li>
+        <li>Metallurgical Services</li>
+        <li>Geotechnical Engineering Services</li>
+        <li>Strategy &amp; Investment Advisory</li>
+      </ul>
       <a href="#contact" class="h-btn h-btn-primary h-btn-standalone">
         <span class="btn-slide">Book a consultation</span>
         <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" width="16" height="16" aria-hidden="true"><path fill="#ffffff" fill-rule="evenodd" d="M11.8214 0.0977331c0.2883 -0.1052509 0.6005 -0.1264465 0.9005 -0.0610159 0.3029 0.0660858 0.5805 0.2177638 0.7997 0.4370018 0.2192 0.219238 0.3709 0.496818 0.437 0.799741 0.0654 0.29992 0.0442 0.6122 -0.061 0.90043l-3.574 10.71201 -0.0002 0.0007c-0.0871 0.2634 -0.2404 0.5001 -0.4453 0.6873 -0.2043 0.1867 -0.45301 0.3178 -0.72238 0.381 -0.26942 0.0657 -0.55131 0.0601 -0.81798 -0.0161 -0.26643 -0.0761 -0.50848 -0.2201 -0.70245 -0.4179l-1.91734 -1.9086 -2.01406 1.0415c-0.15705 0.0812 -0.34532 0.0734 -0.49515 -0.0205 -0.14982 -0.0938 -0.23893 -0.2599 -0.23434 -0.4366l0.08257 -3.18376 7.04493 -5.11741c0.2793 -0.20286 0.3413 -0.59371 0.1384 -0.87298 -0.2029 -0.27928 -0.59371 -0.34122 -0.87299 -0.13836L2.20283 8.0884 0.473125 6.35869l-0.000058 -0.00005 -0.000126 -0.00013c-0.187323 -0.18719 -0.325225 -0.41797 -0.4013217 -0.67163 -0.07555546 -0.25185 -0.0878308 -0.51841 -0.0357814 -0.77609 0.0521166 -0.28151 0.1779581 -0.54421 0.3647391 -0.76128 0.18806 -0.21856 0.431073 -0.38293 0.703923 -0.47612l0.00337 -0.00115L11.8214 0.0977331Z" clip-rule="evenodd"/></svg>
@@ -1046,8 +1060,8 @@
 <section class="cases" id="cases" data-screen-label="Projects">
   <div class="svc-sticky-wrap">
     <div class="svc-left reveal">
-      <h2 class="svc-left-title">Selected Projects</h2>
-      <p>56 studies. 47 countries. Most under NDA — references on request.</p>
+      <h2>Selected <em>Projects.</em></h2>
+      <p>56 engagements across 47 countries. Our work spans scoping studies through to bankable definitive feasibility — across base metals, precious metals, and critical minerals. Most are under NDA; references available on request.</p>
     </div>
     <div class="svc-right">
       <div class="case-list reveal" id="case-list"></div>
@@ -1582,16 +1596,31 @@
 /* ---------- 6) Cases ---------- */
 (function cases() {
   const data = [
-    { n:'01', name:'Kolwezi Copper Extension',  desc:'Pre-feasibility and resource update for 180Mt deposit',   loc:'DRC',          yr:'2025', tag:'Cu · PFS' },
-    { n:'02', name:'Oyapock Rare Earth Basin',  desc:'Greenfield exploration strategy and JORC code resources', loc:'Guyana',       yr:'2025', tag:'REE · SCOPE' },
-    { n:'03', name:'Kalahari Lithium Salars',   desc:'Definitive feasibility study, bankable (DFS)',            loc:'Botswana',     yr:'2024', tag:'Li · DFS' },
-    { n:'04', name:'Witwatersrand Deep Gold',   desc:'Mine optimisation and geotechnical re-design',            loc:'South Africa', yr:'2024', tag:'Au · OPT' },
-    { n:'05', name:'Nimba Iron Complex',        desc:'Technical due diligence for $1.2B acquisition',           loc:'Guinea',       yr:'2024', tag:'Fe · DD' },
-    { n:'06', name:'Barents Uranium Project',   desc:'Independent review for sovereign wealth fund',            loc:'Finland',      yr:'2023', tag:'U · IR' }
+    { n:'01', name:'Kolwezi Copper Extension',  desc:'Pre-feasibility and resource update for 180Mt deposit',   loc:'DRC',          yr:'2025', tag:'Cu · PFS',    com:'cu'  },
+    { n:'02', name:'Oyapock Rare Earth Basin',  desc:'Greenfield exploration strategy and JORC code resources', loc:'Guyana',       yr:'2025', tag:'REE · SCOPE', com:'ree' },
+    { n:'03', name:'Kalahari Lithium Salars',   desc:'Definitive feasibility study, bankable',                  loc:'Botswana',     yr:'2024', tag:'Li · DFS',    com:'li'  },
+    { n:'04', name:'Witwatersrand Deep Gold',   desc:'Mine optimisation and geotechnical re-design',            loc:'South Africa', yr:'2024', tag:'Au · OPT',    com:'au'  },
+    { n:'05', name:'Nimba Iron Complex',        desc:'Technical due diligence for $1.2B acquisition',           loc:'Guinea',       yr:'2024', tag:'Fe · DD',     com:'fe'  },
+    { n:'06', name:'Barents Uranium Project',   desc:'Independent review for sovereign wealth fund',            loc:'Finland',      yr:'2023', tag:'U · IR',      com:'u'   }
   ];
-  document.getElementById('case-list').innerHTML = data.map(d =>
-    '<a class="case" href="#"><span class="case-n">'+d.n+'</span><span class="case-name">'+d.name+'</span><span class="case-desc">'+d.desc+'</span><span class="case-meta">'+d.loc+'</span><span class="case-meta">'+d.tag+' · '+d.yr+'</span><span class="case-chev">→</span></a>'
-  ).join('');
+
+  document.getElementById('case-list').innerHTML = data.map(function(d) {
+    return '<a class="case" href="#">' +
+      '<div class="case-thumb"></div>' +
+      '<div class="case-body">' +
+        '<span class="case-n">' + d.n + '</span>' +
+        '<div class="case-name">' + d.name + '</div>' +
+        '<div class="case-desc">' + d.desc + '</div>' +
+        '<div class="case-footer">' +
+          '<span class="case-loc">' + d.loc + '</span>' +
+          '<span style="display:flex;gap:12px;align-items:center">' +
+            '<span class="case-tag">' + d.tag + '</span>' +
+            '<span class="case-yr">' + d.yr + '</span>' +
+          '</span>' +
+        '</div>' +
+      '</div>' +
+    '</a>';
+  }).join('');
 })();
 
 /* ---------- 7) Africa map ---------- */
