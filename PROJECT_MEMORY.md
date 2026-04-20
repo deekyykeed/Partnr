@@ -12,7 +12,6 @@ updated: 2026-04-20
 
 ## Next Session
 
-- [ ] **Inspiration library — drop screenshots** into the 11 site folders created under `Library/Inspiration/websites/` (empty folders won't be tracked by git until files are added)
 - [ ] **AMC — send live URL to Edwin**: site is live at partnr-five.vercel.app — share and book review call
 - [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Senior engineers (count-up KPIs; hero placeholders still in)
 - [ ] **AMC — Map section decision**: keep (office footprint) or remove/replace? Ask Edwin or decide before next build session
@@ -85,10 +84,9 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 ## Session Log
 
 ### 20 Apr 2026 (session 2)
-- **Inspiration library created** — new folder `Library/Inspiration/websites/` for collecting design reference screenshots. One subfolder per site. Seeded with 11 empty folders, ready for screenshot drops:
-  - `sajon-portfolio/` · `ai-pm-saas/` · `esress-crm/` · `wangku-emura-ai-finance/` · `prodmast-manufacturing/` · `clause-contract-management/` · `logistics-landing/` · `granger-health/` · `dstudio-ai-landing/` · `conceptzilla-fleet-control/` · `movexa-logistics/`
+- **Inspiration library created** — new folder `Library/Inspiration/websites/` for collecting design reference screenshots. One subfolder per site. Seeded with 11 sites, 55 screenshots:
+  - `sajon-portfolio/` (6) · `ai-pm-saas/` (6) · `esress-crm/` (4) · `wangku-emura-ai-finance/` (11) · `prodmast-manufacturing/` (3) · `clause-contract-management/` (5) · `logistics-landing/` (3) · `granger-health/` (9) · `dstudio-ai-landing/` (5) · `conceptzilla-fleet-control/` (2) · `movexa-logistics/` (2)
 - **Convention:** each website gets its own folder; screenshots dropped in natively (no strict naming). Used for design/copy inspiration across client builds.
-- **Note:** empty folders won't be tracked until screenshots are added.
 
 ### 20 Apr 2026
 - **Client logos** — created `assets/logos/` folder. Downloaded and filed: Glencore (SVG ×2 incl. white), Anglo American (SVG ×2), First Quantum Minerals (PNG). Still needed: Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick Gold, ZCCM-IH, African Rainbow Minerals.
