@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vela — Investment Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #F9F9FC;
+      color: #0D0D1A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; font: inherit; border: none; background: none; padding: 0; }
+    img { display: block; max-width: 100%; }
+
+    :root {
+      --bg:        #F9F9FC;
+      --bg-dark:   #07070E;
+      --bg-dark-2: #0E0E1C;
+      --ink:       #0D0D1A;
+      --ink-2:     #5A5A72;
+      --ink-3:     #9898A8;
+      --accent:    #5B5BF6;
+      --accent-2:  #8B5CF6;
+      --border:    #E4E4EC;
+      --border-dk: rgba(255,255,255,0.08);
+      --max-w:     1160px;
+      --gutter:    clamp(20px, 5vw, 40px);
+    }
+
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ============================================================
+       NAV — floating pill, centered
+       ============================================================ */
+    .nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 500;
+      width: min(calc(100% - 40px), 840px);
+    }
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 10px 10px 20px;
+      background: rgba(7, 7, 14, 0.75);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      gap: 16px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: rgba(255,255,255,0.9); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .nav-login {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      padding: 8px 14px;
+      transition: color 0.15s;
+    }
+    .nav-login:hover { color: #fff; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      background: #fff;
+      color: var(--ink);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+    }
+    .burger span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    /* ============================================================
+       HERO — dark, centered, glow
+       ============================================================ */
+    .hero {
+      background: var(--bg-dark);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px var(--gutter) 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Glow blobs — CSS only, no images */
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: clamp(400px, 60vw, 900px);
+      height: clamp(400px, 60vw, 900px);
+      background: radial-gradient(circle, rgba(91,91,246,0.18) 0%, transparent 65%);
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 65%);
+      bottom: 5%;
+      right: 5%;
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 8px;
+      background: rgba(91,91,246,0.12);
+      border: 1px solid rgba(91,91,246,0.25);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px var(--accent);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(52px, 8vw, 100px);
+      font-weight: 600;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      color: #fff;
+      max-width: 860px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+    }
+    .hero-desc {
+      font-size: clamp(15px, 1.5vw, 17px);
+      color: rgba(255,255,255,0.45);
+      max-width: 480px;
+      line-height: 1.72;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #4A4AE5; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 52px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-avatars {
+      display: flex;
+      align-items: center;
+    }
+    .hero-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5B5BF6, #8B5CF6);
+      border: 2px solid var(--bg-dark);
+      margin-left: -10px;
+    }
+    .hero-avatar:first-child { margin-left: 0; }
+    .hero-avatar:nth-child(2) { background: linear-gradient(135deg, #06B6D4, #5B5BF6); }
+    .hero-avatar:nth-child(3) { background: linear-gradient(135deg, #F59E0B, #EF4444); }
+    .hero-avatar:nth-child(4) { background: linear-gradient(135deg, #10B981, #06B6D4); }
+    .hero-proof-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+    .hero-proof-text strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+    /* Scroll divider */
+    .hero-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      z-index: 1;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
+    }
+    .hero-scroll-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ============================================================
+       LOGOS — light strip
+       ============================================================ */
+    .logos {
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .logos-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .logos-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .logos-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .logo-item {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .logo-item:hover { opacity: 1; }
+
+    /* ============================================================
+       SECTION COMMON
+       ============================================================ */
+    .section { padding: clamp(72px, 9vw, 112px) 0; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      background: rgba(91,91,246,0.08);
+      border: 1px solid rgba(91,91,246,0.16);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.07;
+      color: var(--ink);
+      max-width: 660px;
+    }
+    .section-title em { font-style: italic; color: var(--ink-2); }
+    .section-sub {
+      font-size: 16.5px;
+      color: var(--ink-2);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    /* ============================================================
+       FEATURES — 2-col alternating
+       ============================================================ */
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: clamp(48px, 6vw, 80px) 0;
+      border-top: 1px solid var(--border);
+    }
+    .feature-row:first-child { border-top: none; }
+    .feature-row.reverse .feature-text { order: 2; }
+    .feature-row.reverse .feature-visual { order: 1; }
+    .feature-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .feature-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .feature-title em { font-style: italic; }
+    .feature-body {
+      font-size: 16px;
+      color: var(--ink-2);
+      line-height: 1.72;
+      margin-bottom: 28px;
+    }
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+    .feature-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .feature-visual {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, #0E0E20 0%, #15152A 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+    }
+    .feature-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 60% 40%, rgba(91,91,246,0.15) 0%, transparent 60%);
+    }
+    .feature-visual-icon {
+      width: 42px;
+      height: 42px;
+      opacity: 0.25;
+      stroke: rgba(255,255,255,0.8);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      position: relative;
+      z-index: 1;
+    }
+    .feature-visual-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================================
+       STATS — dark band
+       ============================================================ */
+    .stats-band {
+      background: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-band::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(91,91,246,0.1) 0%, transparent 65%);
+      top: -200px;
+      left: -100px;
+      pointer-events: none;
+    }
+    .stats-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .stats-header .section-title { color: #fff; max-width: 460px; }
+    .stats-header .section-sub { color: rgba(255,255,255,0.4); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border-dk);
+      border: 1px solid var(--border-dk);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .stat-card {
+      background: var(--bg-dark-2);
+      padding: 36px 32px;
+    }
+    .stat-val {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(52px, 6vw, 80px);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-val sup {
+      font-size: 0.45em;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+    .stat-lbl {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       TESTIMONIAL
+       ============================================================ */
+    .testimonial {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .testimonial-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .quote-mark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 120px;
+      line-height: 0.6;
+      color: var(--border);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .quote-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 36px;
+    }
+    .quote-text em { font-style: italic; color: var(--accent); }
+    .quote-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .quote-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5B5BF6, #8B5CF6);
+      flex-shrink: 0;
+    }
+    .quote-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .quote-title {
+      font-size: 12.5px;
+      color: var(--ink-3);
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       HOW IT WORKS — numbered steps
+       ============================================================ */
+    .steps-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step-card {
+      padding: 28px;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .step-card:hover {
+      border-color: rgba(91,91,246,0.3);
+      box-shadow: 0 4px 32px rgba(91,91,246,0.06);
+    }
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .step-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .step-body {
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       CTA BAND — dark with glow
+       ============================================================ */
+    .cta-section {
+      background: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(91,91,246,0.2) 0%, transparent 65%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .cta-inner {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-label { margin-bottom: 20px; }
+    .cta-label .section-label {
+      background: rgba(91,91,246,0.15);
+      border-color: rgba(91,91,246,0.3);
+    }
+    .cta-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: #fff;
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+    .cta-title em { font-style: italic; color: rgba(255,255,255,0.45); }
+    .cta-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 40px;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--bg-dark-2);
+      border-top: 1px solid var(--border-dk);
+      padding: 56px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border-dk);
+      margin-bottom: 32px;
+    }
+    .footer-brand .nav-logo {
+      display: block;
+      margin-bottom: 14px;
+    }
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.7;
+      max-width: 220px;
+      margin-bottom: 24px;
+    }
+    .footer-col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.38);
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.25); transition: color 0.15s; }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .stats-header { grid-template-columns: 1fr; gap: 28px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .steps-header { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .burger { display: flex; }
+      .feature-row { grid-template-columns: 1fr; gap: 36px; }
+      .feature-row.reverse .feature-text { order: 1; }
+      .feature-row.reverse .feature-visual { order: 2; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .nav-pill { padding: 8px 8px 8px 16px; }
+      .hero-social-proof { flex-direction: column; gap: 10px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .logos-inner { gap: 24px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-pill">
+      <span class="nav-logo">Vela</span>
+      <ul class="nav-links">
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Company</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#" class="nav-login">Sign in</a>
+        <a href="#" class="nav-cta">Get started &rarr;</a>
+      </div>
+      <button class="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Now in public beta &mdash; join 4,200+ investors
+    </div>
+    <h1 class="hero-title">Intelligence that moves<br><em>with the markets</em></h1>
+    <p class="hero-desc">Vela connects every signal — macro, micro, and alternative data — into a single intelligence layer for institutional-grade decision making.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Start free trial</a>
+      <a href="#" class="btn-ghost">Watch a demo &rarr;</a>
+    </div>
+    <div class="hero-social-proof">
+      <div class="hero-avatars">
+        <div class="hero-avatar"></div>
+        <div class="hero-avatar"></div>
+        <div class="hero-avatar"></div>
+        <div class="hero-avatar"></div>
+      </div>
+      <p class="hero-proof-text"><strong>4,200+</strong> analysts and portfolio managers trust Vela</p>
+    </div>
+    <div class="hero-scroll">
+      <span class="hero-scroll-label">Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- LOGOS -->
+  <section class="logos">
+    <div class="wrap">
+      <div class="logos-inner">
+        <span class="logos-label">Trusted at</span>
+        <div class="logos-divider"></div>
+        <span class="logo-item">BlackRock</span>
+        <span class="logo-item">Bridgewater</span>
+        <span class="logo-item">Two Sigma</span>
+        <span class="logo-item">Citadel</span>
+        <span class="logo-item">Point72</span>
+        <span class="logo-item">Coatue</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="wrap">
+
+      <div class="feature-row">
+        <div class="feature-text">
+          <div class="feature-num">01 / Feature</div>
+          <h3 class="feature-title">Every data source,<br><em>unified</em></h3>
+          <p class="feature-body">Vela ingests 340+ structured and alternative data feeds in real time — from earnings transcripts and satellite imagery to credit card spend and web traffic — and normalises them into a single queryable layer.</p>
+          <ul class="feature-list">
+            <li>340+ data feeds, updated in real time</li>
+            <li>Natural language querying across all sources</li>
+            <li>Automated signal extraction and tagging</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <svg class="feature-visual-icon" viewBox="0 0 42 42">
+            <rect x="4" y="4" width="34" height="34" rx="4"/>
+            <path d="M4 16h34M16 4v34"/>
+          </svg>
+          <span class="feature-visual-lbl">Data Dashboard</span>
+        </div>
+      </div>
+
+      <div class="feature-row reverse">
+        <div class="feature-text">
+          <div class="feature-num">02 / Feature</div>
+          <h3 class="feature-title">Portfolios that<br><em>explain themselves</em></h3>
+          <p class="feature-body">Every position is linked to the thesis that drove it. Vela tracks evolving signals against your original rationale — flagging drift, confirming conviction, and surfacing contradictions before they become losses.</p>
+          <ul class="feature-list">
+            <li>Thesis-linked position tracking</li>
+            <li>Automated conviction scoring</li>
+            <li>Drift detection and early alerts</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <svg class="feature-visual-icon" viewBox="0 0 42 42">
+            <polyline points="4,32 14,20 22,26 30,12 38,8"/>
+            <circle cx="38" cy="8" r="3"/>
+          </svg>
+          <span class="feature-visual-lbl">Portfolio View</span>
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-text">
+          <div class="feature-num">03 / Feature</div>
+          <h3 class="feature-title">Reports in minutes,<br><em>not days</em></h3>
+          <p class="feature-body">Generate investment memos, earnings previews, and sector briefings with a single prompt. Vela pulls the relevant data, structures the narrative, and cites every source — publishable in under ten minutes.</p>
+          <ul class="feature-list">
+            <li>Fully sourced, structured investment memos</li>
+            <li>Earnings preview generation</li>
+            <li>One-click export to PDF, Notion, or Slides</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <svg class="feature-visual-icon" viewBox="0 0 42 42">
+            <path d="M8 4h26l4 4v30H4V8l4-4z"/>
+            <path d="M12 18h18M12 24h14M12 30h10"/>
+          </svg>
+          <span class="feature-visual-lbl">Report Generator</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section stats-band">
+    <div class="wrap">
+      <div class="stats-header">
+        <div>
+          <span class="section-label">Results</span>
+          <h2 class="section-title" style="color:#fff;">Numbers that move<br><em>the conversation</em></h2>
+        </div>
+        <p class="section-sub" style="color:rgba(255,255,255,0.4);">Vela users consistently outperform benchmarks. Here's what the data shows after 12 months of active use.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-val">68<sup>%</sup></div>
+          <div class="stat-lbl">faster research cycle<br>vs. traditional workflows</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">3.2<sup>×</sup></div>
+          <div class="stat-lbl">more signals reviewed<br>per analyst per day</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">$4B<sup>+</sup></div>
+          <div class="stat-lbl">in AUM managed with<br>Vela's intelligence layer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="steps-header">
+        <div>
+          <span class="section-label">How it works</span>
+          <h2 class="section-title">Up and running<br><em>in an afternoon</em></h2>
+        </div>
+        <p class="section-sub">No data engineering, no API wrangling. Vela connects to your existing tools and is ready to use within hours.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title">Connect your sources</div>
+          <p class="step-body">Link your existing data subscriptions, broker feeds, and internal research. Vela normalises everything automatically.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-title">Build your watchlist</div>
+          <p class="step-body">Add your coverage universe. Vela begins monitoring and cross-referencing signals across all connected feeds immediately.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title">Query in plain language</div>
+          <p class="step-body">Ask anything. Vela retrieves, synthesises, and presents findings with full citations — no SQL, no dashboards to configure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section testimonial">
+    <div class="wrap">
+      <div class="testimonial-inner">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="quote-text">Vela doesn't replace the analyst — it makes every analyst <em>three times more effective</em>. We processed more earnings in Q3 than we had in the previous year combined.</p>
+        <div class="quote-author">
+          <div class="quote-avatar"></div>
+          <div>
+            <div class="quote-name">Sarah Chen</div>
+            <div class="quote-title">Head of Research, Meridian Capital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="cta-label"><span class="section-label">Get started</span></div>
+        <h2 class="cta-title">Start making decisions<br><em>with confidence</em></h2>
+        <p class="cta-sub">14-day free trial. No credit card required. Cancel any time.</p>
+        <div class="cta-actions">
+          <a href="#" class="btn-primary">Start free trial</a>
+          <a href="#" class="btn-ghost">Talk to sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo">Vela</span>
+          <p class="footer-tagline">Investment intelligence for the modern portfolio manager. Built for speed, depth, and conviction.</p>
+        </div>
+        <div>
+          <span class="footer-col-label">Product</span>
+          <div class="footer-links">
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">Changelog</a>
+            <a href="#">API Docs</a>
+          </div>
+        </div>
+        <div>
+          <span class="footer-col-label">Company</span>
+          <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div>
+          <span class="footer-col-label">Legal</span>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Security</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 Vela Technologies, Inc.</span>
+        <div style="display:flex;gap:20px;">
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,1796 +1,559 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>African Mining Consultants — Technical advisory for the world's resources</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Text:ital@1&family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMC Africa — Africa's Mining Experts</title>
+  <meta name="description" content="African Mining Consultants Limited — 30 years of mining, exploration, and environmental engineering expertise on the Zambian Copperbelt.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ---- HERO ---- */
+    .hero {
+      padding-top: var(--nav-h);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 56px;
+      min-height: 100dvh;
+    }
+    .hero-content { padding: 80px 0; }
+    .hero-tag { margin-bottom: 28px; }
+    .hero-title {
+      font-size: clamp(46px, 7.5vw, 88px);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
+    .hero-desc {
+      font-size: clamp(15px, 1.5vw, 17.5px);
+      color: var(--ink-2);
+      max-width: 460px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-media {
+      height: calc(100dvh - var(--nav-h));
+      max-height: 820px;
+      padding: 48px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-media .img-ph { flex: 1; min-height: 400px; }
 
-<script>
-  // Tweakable defaults — the host rewrites this JSON block on disk when
-  // the user changes Tweaks panel values.
-  window.__TWEAKS__ = /*EDITMODE-BEGIN*/{
-    "accent": "slate",
-    "typePair": "serif",
-    "density": "tight",
-    "theme": "light"
-  }/*EDITMODE-END*/;
-</script>
+    /* ---- CLIENTS ---- */
+    .clients {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .clients-inner {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .clients-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      flex-shrink: 0;
+      max-width: 100px;
+      line-height: 1.5;
+    }
+    .clients-logos {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+    .clients-logos img {
+      height: 26px;
+      width: auto;
+      opacity: 0.5;
+      filter: grayscale(1);
+      transition: opacity 0.2s;
+      object-fit: contain;
+    }
+    .clients-logos img:hover { opacity: 0.8; }
+    .client-txt {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
 
-<style>
-  :root {
-    /* Paper-white, warm off-white, near-black */
-    --bg: #F6F4EF;
-    --bg-2: #EFEBE2;
-    --paper: #FBFAF6;
-    --ink: #15181A;
-    --ink-2: #2A2E31;
-    --ink-3: #5A5F63;
-    --ink-4: #8C9094;
-    --line: #D9D4C7;
-    --line-2: #E6E2D5;
+    /* ---- ABOUT ---- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .about-title {
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin: 18px 0 20px;
+    }
+    .about-body {
+      font-size: 16.5px;
+      color: var(--ink-2);
+      line-height: 1.72;
+      margin-bottom: 32px;
+      max-width: 460px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .stat-card {
+      background: var(--white);
+      padding: 28px 24px;
+    }
+    .stat-val {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+    .stat-lbl {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+    .stat-note {
+      font-size: 10px;
+      color: var(--ink-3);
+      margin-top: 3px;
+    }
 
-    /* Accent — default forest */
-    --accent: #2F5D3A;
-    --accent-ink: #1C3A24;
-    --accent-soft: #DCE7DD;
+    /* ---- SERVICES ---- */
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .services-header-left .section-title {
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-top: 16px;
+    }
+    .services-header-left .section-sub {
+      font-size: 16px;
+      color: var(--ink-2);
+      margin-top: 12px;
+      max-width: 400px;
+      line-height: 1.65;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .svc-card {
+      background: var(--bg);
+      padding: 32px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: background 0.14s ease;
+    }
+    .svc-card:hover { background: var(--white); }
+    .svc-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink-3);
+    }
+    .svc-name {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.3;
+      flex: 1;
+    }
+    .svc-desc {
+      font-size: 13.5px;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+    .svc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--copper);
+      margin-top: 6px;
+      transition: gap 0.14s ease;
+    }
+    .svc-card:hover .svc-link { gap: 8px; }
 
-    /* Type */
-    --font-display: "Fraunces", "Instrument Serif", Georgia, serif;
-    --font-body: "Inter Tight", "Work Sans", system-ui, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    /* ---- WHY ---- */
+    .why-title-block { margin-bottom: 52px; }
+    .why-main-title {
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-top: 16px;
+      line-height: 1.12;
+    }
+    .why-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.42);
+      margin-top: 12px;
+      max-width: 420px;
+      line-height: 1.65;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .why-card {
+      background: var(--dark-bg);
+      padding: 36px 30px;
+    }
+    .why-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.16);
+      margin-bottom: 20px;
+    }
+    .why-card-title {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .why-body {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.7;
+    }
 
-    /* Scale (density = roomy default) */
-    --gap: 28px;
-    --section: 140px;
-    --radius: 2px;
+    /* ---- CTA BAND ---- */
+    .cta-band { border-top: 1px solid var(--border); }
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .cta-title {
+      font-size: clamp(26px, 3.5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-top: 14px;
+    }
+    .cta-sub {
+      font-size: 16px;
+      color: var(--ink-2);
+      margin-top: 10px;
+    }
 
-    --max: 1400px;
-  }
-
-  /* Accent variants */
-  [data-accent="forest"]  { --accent:#2F5D3A; --accent-ink:#1C3A24; --accent-soft:#DCE7DD; }
-  [data-accent="copper"]  { --accent:#B0552B; --accent-ink:#6E3519; --accent-soft:#F1DBCA; }
-  [data-accent="ochre"]   { --accent:#B8892B; --accent-ink:#6E5219; --accent-soft:#F0E2C2; }
-  [data-accent="slate"]   { --accent:#3A5668; --accent-ink:#213544; --accent-soft:#D6DEE4; }
-  [data-accent="oxblood"] { --accent:#8A2B2B; --accent-ink:#571818; --accent-soft:#EBD0D0; }
-
-  /* Type pairings */
-  [data-type="serif"] {
-    --font-display: "Fraunces", Georgia, serif;
-    --font-body: "Inter Tight", system-ui, sans-serif;
-  }
-  [data-type="grotesque"] {
-    --font-display: "Inter Tight", system-ui, sans-serif;
-    --font-body: "Inter Tight", system-ui, sans-serif;
-  }
-  [data-type="editorial"] {
-    --font-display: "Instrument Serif", Georgia, serif;
-    --font-body: "Work Sans", system-ui, sans-serif;
-  }
-  [data-type="technical"] {
-    --font-display: "Work Sans", system-ui, sans-serif;
-    --font-body: "Work Sans", system-ui, sans-serif;
-  }
-
-  /* Density */
-  [data-density="tight"]   { --section: 96px;  --gap: 20px; }
-  [data-density="roomy"]   { --section: 140px; --gap: 28px; }
-  [data-density="spacious"]{ --section: 180px; --gap: 36px; }
-
-  /* Dark mode */
-  [data-theme="dark"] {
-    --bg: #0E100F;
-    --bg-2: #15181A;
-    --paper: #171A1B;
-    --ink: #F2EEE4;
-    --ink-2: #D9D4C7;
-    --ink-3: #8E938F;
-    --ink-4: #5C6260;
-    --line: #2A2E2C;
-    --line-2: #1F2322;
-  }
-  [data-theme="dark"][data-accent="forest"]  { --accent:#6FA87A; --accent-ink:#B8D4BD; --accent-soft:#1F3025; }
-  [data-theme="dark"][data-accent="copper"]  { --accent:#D98A5A; --accent-ink:#F0C6A8; --accent-soft:#3A2217; }
-  [data-theme="dark"][data-accent="ochre"]   { --accent:#D9B25A; --accent-ink:#F0DCA8; --accent-soft:#3A2F17; }
-  [data-theme="dark"][data-accent="slate"]   { --accent:#7FA3B8; --accent-ink:#C6D8E0; --accent-soft:#1E2B33; }
-  [data-theme="dark"][data-accent="oxblood"] { --accent:#C26666; --accent-ink:#E3B3B3; --accent-soft:#3A1E1E; }
-
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
-  body {
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
-
-  /* ---------- NAV ---------- */
-  .nav {
-    display: block;
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    background: color-mix(in oklab, var(--bg) 78%, transparent);
-    border-bottom: 1px solid transparent;
-    transition: border-color .25s ease, background .25s ease;
-  }
-  .nav.is-scrolled { border-bottom-color: var(--line); }
-  .nav-inner {
-    max-width: var(--max); margin: 0 auto;
-    padding: 18px 40px;
-    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 40px;
-  }
-  .brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 19px; letter-spacing: -.01em; }
-  .brand-mark {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--ink);
-    position: relative; flex: none;
-    overflow: hidden;
-  }
-  .brand-mark::before, .brand-mark::after {
-    content: ""; position: absolute; inset: 0;
-    border-radius: 50%;
-    border: 1.5px solid var(--bg);
-    transform: scale(.7);
-  }
-  .brand-mark::after { transform: scale(.4); }
-  .brand-name { font-weight: 500; }
-  .brand-tag { color: var(--ink-3); font-family: var(--font-body); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-left: 2px; padding-left: 12px; border-left: 1px solid var(--line); }
-
-  .nav-links { display: flex; gap: 28px; justify-content: center; }
-  .nav-links a {
-    font-size: 13.5px; color: var(--ink-2); padding: 6px 0;
-    position: relative; transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a::after {
-    content: ""; position: absolute; left: 0; right: 100%; bottom: 0;
-    height: 1px; background: var(--accent); transition: right .3s ease;
-  }
-  .nav-links a:hover::after { right: 0; }
-
-  .nav-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 10px 20px;
-    background: #1c1c1c; color: #fff;
-    font-size: 13px; font-weight: 600;
-    border-radius: 999px;
-    overflow: hidden;
-    box-shadow:
-      inset 0px 0px 20px 1.64px rgba(255,255,255,0.15),
-      0px 0.84px 0.50px -0.3125px rgba(0,0,0,0.13),
-      0px 1.99px 1.19px -0.625px rgba(0,0,0,0.13),
-      0px 3.63px 2.18px -0.9375px rgba(0,0,0,0.13),
-      0px 6.04px 3.62px -1.25px rgba(0,0,0,0.13),
-      0px 9.75px 5.85px -1.5625px rgba(0,0,0,0.13),
-      0px 15.96px 9.57px -1.875px rgba(0,0,0,0.13),
-      0px 27.48px 16.49px -2.1875px rgba(0,0,0,0.13),
-      0px 50px 30px -2.5px rgba(0,0,0,0.13);
-    transition: background .22s;
-  }
-  .nav-cta:hover { background: #3a3a3a; }
-  .nav-cta .arr { display: none; }
-
-  /* ---------- HERO ---------- */
-  .hero {
-    position: relative;
-    height: 100dvh;
-    background: #FBFAF6;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr auto;
-    overflow: visible;
-    border-bottom: none;
-    box-shadow: 0 8px 40px rgba(0,0,0,.10);
-    z-index: 1;
-  }
-  .hero-bg { display: none; }
-  .hero-topo { display: none; }
-
-  .hero-content {
-    grid-column: 1;
-    grid-row: 1;
-    display: flex; flex-direction: column;
-    align-items: flex-start; justify-content: flex-start;
-    text-align: left;
-    padding: 160px 64px 40px 80px;
-  }
-
-  .hero-visual {
-    grid-column: 2;
-    grid-row: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: visible;
-    height: 100%;
-  }
-  .hero-truck-img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
-    object-position: center;
-    mix-blend-mode: multiply;
-  }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: var(--font-mono); font-size: 11px;
-    letter-spacing: .16em; text-transform: uppercase;
-    color: #6B6560;
-    margin-bottom: 28px;
-  }
-  .hero-eyebrow::before {
-    content: ""; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); flex-shrink: 0;
-  }
-  .hero h1 {
-    font-family: "DM Sans", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 48px;
-    line-height: 120%;
-    letter-spacing: -0.06em;
-    color: #1c1c1c;
-    text-align: left;
-    max-width: 450px;
-    word-wrap: break-word;
-    word-break: break-word;
-    margin: 0 0 16px;
-  }
-  .hero h1 em { font-family: "DM Serif Text", serif; font-style: italic; font-weight: 400; color: #1c1c1c; }
-  .hero-sub {
-    font-size: 18px; line-height: 1.55;
-    font-weight: 400;
-    color: #5A5550;
-    max-width: 480px;
-    margin: 0 0 24px;
-  }
-  .hero-cta {
-    width: min(450px, 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-  .hero-input-wrap {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 100px;
-    padding: 8px 8px 8px 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
-  }
-  .hero-input {
-    flex: 1;
-    border: none; outline: none; background: transparent;
-    font-family: var(--font-body); font-size: 15px;
-    color: var(--ink); min-width: 0;
-  }
-  .hero-input::placeholder { color: var(--ink-4); }
-  .h-btn {
-    display: inline-flex; align-items: center;
-    padding: 12px 24px;
-    font-family: "Inter Tight", system-ui, sans-serif;
-    font-size: 16px; font-weight: 600;
-    letter-spacing: 0;
-    border-radius: 100px;
-    cursor: pointer; text-decoration: none;
-    overflow: hidden;
-    transition: opacity .22s;
-  }
-  .h-btn-primary {
-    background: #1c1c1c; color: #fff; border: none;
-    box-shadow:
-      inset 0px 0px 20px 1.64px rgba(255,255,255,0.15),
-      0px 0.84px 0.50px -0.3125px rgba(0,0,0,0.13),
-      0px 1.99px 1.19px -0.625px rgba(0,0,0,0.13),
-      0px 3.63px 2.18px -0.9375px rgba(0,0,0,0.13),
-      0px 6.04px 3.62px -1.25px rgba(0,0,0,0.13),
-      0px 9.75px 5.85px -1.5625px rgba(0,0,0,0.13),
-      0px 15.96px 9.57px -1.875px rgba(0,0,0,0.13),
-      0px 27.48px 16.49px -2.1875px rgba(0,0,0,0.13),
-      0px 50px 30px -2.5px rgba(0,0,0,0.13);
-  }
-  .h-btn-primary { transition: background .22s; }
-  .h-btn-primary:hover { background: #3a3a3a; }
-  .btn-icon { display: none; }
-
-  /* ---------- MOBILE NAV ---------- */
-  .nav-burger {
-    display: none;
-    flex-direction: column; justify-content: center; align-items: center;
-    gap: 5px; width: 36px; height: 36px;
-    background: none; border: none; cursor: pointer; padding: 0;
-  }
-  .nav-burger span {
-    display: block; width: 22px; height: 1.5px;
-    background: var(--ink);
-    transition: transform .3s, opacity .3s;
-  }
-  .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav-burger.open span:nth-child(2) { opacity: 0; }
-  .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  .nav-mobile-menu {
-    display: none;
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 99;
-    padding: 80px 24px 40px;
-    background: color-mix(in oklab, var(--bg) 97%, transparent);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    flex-direction: column;
-    gap: 0;
-    transform: translateY(-8px);
-    opacity: 0;
-    transition: opacity .25s, transform .25s;
-    pointer-events: none;
-  }
-  .nav-mobile-menu.open {
-    opacity: 1; transform: translateY(0); pointer-events: auto;
-  }
-  .nav-mobile-link {
-    display: block;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--line);
-    font-family: var(--font-display);
-    font-size: 28px;
-    letter-spacing: -.02em;
-    color: var(--ink);
-  }
-  .nav-mobile-cta {
-    margin-top: 28px;
-    border-bottom: none;
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 500;
-    display: inline-flex; align-items: center;
-    padding: 13px 22px;
-    background: var(--ink); color: var(--bg);
-    border-radius: 999px;
-    width: fit-content;
-  }
-
-  .client-ticker {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    overflow-x: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    background: #ffffff;
-    border-top: 1px solid rgba(0,0,0,.07);
-    cursor: grab;
-    user-select: none;
-  }
-  .client-ticker::-webkit-scrollbar { display: none; }
-  .client-ticker.grabbing { cursor: grabbing; }
-  .ticker-track {
-    display: flex;
-    align-items: center;
-    width: max-content;
-    padding: 0;
-  }
-  .ticker-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 40px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: #9A9590;
-    white-space: nowrap;
-    flex-shrink: 0;
-    border-right: 1px solid rgba(0,0,0,.07);
-    transition: color .2s;
-  }
-  .ticker-item:hover { color: #1c1c1c; }
-  .ticker-item::before {
-    content: "";
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-    opacity: .5;
-  }
-
-  /* btn kept for rest-of-page sections */
-  .btn {
-    display: inline-flex; align-items: center; gap: 12px;
-    padding: 15px 24px; font-size: 14px; font-weight: 500;
-    border-radius: 999px; transition: all .25s;
-  }
-  .btn-primary { background: var(--ink); color: var(--bg); }
-  .btn-primary:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
-  .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
-  .btn-ghost:hover { border-color: var(--ink); }
-
-  /* ---------- SECTION CHROME ---------- */
-  section { padding: var(--section) 0; }
-  .section-head {
-    display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
-    margin-bottom: 72px;
-    align-items: start;
-  }
-  .section-label {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--font-mono); font-size: 11px;
-    letter-spacing: .12em; text-transform: uppercase;
-    color: var(--ink-3);
-    background: var(--bg-2); border: 1px solid var(--line);
-    padding: 6px 12px; border-radius: 8px;
-  }
-  .section-label .n { color: var(--accent); }
-  .section-title {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(36px, 4.8vw, 68px);
-    line-height: 1.02;
-    letter-spacing: -.025em;
-    margin: 0;
-  }
-  .section-lede {
-    font-size: 18px; color: var(--ink-2); max-width: 560px;
-    margin-top: 24px; line-height: 1.55;
-  }
-
-  /* ---------- SERVICES ---------- */
-  .services { background: #FBFAF6; padding: 0; }
-  .svc-sticky-wrap {
-    display: grid;
-    grid-template-columns: 40% 1fr;
-    padding: 100px 60px; gap: 60px;
-    max-width: var(--max); margin: 0 auto;
-  }
-  .svc-left {
-    display: flex; flex-direction: column;
-    align-items: flex-start; gap: 24px;
-    position: sticky; top: 30vh;
-    align-self: start;
-  }
-  .svc-left h2 {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: clamp(32px, 3.8vw, 54px);
-    line-height: 1.08; letter-spacing: -.025em;
-    margin: 0;
-  }
-  .svc-left h2 em { font-style: italic; color: var(--ink-3); }
-  .svc-left p {
-    font-size: 16px; color: var(--ink-3); line-height: 1.6;
-    max-width: 380px; margin: 0;
-  }
-  .svc-list {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .svc-list li {
-    font-size: 14px; color: var(--ink-3); line-height: 1.4;
-    padding-left: 16px; position: relative;
-  }
-  .svc-list li::before {
-    content: ''; position: absolute; left: 0; top: 7px;
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--accent);
-  }
-  .svc-right {
-    flex: 1;
-    display: flex; flex-direction: column;
-    align-items: stretch; gap: 16px;
-    padding: 0 0 100px;
-    min-width: 0;
-  }
-  .svc-card {
-    width: 100%;
-    background: none;
-    border-radius: 0;
-    border: none;
-    display: flex; flex-direction: column;
-  }
-  .svc-card-header {
-    padding: 32px 28px 16px;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .svc-card-icon {
-    width: 24px; height: 24px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .svc-card-icon img {
-    width: 24px; height: 24px; display: block;
-    filter: drop-shadow(0 3px 6px rgba(0,0,0,.22));
-    transition: filter .25s, transform .25s;
-  }
-  .svc-card:hover .svc-card-icon img {
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,.28));
-    transform: translateY(-2px);
-  }
-  .svc-card-info {
-    padding: 0 28px 32px;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .svc-card-info h3 {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: 22px; line-height: 1.15; letter-spacing: -.01em;
-    margin: 0;
-  }
-  .svc-card-tagline {
-    font-size: 14px; color: var(--ink-3); line-height: 1.6; margin: 0;
-  }
-  .svc-card-asset {
-    width: 100%; height: 200px;
-    background: var(--bg-2);
-    border-top: 1px solid var(--line);
-    overflow: clip;
-    color: var(--ink-3);
-  }
-  .svc-card-asset svg { width: 100%; height: 100%; display: block; }
-
-  /* ---------- CASES ---------- */
-  .cases { background: var(--bg); border-top: 1px solid var(--line); }
-  .cases .section-head { margin-bottom: 48px; }
-  .case-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-  .case-card {
-    background: var(--paper); border: 1px solid var(--line);
-    border-radius: 14px; padding: 24px;
-    display: flex; flex-direction: column;
-    text-decoration: none; color: inherit; cursor: pointer;
-    transition: border-color .2s, transform .25s, box-shadow .25s;
-  }
-  .case-card:hover { border-color: var(--ink); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
-  .case-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .case-com {
-    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-    letter-spacing: .1em; text-transform: uppercase;
-    color: var(--accent-ink); background: var(--accent-soft);
-    padding: 5px 11px; border-radius: 999px;
-  }
-  .case-yr { font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); letter-spacing: .06em; }
-  .case-loc-type { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
-  .case-name { font-family: var(--font-display); font-size: 22px; line-height: 1.2; letter-spacing: -.015em; color: var(--ink); margin-bottom: 20px; flex: 1; }
-  .case-stage { margin-bottom: 20px; }
-  .case-stage-labels {
-    display: flex; justify-content: space-between;
-    font-family: var(--font-mono); font-size: 9px;
-    color: var(--ink-4); letter-spacing: .05em; text-transform: uppercase;
-    margin-bottom: 7px;
-  }
-  .case-stage-bar { height: 3px; background: var(--line-2); border-radius: 999px; overflow: hidden; }
-  .case-stage-fill { height: 100%; background: var(--accent); border-radius: 999px; }
-  .case-bottom {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    padding-top: 16px; border-top: 1px solid var(--line);
-  }
-  .case-stat-num { font-family: var(--font-display); font-size: 22px; letter-spacing: -.01em; color: var(--ink); line-height: 1; }
-  .case-stat-lbl { font-family: var(--font-mono); font-size: 9px; color: var(--ink-4); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
-  .case-cta {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 12px; font-weight: 500; color: var(--ink);
-    padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
-    transition: background .2s, border-color .2s, color .2s;
-    white-space: nowrap; flex-shrink: 0;
-  }
-  .case-card:hover .case-cta { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-  .cases-foot { margin-top: 48px; display: flex; justify-content: center; }
-
-  /* ---------- METRICS BAND ---------- */
-  .metrics {
-    background: var(--ink); color: var(--bg);
-    padding: 120px 0; position: relative; overflow: hidden;
-  }
-  .metrics::before {
-    content: ""; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 10% 80%, color-mix(in oklab, var(--accent) 20%, transparent), transparent 55%);
-    pointer-events: none;
-  }
-  [data-theme="dark"] .metrics { background: var(--bg-2); }
-  .metrics-inner { position: relative; }
-  .metrics-eyebrow {
-    font-family: var(--font-display); font-style: italic;
-    font-size: clamp(15px, 1.6vw, 19px);
-    color: color-mix(in oklab, var(--bg) 45%, transparent);
-    line-height: 1.5; letter-spacing: -.01em;
-    max-width: 520px; margin-bottom: 80px;
-  }
-  .metrics-eyebrow em { font-style: italic; color: color-mix(in oklab, var(--accent) 55%, #fff); }
-  .metrics-row {
-    display: grid; grid-template-columns: repeat(4,1fr);
-    border-top: 1px solid color-mix(in oklab, var(--bg) 12%, transparent);
-  }
-  .metric {
-    padding: 48px 40px 0 0;
-    border-right: 1px solid color-mix(in oklab, var(--bg) 12%, transparent);
-  }
-  .metric:last-child { border-right: none; padding-right: 0; }
-  .metric:not(:first-child) { padding-left: 40px; }
-  .m-num {
-    font-family: var(--font-display);
-    font-size: clamp(44px, 5.5vw, 80px);
-    line-height: 1; letter-spacing: -.03em;
-    color: var(--bg); margin-bottom: 20px;
-  }
-  .m-lbl {
-    font-family: var(--font-mono); font-size: 10.5px;
-    color: color-mix(in oklab, var(--bg) 40%, transparent);
-    letter-spacing: .1em; text-transform: uppercase;
-    line-height: 1.5;
-  }
-
-  /* ---------- MAP ---------- */
-  .map-sec { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .map-wrap {
-    display: grid; grid-template-columns: 1fr 320px; gap: 60px;
-    align-items: start;
-  }
-  .map-stage {
-    position: relative;
-    aspect-ratio: 5/6;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    overflow: hidden;
-  }
-  .map-svg { width: 100%; height: 100%; display: block; }
-  .map-svg .country { fill: var(--bg-2); stroke: var(--line); stroke-width: .5; transition: fill .25s; }
-  .map-svg .country.active { fill: color-mix(in oklab, var(--accent) 22%, var(--bg-2)); }
-  .map-svg .country:hover { fill: color-mix(in oklab, var(--accent) 35%, var(--bg-2)); cursor: pointer; }
-  .map-pin {
-    position: absolute; width: 14px; height: 14px;
-    transform: translate(-50%, -50%);
-  }
-  .map-pin::before {
-    content: ""; position: absolute; inset: 0;
-    border-radius: 50%;
-    background: var(--accent);
-    transition: transform .25s;
-  }
-  .map-pin::after {
-    content: ""; position: absolute; inset: -8px; border-radius: 50%;
-    background: var(--accent); opacity: .2;
-    animation: ping 2.4s infinite;
-  }
-  @keyframes ping { 0% { transform: scale(.5); opacity: .5 } 100% { transform: scale(1.8); opacity: 0 } }
-  .map-pin:hover::before { transform: scale(1.5); }
-  .map-pin.active::before { transform: scale(1.6); box-shadow: 0 0 0 3px var(--paper); }
-
-  .map-legend {
-    position: absolute; bottom: 20px; left: 20px;
-    font-family: var(--font-mono); font-size: 11px; color: var(--ink-3);
-    background: color-mix(in oklab, var(--paper) 80%, transparent);
-    padding: 10px 14px; border: 1px solid var(--line);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .map-legend .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-
-  .map-sidebar { display: flex; flex-direction: column; gap: 2px; }
-  .map-row {
-    padding: 16px 18px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    cursor: pointer;
-    transition: background .2s, border-color .2s;
-    display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: baseline;
-  }
-  .map-row:hover { border-color: var(--accent); }
-  .map-row.active { background: var(--accent-soft); border-color: var(--accent); }
-  .map-row .country-name { font-family: var(--font-display); font-size: 18px; letter-spacing: -.01em; }
-  .map-row .country-meta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: .06em; }
-  .map-row .country-detail { grid-column: 1/-1; margin-top: 6px; color: var(--ink-3); font-size: 13px; }
-
-  /* ---------- TEAM ---------- */
-  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
-  .person {
-    display: flex; flex-direction: column;
-    cursor: pointer;
-  }
-  .person-img {
-    aspect-ratio: 4/5;
-    background: var(--bg-2);
-    border: 1px solid var(--line);
-    position: relative; overflow: hidden;
-    margin-bottom: 18px;
-  }
-  .person-img svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .person-img .tag {
-    position: absolute; bottom: 12px; left: 12px;
-    font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em;
-    color: var(--ink-3); background: var(--paper); padding: 4px 8px; border: 1px solid var(--line);
-    text-transform: uppercase;
-  }
-  .person-img::after {
-    content: ""; position: absolute; inset: 0;
-    border: 2px solid var(--accent); opacity: 0; transition: opacity .3s;
-  }
-  .person:hover .person-img::after { opacity: 1; }
-  .person-name { font-family: var(--font-display); font-size: 22px; letter-spacing: -.01em; }
-  .person-role { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
-  .person-bio { font-size: 13px; color: var(--ink-3); margin-top: 10px; line-height: 1.5; }
-
-  /* ---------- INSIGHTS ---------- */
-  .insights { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .ins-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: var(--gap); }
-  .article {
-    background: var(--bg); border: 1px solid var(--line);
-    padding: 28px;
-    display: flex; flex-direction: column; justify-content: space-between;
-    min-height: 340px;
-    cursor: pointer;
-    transition: transform .3s, border-color .3s;
-  }
-  .article:hover { border-color: var(--ink); transform: translateY(-2px); }
-  .article.feat {
-    background: var(--ink); color: var(--bg);
-    border-color: var(--ink);
-    grid-row: span 1;
-  }
-  .article.feat .a-meta { color: color-mix(in oklab, var(--bg) 60%, transparent); }
-  .article.feat .a-excerpt { color: color-mix(in oklab, var(--bg) 80%, transparent); }
-  .a-meta {
-    font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em;
-    color: var(--ink-3); text-transform: uppercase;
-    display: flex; justify-content: space-between; margin-bottom: 24px;
-  }
-  .a-title {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: 26px; line-height: 1.12; letter-spacing: -.015em;
-    margin: 0 0 16px;
-  }
-  .article.feat .a-title { font-size: 34px; }
-  .a-excerpt { color: var(--ink-3); font-size: 14px; line-height: 1.5; margin: 0 0 24px; }
-  .a-more {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 13px; color: var(--accent);
-    font-weight: 500;
-  }
-  .article.feat .a-more { color: color-mix(in oklab, var(--accent) 50%, #fff); }
-
-  /* ---------- CLIENTS ---------- */
-  .clients { padding: 80px 0; border-top: 1px solid var(--line); }
-  .clients-inner { display: grid; grid-template-columns: 220px 1fr; gap: 60px; align-items: center; }
-  .clients-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
-  .clients-row {
-    display: grid; grid-template-columns: repeat(6, 1fr);
-    gap: 0;
-  }
-  .client-logo {
-    font-family: var(--font-display); font-size: 20px; letter-spacing: -.01em;
-    color: var(--ink-3);
-    padding: 20px;
-    border-left: 1px solid var(--line);
-    display: flex; align-items: center; gap: 10px;
-    transition: color .2s;
-  }
-  .client-logo:hover { color: var(--ink); }
-  .client-logo:last-child { border-right: 1px solid var(--line); }
-  .client-logo .g {
-    display: inline-block; width: 20px; height: 20px;
-    border: 1.5px solid currentColor;
-    flex: none;
-  }
-  .client-logo .g.circle { border-radius: 50%; }
-  .client-logo .g.dia { transform: rotate(45deg); }
-  .client-logo .g.tri { border: none; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 17px solid currentColor; }
-
-  /* ---------- CONTACT ---------- */
-  .contact { background: var(--ink); color: var(--bg); padding: 140px 0 80px; }
-  [data-theme="dark"] .contact { background: var(--bg-2); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
-  .contact h2 {
-    font-family: var(--font-display); font-weight: 400;
-    font-size: clamp(44px, 5vw, 72px); line-height: 1; letter-spacing: -.025em;
-    margin: 0 0 32px;
-  }
-  .contact h2 em { font-style: italic; color: color-mix(in oklab, var(--accent) 50%, #fff); }
-  .contact p { color: color-mix(in oklab, var(--bg) 70%, transparent); font-size: 17px; line-height: 1.55; max-width: 440px; }
-  .contact-info { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .contact-info h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: color-mix(in oklab, var(--bg) 50%, transparent); margin: 0 0 10px; font-weight: 500; }
-  .contact-info p { color: var(--bg); font-size: 14px; margin: 0; }
-
-  .form-grid { display: grid; gap: 20px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .field { position: relative; }
-  .field label {
-    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em;
-    text-transform: uppercase;
-    color: color-mix(in oklab, var(--bg) 55%, transparent);
-    display: block; margin-bottom: 8px;
-  }
-  .field input, .field select, .field textarea {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid color-mix(in oklab, var(--bg) 25%, transparent);
-    color: var(--bg);
-    font-family: inherit; font-size: 15px;
-    padding: 10px 0;
-    transition: border-color .2s;
-  }
-  .field textarea { resize: vertical; min-height: 90px; }
-  .field input:focus, .field select:focus, .field textarea:focus {
-    outline: none;
-    border-bottom-color: var(--accent);
-  }
-  .field select { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23fff' fill='none'/></svg>"); background-repeat: no-repeat; background-position: right 4px center; }
-  .field .err { color: #ff8a6c; font-size: 11px; margin-top: 6px; font-family: var(--font-mono); display: none; }
-  .field.invalid .err { display: block; }
-  .field.invalid input, .field.invalid select, .field.invalid textarea { border-bottom-color: #ff8a6c; }
-
-  .submit-btn {
-    display: inline-flex; align-items: center; gap: 12px;
-    padding: 16px 26px;
-    background: var(--accent); color: #fff;
-    border-radius: 999px;
-    font-size: 14px; font-weight: 500;
-    transition: transform .2s, background .2s;
-    justify-self: start;
-    margin-top: 12px;
-  }
-  .submit-btn:hover { transform: translateY(-1px); }
-  .submit-btn:disabled { opacity: .6; cursor: wait; }
-  .submit-success {
-    display: none;
-    padding: 16px 20px;
-    border: 1px solid var(--accent);
-    color: color-mix(in oklab, var(--accent) 60%, #fff);
-    font-size: 14px;
-    margin-top: 16px;
-  }
-  .submit-success.show { display: block; }
-
-  /* ---------- FOOTER ---------- */
-  .foot { padding: 48px 0 32px; border-top: 1px solid color-mix(in oklab, var(--bg) 20%, transparent); background: var(--ink); color: var(--bg); }
-  [data-theme="dark"] .foot { background: var(--bg-2); }
-  .foot-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
-  .foot h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 20px; color: color-mix(in oklab, var(--bg) 55%, transparent); font-weight: 500; }
-  .foot ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-  .foot a { font-size: 14px; color: color-mix(in oklab, var(--bg) 85%, transparent); }
-  .foot a:hover { color: var(--bg); }
-  .foot-brand { max-width: 340px; }
-  .foot-brand .sig { font-family: var(--font-display); font-size: 22px; margin-bottom: 14px; }
-  .foot-brand p { color: color-mix(in oklab, var(--bg) 60%, transparent); font-size: 13px; line-height: 1.5; }
-  .foot-bottom {
-    margin-top: 64px; padding-top: 24px;
-    border-top: 1px solid color-mix(in oklab, var(--bg) 15%, transparent);
-    display: flex; justify-content: space-between;
-    font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em;
-    color: color-mix(in oklab, var(--bg) 50%, transparent);
-  }
-
-  /* ---------- TWEAKS PANEL ---------- */
-  .tweaks {
-    position: fixed; bottom: 24px; right: 24px; z-index: 200;
-    width: 280px;
-    background: var(--paper); color: var(--ink);
-    border: 1px solid var(--line);
-    padding: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,.12);
-    transform: translateY(calc(100% + 40px)); opacity: 0; pointer-events: none;
-    transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s;
-    font-family: var(--font-body);
-  }
-  .tweaks.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-  .tweaks h4 {
-    margin: 0 0 18px; font-family: var(--font-mono);
-    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--ink-3); font-weight: 500;
-    display: flex; justify-content: space-between;
-  }
-  .tweak-group { margin-bottom: 16px; }
-  .tweak-group:last-child { margin: 0; }
-  .tweak-group label { display: block; font-size: 11px; color: var(--ink-3); margin-bottom: 8px; letter-spacing: .04em; }
-  .swatches { display: flex; gap: 8px; }
-  .sw {
-    width: 28px; height: 28px; border-radius: 50%;
-    border: 2px solid transparent;
-    transition: border-color .2s, transform .2s;
-    cursor: pointer;
-  }
-  .sw.active { border-color: var(--ink); }
-  .sw:hover { transform: scale(1.08); }
-  .sw[data-v="forest"]  { background: #2F5D3A; }
-  .sw[data-v="copper"]  { background: #B0552B; }
-  .sw[data-v="ochre"]   { background: #B8892B; }
-  .sw[data-v="slate"]   { background: #3A5668; }
-  .sw[data-v="oxblood"] { background: #8A2B2B; }
-  .segmented {
-    display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line);
-    font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
-  }
-  .segmented.three { grid-template-columns: 1fr 1fr 1fr; }
-  .segmented.four { grid-template-columns: 1fr 1fr 1fr 1fr; }
-  .seg { padding: 8px 10px; text-align: center; cursor: pointer; color: var(--ink-3); transition: all .2s; border-right: 1px solid var(--line); }
-  .seg:last-child { border-right: none; }
-  .seg.active { background: var(--ink); color: var(--bg); }
-
-  /* ---------- UTIL ---------- */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
-  .reveal.in { opacity: 1; transform: none; }
-
-  @media (max-width: 900px) {
-    body { overflow-x: hidden; }
-    .wrap { padding: 0 24px; }
-    .svc-sticky-wrap { grid-template-columns: 1fr; padding: 60px 24px 0; gap: 32px; }
-    .svc-left { position: static; width: 100%; }
-    .svc-right { width: calc(100% + 48px); margin-left: -24px; padding: 0 0 60px; gap: 0; }
-    .cases .svc-right { width: calc(100% + 48px); margin-left: -24px; }
-    .svc-card { border-radius: 0; border-left: none; border-right: none; border-bottom: none; }
-    .svc-card:first-child { border-top: none; }
-    .svc-card-asset { height: 180px; }
-    .hero-bg { will-change: auto; }
-    .hero-grid, .section-head, .svc-grid, .map-wrap, .contact-grid, .metrics-inner, .ins-grid, .team-grid, .foot-inner, .clients-inner { grid-template-columns: 1fr; gap: 40px; }
-    .form-row { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .nav-cta { display: none; }
-    .brand-tag { display: none; }
-    .nav-burger { display: flex; }
-    .nav-mobile-menu { display: flex; }
-    .nav-inner { padding: 14px 24px; }
-    .case-grid { grid-template-columns: 1fr; }
-    .svc-content { grid-template-columns: 1fr; }
-    .hero-meta { grid-template-columns: 1fr 1fr; }
-    .metrics-grid { grid-template-columns: 1fr 1fr; }
-
-    /* Hero mobile */
-    .hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto; overflow: hidden; }
-    .hero-content { grid-column: 1; grid-row: 1; padding: 96px 24px 24px; align-items: center; text-align: center; justify-content: flex-start; width: 100%; min-width: 0; box-sizing: border-box; }
-    .hero h1 { text-align: center; }
-    .hero-cta { align-items: center; }
-    .hero-input-wrap { width: 100%; }
-    .hero-sub { max-width: 100%; }
-    .hero-visual { grid-column: 1; grid-row: 2; justify-content: center; overflow: visible; width: 100%; height: auto; padding: 16px 0 24px; }
-    .hero-truck-img { width: 100%; height: auto; max-height: 60vw; object-fit: contain; }
-    .hero { height: auto; }
-    .client-ticker { grid-column: 1; grid-row: 3; }
-    .hero h1 { color: #1c1c1c; }
-    .hero h1 em { color: #1c1c1c; }
-    .hero-sub { max-width: 100%; }
-    .hero-eyebrow { display: none; }
-    .hero-input-wrap { flex-direction: row; border-radius: 100px; padding: 8px 8px 8px 20px; align-items: center; background: #fff; border: 1px solid var(--line); box-shadow: 0 1px 4px rgba(0,0,0,.06); gap: 6px; width: 100%; }
-    .hero-input { display: block; padding: 0; background: transparent; color: var(--ink); font-size: 15px; flex: 1; }
-    .hero-input::placeholder { color: var(--ink-4); }
-    .h-btn-primary .btn-slide { display: none; }
-    .btn-icon { display: block; }
-    .h-btn { width: 40px; height: 40px; padding: 0; border-radius: 50%; flex-shrink: 0; justify-content: center; }
-    .h-btn-standalone { width: auto; height: auto; padding: 12px 24px; border-radius: 999px; }
-    .h-btn-standalone .btn-slide { display: inline; }
-    .h-btn-standalone .btn-icon { display: none; }
-  }
-
-  @media (max-width: 480px) {
-    .hero h1 { font-size: clamp(36px, 10vw, 52px); }
-    .hero-sub { font-size: 16px; }
-    .h-stat { padding: 16px 18px; }
-  }
-</style>
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; gap: 36px; }
+      .hero-content { padding: 60px 0 0; }
+      .hero-media { height: 440px; max-height: none; padding: 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .clients-inner { gap: 24px; }
+    }
+  </style>
 </head>
-<body data-screen-label="Landing">
+<body>
 
-<!-- =========== NAV =========== -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#" class="brand">
-      <span class="brand-mark"></span>
-      <span class="brand-name">AMC</span>
-      <span class="brand-tag">African Mining Consultants · est. 1998</span>
-    </a>
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#cases">Projects</a>
-      <a href="#map">Footprint</a>
-      <a href="#team">People</a>
-      <a href="#insights">Insights</a>
-    </div>
-    <a href="#contact" class="nav-cta">
-      Request advisory
-      <svg class="arr" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <button class="nav-burger" id="navBurger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-<div class="nav-mobile-menu" id="navMenu">
-  <a href="#services" class="nav-mobile-link">Services</a>
-  <a href="#cases" class="nav-mobile-link">Projects</a>
-  <a href="#map" class="nav-mobile-link">Footprint</a>
-  <a href="#team" class="nav-mobile-link">People</a>
-  <a href="#insights" class="nav-mobile-link">Insights</a>
-  <a href="#contact" class="nav-mobile-link nav-mobile-cta">Request advisory</a>
-</div>
-
-<!-- =========== HERO =========== -->
-<header class="hero" data-screen-label="Hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <h1>Where ground<br/>becomes <em>certainty.</em></h1>
-    <p class="hero-sub">Independent technical advisors to mining companies, investors, and governments — turning geology into bankable decisions across sub-Saharan Africa.</p>
-    <div class="hero-cta">
-      <div class="hero-input-wrap">
-        <input class="hero-input" type="email" placeholder="Your work email" />
-        <button class="h-btn h-btn-primary">
-          <span class="btn-slide">Book a consultation</span>
-          <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" width="16" height="16" aria-hidden="true">
-            <path fill="#ffffff" fill-rule="evenodd" d="M11.8214 0.0977331c0.2883 -0.1052509 0.6005 -0.1264465 0.9005 -0.0610159 0.3029 0.0660858 0.5805 0.2177638 0.7997 0.4370018 0.2192 0.219238 0.3709 0.496818 0.437 0.799741 0.0654 0.29992 0.0442 0.6122 -0.061 0.90043l-3.574 10.71201 -0.0002 0.0007c-0.0871 0.2634 -0.2404 0.5001 -0.4453 0.6873 -0.2043 0.1867 -0.45301 0.3178 -0.72238 0.381 -0.26942 0.0657 -0.55131 0.0601 -0.81798 -0.0161 -0.26643 -0.0761 -0.50848 -0.2201 -0.70245 -0.4179l-1.91734 -1.9086 -2.01406 1.0415c-0.15705 0.0812 -0.34532 0.0734 -0.49515 -0.0205 -0.14982 -0.0938 -0.23893 -0.2599 -0.23434 -0.4366l0.08257 -3.18376 7.04493 -5.11741c0.2793 -0.20286 0.3413 -0.59371 0.1384 -0.87298 -0.2029 -0.27928 -0.59371 -0.34122 -0.87299 -0.13836L2.20283 8.0884 0.473125 6.35869l-0.000058 -0.00005 -0.000126 -0.00013c-0.187323 -0.18719 -0.325225 -0.41797 -0.4013217 -0.67163 -0.07555546 -0.25185 -0.0878308 -0.51841 -0.0357814 -0.77609 0.0521166 -0.28151 0.1779581 -0.54421 0.3647391 -0.76128 0.18806 -0.21856 0.431073 -0.38293 0.703923 -0.47612l0.00337 -0.00115L11.8214 0.0977331Z" clip-rule="evenodd"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <video class="hero-truck-img" autoplay loop muted playsinline preload="auto" webkit-playsinline x-webkit-airplay="deny">
-      <source src="assets/hero-truck.mp4" type="video/mp4" />
-    </video>
-  </div>
-  <div class="client-ticker" id="clientTicker" aria-label="Clients">
-    <div class="ticker-track" id="tickerTrack">
-      <span class="ticker-item">Glencore</span>
-      <span class="ticker-item">Anglo American</span>
-      <span class="ticker-item">First Quantum Minerals</span>
-      <span class="ticker-item">Lonmin</span>
-      <span class="ticker-item">Rio Algom</span>
-      <span class="ticker-item">Ivanhoe Mines</span>
-      <span class="ticker-item">Vedanta Resources</span>
-      <span class="ticker-item">Barrick Gold</span>
-      <span class="ticker-item">ZCCM-IH</span>
-      <span class="ticker-item">African Rainbow Minerals</span>
-      <span class="ticker-item">Glencore</span>
-      <span class="ticker-item">Anglo American</span>
-      <span class="ticker-item">First Quantum Minerals</span>
-      <span class="ticker-item">Lonmin</span>
-      <span class="ticker-item">Rio Algom</span>
-      <span class="ticker-item">Ivanhoe Mines</span>
-      <span class="ticker-item">Vedanta Resources</span>
-      <span class="ticker-item">Barrick Gold</span>
-      <span class="ticker-item">ZCCM-IH</span>
-      <span class="ticker-item">African Rainbow Minerals</span>
-    </div>
-  </div>
-</header>
-
-<!-- =========== SERVICES =========== -->
-<section class="services" id="services" data-screen-label="Services">
-  <div class="svc-sticky-wrap">
-    <div class="svc-left reveal">
-      <h2>What we <em>do.</em></h2>
-      <p>Senior-led, bankable work. Our principals carry every engagement and sign every document.</p>
-      <a href="#contact" class="h-btn h-btn-primary h-btn-standalone">
-        <span class="btn-slide">Book a consultation</span>
-        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" width="16" height="16" aria-hidden="true"><path fill="#ffffff" fill-rule="evenodd" d="M11.8214 0.0977331c0.2883 -0.1052509 0.6005 -0.1264465 0.9005 -0.0610159 0.3029 0.0660858 0.5805 0.2177638 0.7997 0.4370018 0.2192 0.219238 0.3709 0.496818 0.437 0.799741 0.0654 0.29992 0.0442 0.6122 -0.061 0.90043l-3.574 10.71201 -0.0002 0.0007c-0.0871 0.2634 -0.2404 0.5001 -0.4453 0.6873 -0.2043 0.1867 -0.45301 0.3178 -0.72238 0.381 -0.26942 0.0657 -0.55131 0.0601 -0.81798 -0.0161 -0.26643 -0.0761 -0.50848 -0.2201 -0.70245 -0.4179l-1.91734 -1.9086 -2.01406 1.0415c-0.15705 0.0812 -0.34532 0.0734 -0.49515 -0.0205 -0.14982 -0.0938 -0.23893 -0.2599 -0.23434 -0.4366l0.08257 -3.18376 7.04493 -5.11741c0.2793 -0.20286 0.3413 -0.59371 0.1384 -0.87298 -0.2029 -0.27928 -0.59371 -0.34122 -0.87299 -0.13836L2.20283 8.0884 0.473125 6.35869l-0.000058 -0.00005 -0.000126 -0.00013c-0.187323 -0.18719 -0.325225 -0.41797 -0.4013217 -0.67163 -0.07555546 -0.25185 -0.0878308 -0.51841 -0.0357814 -0.77609 0.0521166 -0.28151 0.1779581 -0.54421 0.3647391 -0.76128 0.18806 -0.21856 0.431073 -0.38293 0.703923 -0.47612l0.00337 -0.00115L11.8214 0.0977331Z" clip-rule="evenodd"/></svg>
-      </a>
-    </div>
-    <div class="svc-right" id="svc-cards"></div>
-  </div>
-</section>
-
-<!-- =========== CASES =========== -->
-<section class="cases" id="cases" data-screen-label="Projects">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div><span class="section-label"><span class="n">02</span> Work</span></div>
-      <div>
-        <h2 class="section-title">Selected <em>Projects.</em></h2>
-        <p class="section-lede">56 engagements across 47 countries. Most are under NDA — references available on request.</p>
-      </div>
-    </div>
-    <div class="case-grid reveal" id="case-list"></div>
-    <div class="cases-foot reveal">
-      <a href="#contact" class="btn btn-ghost">See all engagements &nbsp;&rarr;</a>
-    </div>
-  </div>
-</section>
-
-<!-- =========== METRICS BAND =========== -->
-<section class="metrics" data-screen-label="Metrics">
-  <div class="wrap metrics-inner">
-    <p class="metrics-eyebrow reveal">Geology is probability. <em>Engineering is evidence.</em> We work at the boundary where one becomes the other.</p>
-    <div class="metrics-row reveal">
-      <div class="metric"><div class="m-num">28 yrs</div><div class="m-lbl">Average principal tenure</div></div>
-      <div class="metric"><div class="m-num">JORC · NI 43-101</div><div class="m-lbl">Qualified persons on staff</div></div>
-      <div class="metric"><div class="m-num">$14.2B</div><div class="m-lbl">Financed on our studies</div></div>
-      <div class="metric"><div class="m-num">0</div><div class="m-lbl">Withdrawn reports, to date</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========== MAP =========== -->
-<section class="map-sec" id="map" data-screen-label="Map">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-      </div>
-      <div>
-        <h2 class="section-title">Work on the ground across the continent.</h2>
-        <p class="section-lede">We keep permanent technical teams in nine capital cities. Every project is staffed locally and reviewed centrally.</p>
-      </div>
-    </div>
-
-    <div class="map-wrap reveal">
-      <div class="map-stage" id="map-stage">
-        <svg class="map-svg" id="africa-map" viewBox="0 0 500 600" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="map-legend"><span class="dot"></span> Regional office</div>
-      </div>
-      <div class="map-sidebar" id="map-sidebar"></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========== TEAM =========== -->
-<section class="team" id="team" data-screen-label="Team">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-      </div>
-      <div>
-        <h2 class="section-title">The engineers who sign the reports.</h2>
-        <p class="section-lede">We name our qualified persons, publish their tickets, and bring them to every board meeting. No ghost authors, no back-office review.</p>
-      </div>
-    </div>
-
-    <div class="team-grid reveal" id="team-grid"></div>
-  </div>
-</section>
-
-<!-- =========== INSIGHTS =========== -->
-<section class="insights" id="insights" data-screen-label="Insights">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-      </div>
-      <div>
-        <h2 class="section-title">What our engineers are thinking about.</h2>
-        <p class="section-lede">Quarterly memos on commodities, methodology, and fieldwork. Read by operators, central banks, and the occasional journalist.</p>
-      </div>
-    </div>
-
-    <div class="ins-grid reveal" id="ins-grid"></div>
-  </div>
-</section>
-
-<!-- =========== CLIENTS =========== -->
-<section class="clients" data-screen-label="Clients">
-  <div class="wrap clients-inner">
-    <div class="clients-label">Trusted by operators, investors,<br/>and sovereign funds</div>
-    <div class="clients-row">
-      <div class="client-logo"><span class="g circle"></span> Katanga</div>
-      <div class="client-logo"><span class="g"></span> Birimian</div>
-      <div class="client-logo"><span class="g dia"></span> Sirocco</div>
-      <div class="client-logo"><span class="g tri"></span> Aurum</div>
-      <div class="client-logo"><span class="g circle"></span> Rift Res.</div>
-      <div class="client-logo"><span class="g"></span> Zambezi Cap.</div>
-    </div>
-  </div>
-</section>
-
-<!-- =========== CONTACT =========== -->
-<section class="contact" id="contact" data-screen-label="Contact">
-  <div class="wrap contact-grid">
-    <div class="reveal">
-      <h2>Tell us about the <em>orebody.</em></h2>
-      <p>We respond to new enquiries within two working days. Initial scoping conversations are confidential and free of charge.</p>
-      <div class="contact-info">
-        <div>
-          <h5>Johannesburg HQ</h5>
-          <p>44 Wierda Road West<br/>Sandton 2196<br/>+27 11 784 2200</p>
-        </div>
-        <div>
-          <h5>London office</h5>
-          <p>11 Copthall Avenue<br/>EC2R 7EA<br/>+44 20 7796 8100</p>
-        </div>
-        <div>
-          <h5>New enquiries</h5>
-          <p>studies@amc-consult.co</p>
-        </div>
-        <div>
-          <h5>Press &amp; media</h5>
-          <p>press@amc-consult.co</p>
-        </div>
-      </div>
-    </div>
-
-    <form class="form-grid reveal" id="contact-form" novalidate>
-      <div class="form-row">
-        <div class="field"><label>Name</label><input name="name" required /><div class="err">Required</div></div>
-        <div class="field"><label>Company</label><input name="company" required /><div class="err">Required</div></div>
-      </div>
-      <div class="form-row">
-        <div class="field"><label>Email</label><input type="email" name="email" required /><div class="err">Valid email required</div></div>
-        <div class="field">
-          <label>Engagement type</label>
-          <select name="engagement" required>
-            <option value="">Select…</option>
-            <option>Resource estimation (JORC / 43-101)</option>
-            <option>Pre-feasibility or feasibility study</option>
-            <option>Mine planning / optimization</option>
-            <option>M&amp;A technical due diligence</option>
-            <option>Commodity market intelligence</option>
-            <option>Other</option>
-          </select>
-          <div class="err">Required</div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Commodity</label>
-          <select name="commodity">
-            <option value="">—</option>
-            <option>Copper</option><option>Gold</option><option>Lithium</option>
-            <option>Iron ore</option><option>Rare earths</option><option>Coal</option>
-            <option>Uranium</option><option>Diversified</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Project stage</label>
-          <select name="stage">
-            <option value="">—</option>
-            <option>Greenfield exploration</option>
-            <option>Advanced exploration</option>
-            <option>Pre-feasibility</option>
-            <option>Feasibility / finance</option>
-            <option>Operating</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label>Tell us about the project</label>
-        <textarea name="brief" rows="3"></textarea>
-      </div>
-      <button type="submit" class="submit-btn" id="submit-btn">
-        Send enquiry
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">AMC<em>Africa</em></a>
+      <ul class="nav-links">
+        <li><a href="pages/services.html">Services</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+      <a href="pages/contact.html" class="nav-cta">Book a Consultation</a>
+      <button class="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
       </button>
-      <div class="submit-success" id="submit-success">Thank you. A principal will respond within two working days.</div>
-    </form>
-  </div>
-</section>
-
-<!-- =========== FOOTER =========== -->
-<footer class="foot">
-  <div class="wrap foot-inner">
-    <div class="foot-brand">
-      <div class="sig">African Mining Consultants</div>
-      <p>Independent technical advisors to the resource industry since 1998. Regulated by SAIMM, AusIMM, and the Institute of Materials, Minerals &amp; Mining.</p>
     </div>
-    <div>
-      <h5>Practice</h5>
-      <ul>
-        <li><a href="#services">Resource estimation</a></li>
-        <li><a href="#services">Feasibility studies</a></li>
-        <li><a href="#services">Mine planning</a></li>
-        <li><a href="#services">Market intelligence</a></li>
-      </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="hero-content">
+        <div class="tag hero-tag">Mining Consulting &middot; Est. 1994</div>
+        <h1 class="hero-title">Africa's<br>Mining<br>Experts</h1>
+        <p class="hero-desc">Thirty years of mining, exploration, and environmental expertise — built on the Zambian Copperbelt, trusted across sub-Saharan Africa.</p>
+        <div class="hero-actions">
+          <a href="pages/contact.html" class="btn btn-dark btn-lg">Book a Consultation</a>
+          <a href="pages/services.html" class="btn btn-outline btn-lg">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="img-ph">
+          <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="30" height="30" rx="4" stroke="#A8A39B" stroke-width="1.5"/>
+            <circle cx="13" cy="13" r="4" stroke="#A8A39B" stroke-width="1.5"/>
+            <path d="M3 26L12 17L19 24L25 18L33 26" stroke="#A8A39B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <span class="img-ph-lbl">Hero Image</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="clients">
+      <div class="wrap">
+        <div class="clients-inner">
+          <span class="clients-label">Trusted by Africa's mining leaders</span>
+          <div class="clients-logos">
+            <img src="assets/logos/Glencore_logo.svg" alt="Glencore">
+            <img src="assets/logos/anglo-american-logo-color.svg" alt="Anglo American">
+            <img src="assets/logos/First_Quantum_Minerals_New_Logo.svg.png" alt="First Quantum Minerals" style="height:20px;">
+            <span class="client-txt">Ivanhoe Mines</span>
+            <span class="client-txt">Rio Algom</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-content">
+            <span class="tag">About AMC Africa</span>
+            <h2 class="about-title">Built on 30 years of Copperbelt expertise</h2>
+            <p class="about-body">AMC Africa was founded in 1994 by engineers who shaped Zambia's mining industry through ZCCM. Today, we bring that institutional knowledge — and the rigour of international engineering practice — to every engagement across sub-Saharan Africa.</p>
+            <a href="pages/about.html" class="btn btn-outline">More About Us &rarr;</a>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-val">150+</div>
+              <div class="stat-lbl">Projects Completed</div>
+              <div class="stat-note">Across sub-Saharan Africa</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val">40+</div>
+              <div class="stat-lbl">Industry Partners</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val">30+</div>
+              <div class="stat-lbl">Years of Experience</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val">98%</div>
+              <div class="stat-lbl">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-tint">
+      <div class="wrap">
+        <div class="services-header">
+          <div class="services-header-left">
+            <span class="tag">What We Do</span>
+            <h2 class="section-title">Full-spectrum mining consultancy</h2>
+            <p class="section-sub">From geological mapping to investment advisory — covering the entire project lifecycle.</p>
+          </div>
+          <a href="pages/services.html" class="btn btn-outline" style="flex-shrink:0;">View All Services &rarr;</a>
+        </div>
+        <div class="services-grid">
+          <div class="svc-card">
+            <div class="svc-num">01</div>
+            <div class="svc-name">Mining Services</div>
+            <div class="svc-desc">Resource estimation, mine planning, feasibility studies, and production optimisation for open pit and underground operations.</div>
+            <a href="pages/services.html#mining" class="svc-link">Learn more &rarr;</a>
+          </div>
+          <div class="svc-card">
+            <div class="svc-num">02</div>
+            <div class="svc-name">Exploration &amp; Geological Services</div>
+            <div class="svc-desc">Geological mapping, drill programme management, geochemical sampling, and statutory compliance reporting.</div>
+            <a href="pages/services.html#exploration" class="svc-link">Learn more &rarr;</a>
+          </div>
+          <div class="svc-card">
+            <div class="svc-num">03</div>
+            <div class="svc-name">GIS &amp; Environmental Services</div>
+            <div class="svc-desc">Environmental impact assessments, project briefs, drone surveying, and management plan development.</div>
+            <a href="pages/services.html#gis" class="svc-link">Learn more &rarr;</a>
+          </div>
+          <div class="svc-card">
+            <div class="svc-num">04</div>
+            <div class="svc-name">Metallurgical Services</div>
+            <div class="svc-desc">Process design, plant optimisation, and flotation reagent supply via our Kemira SA partnership.</div>
+            <a href="pages/services.html#metallurgical" class="svc-link">Learn more &rarr;</a>
+          </div>
+          <div class="svc-card">
+            <div class="svc-num">05</div>
+            <div class="svc-name">Geotechnical Engineering</div>
+            <div class="svc-desc">Tailings dam and waste dump design, slope stability analysis, and site investigations for mining infrastructure.</div>
+            <a href="pages/services.html#geotechnical" class="svc-link">Learn more &rarr;</a>
+          </div>
+          <div class="svc-card">
+            <div class="svc-num">06</div>
+            <div class="svc-name">Strategy &amp; Investment Advisory</div>
+            <div class="svc-desc">Market entry support, financial modelling, ESG advisory, and organisational improvement for mining investors.</div>
+            <a href="pages/services.html#strategy" class="svc-link">Learn more &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY AMC -->
+    <section class="section section-dark">
+      <div class="wrap">
+        <div class="why-title-block">
+          <span class="tag tag-light">Why AMC Africa</span>
+          <h2 class="why-main-title">Local expertise.<br>International standards.</h2>
+          <p class="why-sub">Grounded in the Zambian Copperbelt. Connected to global engineering practice.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-num">01</div>
+            <div class="why-card-title">Deep Local Knowledge</div>
+            <p class="why-body">Thirty years of on-the-ground experience across Zambia and the DRC — including direct heritage from ZCCM, the institution that built the Copperbelt.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-num">02</div>
+            <div class="why-card-title">End-to-End Capability</div>
+            <p class="why-body">From first geological mapping through to environmental compliance and investment advisory — the complete project lifecycle, under one roof.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-num">03</div>
+            <div class="why-card-title">Tier-1 Client Trust</div>
+            <p class="why-body">Trusted by Glencore, Anglo American, and First Quantum Minerals — the world's largest mining companies operating across sub-Saharan Africa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="section cta-band">
+      <div class="wrap">
+        <div class="cta-inner">
+          <div>
+            <span class="tag">Get In Touch</span>
+            <h2 class="cta-title">Ready to start your project?</h2>
+            <p class="cta-sub">Book a free consultation with our team in Kitwe or Lubumbashi.</p>
+          </div>
+          <a href="pages/contact.html" class="btn btn-dark btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">AMC<em style="color:var(--copper-lt)">Africa</em></a>
+          <p class="footer-tagline">Africa's Exploration, Mining &amp; Environmental Engineering Experts. Founded 1994, Kitwe, Zambia.</p>
+          <div class="footer-contact">
+            <a href="mailto:info@amc-africa.com">info@amc-africa.com</a><br>
+            <a href="tel:+260966825144">+260 96 682 5144</a>
+          </div>
+        </div>
+        <div>
+          <span class="footer-col-label">Services</span>
+          <div class="footer-links">
+            <a href="pages/services.html#mining">Mining Services</a>
+            <a href="pages/services.html#exploration">Exploration &amp; Geology</a>
+            <a href="pages/services.html#gis">GIS &amp; Environmental</a>
+            <a href="pages/services.html#metallurgical">Metallurgy</a>
+            <a href="pages/services.html#geotechnical">Geotechnical Engineering</a>
+            <a href="pages/services.html#strategy">Strategy &amp; Advisory</a>
+          </div>
+        </div>
+        <div>
+          <span class="footer-col-label">Company</span>
+          <div class="footer-links" style="margin-bottom: 28px;">
+            <a href="pages/about.html">About AMC</a>
+            <a href="pages/contact.html">Contact</a>
+          </div>
+          <span class="footer-col-label">Offices</span>
+          <div class="footer-links">
+            <span>Kitwe, Zambia (HQ)</span>
+            <span>Lubumbashi, DRC</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 African Mining Consultants Limited. All rights reserved.</span>
+        <span>Registered in Zambia</span>
+      </div>
     </div>
-    <div>
-      <h5>Firm</h5>
-      <ul>
-        <li><a href="#team">People</a></li>
-        <li><a href="#cases">Projects</a></li>
-        <li><a href="#insights">Insights</a></li>
-        <li><a href="#">Careers</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Contact</h5>
-      <ul>
-        <li><a href="mailto:studies@amc-consult.co">studies@amc-consult.co</a></li>
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="#">SAIMM register</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="wrap foot-bottom">
-    <div>© 1998–2026 African Mining Consultants (Pty) Ltd</div>
-    <div>JHB · LDN · PER · SGP · LIM · NBO · ACC</div>
-  </div>
-</footer>
+  </footer>
 
-<!-- =========== TWEAKS PANEL =========== -->
-<div class="tweaks" id="tweaks">
-  <h4><span>Tweaks</span><span style="color:var(--accent)">●</span></h4>
-  <div class="tweak-group">
-    <label>Accent</label>
-    <div class="swatches" id="sw-accent">
-      <div class="sw" data-v="forest"  title="Forest"></div>
-      <div class="sw" data-v="copper"  title="Copper"></div>
-      <div class="sw" data-v="ochre"   title="Ochre"></div>
-      <div class="sw" data-v="slate"   title="Slate"></div>
-      <div class="sw" data-v="oxblood" title="Oxblood"></div>
-    </div>
-  </div>
-  <div class="tweak-group">
-    <label>Type pairing</label>
-    <div class="segmented four" id="sw-type">
-      <div class="seg" data-v="serif">Serif</div>
-      <div class="seg" data-v="grotesque">Grotesk</div>
-      <div class="seg" data-v="editorial">Editorial</div>
-      <div class="seg" data-v="technical">Technical</div>
-    </div>
-  </div>
-  <div class="tweak-group">
-    <label>Density</label>
-    <div class="segmented three" id="sw-density">
-      <div class="seg" data-v="tight">Tight</div>
-      <div class="seg" data-v="roomy">Roomy</div>
-      <div class="seg" data-v="spacious">Spacious</div>
-    </div>
-  </div>
-  <div class="tweak-group">
-    <label>Theme</label>
-    <div class="segmented" id="sw-theme">
-      <div class="seg" data-v="light">Light</div>
-      <div class="seg" data-v="dark">Dark</div>
-    </div>
-  </div>
-</div>
-
-<script>
-/* =============================================================
-   African Mining Consultants — interactions (inlined)
-   ============================================================= */
-
-/* ---------- 0) Client ticker ---------- */
-(function clientTicker() {
-  const ticker = document.getElementById('clientTicker');
-  const track  = document.getElementById('tickerTrack');
-  if (!ticker || !track) return;
-
-  const SPEED = 0.6; // px per frame
-  let rafId = null;
-  let isDragging = false;
-  let dragStartX = 0;
-  let dragStartScroll = 0;
-
-  function autoScroll() {
-    if (isDragging) return;
-    ticker.scrollLeft += SPEED;
-    const half = track.scrollWidth / 2;
-    if (ticker.scrollLeft >= half) ticker.scrollLeft -= half;
-    rafId = requestAnimationFrame(autoScroll);
-  }
-
-  rafId = requestAnimationFrame(autoScroll);
-
-  ticker.addEventListener('mousedown', e => {
-    isDragging = true;
-    cancelAnimationFrame(rafId);
-    dragStartX = e.pageX;
-    dragStartScroll = ticker.scrollLeft;
-    ticker.classList.add('grabbing');
-  });
-
-  document.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    ticker.scrollLeft = dragStartScroll - (e.pageX - dragStartX);
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    ticker.classList.remove('grabbing');
-    rafId = requestAnimationFrame(autoScroll);
-  });
-
-  ticker.addEventListener('touchstart', e => {
-    isDragging = true;
-    cancelAnimationFrame(rafId);
-    dragStartX = e.touches[0].pageX;
-    dragStartScroll = ticker.scrollLeft;
-  }, { passive: true });
-
-  ticker.addEventListener('touchmove', e => {
-    if (!isDragging) return;
-    ticker.scrollLeft = dragStartScroll - (e.touches[0].pageX - dragStartX);
-  }, { passive: true });
-
-  ticker.addEventListener('touchend', () => {
-    isDragging = false;
-    rafId = requestAnimationFrame(autoScroll);
-  });
-})();
-
-/* ---------- 0) Apply saved tweaks ---------- */
-(function applyTweaks() {
-  const t = window.__TWEAKS__ || {};
-  const root = document.documentElement;
-  root.setAttribute('data-accent',  t.accent  || 'forest');
-  root.setAttribute('data-type',    t.typePair || 'serif');
-  root.setAttribute('data-density', t.density || 'roomy');
-  root.setAttribute('data-theme',   t.theme   || 'light');
-})();
-
-/* ---------- 0) Mobile nav burger ---------- */
-(function mobileNav() {
-  const burger = document.getElementById('navBurger');
-  const menu = document.getElementById('navMenu');
-  if (!burger || !menu) return;
-  burger.addEventListener('click', () => {
-    const open = burger.classList.toggle('open');
-    menu.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  menu.querySelectorAll('.nav-mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      burger.classList.remove('open');
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
+  <script>
+    const nav = document.getElementById('nav');
+    const burger = nav.querySelector('.burger');
+    burger.addEventListener('click', () => {
+      nav.classList.toggle('is-open');
+      document.body.style.overflow = nav.classList.contains('is-open') ? 'hidden' : '';
     });
-  });
-})();
-
-/* ---------- 0) Mobile video autoplay ---------- */
-(function mobileVideo() {
-  const v = document.querySelector('.hero-truck-img');
-  if (!v) return;
-  v.play().catch(() => {});
-  document.addEventListener('touchstart', function tryPlay() {
-    v.play().catch(() => {});
-    document.removeEventListener('touchstart', tryPlay);
-  }, { once: true, passive: true });
-  v.addEventListener('pause', function() {
-    if (!document.hidden) v.play().catch(() => {});
-  });
-})();
-
-/* ---------- 1) Hero scroll — blur + shrink ---------- */
-(function heroScroll() {
-  const bg = document.querySelector('.hero-bg');
-  if (!bg) return;
-  if (window.innerWidth <= 900) return;
-  function update() {
-    const h = bg.parentElement.offsetHeight;
-    const t = Math.min(window.scrollY / h, 1);
-    bg.style.filter    = t > 0 ? `blur(${(t * 14).toFixed(2)}px)` : '';
-    bg.style.transform = t > 0 ? `scale(${(1 - t * 0.07).toFixed(4)})` : '';
-  }
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-})();
-
-/* ---------- 2) Topographic hero background ---------- */
-(function topo() {
-  const svg = document.getElementById('hero-topo');
-  if (!svg) return;
-  const centers = [
-    { x: 380,  y: 540, amp: 1.0,  sx: 380, sy: 260, rot: 0.2 },
-    { x: 1180, y: 360, amp: 0.85, sx: 420, sy: 300, rot: -0.35 },
-    { x: 900,  y: 780, amp: 0.45, sx: 280, sy: 180, rot: 0.9 }
-  ];
-  function field(x, y) {
-    let v = 0;
-    for (const c of centers) {
-      const dx = x - c.x, dy = y - c.y;
-      const cs = Math.cos(c.rot), sn = Math.sin(c.rot);
-      const rx = (dx * cs + dy * sn) / c.sx;
-      const ry = (-dx * sn + dy * cs) / c.sy;
-      v += c.amp * Math.exp(-(rx*rx + ry*ry));
-    }
-    return v;
-  }
-  const levels = 16, steps = 360, frag = [];
-  for (const c of centers) {
-    for (let L = 1; L <= levels; L++) {
-      const target = (L / levels) * c.amp;
-      if (target <= 0.02) continue;
-      const pts = [];
-      for (let i = 0; i < steps; i++) {
-        const ang = (i / steps) * Math.PI * 2;
-        let lo = 0.5, hi = 900;
-        for (let k = 0; k < 18; k++) {
-          const mid = (lo + hi) / 2;
-          const x = c.x + Math.cos(ang) * mid, y = c.y + Math.sin(ang) * mid;
-          if (field(x, y) > target) lo = mid; else hi = mid;
-        }
-        const r = (lo + hi) / 2;
-        pts.push([c.x + Math.cos(ang)*r, c.y + Math.sin(ang)*r]);
-      }
-      const d = 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L') + 'Z';
-      frag.push('<path d="'+d+'"'+(L%4===0?' class="bold"':'')+'/>');
-    }
-  }
-  svg.innerHTML = frag.join('');
-})();
-
-/* ---------- 3) Nav scroll state ---------- */
-(function navScroll() {
-  const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 20);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-})();
-
-/* ---------- 3) KPI counters ---------- */
-(function counters() {
-  const nums = document.querySelectorAll('[data-count]');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      io.unobserve(e.target);
-      const el = e.target;
-      const target = parseFloat(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const prefix = el.dataset.prefix || '';
-      const isFloat = target % 1 !== 0;
-      const dur = 1600, start = performance.now();
-      const tick = (now) => {
-        const p = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const v = target * eased;
-        el.textContent = prefix + (isFloat ? v.toFixed(1) : Math.round(v).toLocaleString()) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    });
-  }, { threshold: .3 });
-  nums.forEach(n => io.observe(n));
-})();
-
-/* ---------- 4) Reveal ---------- */
-(function reveal() {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-})();
-
-/* ---------- 5) Services (sticky scroll cards) ---------- */
-(function services() {
-  const services = [
-    { title: 'Resource estimation & geology',
-      body: 'Drill results in hand. A JORC-compliant resource that satisfies your lenders is a different document entirely.',
-      bullets: ['Mineral resource estimation (Measured · Indicated · Inferred)','Ore body modelling — implicit and explicit','Drill campaign design and QA/QC','Qualified Persons (JORC 2012, NI 43-101, SAMREC)','Independent technical review & audits'],
-      visual: 'drill' },
-    { title: 'Feasibility studies',
-      body: 'Scoping, pre-feasibility, and definitive feasibility studies to international bankable standards. Delivered as one report — not a stack of sub-consultant attachments.',
-      bullets: ['Scoping (PEA) to ±35% accuracy','Pre-feasibility to ±25%','Definitive feasibility to ±15%, bankable','Capex, opex, and cashflow modelling','Risk register with quantified sensitivities'],
-      visual: 'cashflow' },
-    { title: 'Mine planning & engineering',
-      body: 'Strategic and operational mine planning across open-pit and underground. We plan schedules that survive first contact with the geologist and the geotechnical engineer.',
-      bullets: ['Open-pit and underground design','Life-of-mine (LOM) scheduling','Geotechnical review and slope design','Haulage, ventilation, and dewatering','Block-cave and sub-level optimization'],
-      visual: 'pit' },
-    { title: 'Commodity market intelligence',
-      body: 'Price curves, cost curves, and demand forecasts for copper, coal, lithium, rare earths, and minor metals — delivered with the working-file assumptions.',
-      bullets: ['Long-term price forecasts (2026 – 2045)','Global cost-curve positioning','Demand scenarios by end-use','Supply disruption probability modelling','Quarterly subscriber memos'],
-      visual: 'chart' }
-  ];
-  const cardsEl = document.getElementById('svc-cards');
-
-  function svcVisual(k) {
-    if (k === 'drill') return '<svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width=".6" opacity=".25"/></pattern></defs><g fill="none" stroke="currentColor"><path d="M0 80 Q100 60 200 95 T400 90 L400 130 Q300 120 200 140 T0 130 Z" fill="currentColor" opacity=".05"/><path d="M0 140 Q100 130 200 150 T400 145 L400 200 Q300 190 200 210 T0 200 Z" fill="currentColor" opacity=".08"/><path d="M0 210 Q100 205 200 220 T400 215 L400 280 Q300 275 200 285 T0 275 Z" fill="currentColor" opacity=".12" stroke-dasharray="2 3"/><path d="M0 285 L400 278 L400 360 L0 360 Z" fill="url(#hatch)"/><line x1="200" y1="40" x2="200" y2="340" stroke-width="1.5" stroke-dasharray="4 2"/><circle cx="200" cy="40" r="6" fill="currentColor"/><g font-family="JetBrains Mono, monospace" font-size="9" fill="currentColor"><text x="210" y="95">OVERBURDEN 18m</text><text x="210" y="165">SHALE 42m</text><text x="210" y="245">ORE ZONE 74m · 1.84% Cu</text><text x="210" y="320">BASALT</text></g></g></svg>';
-    if (k === 'pit') {
-      let rings = '';
-      for (let i = 0; i < 10; i++) { const r = 30 + i * 15; rings += '<ellipse cx="200" cy="180" rx="'+(r*1.3)+'" ry="'+(r*0.55)+'" opacity="'+(0.15+i*0.05)+'"/>'; }
-      return '<svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor" stroke-width=".8">'+rings+'<path d="M70 180 L200 40 L330 180" stroke-dasharray="3 3" opacity=".5"/><circle cx="200" cy="40" r="4" fill="currentColor"/><text x="210" y="45" font-family="JetBrains Mono" font-size="9" fill="currentColor">CREST · 1,240 masl</text><text x="210" y="185" font-family="JetBrains Mono" font-size="9" fill="currentColor">TOE · 785 masl</text></g></svg>';
-    }
-    if (k === 'cashflow') {
-      const data = [-120, -180, -80, 40, 120, 180, 220, 240, 210, 180, 160, 130], max = 260;
-      let bars = '';
-      data.forEach((v, i) => {
-        const x = 40 + i * 28, h = Math.abs(v)/max*140, y = v >= 0 ? 180 - h : 180;
-        bars += '<rect x="'+x+'" y="'+y+'" width="18" height="'+h+'" fill="currentColor" opacity="'+(v>=0?0.7:0.3)+'"/>';
+    nav.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        document.body.style.overflow = '';
       });
-      return '<svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><g stroke="currentColor"><line x1="30" y1="180" x2="370" y2="180" stroke-width=".6"/>'+bars+'<text x="30" y="30" font-family="JetBrains Mono" font-size="10" fill="currentColor">NPV@8% · $412M</text><text x="30" y="46" font-family="JetBrains Mono" font-size="10" fill="currentColor" opacity=".6">IRR · 24.8%  Payback · 3.4y</text><text x="30" y="340" font-family="JetBrains Mono" font-size="9" fill="currentColor" opacity=".5">Y1 ─────── Y12</text></g></svg>';
-    }
-    if (k === 'chart') {
-      const pts = [];
-      for (let i = 0; i <= 40; i++) { const x = 20 + i * 9, y = 200 + Math.sin(i/3)*30 - i*2 + Math.sin(i/1.3)*10; pts.push([x, y]); }
-      const d = 'M' + pts.map(p => p[0] + ',' + p[1]).join(' L');
-      let grid = ''; [60,120,180,240,300].forEach(y => { grid += '<line x1="20" y1="'+y+'" x2="380" y2="'+y+'" stroke-width=".4" opacity=".2"/>'; });
-      return '<svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="currentColor">'+grid+'<path d="'+d+'" stroke-width="1.5"/><path d="'+d+' L380 300 L20 300 Z" fill="currentColor" opacity=".08" stroke="none"/><text x="20" y="30" font-family="JetBrains Mono" font-size="10" fill="currentColor">Cu · Long-term · $/t</text><text x="20" y="46" font-family="JetBrains Mono" font-size="10" fill="currentColor" opacity=".6">2026 ────── 2045</text></g></svg>';
-    }
-    return '';
-  }
-
-  const iconFiles = ['assets/icons/icon-ruler.svg','assets/icons/icon-book.svg','assets/icons/icon-cog.svg','assets/icons/icon-analytics.svg'];
-  const taglines = [
-    'We take drill results and turn them into JORC-compliant resource estimates that satisfy lenders. From campaign design and QA/QC through to Qualified Person sign-off under JORC 2012, NI 43-101, or SAMREC.',
-    'Scoping, pre-feasibility, and definitive feasibility studies to bankable international standards. Delivered as one integrated report — not a stack of sub-consultant attachments — with full capex, opex, and cashflow modelling.',
-    'Strategic and operational mine planning across open-pit and underground. We produce life-of-mine schedules that hold up against the geologist and the geotechnical engineer, with risk registers your board can defend.',
-    'Price curves, cost curves, and demand forecasts for copper, lithium, rare earths, and minor metals — with the working-file assumptions included. Quarterly subscriber memos keep your models current between engagements.'
-  ];
-  services.forEach((s, i) => {
-    const card = document.createElement('div');
-    card.className = 'svc-card';
-    card.innerHTML =
-      '<div class="svc-card-header">' +
-        '<div class="svc-card-icon"><img src="' + iconFiles[i] + '" alt="" /></div>' +
-      '</div>' +
-      '<div class="svc-card-info">' +
-        '<h3>'+s.title+'</h3>' +
-        '<p class="svc-card-tagline">'+taglines[i]+'</p>' +
-      '</div>';
-    cardsEl.appendChild(card);
-  });
-})();
-
-/* ---------- 6) Cases ---------- */
-(function cases() {
-  const data = [
-    { name:'Kolwezi Copper Extension',  loc:'DRC',          type:'Pre-feasibility',        yr:'2025', com:'Cu',  stage:50, stat:'180Mt',  statLbl:'Resource' },
-    { name:'Oyapock Rare Earth Basin',  loc:'Guyana',       type:'Scoping study',          yr:'2025', com:'REE', stage:25, stat:'Greenfield', statLbl:'Exploration' },
-    { name:'Kalahari Lithium Salars',   loc:'Botswana',     type:'Definitive feasibility', yr:'2024', com:'Li',  stage:75, stat:'$1.4B',  statLbl:'Capex est.' },
-    { name:'Witwatersrand Deep Gold',   loc:'South Africa', type:'Mine optimisation',      yr:'2024', com:'Au',  stage:90, stat:'3.2km',  statLbl:'Mine depth' },
-    { name:'Nimba Iron Complex',        loc:'Guinea',       type:'Technical due diligence',yr:'2024', com:'Fe',  stage:60, stat:'$1.2B',  statLbl:'Acquisition' },
-    { name:'Barents Uranium Project',   loc:'Finland',      type:'Independent review',     yr:'2023', com:'U',   stage:40, stat:'ISR',    statLbl:'Method' }
-  ];
-
-  document.getElementById('case-list').innerHTML = data.map(function(d) {
-    return '<a class="case-card" href="#">' +
-      '<div class="case-card-top">' +
-        '<span class="case-com">' + d.com + '</span>' +
-        '<span class="case-yr">' + d.yr + '</span>' +
-      '</div>' +
-      '<div class="case-loc-type">' + d.loc + ' &middot; ' + d.type + '</div>' +
-      '<div class="case-name">' + d.name + '</div>' +
-      '<div class="case-stage">' +
-        '<div class="case-stage-labels"><span>Scoping</span><span>PFS</span><span>DFS</span><span>Ops</span></div>' +
-        '<div class="case-stage-bar"><div class="case-stage-fill" style="width:' + d.stage + '%"></div></div>' +
-      '</div>' +
-      '<div class="case-bottom">' +
-        '<div><div class="case-stat-num">' + d.stat + '</div><div class="case-stat-lbl">' + d.statLbl + '</div></div>' +
-        '<span class="case-cta">Request brief &rarr;</span>' +
-      '</div>' +
-    '</a>';
-  }).join('');
-})();
-
-/* ---------- 7) Africa map ---------- */
-(function africaMap() {
-  const svg = document.getElementById('africa-map');
-  const stage = document.getElementById('map-stage');
-  const outline = "M 250 30 L 310 40 L 340 55 L 345 75 L 360 85 L 390 80 L 410 100 L 430 130 L 445 165 L 440 200 L 420 230 L 430 260 L 440 290 L 435 320 L 420 350 L 400 380 L 385 410 L 370 445 L 345 475 L 320 500 L 290 520 L 260 540 L 240 555 L 215 560 L 200 545 L 195 515 L 205 490 L 190 460 L 175 425 L 165 390 L 155 355 L 150 320 L 145 280 L 130 245 L 115 210 L 100 175 L 90 145 L 85 115 L 100 90 L 130 70 L 170 55 L 210 42 Z";
-  const offices = [
-    { id:'za', name:'Johannesburg', x: 290, y: 475, staff: 120, meta:'HQ · Since 1998', detail:'Group headquarters. Corporate finance, DFS delivery, and group QP registry.' },
-    { id:'cd', name:'Lubumbashi',   x: 260, y: 335, staff: 42,  meta:'Office · Since 2008', detail:'Copperbelt fieldwork and resource estimation hub.' },
-    { id:'gh', name:'Accra',        x: 130, y: 255, staff: 28,  meta:'Office · Since 2012', detail:'West African gold and bauxite practice.' },
-    { id:'ke', name:'Nairobi',      x: 335, y: 315, staff: 24,  meta:'Office · Since 2014', detail:'East African rare earth and REE research team.' },
-    { id:'na', name:'Windhoek',     x: 240, y: 440, staff: 18,  meta:'Office · Since 2015', detail:'Uranium and rare earth project engineering.' },
-    { id:'ma', name:'Casablanca',   x: 145, y: 100, staff: 22,  meta:'Office · Since 2017', detail:'North African phosphate and polymetallics.' },
-    { id:'bw', name:'Gaborone',     x: 280, y: 445, staff: 16,  meta:'Office · Since 2019', detail:'Lithium salars, diamonds, and infrastructure.' },
-    { id:'zm', name:'Lusaka',       x: 280, y: 380, staff: 32,  meta:'Office · Since 2010', detail:'Copperbelt technical services and DFS work.' },
-    { id:'au', name:'Perth',        x: 415, y: 540, staff: 34,  meta:'Office · Since 2016', detail:'Asia-Pacific operations and iron-ore desk.' }
-  ];
-  svg.innerHTML = '<path class="country" d="'+outline+'"/>';
-
-  function renderPins() {
-    stage.querySelectorAll('.map-pin').forEach(p => p.remove());
-    const r = stage.getBoundingClientRect();
-    const sx = r.width / 500, sy = r.height / 600;
-    offices.forEach(o => {
-      const p = document.createElement('div');
-      p.className = 'map-pin';
-      p.dataset.id = o.id;
-      p.style.left = (o.x * sx) + 'px';
-      p.style.top  = (o.y * sy) + 'px';
-      p.title = o.name;
-      p.addEventListener('mouseenter', () => setActive(o.id));
-      p.addEventListener('click',      () => setActive(o.id));
-      stage.appendChild(p);
     });
-  }
-  renderPins();
-  window.addEventListener('resize', renderPins);
+  </script>
 
-  const side = document.getElementById('map-sidebar');
-  side.innerHTML = offices.map(o =>
-    '<div class="map-row" data-id="'+o.id+'"><div class="country-name">'+o.name+'</div><div class="country-meta">'+o.staff+' staff</div><div class="country-detail">'+o.meta+' · '+o.detail+'</div></div>'
-  ).join('');
-
-  function setActive(id) {
-    stage.querySelectorAll('.map-pin').forEach(p => p.classList.toggle('active', p.dataset.id === id));
-    side.querySelectorAll('.map-row').forEach(r => r.classList.toggle('active', r.dataset.id === id));
-  }
-  side.addEventListener('click',     e => { const row = e.target.closest('.map-row'); if (row) setActive(row.dataset.id); });
-  side.addEventListener('mouseover', e => { const row = e.target.closest('.map-row'); if (row) setActive(row.dataset.id); });
-  setActive('za');
-})();
-
-/* ---------- 8) Team ---------- */
-(function team() {
-  const people = [
-    { name:'Dr. Ayanda Mbeki',     role:'Managing Principal · JHB',  bio:'Mineral economist, 28 years. Former CRO, Gold Fields.',       ticker:'SAIMM · FCMA' },
-    { name:'Dr. Thomas Lindqvist', role:'Head of Resources · LDN',    bio:'Resource geologist, 24 years. QP on 41 filings.',             ticker:'NI 43-101 · AIG' },
-    { name:'Ngozi Adeyemi',        role:'Head of Engineering · JHB',  bio:'Mining engineer, 22 years. Open-pit and block-cave specialist.', ticker:'AusIMM · CP' },
-    { name:'Rajiv Chandrasekhar',  role:'Head of Markets · SGP',      bio:'Commodity strategist, 19 years. Ex-Goldman metals desk.',     ticker:'CFA · FRM' }
-  ];
-  function portraitSvg(seed) {
-    const rot = [8, -12, 22, -20][seed % 4];
-    return '<svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice"><defs><pattern id="stripe-'+seed+'" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate('+rot+')"><rect width="6" height="6" fill="var(--bg-2)"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--ink-4)" stroke-width=".5" opacity=".5"/></pattern><linearGradient id="fade-'+seed+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--bg-2)" stop-opacity="0"/><stop offset="100%" stop-color="var(--ink)" stop-opacity=".15"/></linearGradient></defs><rect width="200" height="250" fill="url(#stripe-'+seed+')"/><g transform="translate(100 140)"><circle r="48" fill="var(--paper)" opacity=".9"/><circle cy="-10" r="22" fill="var(--ink-4)" opacity=".5"/><path d="M -45 50 Q 0 10 45 50 L 45 90 L -45 90 Z" fill="var(--ink-4)" opacity=".5"/></g><rect width="200" height="250" fill="url(#fade-'+seed+')"/></svg>';
-  }
-  document.getElementById('team-grid').innerHTML = people.map((p, i) =>
-    '<div class="person"><div class="person-img">'+portraitSvg(i)+'<span class="tag">'+p.ticker+'</span></div><div class="person-name">'+p.name+'</div><div class="person-role">'+p.role+'</div><div class="person-bio">'+p.bio+'</div></div>'
-  ).join('');
-})();
-
-/* ---------- 9) Insights ---------- */
-(function insights() {
-  const arts = [
-    { feat:true,  meta:['TECHNICAL MEMO','Q1 2026'], title:'Why we think the copper grade-tonnage curve is broken — and what that means for the next decade of investment.', excerpt:'A long memo on declining head grades across the Copperbelt, Chile, and Mongolia, and why simple scale-up economics no longer describe the asset base.' },
-    { feat:false, meta:['METHODOLOGY','08 pages'],   title:'A reproducible framework for long-term REE price forecasting.', excerpt:'Our in-house method for modelling neodymium and praseodymium, open-sourced.' },
-    { feat:false, meta:['FIELD NOTE','03 pages'],    title:'Notes from the Katanga geotechnical review.', excerpt:'Slope stability observations from three weeks on site in March.' }
-  ];
-  document.getElementById('ins-grid').innerHTML = arts.map(a =>
-    '<article class="article'+(a.feat ? ' feat' : '')+'"><div class="a-meta"><span>'+a.meta[0]+'</span><span>'+a.meta[1]+'</span></div><div><h3 class="a-title">'+a.title+'</h3><p class="a-excerpt">'+a.excerpt+'</p></div><a class="a-more">Read memo →</a></article>'
-  ).join('');
-})();
-
-/* ---------- 10) Contact form ---------- */
-(function contactForm() {
-  const form = document.getElementById('contact-form');
-  const btn = document.getElementById('submit-btn');
-  const ok  = document.getElementById('submit-success');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let valid = true;
-    form.querySelectorAll('[required]').forEach(input => {
-      const field = input.closest('.field');
-      let bad = !input.value.trim();
-      if (input.type === 'email' && input.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.value)) bad = true;
-      field.classList.toggle('invalid', bad);
-      if (bad) valid = false;
-    });
-    if (!valid) return;
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.innerHTML = 'Send enquiry <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-      ok.classList.add('show');
-      form.reset();
-      setTimeout(() => ok.classList.remove('show'), 6000);
-    }, 900);
-  });
-  form.addEventListener('input', (e) => {
-    const field = e.target.closest('.field');
-    if (field) field.classList.remove('invalid');
-  });
-})();
-
-/* ---------- 11) Tweaks panel ---------- */
-(function tweaksPanel() {
-  const panel = document.getElementById('tweaks');
-  const root = document.documentElement;
-  const state = Object.assign({}, window.__TWEAKS__);
-  const map = { accent:'data-accent', typePair:'data-type', density:'data-density', theme:'data-theme' };
-  function setKey(k, v) {
-    state[k] = v;
-    root.setAttribute(map[k], v);
-    sync();
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [k]: v } }, '*');
-  }
-  function sync() {
-    panel.querySelectorAll('#sw-accent .sw').forEach(el => el.classList.toggle('active', el.dataset.v === state.accent));
-    panel.querySelectorAll('#sw-type .seg').forEach(el => el.classList.toggle('active', el.dataset.v === state.typePair));
-    panel.querySelectorAll('#sw-density .seg').forEach(el => el.classList.toggle('active', el.dataset.v === state.density));
-    panel.querySelectorAll('#sw-theme .seg').forEach(el => el.classList.toggle('active', el.dataset.v === state.theme));
-  }
-  panel.querySelector('#sw-accent').addEventListener('click',  e => { const s = e.target.closest('.sw');  if (s) setKey('accent', s.dataset.v); });
-  panel.querySelector('#sw-type').addEventListener('click',    e => { const s = e.target.closest('.seg'); if (s) setKey('typePair', s.dataset.v); });
-  panel.querySelector('#sw-density').addEventListener('click', e => { const s = e.target.closest('.seg'); if (s) setKey('density', s.dataset.v); });
-  panel.querySelector('#sw-theme').addEventListener('click',   e => { const s = e.target.closest('.seg'); if (s) setKey('theme', s.dataset.v); });
-  sync();
-
-  window.addEventListener('message', (e) => {
-    if (!e.data || typeof e.data !== 'object') return;
-    if (e.data.type === '__activate_edit_mode')   panel.classList.add('open');
-    if (e.data.type === '__deactivate_edit_mode') panel.classList.remove('open');
-  });
-  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-})();
-</script>
 </body>
 </html>
