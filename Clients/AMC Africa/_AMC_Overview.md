@@ -25,6 +25,7 @@
 | 10 Apr 2026 | Switched to template project (jubilant-radish). Full AMC offer extracted from amc-africa.com. Hero + Mission sections updated. |
 | 12 Apr 2026 | Standalone HTML concept built from scratch using taste-skill. Full site: hero, mission, services, clients, why, FAQ, CTA, footer. Ready to present to Edwin. |
 | 19 Apr 2026 (session 2) | Major site improvements: sticky fix (flex→grid), nav button restyled, mobile padding standardised, folder restructure, projects section full redesign (3×2 card grid + stage progress bars), metrics band redesign (full-width stat row), section label squircle styling. Live at partnr-five.vercel.app. |
+| 20 Apr 2026 | Created `assets/logos/` folder. Filed Glencore (SVG ×2), Anglo American (SVG ×2), FQM (PNG) logos. Created `_AMC_Company_Profile.md` from live website research. |
 
 ---
 
@@ -67,7 +68,7 @@ Live at **partnr-five.vercel.app** — auto-deploys on push to `main`.
 | Map (Africa footprint) | ⚠️ Decision needed | Keep / remove / repurpose? |
 | Team | ⚠️ Fictional | Replace with real AMC principals |
 | Insights | ⚠️ Placeholder | Replace with real AMC memos |
-| Clients | ⚠️ Fictional logos | Swap to Glencore, Anglo American, FQM, Lonmin, Rio Algom |
+| Clients | ⚠️ Logos collected, not wired in | Glencore, Anglo American, FQM in `assets/logos/`. Still need: Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals |
 | Contact | ⚠️ Wrong address | Update to real Kitwe address + emukonka@amc-africa.com |
 | Footer | ⚠️ Wrong details | "est. 1998" should be 1994; email/reg details wrong |
 

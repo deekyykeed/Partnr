@@ -1,12 +1,12 @@
 ---
 type: index
 tags: [partnr, status, active]
-updated: 2026-04-19
+updated: 2026-04-20
 ---
 
 # Partnr — Project Memory
 
-**Last updated:** 19 April 2026
+**Last updated:** 20 April 2026
 
 ---
 
@@ -16,7 +16,7 @@ updated: 2026-04-19
 - [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Senior engineers (count-up KPIs; hero placeholders still in)
 - [ ] **AMC — Map section decision**: keep (office footprint) or remove/replace? Ask Edwin or decide before next build session
 - [ ] **AMC — Contact section**: update from fictional JHB/London addresses to real AMC Kitwe details (emukonka@amc-africa.com)
-- [ ] **AMC — Clients section**: swap fictional logos (Katanga, Birimian…) for real clients (Glencore, Anglo American, FQM, Lonmin, Rio Algom)
+- [ ] **AMC — Clients section**: swap fictional logos for real ones — Glencore, Anglo American, FQM logos downloaded to `assets/logos/`; still need Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals + wire into HTML
 - [ ] **AMC — Nav "est. 1998"** → should be 1994 per copy doc
 - [ ] **AMC — Team section**: fictional names — replace with real AMC principals when Edwin provides them
 - [ ] **AMC — style guide + component system**: build shared HTML/CSS component library for all Partnr clients
@@ -82,6 +82,11 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 ---
 
 ## Session Log
+
+### 20 Apr 2026
+- **Client logos** — created `assets/logos/` folder. Downloaded and filed: Glencore (SVG ×2 incl. white), Anglo American (SVG ×2), First Quantum Minerals (PNG). Still needed: Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick Gold, ZCCM-IH, African Rainbow Minerals.
+- **AMC Company Profile** — created `_AMC_Company_Profile.md` from live website + online sources (amc-africa.com, ZoomInfo, ROCK Robotic). Covers: founding history, offices, 6 services with sub-details, confirmed clients, key personnel (Edwin Mukonka, Dr. Yotam Hara), revenue/headcount estimates.
+- **FQM logo** — saved as PNG not SVG. Worth finding an SVG version later.
 
 ### 19 Apr 2026 (session 2)
 - **Sticky fix** — `overflow-x: hidden` → `overflow-x: clip` on html/body, then flex → CSS grid on `.svc-sticky-wrap` with `align-self: start`. Left column now sticks correctly in Services and Projects sections.
