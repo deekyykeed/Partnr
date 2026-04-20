@@ -1,6 +1,6 @@
 /* ============================================================
    AMC Africa — Main Stylesheet
-   Font: Plus Jakarta Sans (Google Fonts)
+   Display font: Fraunces (serif) | UI font: Plus Jakarta Sans
    Stack: Vanilla HTML/CSS, no framework
    ============================================================ */
 
@@ -19,6 +19,7 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { cursor: pointer; font: inherit; border: none; background: none; padding: 0; }
 img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, h4 { font-family: var(--font-display); }
 
 /* ---- TOKENS ---- */
 :root {
@@ -43,6 +44,9 @@ img { display: block; max-width: 100%; height: auto; }
   --section:  clamp(72px, 9vw, 116px);
   --radius:   8px;
   --radius-lg: 12px;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-ui:      'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ---- LAYOUT ---- */
