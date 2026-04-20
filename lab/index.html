@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnr Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0A0A;
+      color: #fff;
+      min-height: 100dvh;
+      padding: 48px clamp(20px, 5vw, 60px);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    header { margin-bottom: 56px; }
+    .site-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    h1 span { color: rgba(255,255,255,0.3); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: block;
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .card:hover {
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-2px);
+    }
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #1A1A1A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .card-body { padding: 18px 20px; }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.55;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+    }
+    .card-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.35);
+    }
+    .card-arrow {
+      font-size: 14px;
+      color: rgba(255,255,255,0.25);
+      transition: color 0.15s;
+    }
+    .card:hover .card-arrow { color: rgba(255,255,255,0.7); }
+
+    /* Thumb accent colors per concept */
+    .thumb-indigo { background: linear-gradient(135deg, #07070E 0%, #0E0E1C 60%, #1a1a30 100%); }
+    .thumb-indigo::after {
+      content: '';
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,91,246,0.4), transparent 70%);
+    }
+
+    footer {
+      margin-top: 64px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="site-label">Partnr / Lab</div>
+    <h1>Design Concepts <span>&amp; Experiments</span></h1>
+  </header>
+
+  <div class="grid">
+
+    <a class="card" href="concepts/vela-concept.html">
+      <div class="card-thumb thumb-indigo"></div>
+      <div class="card-body">
+        <div class="card-title">Vela — AI Finance Platform</div>
+        <p class="card-desc">Dark editorial hero, Cormorant Garamond serif, floating pill nav, indigo accent. SaaS landing page concept.</p>
+        <div class="card-meta">
+          <span class="card-tag">SaaS / Dark</span>
+          <span class="card-arrow">&rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Add more concept cards here -->
+
+  </div>
+
+  <footer>Partnr internal use &mdash; not for clients</footer>
+
+</body>
+</html>
