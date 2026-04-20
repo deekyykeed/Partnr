@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — AMC Africa</title>
+  <meta name="description" content="Full-spectrum mining consultancy: Mining, Exploration, Environmental, Metallurgy, Geotechnical Engineering, and Strategy services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    /* ---- PAGE HERO ---- */
+    .page-hero {
+      padding-top: var(--nav-h);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero-inner {
+      padding-top: 80px;
+      padding-bottom: 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: end;
+    }
+    .page-breadcrumb {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-3);
+      margin-bottom: 24px;
+    }
+    .page-breadcrumb a { color: var(--ink-3); transition: color 0.15s; }
+    .page-breadcrumb a:hover { color: var(--ink); }
+    .page-title {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.07;
+    }
+    .page-hero-desc {
+      font-size: clamp(15px, 1.5vw, 17px);
+      color: var(--ink-2);
+      line-height: 1.72;
+      max-width: 440px;
+    }
+
+    /* ---- SERVICE NAV ---- */
+    .service-nav {
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 100;
+      background: rgba(249,248,245,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .service-nav-inner {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .service-nav-inner::-webkit-scrollbar { display: none; }
+    .service-nav-inner a {
+      flex-shrink: 0;
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-2);
+      border-bottom: 2px solid transparent;
+      transition: color 0.14s, border-color 0.14s;
+      white-space: nowrap;
+    }
+    .service-nav-inner a:hover { color: var(--ink); }
+    .service-nav-inner a.on { color: var(--ink); border-bottom-color: var(--ink); }
+
+    /* ---- SERVICE ROW ---- */
+    .svc-row {
+      padding: var(--section) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .svc-row:last-of-type { border-bottom: none; }
+    .svc-row-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .svc-row:nth-child(even) .svc-row-inner .svc-content { order: 2; }
+    .svc-row:nth-child(even) .svc-row-inner .svc-media { order: 1; }
+    .svc-header { margin-bottom: 24px; }
+    .svc-header-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--copper);
+      margin-bottom: 10px;
+    }
+    .svc-header-title {
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .svc-header-desc {
+      font-size: 16px;
+      color: var(--ink-2);
+      line-height: 1.72;
+      margin-top: 16px;
+      margin-bottom: 28px;
+    }
+    .capability-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .capability-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    .capability-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--copper);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .svc-cta {
+      margin-top: 32px;
+    }
+    .svc-media {
+      position: sticky;
+      top: calc(var(--nav-h) + 60px);
+    }
+
+    /* ---- CTA BAND ---- */
+    .cta-band {
+      border-top: 1px solid var(--border);
+      background: var(--card-bg);
+    }
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .cta-title {
+      font-size: clamp(26px, 3.5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-top: 14px;
+    }
+    .cta-sub { font-size: 16px; color: var(--ink-2); margin-top: 10px; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1024px) {
+      .page-hero-inner { grid-template-columns: 1fr; padding-bottom: 48px; }
+      .svc-row-inner { grid-template-columns: 1fr; gap: 40px; }
+      .svc-row:nth-child(even) .svc-row-inner .svc-content { order: 1; }
+      .svc-row:nth-child(even) .svc-row-inner .svc-media { order: 2; }
+      .svc-media { position: static; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">AMC<em>Africa</em></a>
+      <ul class="nav-links">
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">Book a Consultation</a>
+      <button class="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <div class="wrap page-hero-inner">
+        <div>
+          <p class="page-breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; Services</p>
+          <h1 class="page-title">Our<br>Services</h1>
+        </div>
+        <div>
+          <p class="page-hero-desc">AMC Africa covers the complete technical spectrum of mining project development — from initial exploration through to operational strategy and environmental compliance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE QUICK NAV -->
+    <div class="service-nav">
+      <div class="wrap service-nav-inner">
+        <a href="#mining">Mining</a>
+        <a href="#exploration">Exploration &amp; Geology</a>
+        <a href="#gis">GIS &amp; Environmental</a>
+        <a href="#metallurgical">Metallurgy</a>
+        <a href="#geotechnical">Geotechnical</a>
+        <a href="#strategy">Strategy &amp; Advisory</a>
+      </div>
+    </div>
+
+    <!-- 01 MINING SERVICES -->
+    <section class="svc-row" id="mining">
+      <div class="wrap">
+        <div class="svc-row-inner">
+          <div class="svc-content">
+            <div class="svc-header">
+              <div class="svc-header-num">01 &mdash; Mining Services</div>
+              <h2 class="svc-header-title">Mine planning and optimisation from first principles</h2>
+            </div>
+            <p class="svc-header-desc">We provide rigorous technical support across the full mining value chain — from initial resource estimation through to on-site production planning. Our work is grounded in real Copperbelt experience, combining practical knowledge with industry-standard software and methodology.</p>
+            <ul class="capability-list">
+              <li>Resource and reserve estimation and independent audits</li>
+              <li>Open pit and underground mine design and optimisation</li>
+              <li>Mine production scheduling and planning</li>
+              <li>Feasibility studies (scoping, pre-feasibility, bankable)</li>
+              <li>Stockpile and waste dump volume surveys</li>
+              <li>Mining software training (Surpac, Whittle, Vulcan)</li>
+              <li>On-site mine planning support and secondments</li>
+            </ul>
+            <div class="svc-cta">
+              <a href="contact.html" class="btn btn-dark">Discuss a Project &rarr;</a>
+            </div>
+          </div>
+          <div class="svc-media">
+            <div class="img-ph" style="min-height: 420px;">
+              <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="30" height="30" rx="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <circle cx="13" cy="13" r="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <path d="M3 26L12 17L19 24L25 18L33 26" stroke="#A8A39B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <span class="img-ph-lbl">Mining Services Image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 EXPLORATION -->
+    <section class="svc-row" id="exploration">
+      <div class="wrap">
+        <div class="svc-row-inner">
+          <div class="svc-content">
+            <div class="svc-header">
+              <div class="svc-header-num">02 &mdash; Exploration &amp; Geological Services</div>
+              <h2 class="svc-header-title">Finding what's in the ground — with precision</h2>
+            </div>
+            <p class="svc-header-desc">From first mapping through to drill core processing and government reporting, our geological team brings decades of Copperbelt and broader African experience. We manage exploration programmes with the discipline and documentation that project financing requires.</p>
+            <ul class="capability-list">
+              <li>Geological mapping and structural interpretation</li>
+              <li>Geochemical soil and rock sampling programmes</li>
+              <li>Ground geophysics (IP, magnetics, EM)</li>
+              <li>Drill programme design and management</li>
+              <li>Drill core processing, logging, and sampling</li>
+              <li>Geological database management (QAQC)</li>
+              <li>Statutory government reporting and compliance</li>
+            </ul>
+            <div class="svc-cta">
+              <a href="contact.html" class="btn btn-dark">Discuss a Project &rarr;</a>
+            </div>
+          </div>
+          <div class="svc-media">
+            <div class="img-ph" style="min-height: 420px;">
+              <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="30" height="30" rx="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <circle cx="13" cy="13" r="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <path d="M3 26L12 17L19 24L25 18L33 26" stroke="#A8A39B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <span class="img-ph-lbl">Exploration Image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 GIS & ENVIRONMENTAL -->
+    <section class="svc-row" id="gis">
+      <div class="wrap">
+        <div class="svc-row-inner">
+          <div class="svc-content">
+            <div class="svc-header">
+              <div class="svc-header-num">03 &mdash; GIS &amp; Environmental Services</div>
+              <h2 class="svc-header-title">Environmental compliance built on rigorous science</h2>
+            </div>
+            <p class="svc-header-desc">Environmental permitting and compliance are non-negotiable for modern mining operations. We provide technically defensible environmental studies, assessments, and management plans — built on thorough baseline data and designed to satisfy both regulators and financiers.</p>
+            <ul class="capability-list">
+              <li>Environmental baseline studies and data collection</li>
+              <li>Environmental Project Briefs (EPBs)</li>
+              <li>Environmental and Social Impact Assessments (ESIAs)</li>
+              <li>Environmental audits and compliance reviews</li>
+              <li>Environmental Management Plans (EMPs)</li>
+              <li>Drone mapping, aerial surveying, and volumetric analysis</li>
+              <li>GIS data management and spatial analysis</li>
+            </ul>
+            <div class="svc-cta">
+              <a href="contact.html" class="btn btn-dark">Discuss a Project &rarr;</a>
+            </div>
+          </div>
+          <div class="svc-media">
+            <div class="img-ph" style="min-height: 420px;">
+              <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="30" height="30" rx="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <circle cx="13" cy="13" r="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <path d="M3 26L12 17L19 24L25 18L33 26" stroke="#A8A39B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <span class="img-ph-lbl">Environmental Image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 METALLURGICAL -->
+    <section class="svc-row" id="metallurgical">
+      <div class="wrap">
+        <div class="svc-row-inner">
+          <div class="svc-content">
+            <div class="svc-header">
+              <div class="svc-header-num">04 &mdash; Metallurgical Services</div>
+              <h2 class="svc-header-title">Getting the most from your ore — from plant to product</h2>
+            </div>
+            <p class="svc-header-desc">Our metallurgical capability — led by Dr. Yotam Hara — covers process design, plant assessment, and reagent optimisation. We also supply flotation reagents and flocculants through our Kemira SA agency agreement, giving clients a single technical and supply partner.</p>
+            <ul class="capability-list">
+              <li>Metallurgical process design and review</li>
+              <li>Processing plant performance assessment and optimisation</li>
+              <li>Flotation circuit design and reagent optimisation</li>
+              <li>Flotation reagents and flocculants supply (via Kemira SA)</li>
+              <li>Leaching and hydrometallurgical process review</li>
+              <li>Metallurgical testwork programme management</li>
+              <li>After-sale technical support and training</li>
+            </ul>
+            <div class="svc-cta">
+              <a href="contact.html" class="btn btn-dark">Discuss a Project &rarr;</a>
+            </div>
+          </div>
+          <div class="svc-media">
+            <div class="img-ph" style="min-height: 420px;">
+              <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="30" height="30" rx="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <circle cx="13" cy="13" r="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <path d="M3 26L12 17L19 24L25 18L33 26" stroke="#A8A39B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <span class="img-ph-lbl">Metallurgy Image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 GEOTECHNICAL -->
+    <section class="svc-row" id="geotechnical">
+      <div class="wrap">
+        <div class="svc-row-inner">
+          <div class="svc-content">
+            <div class="svc-header">
+              <div class="svc-header-num">05 &mdash; Geotechnical Engineering Services</div>
+              <h2 class="svc-header-title">Ground engineering for safe, long-term mine operations</h2>
+            </div>
+            <p class="svc-header-desc">Geotechnical failure is one of the most consequential risks in mining. Our team provides rigorous slope stability analysis, waste facility design, and ground characterisation — giving operators the confidence that their infrastructure will perform safely over the life of mine.</p>
+            <ul class="capability-list">
+              <li>Waste dump and tailings dam design</li>
+              <li>Tailings storage facility (TSF) stability reviews</li>
+              <li>Slope stability assessment and monitoring programmes</li>
+              <li>Numerical modelling (finite element / finite difference)</li>
+              <li>Rock mass classification and characterisation</li>
+              <li>Site investigations for mining and civil infrastructure</li>
+              <li>Geotechnical risk assessment and management plans</li>
+            </ul>
+            <div class="svc-cta">
+              <a href="contact.html" class="btn btn-dark">Discuss a Project &rarr;</a>
+            </div>
+          </div>
+          <div class="svc-media">
+            <div class="img-ph" style="min-height: 420px;">
+              <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="30" height="30" rx="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <circle cx="13" cy="13" r="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <path d="M3 26L12 17L19 24L25 18L33 26" stroke="#A8A39B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <span class="img-ph-lbl">Geotechnical Image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 STRATEGY -->
+    <section class="svc-row" id="strategy">
+      <div class="wrap">
+        <div class="svc-row-inner">
+          <div class="svc-content">
+            <div class="svc-header">
+              <div class="svc-header-num">06 &mdash; Strategy &amp; Investment Advisory</div>
+              <h2 class="svc-header-title">Commercial intelligence for African mining decisions</h2>
+            </div>
+            <p class="svc-header-desc">For investors, juniors, and established operators looking to enter or optimise within sub-Saharan Africa, we provide commercially grounded advisory services built on 30 years of regional market experience. Our work spans transaction support, organisational review, and ESG strategy.</p>
+            <ul class="capability-list">
+              <li>Market entry strategy and country risk assessment</li>
+              <li>Mining project financial modelling and valuations</li>
+              <li>Project finance structuring and bankable study support</li>
+              <li>Due diligence on acquisitions and joint ventures</li>
+              <li>Organisational improvement and operational efficiency reviews</li>
+              <li>ESG strategy development and reporting frameworks</li>
+              <li>Regulatory and licensing advisory (Zambia, DRC)</li>
+            </ul>
+            <div class="svc-cta">
+              <a href="contact.html" class="btn btn-dark">Discuss a Project &rarr;</a>
+            </div>
+          </div>
+          <div class="svc-media">
+            <div class="img-ph" style="min-height: 420px;">
+              <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="30" height="30" rx="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <circle cx="13" cy="13" r="4" stroke="#A8A39B" stroke-width="1.5"/>
+                <path d="M3 26L12 17L19 24L25 18L33 26" stroke="#A8A39B" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <span class="img-ph-lbl">Strategy Image</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="section cta-band">
+      <div class="wrap">
+        <div class="cta-inner">
+          <div>
+            <span class="tag">Get In Touch</span>
+            <h2 class="cta-title">Not sure which service fits your project?</h2>
+            <p class="cta-sub">Talk to our team. We'll tell you exactly what you need.</p>
+          </div>
+          <a href="contact.html" class="btn btn-dark btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">AMC<em style="color:var(--copper-lt)">Africa</em></a>
+          <p class="footer-tagline">Africa's Exploration, Mining &amp; Environmental Engineering Experts. Founded 1994, Kitwe, Zambia.</p>
+          <div class="footer-contact">
+            <a href="mailto:info@amc-africa.com">info@amc-africa.com</a><br>
+            <a href="tel:+260966825144">+260 96 682 5144</a>
+          </div>
+        </div>
+        <div>
+          <span class="footer-col-label">Services</span>
+          <div class="footer-links">
+            <a href="#mining">Mining Services</a>
+            <a href="#exploration">Exploration &amp; Geology</a>
+            <a href="#gis">GIS &amp; Environmental</a>
+            <a href="#metallurgical">Metallurgy</a>
+            <a href="#geotechnical">Geotechnical Engineering</a>
+            <a href="#strategy">Strategy &amp; Advisory</a>
+          </div>
+        </div>
+        <div>
+          <span class="footer-col-label">Company</span>
+          <div class="footer-links" style="margin-bottom: 28px;">
+            <a href="about.html">About AMC</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <span class="footer-col-label">Offices</span>
+          <div class="footer-links">
+            <span>Kitwe, Zambia (HQ)</span>
+            <span>Lubumbashi, DRC</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 African Mining Consultants Limited. All rights reserved.</span>
+        <span>Registered in Zambia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const burger = nav.querySelector('.burger');
+    burger.addEventListener('click', () => nav.classList.toggle('is-open'));
+    nav.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => nav.classList.remove('is-open'));
+    });
+
+    // Highlight active service nav item on scroll
+    const sections = document.querySelectorAll('.svc-row[id]');
+    const navLinks = document.querySelectorAll('.service-nav-inner a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('on'));
+          const active = document.querySelector('.service-nav-inner a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('on');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
