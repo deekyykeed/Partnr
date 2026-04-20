@@ -307,16 +307,26 @@ img { display: block; max-width: 100%; height: auto; }
   .nav-cta { display: none; }
   .burger { display: flex; }
 
+  /* Expand the nav itself to full screen — avoids backdrop-filter containing-block bug */
+  .nav.is-open {
+    height: 100dvh;
+    background: var(--bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .nav.is-open .nav-links {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    position: fixed;
-    inset: var(--nav-h) 0 0 0;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: var(--bg);
-    padding: 28px var(--gutter) 120px;
+    padding: 28px var(--gutter) 100px;
     gap: 0;
-    z-index: 499;
     overflow-y: auto;
   }
   .nav.is-open .nav-links li a {
@@ -330,7 +340,7 @@ img { display: block; max-width: 100%; height: auto; }
   }
   .nav.is-open .nav-cta {
     display: flex;
-    position: fixed;
+    position: absolute;
     bottom: 28px;
     left: var(--gutter);
     right: var(--gutter);
@@ -338,7 +348,6 @@ img { display: block; max-width: 100%; height: auto; }
     font-size: 15px;
     padding: 16px;
     border-radius: var(--radius);
-    z-index: 499;
   }
 }
 

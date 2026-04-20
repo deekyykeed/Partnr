@@ -504,9 +504,15 @@
   <script>
     const nav = document.getElementById('nav');
     const burger = nav.querySelector('.burger');
-    burger.addEventListener('click', () => nav.classList.toggle('is-open'));
+    burger.addEventListener('click', () => {
+      nav.classList.toggle('is-open');
+      document.body.style.overflow = nav.classList.contains('is-open') ? 'hidden' : '';
+    });
     nav.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', () => nav.classList.remove('is-open'));
+      a.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        document.body.style.overflow = '';
+      });
     });
 
     // Highlight active service nav item on scroll
