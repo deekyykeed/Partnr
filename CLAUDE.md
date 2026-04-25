@@ -23,10 +23,27 @@ The following design skills are available as `/skill-name` commands. Use the rig
 
 ---
 
+## Repo Structure
+
+Two top-level domains:
+
+- **`01_Studio/`** — all design and build work
+  - `components/` — shared component library (`.p-btn` etc.) — source of truth for every site
+  - `sites/` — client websites (`amc-africa/`, `partnr/`)
+  - `lab/` — concepts and experiments
+  - `inspiration/` — design reference screenshots
+- **`02_Business/`** — agency operations
+  - `clients/` — client business records (overviews, profiles, copy)
+  - `outreach/` — leads master, cold email tracking
+  - `reading/` — books, transcripts, frameworks
+  - `strategy/` — AIOS and product docs
+  - `archive/` — old / stale outreach
+- **`Partnr Bucket/`** — drop/inbox at root
+
 ## AMC Africa Website
 
-- **Files:** `Clients/AMC Africa/website/index.html` (live concept), `index-v1.html` (previous version)
-- **Copy source:** `Clients/AMC Africa/_Website_Copy.md`
+- **Files:** `01_Studio/sites/amc-africa/index.html` (live concept), `index-v1.html` (previous version)
+- **Copy source:** `02_Business/clients/amc-africa/_Website_Copy.md`
 - **Stack:** Vanilla HTML/CSS/JS — no framework, no build step
 - **Design direction:** Syne + Epilogue fonts, black/white/blue palette (`#0A0A0A` / `#FAFAFA` / `#4285F4`), editorial bottom-anchored hero, survey-grid overlay on hero
 - **Rule:** Copywriting changes only in Framer (via Unframer MCP). Structural/layout work happens in `index.html`

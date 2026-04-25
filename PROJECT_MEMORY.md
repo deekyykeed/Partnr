@@ -12,8 +12,8 @@ updated: 2026-04-25
 
 ## Next Session
 
-- [ ] **Repo reorg — execute the move**: split into `01_Studio/` (components, sites, lab, inspiration) and `02_Business/` (clients, outreach, reading, archive). Plan agreed; not yet executed. **CRITICAL:** after moving `Clients/AMC Africa/website/` → `01_Studio/sites/amc-africa/`, update Vercel dashboard Root Directory to match or partnr-five.vercel.app breaks. Decisions made: legacy `_components/*.md` → `01_Studio/components/_legacy/`; `Library/AIOS.md` → `02_Business/strategy/AIOS.md`; `Partnr Bucket/` stays at root.
-- [ ] **AMC — wire button library into hero**: link `_components/buttons/button.css` from AMC `index.html` (post-reorg path), swap hero "Book a Consultation" to `.p-btn p-btn--primary p-btn--lg` with AMC tokens (8px radius, Plus Jakarta, `--ink`). First proof of the shared library.
+- [ ] **Vercel — update dashboard Root Directory**: AMC site moved from `Clients/AMC Africa/website/` to `01_Studio/sites/amc-africa/`. Update Vercel project settings or partnr-five.vercel.app will fail to build/serve. **DO THIS FIRST next session.**
+- [ ] **AMC — wire button library into hero**: link `01_Studio/components/buttons/button.css` from AMC `index.html` (path: `../../components/buttons/button.css`), swap hero "Book a Consultation" to `.p-btn p-btn--primary p-btn--lg` with AMC tokens (8px radius, Plus Jakarta, `--ink`). First proof of the shared library.
 - [ ] **Components library — next pieces**: after button is shipped on AMC, decide what's next — input/email-pill, nav, section header, card?
 - [ ] **AMC — send live URL to Edwin**: site is live at partnr-five.vercel.app — share and book review call
 - [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Senior engineers (count-up KPIs; hero placeholders still in)
@@ -27,7 +27,7 @@ updated: 2026-04-25
 - [ ] **NGM — check updated ngmzambia.com and respond to Serge**
 - [ ] **Nolands — pitch Access Learning Hub to Kelvin Chungu** (+260 211 355267 / kelvinc@nolands.co.zm)
 - [ ] Follow up Aston AIR (Kalasa) if no reply
-- [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (stale) — note: `Sales & Outreach/` becomes `02_Business/archive/` after reorg
+- [ ] Sync `02_Business/archive/partnr_leads_master.xlsx` to match `02_Business/outreach/partnr_leads_master.xlsx` (archive copy is stale)
 
 ---
 
@@ -65,8 +65,8 @@ A web design + AI agency targeting established SMEs in Zambia (Kitwe & Lusaka). 
 - Kelvin Chungu (Nolands Zambia, Managing Partner): kelvinc@nolands.co.zm · +260 211 355267
 - Tamuka James Chinzvende (M&J Zambia): tj@mjgroup.africa · +260 630 372 410
 
-**Source of truth:** `Outreach/partnr_leads_master.xlsx`  
-Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 leads) — needs syncing.
+**Source of truth:** `02_Business/outreach/partnr_leads_master.xlsx`  
+Note: `02_Business/archive/partnr_leads_master.xlsx` is stale (only reflects ~10 leads) — needs syncing.
 
 ---
 
@@ -77,7 +77,7 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 - [ ] AMC — get real stats from Edwin (5 placeholders), continue section by section
 - [ ] Nolands — pitch Access Learning Hub angle to Kelvin Chungu
 - [ ] Follow up Aston AIR (Kalasa) if no reply end of week
-- [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` with `Outreach/` version
+- [ ] Sync `02_Business/archive/partnr_leads_master.xlsx` with `02_Business/outreach/` version
 - [ ] Gather AMC team member names/bios for website
 - [ ] Merge `claude/inspiring-dhawan` branch into main
 
@@ -86,10 +86,15 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 ## Session Log
 
 ### 25 Apr 2026
-- **Partnr button library created** — `_components/buttons/` with `button.css`, `preview.html`, `README.md`. Token-driven (`.p-btn` namespace), Framer-shadow primary variant, ghost/sm/lg/responsive modifiers. Source of truth: every site links to the same file via relative path; theming is per-site `--p-btn-*` token overrides in the site's own `:root`. Old loose docs (`cta-pill-button.md`, `button-shadows.md`, `scroll-effects.md`) superseded — to be relocated to `_legacy/` during reorg.
-- **Memory pointer fixed** — broken `MEMORY.md` link to non-existent `_components/cta-pill-button.md` replaced with new `reference_button_library.md` pointing at the canonical library location.
-- **Repo reorganization planned** — agreed to split tree into `01_Studio/` (design/build) and `02_Business/` (agency ops). User wants website work separated from business/outreach. Plan documented; not yet executed because Vercel dashboard requires manual Root Directory update after the move and user was wrapping for the day. To be done first thing next session.
-- **Button → AMC integration deferred** — library is built and previewable but not yet wired into AMC's live site. Doing it post-reorg so the link path is the final one.
+- **Partnr button library created** — at `01_Studio/components/buttons/` with `button.css`, `preview.html`, `README.md`. Token-driven (`.p-btn` namespace), Framer-shadow primary variant, ghost/sm/lg/responsive modifiers. Source of truth: every site links to the same file via relative path; theming is per-site `--p-btn-*` token overrides in the site's own `:root`.
+- **Repo reorganized — EXECUTED** — split into two top-level domains:
+  - `01_Studio/` — `components/`, `sites/` (amc-africa, partnr), `lab/`, `inspiration/`
+  - `02_Business/` — `clients/` (amc-africa, partnr), `outreach/`, `reading/` (Books, Articles, Frameworks, Transcripts), `strategy/` (AIOS.md), `archive/` (old Sales & Outreach folder)
+  - `Partnr Bucket/` (drop/inbox) and root docs (CLAUDE.md, Home.md, PROJECT_MEMORY.md) stay at root.
+  - Legacy button MDs (`cta-pill-button.md`, `button-shadows.md`, `scroll-effects.md`) moved to `01_Studio/components/_legacy/`.
+- **All in-repo references updated** — CLAUDE.md, Home.md, PROJECT_MEMORY.md (active items only — historical session log entries left intact), button library README, and user-memory `reference_button_library.md` all point to new paths.
+- **Vercel breaking until dashboard updated** — partnr-five.vercel.app Root Directory still points to old `Clients/AMC Africa/website/`. Must be updated to `01_Studio/sites/amc-africa/` in the Vercel dashboard.
+- **Button → AMC integration deferred** — library is built and previewable but not yet wired into AMC's live site. Path to use when wiring: `../../components/buttons/button.css` from `01_Studio/sites/amc-africa/index.html`.
 
 ### 20 Apr 2026 (session 2)
 - **Inspiration library created** — new folder `Library/Inspiration/websites/` for collecting design reference screenshots. One subfolder per site. Seeded with 11 sites, 55 screenshots:

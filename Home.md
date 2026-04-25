@@ -18,7 +18,7 @@ Web design + AI agency. Targeting established SMEs in Zambia — Kitwe first, th
 |------|------|--------|
 | Master status | [[PROJECT_MEMORY]] | Always current |
 | Active deal | [[AMC Africa Client File]] | Concept in progress |
-| Outreach tracker | `Outreach/partnr_leads_master.xlsx` | 1 active · 2 replied · 39 sent · 69 pending |
+| Outreach tracker | `02_Business/outreach/partnr_leads_master.xlsx` | 1 active · 2 replied · 39 sent · 69 pending |
 
 ---
 
