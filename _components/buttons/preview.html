@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partnr Buttons — Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="button.css">
+  <style>
+    :root {
+      --p-btn-font-family: 'Inter Tight', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter Tight', system-ui, sans-serif;
+      background: #f6f4ef;
+      color: #15181a;
+      padding: 64px 32px;
+      min-height: 100vh;
+    }
+    .stage { max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 32px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.02em; }
+    p.lede { color: #6a6a6a; margin-bottom: 48px; max-width: 56ch; }
+    section { margin-bottom: 56px; }
+    h2 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6a6a6a;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e5e1d9;
+    }
+    .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding: 24px 0; }
+    .swatch {
+      padding: 32px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+    }
+    .swatch--dark { background: #15181a; color: #f6f4ef; }
+    .swatch--accent {
+      background: #2f5d3a;
+      color: #fff;
+      --p-btn-bg: #fff;
+      --p-btn-fg: #2f5d3a;
+      --p-btn-bg-hover: #f0f0f0;
+    }
+    code {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: #ebe7df;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #444;
+    }
+    .input-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 1px solid #d9d4c7;
+      border-radius: 100px;
+      padding: 8px 8px 8px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      max-width: 460px;
+    }
+    .input-pill input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font: inherit;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <h1>Partnr Button Library</h1>
+    <p class="lede">Drop-in pill button with Framer-style layered shadow. Override the <code>--p-btn-*</code> tokens in any site's <code>:root</code> to theme.</p>
+
+    <section>
+      <h2>Primary — default dark</h2>
+      <div class="row">
+        <button class="p-btn p-btn--primary p-btn--sm">Small action</button>
+        <button class="p-btn p-btn--primary">Book a consultation</button>
+        <button class="p-btn p-btn--primary p-btn--lg">Commission a study</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ghost — outline / transparent</h2>
+      <div class="row">
+        <button class="p-btn p-btn--ghost p-btn--sm">Learn more</button>
+        <button class="p-btn p-btn--ghost">Our services</button>
+        <button class="p-btn p-btn--ghost p-btn--lg">View case studies</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>On dark surface</h2>
+      <div class="swatch swatch--dark">
+        <div class="row">
+          <button class="p-btn p-btn--primary">Primary on dark</button>
+          <button class="p-btn p-btn--ghost" style="--p-btn-fg:#f6f4ef; --p-btn-bg-hover:rgba(255,255,255,0.08);">Ghost on dark</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Themed — accent surface override</h2>
+      <div class="swatch swatch--accent">
+        <p style="margin-bottom:16px; font-size:14px; opacity:0.85;">Same component, tokens overridden inline. White pill on green.</p>
+        <div class="row" style="padding:0;">
+          <button class="p-btn p-btn--primary">Get in touch</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Inside email pill wrapper</h2>
+      <div class="input-pill">
+        <input type="email" placeholder="Your work email">
+        <button class="p-btn p-btn--primary p-btn--responsive p-btn--sm">
+          <span class="p-btn__label">Commission a study</span>
+          <svg class="p-btn__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" width="14" height="14" aria-hidden="true">
+            <path fill="#fff" d="M11.82.1c.29-.1.6-.13.9-.06.3.06.58.21.8.43.22.22.37.5.44.8.07.3.04.6-.06.9L10.33 12.88a1.4 1.4 0 0 1-.45.69 1.4 1.4 0 0 1-.72.38 1.4 1.4 0 0 1-.82-.02 1.4 1.4 0 0 1-.7-.42L5.72 11.6 3.7 12.64a.5.5 0 0 1-.73-.46l.08-3.18 7.05-5.12a.62.62 0 1 0-.74-1L2.2 8.09.47 6.36a1.7 1.7 0 0 1-.4-.67 1.74 1.74 0 0 1-.04-.78c.05-.28.18-.54.36-.76.19-.22.43-.38.7-.48L.0L11.82.1Z"/>
+          </svg>
+        </button>
+      </div>
+      <p style="margin-top:12px; font-size:13px; color:#6a6a6a;">Resize to mobile width to see the responsive collapse to icon-only.</p>
+    </section>
+
+    <section>
+      <h2>Disabled</h2>
+      <div class="row">
+        <button class="p-btn p-btn--primary" disabled>Disabled primary</button>
+        <button class="p-btn p-btn--ghost" disabled>Disabled ghost</button>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

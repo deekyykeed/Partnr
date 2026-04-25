@@ -1,17 +1,20 @@
 ---
 type: index
 tags: [partnr, status, active]
-updated: 2026-04-20
+updated: 2026-04-25
 ---
 
 # Partnr — Project Memory
 
-**Last updated:** 20 April 2026 (session 2)
+**Last updated:** 25 April 2026
 
 ---
 
 ## Next Session
 
+- [ ] **Repo reorg — execute the move**: split into `01_Studio/` (components, sites, lab, inspiration) and `02_Business/` (clients, outreach, reading, archive). Plan agreed; not yet executed. **CRITICAL:** after moving `Clients/AMC Africa/website/` → `01_Studio/sites/amc-africa/`, update Vercel dashboard Root Directory to match or partnr-five.vercel.app breaks. Decisions made: legacy `_components/*.md` → `01_Studio/components/_legacy/`; `Library/AIOS.md` → `02_Business/strategy/AIOS.md`; `Partnr Bucket/` stays at root.
+- [ ] **AMC — wire button library into hero**: link `_components/buttons/button.css` from AMC `index.html` (post-reorg path), swap hero "Book a Consultation" to `.p-btn p-btn--primary p-btn--lg` with AMC tokens (8px radius, Plus Jakarta, `--ink`). First proof of the shared library.
+- [ ] **Components library — next pieces**: after button is shipped on AMC, decide what's next — input/email-pill, nav, section header, card?
 - [ ] **AMC — send live URL to Edwin**: site is live at partnr-five.vercel.app — share and book review call
 - [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Senior engineers (count-up KPIs; hero placeholders still in)
 - [ ] **AMC — Map section decision**: keep (office footprint) or remove/replace? Ask Edwin or decide before next build session
@@ -19,13 +22,12 @@ updated: 2026-04-20
 - [ ] **AMC — Clients section**: swap fictional logos for real ones — Glencore, Anglo American, FQM logos downloaded to `assets/logos/`; still need Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals + wire into HTML
 - [ ] **AMC — Nav "est. 1998"** → should be 1994 per copy doc
 - [ ] **AMC — Team section**: fictional names — replace with real AMC principals when Edwin provides them
-- [ ] **AMC — style guide + component system**: build shared HTML/CSS component library for all Partnr clients
 - [ ] **New client Doc**: consulting monetization site — gather details (brand, niche, tone) and start build
 - [ ] **M&J Zambia — draft reply to Tamuka**: 5 specific improvements + grand slam offer framing — HOT, still unsent
 - [ ] **NGM — check updated ngmzambia.com and respond to Serge**
 - [ ] **Nolands — pitch Access Learning Hub to Kelvin Chungu** (+260 211 355267 / kelvinc@nolands.co.zm)
 - [ ] Follow up Aston AIR (Kalasa) if no reply
-- [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (stale)
+- [ ] Sync `Sales & Outreach/partnr_leads_master.xlsx` to match `Outreach/` (stale) — note: `Sales & Outreach/` becomes `02_Business/archive/` after reorg
 
 ---
 
@@ -82,6 +84,12 @@ Note: `Sales & Outreach/partnr_leads_master.xlsx` is stale (only reflects ~10 le
 ---
 
 ## Session Log
+
+### 25 Apr 2026
+- **Partnr button library created** — `_components/buttons/` with `button.css`, `preview.html`, `README.md`. Token-driven (`.p-btn` namespace), Framer-shadow primary variant, ghost/sm/lg/responsive modifiers. Source of truth: every site links to the same file via relative path; theming is per-site `--p-btn-*` token overrides in the site's own `:root`. Old loose docs (`cta-pill-button.md`, `button-shadows.md`, `scroll-effects.md`) superseded — to be relocated to `_legacy/` during reorg.
+- **Memory pointer fixed** — broken `MEMORY.md` link to non-existent `_components/cta-pill-button.md` replaced with new `reference_button_library.md` pointing at the canonical library location.
+- **Repo reorganization planned** — agreed to split tree into `01_Studio/` (design/build) and `02_Business/` (agency ops). User wants website work separated from business/outreach. Plan documented; not yet executed because Vercel dashboard requires manual Root Directory update after the move and user was wrapping for the day. To be done first thing next session.
+- **Button → AMC integration deferred** — library is built and previewable but not yet wired into AMC's live site. Doing it post-reorg so the link path is the final one.
 
 ### 20 Apr 2026 (session 2)
 - **Inspiration library created** — new folder `Library/Inspiration/websites/` for collecting design reference screenshots. One subfolder per site. Seeded with 11 sites, 55 screenshots:

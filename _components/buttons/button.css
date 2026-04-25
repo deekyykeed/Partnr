@@ -1,0 +1,89 @@
+/* ============================================================
+   Partnr — Button Library
+   Namespace: .p-btn
+   Theme: override the --p-btn-* tokens in your site's :root
+   ============================================================ */
+
+.p-btn {
+  --p-btn-bg: #1c1c1c;
+  --p-btn-fg: #ffffff;
+  --p-btn-bg-hover: #3a3a3a;
+  --p-btn-radius: 100px;
+  --p-btn-padding-y: 12px;
+  --p-btn-padding-x: 24px;
+  --p-btn-font-size: 16px;
+  --p-btn-font-weight: 600;
+  --p-btn-font-family: inherit;
+  --p-btn-letter-spacing: 0;
+  --p-btn-gap: 8px;
+  --p-btn-icon-size: 40px;
+  --p-btn-shadow:
+    inset 0 0 20px 1.64px rgba(255,255,255,0.15),
+    0 0.84px 0.50px -0.3125px rgba(0,0,0,0.13),
+    0 1.99px 1.19px -0.625px rgba(0,0,0,0.13),
+    0 3.63px 2.18px -0.9375px rgba(0,0,0,0.13),
+    0 6.04px 3.62px -1.25px rgba(0,0,0,0.13),
+    0 9.75px 5.85px -1.5625px rgba(0,0,0,0.13),
+    0 15.96px 9.57px -1.875px rgba(0,0,0,0.13),
+    0 27.48px 16.49px -2.1875px rgba(0,0,0,0.13),
+    0 50px 30px -2.5px rgba(0,0,0,0.13);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--p-btn-gap);
+  padding: var(--p-btn-padding-y) var(--p-btn-padding-x);
+  font-family: var(--p-btn-font-family);
+  font-size: var(--p-btn-font-size);
+  font-weight: var(--p-btn-font-weight);
+  letter-spacing: var(--p-btn-letter-spacing);
+  line-height: 1;
+  white-space: nowrap;
+  border: none;
+  border-radius: var(--p-btn-radius);
+  background: var(--p-btn-bg);
+  color: var(--p-btn-fg);
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  transition: background 0.22s ease, transform 0.12s ease;
+}
+
+.p-btn:hover { background: var(--p-btn-bg-hover); }
+.p-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.p-btn:active { transform: translateY(1px); }
+.p-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.p-btn--primary { box-shadow: var(--p-btn-shadow); }
+
+.p-btn--ghost {
+  --p-btn-bg: transparent;
+  --p-btn-bg-hover: rgba(0,0,0,0.04);
+  border: 1.5px solid currentColor;
+  box-shadow: none;
+}
+
+.p-btn--sm {
+  --p-btn-padding-y: 8px;
+  --p-btn-padding-x: 18px;
+  --p-btn-font-size: 14px;
+}
+
+.p-btn--lg {
+  --p-btn-padding-y: 16px;
+  --p-btn-padding-x: 32px;
+  --p-btn-font-size: 17px;
+}
+
+.p-btn__icon { display: none; flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .p-btn--responsive .p-btn__label { display: none; }
+  .p-btn--responsive .p-btn__icon { display: block; }
+  .p-btn--responsive {
+    width: var(--p-btn-icon-size);
+    height: var(--p-btn-icon-size);
+    padding: 0;
+    border-radius: 50%;
+  }
+}
