@@ -10,10 +10,10 @@ Token-driven pill button. Framer-style layered shadow on the primary variant. Dr
 
 ### 1. Link the stylesheet
 
-Path is relative to the file you're linking from. From a client site at `01_Studio/sites/[name]/index.html`:
+Path is relative to the file you're linking from. From a client site at `clients/[name]/site/index.html`:
 
 ```html
-<link rel="stylesheet" href="../../components/buttons/button.css">
+<link rel="stylesheet" href="../../../components/buttons/button.css">
 ```
 
 ### 2. Drop in the markup
@@ -75,7 +75,7 @@ All overrideable per site or per-button (inline `style=`):
 
 ## Edit globally vs per-site
 
-- **Global change** (every site updates) → edit `01_Studio/components/buttons/button.css`
+- **Global change** (every site updates) → edit `components/buttons/button.css`
 - **Per-site change** → override tokens in that site's own CSS, leave the library alone
 
 Source of truth lives here. Each client site links to it, no copy-paste.
