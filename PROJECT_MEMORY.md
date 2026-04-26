@@ -6,28 +6,24 @@ updated: 2026-04-25
 
 # Partnr — Project Memory
 
-**Last updated:** 25 April 2026
+**Last updated:** 26 April 2026
 
 ---
 
 ## Next Session
 
-- [ ] **Vercel — update dashboard Root Directory**: AMC site moved from `Clients/AMC Africa/website/` to `01_Studio/sites/amc-africa/`. Update Vercel project settings or partnr-five.vercel.app will fail to build/serve. **DO THIS FIRST next session.**
-- [ ] **AMC — wire button library into hero**: link `01_Studio/components/buttons/button.css` from AMC `index.html` (path: `../../components/buttons/button.css`), swap hero "Book a Consultation" to `.p-btn p-btn--primary p-btn--lg` with AMC tokens (8px radius, Plus Jakarta, `--ink`). First proof of the shared library.
-- [ ] **Components library — next pieces**: after button is shipped on AMC, decide what's next — input/email-pill, nav, section header, card?
-- [ ] **AMC — send live URL to Edwin**: site is live at partnr-five.vercel.app — share and book review call
-- [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Senior engineers (count-up KPIs; hero placeholders still in)
-- [ ] **AMC — Map section decision**: keep (office footprint) or remove/replace? Ask Edwin or decide before next build session
-- [ ] **AMC — Contact section**: update from fictional JHB/London addresses to real AMC Kitwe details (emukonka@amc-africa.com)
-- [ ] **AMC — Clients section**: swap fictional logos for real ones — Glencore, Anglo American, FQM logos downloaded to `assets/logos/`; still need Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals + wire into HTML
-- [ ] **AMC — Nav "est. 1998"** → should be 1994 per copy doc
-- [ ] **AMC — Team section**: fictional names — replace with real AMC principals when Edwin provides them
-- [ ] **New client Doc**: consulting monetization site — gather details (brand, niche, tone) and start build
+- [ ] **Vercel — fix Root Directory**: go to vercel.com → project "partnr" → Settings → General → Root Directory → set to `clients/amc-africa/site`. **DO THIS FIRST.**
+- [ ] **Vercel — rename project**: rename "partnr" → "amc-africa" so URL becomes `amc-africa.vercel.app`
+- [ ] **AMC — hero engineer image**: generate using prompt at `ops/prompts/background-replacement.md`, drop at `clients/amc-africa/site/assets/hero/engineer.png`
+- [ ] **AMC — continue sections**: hero is done — next add services, stats, about, CTA, footer one at a time. Match Framer reference dimensions as user provides them.
+- [ ] **AMC — send live URL to Edwin**: once root directory is fixed and site looks right
+- [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Engineers
+- [ ] **AMC — client logos**: still need Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals
 - [ ] **M&J Zambia — draft reply to Tamuka**: 5 specific improvements + grand slam offer framing — HOT, still unsent
 - [ ] **NGM — check updated ngmzambia.com and respond to Serge**
 - [ ] **Nolands — pitch Access Learning Hub to Kelvin Chungu** (+260 211 355267 / kelvinc@nolands.co.zm)
 - [ ] Follow up Aston AIR (Kalasa) if no reply
-- [ ] Sync `02_Business/archive/partnr_leads_master.xlsx` to match `02_Business/outreach/partnr_leads_master.xlsx` (archive copy is stale)
+- [ ] Sync `ops/outreach/partnr_leads_master.xlsx` archive copy (stale)
 
 ---
 
@@ -84,6 +80,15 @@ Note: `02_Business/archive/partnr_leads_master.xlsx` is stale (only reflects ~10
 ---
 
 ## Session Log
+
+### 26 Apr 2026
+- **Full AMC site reset** — scrapped old copper-palette build entirely. Deleted `index.html`, `main.css`, all `pages/`, `_Website_Copy.md`. Nothing from the old build carried forward.
+- **Color reference created** — `docs/palette.css` (raw export from palette generator run against amc-africa.com) + `docs/_AMC_Colors.md` (clean role-mapped reference: Royal Blue `#0F4EB2`, bg `#0A0D14`, gold `#C49A3C`, etc.).
+- **_AMC_Overview.md rewritten** — reflects new workflow: vanilla HTML/CSS/JS, Vercel deploy, shared component library, fresh build status table.
+- **New build started — hero + clients bar only** — deliberate go-slow, one section at a time. Stack: Outfit (display) + DM Sans (body), AMC blue `#0F4EB2`, gold accent `#C49A3C`. Shared button library (`components/buttons/button.css`) wired via relative path. Layout matches Framer reference screenshot (blue hero, left copy, right engineer image, clients bar on dark below).
+- **Framer dimensions matched** — hero `padding: 60px 0 180px`, container `padding: 0 40px gap: 64px`, text wrapper `width: 50% min-width: 500px align-items: flex-end`.
+- **Vercel project created** — project name "partnr", auto-deploys on push to `main`. Root Directory NOT yet set → still serving from repo root. **Must fix before sharing with Edwin.**
+- **Image generation prompt located** — `ops/prompts/background-replacement.md`. Engineer image still not generated/placed.
 
 ### 25 Apr 2026
 - **Partnr button library created** — at `01_Studio/components/buttons/` with `button.css`, `preview.html`, `README.md`. Token-driven (`.p-btn` namespace), Framer-shadow primary variant, ghost/sm/lg/responsive modifiers. Source of truth: every site links to the same file via relative path; theming is per-site `--p-btn-*` token overrides in the site's own `:root`.

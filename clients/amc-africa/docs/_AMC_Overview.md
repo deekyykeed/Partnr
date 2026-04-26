@@ -1,8 +1,14 @@
+---
+type: client-overview
+tags: [amc, active]
+updated: 2026-04-26
+---
+
 # AMC Africa — Client Overview
 
 **Company:** African Mining Consultants Ltd
-**Website:** amc-africa.com | **Framer project:** amc2.framer.ai
-**Status:** Active Deal — website redesign in progress
+**Live site:** amc-africa.com
+**Status:** Active Deal — new website build starting from scratch
 
 ---
 
@@ -19,95 +25,87 @@
 | Date | Event |
 |---|---|
 | Late Mar 2026 | Cold email sent — Edwin forwarded it himself and replied same day |
-| 1 Apr 2026 | Call 1 — underprepared, but stayed in the game |
+| 1 Apr 2026 | Call 1 — underprepared, stayed in the game |
 | 2 Apr 2026 | Call 2 — green light to build concept |
-| 8 Apr 2026 | Unframer MCP connected. 4 sections rewritten: Hero, Services, Bento, Achievements |
-| 10 Apr 2026 | Switched to template project (jubilant-radish). Full AMC offer extracted from amc-africa.com. Hero + Mission sections updated. |
-| 12 Apr 2026 | Standalone HTML concept built from scratch using taste-skill. Full site: hero, mission, services, clients, why, FAQ, CTA, footer. Ready to present to Edwin. |
-| 19 Apr 2026 (session 2) | Major site improvements: sticky fix (flex→grid), nav button restyled, mobile padding standardised, folder restructure, projects section full redesign (3×2 card grid + stage progress bars), metrics band redesign (full-width stat row), section label squircle styling. Live at partnr-five.vercel.app. |
-| 20 Apr 2026 | Created `assets/logos/` folder. Filed Glencore (SVG ×2), Anglo American (SVG ×2), FQM (PNG) logos. Created `_AMC_Company_Profile.md` from live website research. |
+| 12–25 Apr 2026 | First concept built (HTML/CSS) and deployed to Vercel. Scrapped — starting fresh. |
+| 26 Apr 2026 | Full reset. Old site deleted. New build begins from scratch with component library. |
 
 ---
 
-## Active Project — Website Redesign
-
-**Platform:** Framer — `jubilant-radish-333710.framer.app` (template project, switched from amc2.framer.ai on 10 Apr)
-**Approach:** Word/phrase swaps only — keep template energy and structure, swap to AMC language. No layout changes.
-**Copy reference:** `_Website_Copy.md` (full record of all section copy)
-
-### Framer Sections Status
-| Section | Status | Notes |
-|---|---|---|
-| Hero | ✅ Done | Tag, headline, description updated |
-| Mission ("About Us") | ✅ Done | Description + Years of Experience (30+) updated |
-| Services | ⬜ Pending | — |
-| Benefits | ⬜ Pending | — |
-| Reviews | ⬜ Pending | — |
-| Blog | ⬜ Pending | — |
-| FAQ | ⬜ Pending | — |
-| Navigation / Footer | ⬜ Pending | — |
-
----
-
-## Standalone HTML Concept (`website/index.html`)
-
-Live at **partnr-five.vercel.app** — auto-deploys on push to `main`.
+## Active Project — Website (New Build)
 
 **Stack:** Vanilla HTML/CSS/JS — no framework, no build step
-**Fonts:** Fraunces (display) · Inter Tight (body) · JetBrains Mono (labels)
-**Palette:** `#F6F4EF` bg · `#15181A` ink · `#2F5D3A` accent (forest, swappable via tweaks panel)
-**File structure:** `assets/hero-truck.mp4` · `assets/icons/` · `pages/about.html` · `pages/contact.html`
+**Deployment:** Vercel — partnr-five.vercel.app (auto-deploys on push to `main`)
+**Root directory in Vercel:** `clients/amc-africa/site/`
+**Component library:** `components/` — import buttons and future components from shared library
+
+### Build Status
 
 | Section | Status | Notes |
 |---|---|---|
-| Nav | ✅ Done | Pill button matches hero style |
-| Hero | ✅ Done | Video right column, email CTA, client ticker |
-| Services | ✅ Done | Sticky left col, 4 service cards |
-| Projects | ✅ Done | 3×2 card grid, stage progress bar, commodity pills |
-| Metrics band | ✅ Done | Full-width 4-stat row, quote eyebrow |
-| Map (Africa footprint) | ⚠️ Decision needed | Keep / remove / repurpose? |
-| Team | ⚠️ Fictional | Replace with real AMC principals |
-| Insights | ⚠️ Placeholder | Replace with real AMC memos |
-| Clients | ⚠️ Logos collected, not wired in | Glencore, Anglo American, FQM in `assets/logos/`. Still need: Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals |
-| Contact | ⚠️ Wrong address | Update to real Kitwe address + emukonka@amc-africa.com |
-| Footer | ⚠️ Wrong details | "est. 1998" should be 1994; email/reg details wrong |
+| Nav | Done | Logo + links + mobile toggle |
+| Hero | Done | Blue bg, left copy, right image slot, Framer dims matched |
+| Clients bar | Done | Dark strip, 3 logos + 3 wordmarks |
+| Services | Not started | — |
+| Stats | Not started | — |
+| About | Not started | — |
+| CTA / Contact | Not started | — |
+| Footer | Not started | — |
 
 ### Pending — Awaiting Real Data from Edwin
-| Item | Placeholder | Notes |
-|---|---|---|
-| Hero KPIs | Placeholder numbers | Need real projects delivered, countries, capex, engineers |
-| Metrics band | 28 yrs · $14.2B · 0 | Invented — need real figures |
-| Team bios | Fictional names | Edwin to provide principals |
-| Clients section | Katanga, Birimian… | Replace with confirmed real clients |
-| Contact address | JHB/London | Real: Kitwe, Zambia |
+
+| Item | Notes |
+|---|---|
+| KPI stats | Projects delivered, countries, capex advised, senior engineers |
+| Team bios | Real AMC principals — Edwin to provide names and roles |
+| Client logos | Still need: Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals |
+| Contact address | Real Kitwe office address |
+| Est. year | 1994 (not 1998) |
 
 ---
 
 ## Brand & Design
 
-### Core Colour Palette (redesign reference)
+### Color Palette
 
-| Role | Hex | Usage |
+Source: `_AMC_Colors.md` + `palette.css` — extracted from live amc-africa.com
+
+| Role | Hex | Notes |
 |---|---|---|
-| Brand / Accent | `#4285F4` | Buttons, links, highlights, icons |
-| Body Text | `#414141` | All paragraph text |
-| Page Background | `#F7FAFC` | Site-wide background |
-| White | `#FFFFFF` | Header, cards, sections |
-| Footer BG | `#505050` | Footer |
-| Warm Accent | `#F2EEE2` | Footer text, subtle section fills |
+| Primary brand / Royal Blue | `#0F4EB2` | Logo color — buttons, highlights, links |
+| Background | `#0A0D14` | Near-black — dark site |
+| Dark section fill | `#384562` | Secondary dark |
+| Slate (secondary text) | `#5F657A` | Subtitles, captions |
+| Steel Blue | `#355891` | Accents, mid-level links |
+| Teal | `#44847C` | Supporting accent |
+| Warm Gold | `#957340` | Earthy accent, use sparingly |
+| Body text (mid) | `#827F88` | Paragraph text on dark bg |
+| Borders / muted | `#A9A7AC` | Dividers |
+| White | `#FFFFFF` | Headings, high-contrast on dark |
 
-**Secondary (don't need for build, derivable):**
-- Dark Blue hover: `#104EB3`
-- Dark Navy: `#2D3E50`
-- Secondary text: `#878787`
-- Card grey: `#EBEAE6`
-- Error red: `#990000` (contact form only)
+### Typography (TBD for new build)
+
+Direction: professional, technical, authoritative. Mining/engineering sector.
+
+### Assets on Hand
+
+| Asset | Location |
+|---|---|
+| Hero video | `site/assets/hero-truck.mp4` |
+| Icons | `site/assets/icons/` |
+| Glencore logo (SVG ×2) | `site/assets/logos/` |
+| Anglo American logo (SVG ×2) | `site/assets/logos/` |
+| FQM logo (PNG) | `site/assets/logos/` |
 
 ---
 
-## Notable Details
+## Company Profile
 
-- Clients include Glencore, Anglo American, FQM — enterprise mining sector
-- Strong case study potential for Partnr
-- Edwin is both decision maker and the face of the business
-- One additional contract at this level = $100K–$500K+ → website ROI is obvious
+Full details in `_AMC_Company_Profile.md`.
+
+- Founded 1994 by ex-ZCCM engineers
+- HQ: Kitwe, Zambia + Lubumbashi office
+- 30+ years in mining, exploration, and environmental engineering
+- Services: Mining, Exploration & Geological, GIS & Environmental, Metallurgical, Geotechnical, Strategy & Investment Advisory
+- Confirmed clients: Glencore, Anglo American, FQM, Lonmin, Rio Algom
+- Key personnel: Edwin Mukonka (GM / Principal Consultant), Dr. Yotam Hara
