@@ -7,8 +7,9 @@
   <meta name="description" content="African Mining Consultants — 30 years of mining and exploration engineering across sub-Saharan Africa.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../../components/buttons/button.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@hugeicons/core-free@0.0.5/dist/index.esm.js"></script>
+  <link rel="stylesheet" href="css/button.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -33,8 +34,13 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-container">
 
+    <div class="hero-bg" aria-hidden="true">
+      <img src="assets/hero/hero-bg.png" alt="" class="hero-bg-img">
+    </div>
+    <div class="hero-gradient" aria-hidden="true"></div>
+
+    <div class="hero-container">
       <div class="hero-copy">
         <h1 class="hero-hl">
           Africa's <em>best</em><br>Mining Experts
@@ -43,26 +49,22 @@
           30 years of mining, exploration, and environmental engineering — built on the Zambian Copperbelt, trusted across sub-Saharan Africa.
         </p>
         <div class="hero-ctas">
-          <a href="#contact" class="p-btn p-btn--lg hero-btn-dark">Book a Consultation &nbsp;→</a>
-          <a href="#services" class="p-btn p-btn--lg hero-btn-ghost">See Our Work</a>
+          <a href="#contact" class="amc-btn amc-btn--primary">
+            <span class="amc-btn-label">Book a Free Call</span>
+            <span class="amc-btn-icon">
+              <img src="https://cdn.hugeicons.com/icons/arrow-right-01-stroke-rounded.svg" alt="" width="16" height="16">
+            </span>
+          </a>
+          <a href="#services" class="amc-btn amc-btn--secondary">
+            <span class="amc-btn-label">See Our Work</span>
+          </a>
         </div>
       </div>
-
-      <div class="hero-media">
-        <img
-          src="assets/hero/engineer.png"
-          alt="AMC Africa senior mining engineer"
-          class="hero-img"
-          loading="eager"
-        >
-      </div>
-
     </div><!-- /hero-container -->
-  </section>
 
-  <!-- CLIENTS BAR -->
-  <div class="clients-bar">
-    <div class="clients-inner">
+    <!-- Clients bar — pinned to bottom of hero -->
+    <div class="clients-bar">
+      <div class="clients-blur" aria-hidden="true"></div>
       <span class="clients-label">Proudly worked with</span>
       <div class="clients-logos">
         <img src="assets/logos/Glencore_logo-white.svg" alt="Glencore" class="client-logo">
@@ -73,7 +75,8 @@
         <span class="client-text">ZCCM&#8209;IH</span>
       </div>
     </div>
-  </div>
+
+  </section>
 
   <script src="js/main.js"></script>
 </body>

@@ -25,7 +25,7 @@ img { display: block; max-width: 100%; }
   --white:      #FFFFFF;
 
   --font-display: 'Outfit', system-ui, sans-serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-body:    'Outfit', system-ui, sans-serif;
 
   --nav-h:  72px;
   --max-w:  1200px;
@@ -138,18 +138,41 @@ img { display: block; max-width: 100%; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-content: center;
   flex-wrap: nowrap;
   gap: 60px;
   padding: calc(var(--nav-h) + 60px) 0 180px 0;
-  background: var(--blue);
+  background: #000000;
   border-bottom: 2px solid #edeff3;
-  box-shadow:
-    0px 0.6px 0.6px -1.25px rgba(0,0,0,0.18),
-    0px 2.29px 2.29px -2.5px rgba(0,0,0,0.16),
-    0px 10px 10px -3.75px rgba(0,0,0,0.06);
   overflow: clip;
   position: relative;
+}
+
+/* Background image */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  display: block;
+}
+
+/* Gradient mask — dark on left, transparent on right */
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.72) 35%,
+    rgba(0, 0, 0, 0.30) 60%,
+    transparent 80%
+  );
 }
 
 /* Container */
@@ -176,27 +199,30 @@ img { display: block; max-width: 100%; }
   align-content: flex-start;
   flex-wrap: nowrap;
   gap: 24px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-hl {
   font-family: var(--font-display);
-  font-size: clamp(48px, 6.5vw, 92px);
-  font-weight: 800;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--white);
 }
 .hero-hl em {
-  font-style: italic;
+  font-style: normal;
   color: var(--gold);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .hero-sub {
-  font-size: clamp(15px, 1.6vw, 17px);
-  color: rgba(255,255,255,0.68);
-  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: rgba(255,255,255,0.9);
   max-width: 440px;
 }
 
@@ -207,32 +233,68 @@ img { display: block; max-width: 100%; }
   flex-wrap: wrap;
 }
 
-.hero-btn-dark {
-  --p-btn-bg:       var(--black);
-  --p-btn-fg:       var(--white);
-  --p-btn-bg-hover: #1a1f2e;
+/* AMC hero buttons — match Framer Primary Button component exactly */
+.amc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 15px;
+  corner-shape: superellipse(1.25);
+  overflow: hidden;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: opacity 0.18s ease;
+  flex-shrink: 0;
 }
-.hero-btn-ghost {
-  --p-btn-bg:       transparent;
-  --p-btn-bg-hover: rgba(255,255,255,0.1);
-  color: var(--white);
-  border-color: rgba(255,255,255,0.3);
+.amc-btn:hover { opacity: 0.88; }
+
+.amc-btn-label {
+  padding: 12px 12px 12px 16px;
+  white-space: nowrap;
 }
 
-.hero-media {
-  flex: 1;
+/* Icon pill — dark gray rounded square with SVG arrow */
+.amc-btn-icon {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  height: clamp(480px, 68vh, 720px);
+  align-items: center;
+  justify-content: center;
+  background: rgb(33, 33, 33);
+  border-radius: 12px;
+  border: 1px solid rgb(102, 102, 102);
+  padding: 6px;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.amc-btn-icon svg,
+.amc-btn-icon img {
+  display: block;
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
 }
 
-.hero-img {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: bottom center;
+/* Primary — black, shadow */
+.amc-btn--primary {
+  background: rgb(0, 0, 0);
+  color: #ffffff;
+  box-shadow:
+    0px 1px 2px 0px rgba(23, 24, 28, 0.24),
+    0px 6px 12px -8px rgba(23, 24, 28, 0.70),
+    0px 12px 32px -8px rgba(23, 24, 28, 0.40);
+}
+
+/* Secondary — white, black text, no icon */
+.amc-btn--secondary {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.amc-btn--secondary .amc-btn-label {
+  padding: 12px 16px;
 }
 
 
@@ -240,18 +302,26 @@ img { display: block; max-width: 100%; }
    CLIENTS BAR
 ════════════════════════════ */
 .clients-bar {
-  background: var(--black);
-  padding: 28px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  padding: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
-.clients-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 var(--pad);
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
+/* Blur gradient that fades the image behind the logos */
+.clients-blur {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 240px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65));
+  pointer-events: none;
+  z-index: 0;
 }
 
 .clients-label {
@@ -259,16 +329,21 @@ img { display: block; max-width: 100%; }
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  white-space: nowrap;
-  flex-shrink: 0;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .clients-logos {
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: center;
+  gap: 40px;
   flex-wrap: wrap;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .client-logo {
@@ -328,6 +403,7 @@ img { display: block; max-width: 100%; }
     align-items: center;
     padding: 0 20px;
     gap: 32px;
+    padding-bottom: 180px;
   }
   .hero-copy {
     width: 100%;
@@ -337,10 +413,15 @@ img { display: block; max-width: 100%; }
   }
   .hero-sub { max-width: 100%; }
   .hero-ctas { justify-content: center; }
-  .hero-media {
-    height: clamp(280px, 55vw, 400px);
-    justify-content: center;
+
+  .hero-gradient {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.80) 0%,
+      rgba(0, 0, 0, 0.60) 60%,
+      rgba(0, 0, 0, 0.30) 100%
+    );
   }
 
-  .clients-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .clients-logos { gap: 24px; padding: 0 20px; }
 }
