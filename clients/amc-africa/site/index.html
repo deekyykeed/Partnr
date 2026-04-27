@@ -1,83 +1,1289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AMC Africa — Mining Consultants</title>
-  <meta name="description" content="African Mining Consultants — 30 years of mining and exploration engineering across sub-Saharan Africa.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@hugeicons/core-free@0.0.5/dist/index.esm.js"></script>
-  <link rel="stylesheet" href="css/button.css">
-  <link rel="stylesheet" href="css/main.css">
+  <meta name="description" content="African Mining Consultants — 30 years of mining and exploration engineering across sub-Saharan Africa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:     #0F4EB2;
+      --dark:     #0A0D14;
+      --steel:    #355891;
+      --teal:     #44847C;
+      --gold:     #957340;
+      --slate:    #5F657A;
+      --muted:    #A9A7AC;
+      --body:     #3a3840;
+      --white:    #FFFFFF;
+      --offwhite: #f7f7f7;
+      --border:   #E4E5E9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      background: #f7f7f7;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      line-height: 1.2;
+      text-wrap: balance;
+      letter-spacing: -0.02em;
+      width: 100%;
+      height: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      word-break: break-word;
+      perspective: 1200px;
+    }
+
+    p {
+      width: 100%;
+      height: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 480px;
+      line-height: 1.2;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 1.25rem;
+      color: var(--blue);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--dark); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--slate);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--white);
+      padding: 100px 5vw 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--blue);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--slate);
+      max-width: 520px;
+      margin-bottom: 2.2rem;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+    .hero-image {
+      position: relative;
+      border-radius: 28px;
+      corner-shape: superellipse(1.25);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust {
+      background: var(--offwhite);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 5vw;
+    }
+    .trust-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .trust-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .trust-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+    .trust-clients {
+      display: flex;
+      gap: 2.2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .trust-client {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate);
+      letter-spacing: 0.03em;
+      opacity: 0.7;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 5vw;
+    }
+    .stats-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      font-size: 3.5rem;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-number span { color: var(--blue); font-size: 2.5rem; vertical-align: super; }
+    .stat-label {
+      font-size: 1rem;
+      color: var(--dark);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header { margin-bottom: 3.5rem; }
+    .section-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.9rem;
+    }
+    .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 500; }
+    .section-header p {
+      margin-top: 0.8rem;
+      color: var(--slate);
+      max-width: 560px;
+      font-size: 1rem;
+    }
+
+    /* ── BENTO CARD SYSTEM ── */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+    .bento-span-2  { grid-column: span 2; }
+    .bento-span-2h { grid-column: span 2; grid-row: span 2; }
+
+    .bento-card {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      padding: 4px;
+      border-radius: 52px;
+      corner-shape: superellipse(1.5);
+      box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.05);
+      background: #ffffff;
+      overflow: visible;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .bento-card:hover {
+      box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.10);
+      transform: translateY(-2px);
+    }
+
+    .sc-inner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 30px;
+      border-radius: 48px;
+      corner-shape: superellipse(1.5);
+      background: linear-gradient(180deg, #ffffff 52%, rgb(250,251,248) 100%);
+      border: 1px solid #edeff3;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .sc-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      border-radius: 20px;
+      corner-shape: superellipse(1.5);
+      background: radial-gradient(75% 75% at 50% 50%, #000000 37%, rgb(69,69,69) 100%);
+      box-shadow:
+        0 0 0 3px #ffffff,
+        0px 0.42px 1.26px rgba(0,0,0,0.09),
+        0px 1.6px 4.8px rgba(0,0,0,0.12),
+        0px 7px 21px rgba(0,0,0,0.24);
+      flex-shrink: 0;
+    }
+    .sc-icon i {
+      font-size: 18px;
+      color: #ffffff;
+      display: block;
+      line-height: 1;
+    }
+
+    .bento-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .bento-card p {
+      font-size: 0.92rem;
+      color: #6b6f7a;
+      line-height: 1.65;
+      margin: 0;
+      flex: 1;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 4px;
+    }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--slate);
+      background: rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 100px;
+      padding: 0.25rem 0.65rem;
+    }
+
+    /* Featured card — dark */
+    .bento-featured .sc-inner {
+      background: linear-gradient(180deg, #0d1117 0%, #1a2235 100%);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .bento-featured h3 { color: #ffffff; }
+    .bento-featured p  { color: rgba(255,255,255,0.55); }
+    .bento-featured .sc-icon {
+      background: radial-gradient(75% 75% at 50% 50%, #1e3a8a 37%, #2d4fa8 100%);
+    }
+    .bento-featured .tag {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.65);
+    }
+    .bento-featured .sc-icon { width: 52px; height: 52px; border-radius: 26px; }
+    .bento-featured .sc-icon i { font-size: 24px; }
+    .bento-featured h3 { font-size: 1.5rem; }
+    .bento-featured p  { font-size: 0.96rem; }
+
+    /* Teal card */
+    .bento-teal .sc-inner {
+      background: linear-gradient(180deg, #44847C 0%, #336860 100%);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .bento-teal h3 { color: #ffffff; }
+    .bento-teal p  { color: rgba(255,255,255,0.7); }
+    .bento-teal .sc-icon {
+      background: radial-gradient(75% 75% at 50% 50%, #215952 37%, #2e7068 100%);
+    }
+    .bento-teal .tag {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Blue card */
+    .bento-blue .sc-inner {
+      background: linear-gradient(180deg, #0F4EB2 0%, #0a3d8f 100%);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .bento-blue h3 { color: #ffffff; }
+    .bento-blue p  { color: rgba(255,255,255,0.7); }
+    .bento-blue .sc-icon {
+      background: radial-gradient(75% 75% at 50% 50%, #073080 37%, #0a3d9e 100%);
+    }
+    .bento-blue .tag {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+
+    @media (max-width: 900px) {
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .bento-span-2h { grid-column: span 2; grid-row: span 1; }
+    }
+    @media (max-width: 560px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-span-2, .bento-span-2h { grid-column: span 1; }
+    }
+
+    /* ── WHY AMC ── */
+    .why {
+      background: var(--dark);
+      padding: 100px 5vw;
+      color: var(--white);
+    }
+    .why-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .why .section-eyebrow { color: var(--teal); }
+    .why h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 500; color: #ffffff; }
+    .why .section-header p { color: rgba(255,255,255,0.75); max-width: 480px; }
+    .differentiators { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; }
+    .diff-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .diff-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+    .diff-text h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .diff-text p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    .why-visual {
+      position: relative;
+      border-radius: 28px;
+      corner-shape: superellipse(1.25);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .why-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 12px,
+        rgba(255,255,255,0.02) 12px,
+        rgba(255,255,255,0.02) 13px
+      );
+    }
+    .why-visual .placeholder-label { color: rgba(255,255,255,0.25); }
+    .placeholder-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      padding: 100px 5vw;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: calc(12.5% + 18px);
+      right: calc(12.5% + 18px);
+      height: 1px;
+      background: var(--border);
+    }
+    .step { position: relative; }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--blue);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .step h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+    .step p { font-size: 0.88rem; color: var(--slate); line-height: 1.6; }
+
+    /* ── TEAM ── */
+    .team {
+      background: var(--offwhite);
+      padding: 100px 5vw;
+      border-top: 1px solid var(--border);
+    }
+    .team-inner { max-width: 1280px; margin: 0 auto; }
+    .team-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 3.5rem;
+      max-width: 680px;
+    }
+    .team-card {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 4px;
+      border-radius: 52px;
+      corner-shape: superellipse(1.5);
+      box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.05);
+      background: #ffffff;
+      overflow: visible;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .team-card:hover {
+      box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.10);
+      transform: translateY(-2px);
+    }
+    .team-card .sc-inner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 12px 12px 20px;
+      border-radius: 48px;
+      corner-shape: superellipse(1.5);
+      background: linear-gradient(180deg, #ffffff 52%, rgb(250,251,248) 100%);
+      border: 1px solid #edeff3;
+      gap: 0;
+      flex: 1;
+    }
+    .team-avatar {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #e8eaee;
+      border-radius: 38px;
+      corner-shape: superellipse(1.5);
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .team-avatar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 10px,
+        rgba(0,0,0,0.025) 10px, rgba(0,0,0,0.025) 11px
+      );
+    }
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+    .team-avatar-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      z-index: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .team-info { padding: 0 8px 0; }
+    .team-name-row { display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.25rem; }
+    .team-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .team-badge {
+      width: 18px;
+      height: 18px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .team-role { font-size: 0.82rem; color: var(--slate); margin-bottom: 1rem; line-height: 1.45; max-width: 100%; }
+    .team-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .team-stats { display: flex; gap: 1rem; }
+    .team-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .team-stat i { font-size: 13px; color: var(--muted); }
+    .team-cta {
+      background: var(--dark);
+      border-radius: 100px;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.01em;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+    .team-cta:hover { opacity: 0.8; }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--blue);
+      padding: 100px 5vw;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 500;
+      color: var(--white);
+      max-width: 680px;
+      margin: 0 auto 1rem;
+      letter-spacing: -0.02em;
+    }
+    .cta-section p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      padding: 50px 5vw 36px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .footer-brand span { color: var(--teal); }
+    .footer-desc { font-size: 0.88rem; line-height: 1.7; max-width: 320px; }
+    .footer-col h5 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.88rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-col address {
+      font-style: normal;
+      font-size: 0.85rem;
+      line-height: 1.75;
+    }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    /* ── AMC BUTTON SYSTEM ── */
+    .amc-btn {
+      border-radius: 15px;
+      corner-shape: superellipse(1.25);
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.18s ease;
+    }
+    .amc-btn:hover { opacity: 0.88; }
+    .amc-btn-label { padding: 12px 22px; white-space: nowrap; }
+    .amc-btn-icon {
+      background: rgb(33, 33, 33);
+      border-radius: 12px;
+      corner-shape: superellipse(1.25);
+      border: 1px solid rgb(102, 102, 102);
+      padding: 6px;
+      margin-left: 6px;
+      margin-right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .amc-btn-icon i { font-size: 16px; line-height: 1; filter: brightness(0) invert(1); }
+
+    .amc-btn--primary {
+      background: rgb(0, 0, 0);
+      color: #ffffff;
+      box-shadow:
+        0px 1px 2px 0px   rgba(23, 24, 28, 0.24),
+        0px 6px 12px -8px rgba(23, 24, 28, 0.70),
+        0px 12px 32px -8px rgba(23, 24, 28, 0.40);
+    }
+    .amc-btn--blue {
+      background: var(--blue);
+      color: #ffffff;
+      box-shadow:
+        0px 1px 2px 0px   rgba(15, 78, 178, 0.30),
+        0px 6px 12px -8px rgba(15, 78, 178, 0.60),
+        0px 12px 32px -8px rgba(15, 78, 178, 0.35);
+    }
+    .amc-btn--blue .amc-btn-icon {
+      background: rgba(0,0,0,0.25);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .amc-btn--secondary {
+      background: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+    }
+    .amc-btn--ghost-white {
+      background: rgba(255,255,255,0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .amc-btn--sm { font-size: 14px; }
+    .amc-btn--sm .amc-btn-label { padding: 9px 16px; }
+    .amc-btn--sm .amc-btn-icon { padding: 5px; border-radius: 9px; margin-left: 4px; }
+    .amc-btn--sm .amc-btn-icon i { font-size: 14px; }
+
+    /* ── SERVICES sticky layout ── */
+    .services {
+      padding: 100px 5vw;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .services-layout {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .services-sticky {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .services-sticky h2 {
+      font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      max-width: 100%;
+    }
+    .services-sub {
+      color: var(--slate);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 320px;
+    }
+    .services-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .services-cards .bento-card { width: 100%; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .hero { gap: 3rem; }
+      .stats-inner { grid-template-columns: repeat(4, 1fr); }
+      .services-layout { grid-template-columns: 300px 1fr; gap: 3rem; }
+    }
+    @media (max-width: 900px) {
+      .hero, .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-image, .why-visual { aspect-ratio: 16/9; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .steps::before { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      nav .nav-links { display: none; }
+      .services-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .services-sticky { position: relative; top: 0; }
+      .trust-inner { gap: 1rem; }
+      .trust-clients { gap: 1.2rem; }
+      .team-cards { max-width: 100%; }
+    }
+    @media (max-width: 680px) {
+      .hero { padding: 60px 5vw 50px; }
+      .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-number { font-size: 2.5rem; }
+      .steps { grid-template-columns: 1fr; }
+      .team-cards { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .cta-section, .why, .process, .team { padding: 60px 5vw; }
+    }
+    @media (max-width: 480px) {
+      nav { padding: 0 4vw; }
+      .stats-inner { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .team-cards { grid-template-columns: 1fr; }
+      .trust-clients { gap: 0.8rem; }
+      .trust-client { font-size: 0.78rem; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .amc-btn { width: 100%; justify-content: center; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .section-header h2, .services-sticky h2 { font-size: 1.6rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">AMC <span class="nav-sep">/</span> Africa</a>
-      <nav class="nav-links" id="navLinksWrap" aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="p-btn p-btn--sm nav-cta">Book a Call</a>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinksWrap">
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">AMC <span>Africa</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why AMC</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+  <a class="amc-btn amc-btn--blue amc-btn--sm" href="#book">
+    <span class="amc-btn-label">Book a Call</span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section style="background: var(--white);">
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Kitwe · Zambia &nbsp;·&nbsp; Est. 1994</div>
+      <h1>Mining expertise<br/>built on the<br/><em>Copperbelt</em></h1>
+      <p class="hero-sub">AMC Africa is a full-service mining consultancy — geological, engineering, environmental, and advisory — trusted by Glencore, Anglo American and Ivanhoe Mines for over 30 years.</p>
+      <div class="hero-actions">
+        <a class="amc-btn amc-btn--blue" href="#book">
+          <span class="amc-btn-label">Book a free consultation</span>
+        </a>
+        <a class="amc-btn amc-btn--secondary" href="#services">
+          <span class="amc-btn-label">See our services</span>
+        </a>
+      </div>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-
-    <div class="hero-bg" aria-hidden="true">
-      <img src="assets/hero/hero-bg.png" alt="" class="hero-bg-img">
+    <div class="hero-image">
+      <img src="assets/hero/hero-bg.png" alt="AMC Africa operations" />
     </div>
-    <div class="hero-gradient" aria-hidden="true"></div>
+  </div>
+</section>
 
-    <div class="hero-container">
-      <div class="hero-copy">
-        <h1 class="hero-hl">
-          Africa's <em>best</em><br>Mining Experts
-        </h1>
-        <p class="hero-sub">
-          30 years of mining, exploration, and environmental engineering — built on the Zambian Copperbelt, trusted across sub-Saharan Africa.
-        </p>
-        <div class="hero-ctas">
-          <a href="#contact" class="amc-btn amc-btn--primary">
-            <span class="amc-btn-label">Book a Free Call</span>
-            <span class="amc-btn-icon">
-              <img src="https://cdn.hugeicons.com/icons/arrow-right-01-stroke-rounded.svg" alt="" width="16" height="16">
-            </span>
-          </a>
-          <a href="#services" class="amc-btn amc-btn--secondary">
-            <span class="amc-btn-label">See Our Work</span>
-          </a>
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <span class="trust-label">Trusted by</span>
+    <div class="trust-divider"></div>
+    <div class="trust-clients">
+      <span class="trust-client">Glencore</span>
+      <span class="trust-client">Anglo American</span>
+      <span class="trust-client">First Quantum</span>
+      <span class="trust-client">Ivanhoe Mines</span>
+      <span class="trust-client">Rio Algom</span>
+      <span class="trust-client">ZCCM-IH</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-number">30<span>+</span></div>
+      <div class="stat-label">Years on the Copperbelt</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Core service disciplines</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">50<span>+</span></div>
+      <div class="stat-label">Experts &amp; associates</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Regional offices (ZM · DRC)</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="services-layout">
+
+    <div class="services-sticky">
+      <div class="section-eyebrow">What we do</div>
+      <h2>End-to-end mining services, under one roof</h2>
+      <p class="services-sub">From the first drill hole to environmental closure — one team, deep Copperbelt knowledge.</p>
+      <a class="amc-btn amc-btn--blue" href="#book">
+        <span class="amc-btn-label">Book a free consultation</span>
+      </a>
+    </div>
+
+    <div class="services-cards">
+
+      <div class="bento-card bento-featured">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-wrench-01"></i></div>
+          <h3>Mining Engineering</h3>
+          <p>Resource and reserve estimation, open pit and underground optimisation, production scheduling, stockpile surveys and feasibility studies — from scoping through to bankable FS.</p>
+          <div class="service-tags">
+            <span class="tag">Feasibility Studies</span>
+            <span class="tag">Mine Planning</span>
+            <span class="tag">Scheduling</span>
+            <span class="tag">Optimisation</span>
+          </div>
         </div>
       </div>
-    </div><!-- /hero-container -->
 
-    <!-- Clients bar — pinned to bottom of hero -->
-    <div class="clients-bar">
-      <div class="clients-blur" aria-hidden="true"></div>
-      <span class="clients-label">Proudly worked with</span>
-      <div class="clients-logos">
-        <img src="assets/logos/Glencore_logo-white.svg" alt="Glencore" class="client-logo">
-        <img src="assets/logos/anglo-american-logo-color.svg" alt="Anglo American" class="client-logo">
-        <img src="assets/logos/First_Quantum_Minerals_New_Logo.svg.png" alt="First Quantum Minerals" class="client-logo">
-        <span class="client-text">Lonmin</span>
-        <span class="client-text">Rio Algom</span>
-        <span class="client-text">ZCCM&#8209;IH</span>
+      <div class="bento-card">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-compass"></i></div>
+          <h3>Exploration &amp; Geology</h3>
+          <p>Geological mapping, geochemical soil sampling, ground geophysics, drill programme management, core processing, and statutory government reporting.</p>
+          <div class="service-tags">
+            <span class="tag">Mapping</span>
+            <span class="tag">Geochemistry</span>
+            <span class="tag">Drill Management</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-teal">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-maps-location-01"></i></div>
+          <h3>GIS &amp; Environmental</h3>
+          <p>Impact assessments, environmental management plans, drone mapping, and full regulatory compliance across Zambia and DRC.</p>
+          <div class="service-tags">
+            <span class="tag">EIA</span>
+            <span class="tag">Drone Mapping</span>
+            <span class="tag">ESG Reporting</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-test-tube-01"></i></div>
+          <h3>Metallurgical</h3>
+          <p>Process design, plant optimisation, and direct reagent supply via our Kemira SA partnership.</p>
+          <div class="service-tags">
+            <span class="tag">Process Design</span>
+            <span class="tag">Reagents Supply</span>
+            <span class="tag">Kemira SA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-mountain"></i></div>
+          <h3>Geotechnical</h3>
+          <p>Waste dump and tailings dam design, slope stability, numerical modelling, and rock mass classification.</p>
+          <div class="service-tags">
+            <span class="tag">Slope Stability</span>
+            <span class="tag">Tailings Design</span>
+            <span class="tag">Numerical Modelling</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-blue">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-chart-increase"></i></div>
+          <h3>Strategy &amp; Investment Advisory</h3>
+          <p>Market entry, financial modelling, valuations, organisational improvement, and ESG advisory for Copperbelt investors and operators.</p>
+          <div class="service-tags">
+            <span class="tag">Market Entry</span>
+            <span class="tag">Valuations</span>
+            <span class="tag">ESG</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY AMC -->
+<section id="why" class="why">
+  <div class="why-inner">
+    <div>
+      <div class="section-header">
+        <div class="section-eyebrow">Why AMC Africa</div>
+        <h2>Insider knowledge.<br/>International standards.</h2>
+        <p>Founded by ZCCM engineers in 1994, we combine three decades of institutional Copperbelt knowledge with technical delivery that meets global benchmarks.</p>
+      </div>
+      <ul class="differentiators">
+        <li class="diff-item">
+          <div class="diff-dot"></div>
+          <div class="diff-text">
+            <h4>Longest-standing African HQ'd consultancy on the Copperbelt</h4>
+            <p>30+ years means we know the geology, the regulators, and the operators — before your project begins.</p>
+          </div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-dot"></div>
+          <div class="diff-text">
+            <h4>Full-service: geological → engineering → environmental → advisory</h4>
+            <p>No handoffs to third parties. One accountable team across the entire project lifecycle.</p>
+          </div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-dot"></div>
+          <div class="diff-text">
+            <h4>Deep DRC &amp; Zambia regulatory experience</h4>
+            <p>Offices in Kitwe and Lubumbashi — we navigate the permit and compliance landscape so you don't have to.</p>
+          </div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-dot"></div>
+          <div class="diff-text">
+            <h4>Kemira SA reagent supply partnership</h4>
+            <p>Unique access to flotation reagents and flocculants — combining consulting advice with material supply.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-visual">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="14" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="8" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="3" fill="rgba(255,255,255,0.2)"/>
+      </svg>
+      <div class="placeholder-label">Team / project site photo<br/>recommended here</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process">
+  <div class="section-header">
+    <div class="section-eyebrow">How it works</div>
+    <h2>From first call to field</h2>
+    <p>A clear, low-friction path to getting the expertise you need, fast.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Book a free call</h4>
+      <p>15 minutes — tell us your project, location, and timeline. No obligation.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>Scope &amp; proposal</h4>
+      <p>We turn around a clear scope and fee estimate within 48 hours.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>Team mobilisation</h4>
+      <p>Senior consultants and associates deployed — Kitwe or your site.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Delivery &amp; support</h4>
+      <p>Reports, models, permits — and ongoing technical support after handover.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="team">
+  <div class="team-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Leadership</div>
+      <h2>The people behind the work</h2>
+      <p>Led by engineers who built their careers inside Zambia's copper industry.</p>
+    </div>
+    <div class="team-cards">
+      <div class="team-card">
+        <div class="sc-inner">
+          <div class="team-avatar">
+            <span class="team-avatar-label">Portrait photo</span>
+          </div>
+          <div class="team-info">
+            <div class="team-name-row">
+              <div class="team-name">Edwin Mukonka</div>
+              <div class="team-badge">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="team-role">GM &amp; Principal Consultant, 30+ years Copperbelt experience</div>
+            <div class="team-meta">
+              <div class="team-stats">
+                <span class="team-stat"><i class="hgi-stroke hgi-briefcase-01"></i> Mining</span>
+                <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
+              </div>
+              <a class="team-cta" href="#book">Book call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="sc-inner">
+          <div class="team-avatar">
+            <span class="team-avatar-label">Portrait photo</span>
+          </div>
+          <div class="team-info">
+            <div class="team-name-row">
+              <div class="team-name">Dr. Yotam Hara</div>
+              <div class="team-badge">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="team-role">Senior Metallurgical Consultant, Kemira SA specialist</div>
+            <div class="team-meta">
+              <div class="team-stats">
+                <span class="team-stat"><i class="hgi-stroke hgi-test-tube-01"></i> Metallurgy</span>
+                <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
+              </div>
+              <a class="team-cta" href="#book">Book call</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-  </section>
+<!-- CTA -->
+<section id="book" class="cta-section">
+  <h2>Ready to talk about your project?</h2>
+  <p>Book a free 15-minute call with our team. No sales pitch — just honest technical advice from people who know the Copperbelt.</p>
+  <div class="cta-actions">
+    <a class="amc-btn amc-btn--primary" href="https://calendly.com/amc-africa" target="_blank" rel="noopener">
+      <span class="amc-btn-label">Book a call — it's free</span>
+    </a>
+    <a class="amc-btn amc-btn--ghost-white" href="mailto:info@amc-africa.com">
+      <span class="amc-btn-label">Email us directly</span>
+    </a>
+  </div>
+</section>
 
-  <script src="js/main.js"></script>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">AMC <span>Africa</span></div>
+      <p class="footer-desc">African Mining Consultants Limited — full-service mining consultancy headquartered in Kitwe, Zambia. Serving the Copperbelt and Central Africa since 1994.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#services">Mining Engineering</a>
+      <a href="#services">Exploration &amp; Geology</a>
+      <a href="#services">GIS &amp; Environmental</a>
+      <a href="#services">Metallurgical</a>
+      <a href="#services">Geotechnical</a>
+      <a href="#services">Strategy &amp; Advisory</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <address>
+        Units D&amp;E, 1st Floor<br/>
+        Building 2, ECL Business Park<br/>
+        Freedom Avenue, Kitwe, Zambia<br/><br/>
+        +260 96 682 5144<br/>
+        info@amc-africa.com
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 African Mining Consultants Limited. All rights reserved.</span>
+    <span>amc-africa.com</span>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const stats = [
+      { el: document.querySelectorAll('.stat-number')[0], target: 30, suffix: '+', duration: 1800 },
+      { el: document.querySelectorAll('.stat-number')[1], target: 6,  suffix: '',  duration: 1000 },
+      { el: document.querySelectorAll('.stat-number')[2], target: 50, suffix: '+', duration: 1600 },
+      { el: document.querySelectorAll('.stat-number')[3], target: 2,  suffix: '',  duration: 800  },
+    ];
+
+    function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+    function animateStat(s) {
+      const start = performance.now();
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / s.duration, 1);
+        const value = Math.round(easeOutQuart(progress) * s.target);
+        s.el.innerHTML = value + '<span>' + s.suffix + '</span>';
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stats.forEach(s => animateStat(s));
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) observer.observe(statsSection);
+  })();
+</script>
 </body>
 </html>
