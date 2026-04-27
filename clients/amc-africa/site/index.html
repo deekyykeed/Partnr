@@ -61,6 +61,15 @@
       line-height: 1.2;
     }
 
+    /* ── SECTION WRAPPERS ── */
+    .section-pad {
+      padding: 100px 5vw;
+    }
+    .section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
     /* ── NAV ── */
     nav {
       position: sticky;
@@ -120,11 +129,7 @@
       color: var(--dark);
       margin-bottom: 1.4rem;
     }
-    .hero h1 em {
-      font-style: normal;
-      font-weight: 500;
-      color: var(--blue);
-    }
+    .hero h1 em { font-style: normal; font-weight: 500; color: var(--blue); }
     .hero-sub {
       font-size: 1.05rem;
       color: var(--slate);
@@ -133,7 +138,6 @@
       line-height: 1.75;
     }
     .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-
     .hero-image {
       position: relative;
       border-radius: 28px;
@@ -143,12 +147,7 @@
       background: var(--offwhite);
       border: 1px solid var(--border);
     }
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* ── TRUST BAR ── */
     .trust {
@@ -175,12 +174,7 @@
       flex-shrink: 0;
     }
     .trust-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
-    .trust-clients {
-      display: flex;
-      gap: 2.2rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    .trust-clients { display: flex; gap: 2.2rem; flex-wrap: wrap; align-items: center; }
     .trust-client {
       font-size: 0.85rem;
       font-weight: 600;
@@ -214,12 +208,7 @@
       margin-bottom: 0.4rem;
     }
     .stat-number span { color: var(--blue); font-size: 2.5rem; vertical-align: super; }
-    .stat-label {
-      font-size: 1rem;
-      color: var(--dark);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
+    .stat-label { font-size: 1rem; color: var(--dark); font-weight: 700; letter-spacing: -0.01em; }
 
     /* ── SECTION HEADER ── */
     .section-header { margin-bottom: 3.5rem; }
@@ -232,22 +221,17 @@
       margin-bottom: 0.9rem;
     }
     .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 500; }
-    .section-header p {
-      margin-top: 0.8rem;
-      color: var(--slate);
-      max-width: 560px;
-      font-size: 1rem;
-    }
+    .section-header p { margin-top: 0.8rem; color: var(--slate); max-width: 560px; font-size: 1rem; }
 
     /* ── BENTO CARD SYSTEM ── */
     .bento-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: auto;
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
-    .bento-span-2  { grid-column: span 2; }
-    .bento-span-2h { grid-column: span 2; grid-row: span 2; }
+    .bento-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .bento-span-2 { grid-column: span 2; }
+    .bento-span-3 { grid-column: span 3; }
 
     .bento-card {
       box-sizing: border-box;
@@ -300,12 +284,7 @@
         0px 7px 21px rgba(0,0,0,0.24);
       flex-shrink: 0;
     }
-    .sc-icon i {
-      font-size: 18px;
-      color: #ffffff;
-      display: block;
-      line-height: 1;
-    }
+    .sc-icon i { font-size: 18px; color: #ffffff; display: block; line-height: 1; }
 
     .bento-card h3 {
       font-family: 'Outfit', sans-serif;
@@ -323,12 +302,7 @@
       margin: 0;
       flex: 1;
     }
-    .service-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 4px;
-    }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 4px; }
     .tag {
       font-size: 0.72rem;
       font-weight: 500;
@@ -340,73 +314,191 @@
       padding: 0.25rem 0.65rem;
     }
 
-    /* Featured card — dark */
+    /* Featured — dark */
     .bento-featured .sc-inner {
       background: linear-gradient(180deg, #0d1117 0%, #1a2235 100%);
       border-color: rgba(255,255,255,0.08);
     }
     .bento-featured h3 { color: #ffffff; }
     .bento-featured p  { color: rgba(255,255,255,0.55); }
-    .bento-featured .sc-icon {
-      background: radial-gradient(75% 75% at 50% 50%, #1e3a8a 37%, #2d4fa8 100%);
-    }
-    .bento-featured .tag {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.65);
-    }
-    .bento-featured .sc-icon { width: 52px; height: 52px; border-radius: 26px; }
+    .bento-featured .sc-icon { background: radial-gradient(75% 75% at 50% 50%, #1e3a8a 37%, #2d4fa8 100%); width: 52px; height: 52px; border-radius: 26px; }
     .bento-featured .sc-icon i { font-size: 24px; }
     .bento-featured h3 { font-size: 1.5rem; }
     .bento-featured p  { font-size: 0.96rem; }
+    .bento-featured .tag { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.65); }
 
-    /* Teal card */
-    .bento-teal .sc-inner {
-      background: linear-gradient(180deg, #44847C 0%, #336860 100%);
-      border-color: rgba(255,255,255,0.12);
-    }
+    /* Teal */
+    .bento-teal .sc-inner { background: linear-gradient(180deg, #44847C 0%, #336860 100%); border-color: rgba(255,255,255,0.12); }
     .bento-teal h3 { color: #ffffff; }
     .bento-teal p  { color: rgba(255,255,255,0.7); }
-    .bento-teal .sc-icon {
-      background: radial-gradient(75% 75% at 50% 50%, #215952 37%, #2e7068 100%);
-    }
-    .bento-teal .tag {
-      background: rgba(255,255,255,0.15);
-      border-color: rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.9);
-    }
+    .bento-teal .sc-icon { background: radial-gradient(75% 75% at 50% 50%, #215952 37%, #2e7068 100%); }
+    .bento-teal .tag { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
 
-    /* Blue card */
-    .bento-blue .sc-inner {
-      background: linear-gradient(180deg, #0F4EB2 0%, #0a3d8f 100%);
-      border-color: rgba(255,255,255,0.12);
-    }
+    /* Blue */
+    .bento-blue .sc-inner { background: linear-gradient(180deg, #0F4EB2 0%, #0a3d8f 100%); border-color: rgba(255,255,255,0.12); }
     .bento-blue h3 { color: #ffffff; }
     .bento-blue p  { color: rgba(255,255,255,0.7); }
-    .bento-blue .sc-icon {
-      background: radial-gradient(75% 75% at 50% 50%, #073080 37%, #0a3d9e 100%);
-    }
-    .bento-blue .tag {
-      background: rgba(255,255,255,0.12);
-      border-color: rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.9);
-    }
+    .bento-blue .sc-icon { background: radial-gradient(75% 75% at 50% 50%, #073080 37%, #0a3d9e 100%); }
+    .bento-blue .tag { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
 
-    @media (max-width: 900px) {
-      .bento-grid { grid-template-columns: repeat(2, 1fr); }
-      .bento-span-2h { grid-column: span 2; grid-row: span 1; }
+    /* Gold */
+    .bento-gold .sc-inner { background: linear-gradient(180deg, #957340 0%, #7a5c2e 100%); border-color: rgba(255,255,255,0.12); }
+    .bento-gold h3 { color: #ffffff; }
+    .bento-gold p  { color: rgba(255,255,255,0.75); }
+    .bento-gold .sc-icon { background: radial-gradient(75% 75% at 50% 50%, #5c3e14 37%, #7a5520 100%); }
+    .bento-gold .tag { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
+
+    /* ── CASE STUDY CARDS ── */
+    .cs-client {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 4px;
     }
-    @media (max-width: 560px) {
-      .bento-grid { grid-template-columns: 1fr; }
-      .bento-span-2, .bento-span-2h { grid-column: span 1; }
+    .bento-featured .cs-client { color: rgba(100,200,180,0.9); }
+    .bento-blue .cs-client    { color: rgba(160,200,255,0.9); }
+    .bento-teal .cs-client    { color: rgba(200,240,230,0.9); }
+    .cs-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0,0,0,0.07);
     }
+    .bento-featured .cs-stat,
+    .bento-blue .cs-stat,
+    .bento-teal .cs-stat { border-color: rgba(255,255,255,0.12); }
+    .cs-stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .bento-featured .cs-stat-num,
+    .bento-blue .cs-stat-num,
+    .bento-teal .cs-stat-num { color: #ffffff; }
+    .cs-stat-label {
+      font-size: 0.82rem;
+      color: var(--slate);
+      line-height: 1.3;
+      max-width: 160px;
+    }
+    .bento-featured .cs-stat-label,
+    .bento-blue .cs-stat-label,
+    .bento-teal .cs-stat-label { color: rgba(255,255,255,0.6); }
+
+    /* ── LOCATION CARDS ── */
+    .loc-address {
+      font-size: 0.88rem;
+      color: var(--slate);
+      line-height: 1.75;
+      font-style: normal;
+    }
+    .bento-featured .loc-address { color: rgba(255,255,255,0.55); }
+    .loc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(15,78,178,0.1);
+      color: var(--blue);
+      border: 1px solid rgba(15,78,178,0.2);
+      border-radius: 100px;
+      padding: 0.3rem 0.7rem;
+    }
+    .loc-badge--hq { background: rgba(15,78,178,0.12); color: var(--blue); border-color: rgba(15,78,178,0.25); }
+    .loc-badge--regional { background: rgba(68,132,124,0.1); color: var(--teal); border-color: rgba(68,132,124,0.25); }
+    .loc-contact a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .loc-contact a:hover { color: var(--blue); }
+    .loc-contact a i { font-size: 15px; color: var(--muted); }
+    .loc-contact { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    /* reach card */
+    .reach-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: 100%;
+    }
+    .reach-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .reach-item:last-child { border-bottom: none; }
+    .reach-country { font-weight: 600; color: var(--dark); }
+    .reach-type { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── PROJECT CARDS ── */
+    .proj-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      padding: 0.25rem 0.65rem;
+    }
+    .proj-status--active {
+      background: rgba(68,132,124,0.1);
+      color: var(--teal);
+      border: 1px solid rgba(68,132,124,0.25);
+    }
+    .proj-status--active::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+    .proj-meta {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .bento-featured .proj-meta,
+    .bento-blue .proj-meta,
+    .bento-teal .proj-meta { border-color: rgba(255,255,255,0.12); }
+    .proj-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      color: var(--slate);
+      font-weight: 500;
+    }
+    .proj-meta-item i { font-size: 13px; color: var(--muted); }
+    .bento-featured .proj-meta-item,
+    .bento-blue .proj-meta-item,
+    .bento-teal .proj-meta-item { color: rgba(255,255,255,0.6); }
+    .bento-featured .proj-meta-item i,
+    .bento-blue .proj-meta-item i,
+    .bento-teal .proj-meta-item i { color: rgba(255,255,255,0.35); }
 
     /* ── WHY AMC ── */
-    .why {
-      background: var(--dark);
-      padding: 100px 5vw;
-      color: var(--white);
-    }
+    .why { background: var(--dark); padding: 100px 5vw; color: var(--white); }
     .why-inner {
       max-width: 1280px;
       margin: 0 auto;
@@ -420,23 +512,9 @@
     .why .section-header p { color: rgba(255,255,255,0.75); max-width: 480px; }
     .differentiators { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; }
     .diff-item { display: flex; gap: 1rem; align-items: flex-start; }
-    .diff-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      margin-top: 0.55rem;
-      flex-shrink: 0;
-    }
-    .diff-text h4 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.25rem;
-    }
+    .diff-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 0.55rem; flex-shrink: 0; }
+    .diff-text h4 { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
     .diff-text p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
-
     .why-visual {
       position: relative;
       border-radius: 28px;
@@ -455,281 +533,60 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent, transparent 12px,
-        rgba(255,255,255,0.02) 12px,
-        rgba(255,255,255,0.02) 13px
-      );
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(255,255,255,0.02) 12px, rgba(255,255,255,0.02) 13px);
     }
     .why-visual .placeholder-label { color: rgba(255,255,255,0.25); }
-    .placeholder-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: center;
-      padding: 0 1.5rem;
-    }
+    .placeholder-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: center; padding: 0 1.5rem; }
 
     /* ── PROCESS ── */
-    .process {
-      padding: 100px 5vw;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-top: 3.5rem;
-      position: relative;
-    }
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 18px;
-      left: calc(12.5% + 18px);
-      right: calc(12.5% + 18px);
-      height: 1px;
-      background: var(--border);
-    }
+    .process { padding: 100px 5vw; max-width: 1280px; margin: 0 auto; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3.5rem; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 18px; left: calc(12.5% + 18px); right: calc(12.5% + 18px); height: 1px; background: var(--border); }
     .step { position: relative; }
-    .step-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--blue);
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--blue);
-      margin-bottom: 1.2rem;
-      position: relative;
-      z-index: 1;
-    }
-    .step h4 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 0.4rem;
-    }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--blue); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; color: var(--blue); margin-bottom: 1.2rem; position: relative; z-index: 1; }
+    .step h4 { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
     .step p { font-size: 0.88rem; color: var(--slate); line-height: 1.6; }
 
     /* ── TEAM ── */
-    .team {
-      background: var(--offwhite);
-      padding: 100px 5vw;
-      border-top: 1px solid var(--border);
-    }
+    .team { background: var(--offwhite); padding: 100px 5vw; border-top: 1px solid var(--border); }
     .team-inner { max-width: 1280px; margin: 0 auto; }
-    .team-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 3.5rem;
-      max-width: 680px;
-    }
-    .team-card {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      padding: 4px;
-      border-radius: 52px;
-      corner-shape: superellipse(1.5);
-      box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.05);
-      background: #ffffff;
-      overflow: visible;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .team-card:hover {
-      box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.10);
-      transform: translateY(-2px);
-    }
-    .team-card .sc-inner {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      padding: 12px 12px 20px;
-      border-radius: 48px;
-      corner-shape: superellipse(1.5);
-      background: linear-gradient(180deg, #ffffff 52%, rgb(250,251,248) 100%);
-      border: 1px solid #edeff3;
-      gap: 0;
-      flex: 1;
-    }
-    .team-avatar {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: #e8eaee;
-      border-radius: 38px;
-      corner-shape: superellipse(1.5);
-      flex-shrink: 0;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-bottom: 16px;
-    }
-    .team-avatar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent, transparent 10px,
-        rgba(0,0,0,0.025) 10px, rgba(0,0,0,0.025) 11px
-      );
-    }
-    .team-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: relative;
-      z-index: 1;
-    }
-    .team-avatar-label {
-      font-size: 0.68rem;
-      color: var(--muted);
-      z-index: 1;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .team-info { padding: 0 8px 0; }
+    .team-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 3.5rem; max-width: 680px; }
+    .team-card { box-sizing: border-box; display: flex; flex-direction: column; padding: 4px; border-radius: 52px; corner-shape: superellipse(1.5); box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.05); background: #ffffff; overflow: visible; transition: box-shadow 0.2s, transform 0.2s; }
+    .team-card:hover { box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.10); transform: translateY(-2px); }
+    .team-card .sc-inner { width: 100%; display: flex; flex-direction: column; padding: 12px 12px 20px; border-radius: 48px; corner-shape: superellipse(1.5); background: linear-gradient(180deg, #ffffff 52%, rgb(250,251,248) 100%); border: 1px solid #edeff3; gap: 0; flex: 1; }
+    .team-avatar { width: 100%; aspect-ratio: 3/4; background: #e8eaee; border-radius: 38px; corner-shape: superellipse(1.5); flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 16px; }
+    .team-avatar::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.025) 10px, rgba(0,0,0,0.025) 11px); }
+    .team-avatar img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; }
+    .team-avatar-label { font-size: 0.68rem; color: var(--muted); z-index: 1; letter-spacing: 0.08em; text-transform: uppercase; }
+    .team-info { padding: 0 8px; }
     .team-name-row { display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.25rem; }
-    .team-name {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--dark);
-    }
-    .team-badge {
-      width: 18px;
-      height: 18px;
-      background: var(--blue);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .team-role { font-size: 0.82rem; color: var(--slate); margin-bottom: 1rem; line-height: 1.45; max-width: 100%; }
-    .team-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--border);
-    }
+    .team-name { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--dark); }
+    .team-badge { width: 18px; height: 18px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .team-role { font-size: 0.82rem; color: var(--slate); margin-bottom: 1rem; line-height: 1.45; }
+    .team-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid var(--border); }
     .team-stats { display: flex; gap: 1rem; }
-    .team-stat {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.78rem;
-      color: var(--slate);
-      font-weight: 500;
-    }
+    .team-stat { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--slate); font-weight: 500; }
     .team-stat i { font-size: 13px; color: var(--muted); }
-    .team-cta {
-      background: var(--dark);
-      border-radius: 100px;
-      padding: 0.5rem 1rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #ffffff;
-      text-decoration: none;
-      font-family: 'Outfit', sans-serif;
-      letter-spacing: -0.01em;
-      transition: opacity 0.15s;
-      white-space: nowrap;
-    }
+    .team-cta { background: var(--dark); border-radius: 100px; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; color: #ffffff; text-decoration: none; font-family: 'Outfit', sans-serif; letter-spacing: -0.01em; transition: opacity 0.15s; white-space: nowrap; }
     .team-cta:hover { opacity: 0.8; }
 
-    /* ── CTA SECTION ── */
-    .cta-section {
-      background: var(--blue);
-      padding: 100px 5vw;
-      text-align: center;
-    }
-    .cta-section h2 {
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      font-weight: 500;
-      color: var(--white);
-      max-width: 680px;
-      margin: 0 auto 1rem;
-      letter-spacing: -0.02em;
-    }
-    .cta-section p {
-      color: rgba(255,255,255,0.65);
-      font-size: 1.05rem;
-      max-width: 520px;
-      margin: 0 auto 2.5rem;
-    }
+    /* ── CTA ── */
+    .cta-section { background: var(--blue); padding: 100px 5vw; text-align: center; }
+    .cta-section h2 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 500; color: var(--white); max-width: 680px; margin: 0 auto 1rem; letter-spacing: -0.02em; }
+    .cta-section p { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.5rem; }
     .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--dark);
-      color: rgba(255,255,255,0.5);
-      padding: 50px 5vw 36px;
-    }
-    .footer-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-    }
-    .footer-brand {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      font-size: 1.2rem;
-      color: var(--white);
-      margin-bottom: 0.8rem;
-    }
+    footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 50px 5vw 36px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
+    .footer-brand { font-family: 'Outfit', sans-serif; font-weight: 300; letter-spacing: 0.05em; font-size: 1.2rem; color: var(--white); margin-bottom: 0.8rem; }
     .footer-brand span { color: var(--teal); }
     .footer-desc { font-size: 0.88rem; line-height: 1.7; max-width: 320px; }
-    .footer-col h5 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 1rem;
-    }
-    .footer-col a {
-      display: block;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 0.88rem;
-      margin-bottom: 0.5rem;
-      transition: color 0.2s;
-    }
+    .footer-col h5 { font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; margin-bottom: 0.5rem; transition: color 0.2s; }
     .footer-col a:hover { color: var(--white); }
-    .footer-col address {
-      font-style: normal;
-      font-size: 0.85rem;
-      line-height: 1.75;
-    }
-    .footer-bottom {
-      max-width: 1280px;
-      margin: 2.5rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-    }
+    .footer-col address { font-style: normal; font-size: 0.85rem; line-height: 1.75; }
+    .footer-bottom { max-width: 1280px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
 
     /* ── AMC BUTTON SYSTEM ── */
     .amc-btn {
@@ -751,99 +608,22 @@
     }
     .amc-btn:hover { opacity: 0.88; }
     .amc-btn-label { padding: 12px 22px; white-space: nowrap; }
-    .amc-btn-icon {
-      background: rgb(33, 33, 33);
-      border-radius: 12px;
-      corner-shape: superellipse(1.25);
-      border: 1px solid rgb(102, 102, 102);
-      padding: 6px;
-      margin-left: 6px;
-      margin-right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+    .amc-btn-icon { background: rgb(33,33,33); border-radius: 12px; corner-shape: superellipse(1.25); border: 1px solid rgb(102,102,102); padding: 6px; margin-left: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .amc-btn-icon i { font-size: 16px; line-height: 1; filter: brightness(0) invert(1); }
-
-    .amc-btn--primary {
-      background: rgb(0, 0, 0);
-      color: #ffffff;
-      box-shadow:
-        0px 1px 2px 0px   rgba(23, 24, 28, 0.24),
-        0px 6px 12px -8px rgba(23, 24, 28, 0.70),
-        0px 12px 32px -8px rgba(23, 24, 28, 0.40);
-    }
-    .amc-btn--blue {
-      background: var(--blue);
-      color: #ffffff;
-      box-shadow:
-        0px 1px 2px 0px   rgba(15, 78, 178, 0.30),
-        0px 6px 12px -8px rgba(15, 78, 178, 0.60),
-        0px 12px 32px -8px rgba(15, 78, 178, 0.35);
-    }
-    .amc-btn--blue .amc-btn-icon {
-      background: rgba(0,0,0,0.25);
-      border-color: rgba(255,255,255,0.25);
-    }
-    .amc-btn--secondary {
-      background: rgb(255, 255, 255);
-      color: rgb(0, 0, 0);
-    }
-    .amc-btn--ghost-white {
-      background: rgba(255,255,255,0.12);
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.3);
-    }
+    .amc-btn--primary { background: rgb(0,0,0); color: #ffffff; box-shadow: 0px 1px 2px 0px rgba(23,24,28,0.24), 0px 6px 12px -8px rgba(23,24,28,0.70), 0px 12px 32px -8px rgba(23,24,28,0.40); }
+    .amc-btn--blue { background: var(--blue); color: #ffffff; box-shadow: 0px 1px 2px 0px rgba(15,78,178,0.30), 0px 6px 12px -8px rgba(15,78,178,0.60), 0px 12px 32px -8px rgba(15,78,178,0.35); }
+    .amc-btn--blue .amc-btn-icon { background: rgba(0,0,0,0.25); border-color: rgba(255,255,255,0.25); }
+    .amc-btn--secondary { background: rgb(255,255,255); color: rgb(0,0,0); }
+    .amc-btn--ghost-white { background: rgba(255,255,255,0.12); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); }
     .amc-btn--sm { font-size: 14px; }
     .amc-btn--sm .amc-btn-label { padding: 9px 16px; }
     .amc-btn--sm .amc-btn-icon { padding: 5px; border-radius: 9px; margin-left: 4px; }
     .amc-btn--sm .amc-btn-icon i { font-size: 14px; }
 
-    /* ── SERVICES sticky layout ── */
-    .services {
-      padding: 100px 5vw;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    .services-layout {
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .services-sticky {
-      position: sticky;
-      top: 100px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
-    }
-    .services-sticky h2 {
-      font-size: clamp(1.8rem, 2.5vw, 2.6rem);
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      max-width: 100%;
-    }
-    .services-sub {
-      color: var(--slate);
-      font-size: 0.95rem;
-      line-height: 1.65;
-      max-width: 320px;
-    }
-    .services-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .services-cards .bento-card { width: 100%; }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
       .hero { gap: 3rem; }
       .stats-inner { grid-template-columns: repeat(4, 1fr); }
-      .services-layout { grid-template-columns: 300px 1fr; gap: 3rem; }
     }
     @media (max-width: 900px) {
       .hero, .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -853,11 +633,11 @@
       .steps::before { display: none; }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
       nav .nav-links { display: none; }
-      .services-layout { grid-template-columns: 1fr; gap: 2rem; }
-      .services-sticky { position: relative; top: 0; }
       .trust-inner { gap: 1rem; }
       .trust-clients { gap: 1.2rem; }
       .team-cards { max-width: 100%; }
+      .bento-grid--3 { grid-template-columns: repeat(2, 1fr); }
+      .bento-span-3 { grid-column: span 2; }
     }
     @media (max-width: 680px) {
       .hero { padding: 60px 5vw 50px; }
@@ -867,7 +647,7 @@
       .steps { grid-template-columns: 1fr; }
       .team-cards { grid-template-columns: 1fr 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
-      .cta-section, .why, .process, .team { padding: 60px 5vw; }
+      .cta-section, .why, .process, .team, .section-pad { padding: 60px 5vw; }
     }
     @media (max-width: 480px) {
       nav { padding: 0 4vw; }
@@ -879,7 +659,9 @@
       .cta-actions { flex-direction: column; align-items: center; }
       .amc-btn { width: 100%; justify-content: center; }
       .footer-inner { grid-template-columns: 1fr; }
-      .section-header h2, .services-sticky h2 { font-size: 1.6rem; }
+      .section-header h2 { font-size: 1.6rem; }
+      .bento-grid, .bento-grid--3 { grid-template-columns: 1fr; }
+      .bento-span-2, .bento-span-3 { grid-column: span 1; }
     }
   </style>
 </head>
@@ -890,8 +672,8 @@
   <a class="nav-logo" href="#">AMC <span>Africa</span></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#work">Projects</a></li>
     <li><a href="#why">Why AMC</a></li>
-    <li><a href="#process">Process</a></li>
     <li><a href="#team">Team</a></li>
   </ul>
   <a class="amc-btn amc-btn--blue amc-btn--sm" href="#book">
@@ -960,21 +742,16 @@
 </div>
 
 <!-- SERVICES -->
-<section id="services" class="services">
-  <div class="services-layout">
-
-    <div class="services-sticky">
+<section id="services" class="section-pad">
+  <div class="section-inner">
+    <div class="section-header">
       <div class="section-eyebrow">What we do</div>
       <h2>End-to-end mining services, under one roof</h2>
-      <p class="services-sub">From the first drill hole to environmental closure — one team, deep Copperbelt knowledge.</p>
-      <a class="amc-btn amc-btn--blue" href="#book">
-        <span class="amc-btn-label">Book a free consultation</span>
-      </a>
+      <p>From the first drill hole to environmental closure — one team, deep Copperbelt knowledge.</p>
     </div>
+    <div class="bento-grid">
 
-    <div class="services-cards">
-
-      <div class="bento-card bento-featured">
+      <div class="bento-card bento-featured bento-span-2">
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-wrench-01"></i></div>
           <h3>Mining Engineering</h3>
@@ -1040,7 +817,7 @@
         </div>
       </div>
 
-      <div class="bento-card bento-blue">
+      <div class="bento-card bento-blue bento-span-2">
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-chart-increase"></i></div>
           <h3>Strategy &amp; Investment Advisory</h3>
@@ -1049,6 +826,213 @@
             <span class="tag">Market Entry</span>
             <span class="tag">Valuations</span>
             <span class="tag">ESG</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work" class="section-pad" style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Proven track record</div>
+      <h2>Work that speaks for itself</h2>
+      <p>Selected engagements across the Copperbelt and Central Africa.</p>
+    </div>
+    <div class="bento-grid bento-grid--3">
+
+      <div class="bento-card bento-featured">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-mine-01"></i></div>
+          <div class="cs-client">Glencore · Mopani Copper</div>
+          <h3>Open Pit Optimisation &amp; Production Scheduling</h3>
+          <p>Full mine re-sequencing study for the Nkana open pit — delivered updated life-of-mine schedule, pit shell optimisation, and revised reserve estimate ahead of financing round.</p>
+          <div class="service-tags">
+            <span class="tag">Mine Planning</span>
+            <span class="tag">Reserve Audit</span>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat-num">18</div>
+            <div class="cs-stat-label">month production schedule, fully costed</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-compass"></i></div>
+          <div class="cs-client">First Quantum · Kansanshi</div>
+          <h3>Greenfield Exploration Programme</h3>
+          <p>Managed a 12-month drill programme across 3 target zones — geological mapping, core processing, and statutory reporting for Zambia Environmental Management Agency.</p>
+          <div class="service-tags">
+            <span class="tag">Drilling</span>
+            <span class="tag">Core Processing</span>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat-num" style="color:var(--dark);">6,200</div>
+            <div class="cs-stat-label" style="color:var(--slate);">metres drilled, on schedule</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-teal">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-maps-location-01"></i></div>
+          <div class="cs-client">Ivanhoe Mines · DRC</div>
+          <h3>Environmental Impact Assessment</h3>
+          <p>Full EIA and Environmental Management Plan for a copper-cobalt operation in Lualaba Province — submitted to and approved by the DRC Mines Ministry within the project's required timeline.</p>
+          <div class="service-tags">
+            <span class="tag">EIA</span>
+            <span class="tag">DRC Compliance</span>
+          </div>
+          <div class="cs-stat">
+            <div class="cs-stat-num">100<span style="font-size:1.2rem;color:rgba(255,255,255,0.6);">%</span></div>
+            <div class="cs-stat-label">regulatory approval, on first submission</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVE PROJECTS -->
+<section id="projects" class="section-pad">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Currently on the ground</div>
+      <h2>What the team is working on</h2>
+      <p>A snapshot of active engagements across Zambia and the DRC.</p>
+    </div>
+    <div class="bento-grid">
+
+      <div class="bento-card bento-featured">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-hard-hat-01"></i></div>
+          <div class="proj-status proj-status--active" style="background:rgba(68,132,124,0.25);color:rgba(180,230,220,0.95);border-color:rgba(68,132,124,0.4);">Active</div>
+          <h3>Mine Production Scheduling — Open Pit Operation</h3>
+          <p>On-site mine planning support for a 15 Mtpa open pit copper operation on the Zambian Copperbelt. Delivering updated monthly schedules, blast hole reconciliation, and grade control protocol review.</p>
+          <div class="proj-meta">
+            <span class="proj-meta-item"><i class="hgi-stroke hgi-location-01"></i> Copperbelt, Zambia</span>
+            <span class="proj-meta-item"><i class="hgi-stroke hgi-wrench-01"></i> Mining Engineering</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-leaf-01"></i></div>
+          <div class="proj-status proj-status--active">Active</div>
+          <h3>Environmental Baseline Study — Northern Zambia</h3>
+          <p>Conducting a full environmental baseline and EPB for a new copper prospect in Muchinga Province ahead of licence application and community consultation.</p>
+          <div class="proj-meta">
+            <span class="proj-meta-item"><i class="hgi-stroke hgi-location-01"></i> Muchinga, Zambia</span>
+            <span class="proj-meta-item"><i class="hgi-stroke hgi-maps-location-01"></i> GIS &amp; Environmental</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-mountain"></i></div>
+          <div class="proj-status proj-status--active">Active</div>
+          <h3>Tailings Dam Design Review — DRC Operation</h3>
+          <p>Independent geotechnical review of an existing TSF for a cobalt producer in Katanga Province — slope stability modelling, drainage assessment, and raise design for the next 3-year cycle.</p>
+          <div class="proj-meta">
+            <span class="proj-meta-item"><i class="hgi-stroke hgi-location-01"></i> Katanga, DRC</span>
+            <span class="proj-meta-item"><i class="hgi-stroke hgi-building-01"></i> Geotechnical</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-blue">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-test-tube-01"></i></div>
+          <div class="proj-status proj-status--active" style="background:rgba(255,255,255,0.15);color:rgba(200,220,255,0.95);border-color:rgba(255,255,255,0.2);">Active</div>
+          <h3>Reagent Optimisation — Flotation Plant</h3>
+          <p>Plant-side metallurgical advisory for a copper concentrator — reviewing collector and frother dosing rates through our Kemira SA partnership, targeting a 2–3% recovery improvement.</p>
+          <div class="proj-meta">
+            <span class="proj-meta-item"><i class="hgi-stroke hgi-location-01"></i> Copperbelt, Zambia</span>
+            <span class="proj-meta-item"><i class="hgi-stroke hgi-test-tube-01"></i> Metallurgical</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHERE WE WORK -->
+<section id="locations" class="section-pad" style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Where we are</div>
+      <h2>Two offices. One Copperbelt team.</h2>
+      <p>Headquartered in Kitwe with a registered office in Lubumbashi — positioned to serve operations across Zambia and the DRC without intermediaries.</p>
+    </div>
+    <div class="bento-grid bento-grid--3">
+
+      <div class="bento-card bento-featured">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-building-04"></i></div>
+          <span class="loc-badge loc-badge--hq" style="background:rgba(255,255,255,0.12);color:rgba(200,220,255,0.9);border-color:rgba(255,255,255,0.2);">Headquarters</span>
+          <h3>Kitwe, Zambia</h3>
+          <address class="loc-address">
+            Units D&amp;E, 1st Floor<br/>
+            Building 2, ECL Business Park<br/>
+            Freedom Avenue, Kitwe
+          </address>
+          <div class="loc-contact">
+            <a href="tel:+260966825144"><i class="hgi-stroke hgi-call"></i> +260 96 682 5144</a>
+            <a href="mailto:info@amc-africa.com"><i class="hgi-stroke hgi-mail-01"></i> info@amc-africa.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-building-04"></i></div>
+          <span class="loc-badge loc-badge--regional">Regional Office</span>
+          <h3>Lubumbashi, DRC</h3>
+          <address class="loc-address">
+            Registered office<br/>
+            Katanga Province<br/>
+            Democratic Republic of Congo
+          </address>
+          <div class="loc-contact">
+            <a href="mailto:info@amc-africa.com"><i class="hgi-stroke hgi-mail-01"></i> info@amc-africa.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="sc-inner">
+          <div class="sc-icon"><i class="hgi-stroke hgi-global"></i></div>
+          <h3>Project Reach</h3>
+          <div class="reach-list">
+            <div class="reach-item">
+              <span class="reach-country">Zambia</span>
+              <span class="reach-type">Primary market · HQ</span>
+            </div>
+            <div class="reach-item">
+              <span class="reach-country">DR Congo</span>
+              <span class="reach-type">Registered office · active projects</span>
+            </div>
+            <div class="reach-item">
+              <span class="reach-country">Zimbabwe</span>
+              <span class="reach-type">Exploration projects</span>
+            </div>
+            <div class="reach-item">
+              <span class="reach-country">Tanzania</span>
+              <span class="reach-type">Advisory engagements</span>
+            </div>
+            <div class="reach-item">
+              <span class="reach-country">South Africa</span>
+              <span class="reach-type">Kemira SA partnership</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1257,9 +1241,7 @@
       { el: document.querySelectorAll('.stat-number')[2], target: 50, suffix: '+', duration: 1600 },
       { el: document.querySelectorAll('.stat-number')[3], target: 2,  suffix: '',  duration: 800  },
     ];
-
     function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
-
     function animateStat(s) {
       const start = performance.now();
       function step(now) {
@@ -1271,7 +1253,6 @@
       }
       requestAnimationFrame(step);
     }
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1280,7 +1261,6 @@
         }
       });
     }, { threshold: 0.4 });
-
     const statsSection = document.querySelector('.stats');
     if (statsSection) observer.observe(statsSection);
   })();
