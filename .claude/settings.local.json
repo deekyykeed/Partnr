@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__0135a74b-d520-478f-a9bb-2518dc10fdf0__getNodeXml"
+    ]
+  }
+}

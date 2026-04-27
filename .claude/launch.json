@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "AMC Africa Site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3000", "--directory", "clients/amc-africa/site"],
+      "port": 3000
+    },
+    {
+      "name": "Partnr Site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3001", "--directory", "clients/partnr/site"],
+      "port": 3001
+    },
+    {
+      "name": "Components Preview",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3002", "--directory", "components/buttons"],
+      "port": 3002
+    },
+    {
+      "name": "Lab",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3003", "--directory", "lab"],
+      "port": 3003
+    }
+  ]
+}
