@@ -20,7 +20,6 @@
       --gold:     #957340;
       --slate:    #5F657A;
       --muted:    #A9A7AC;
-      --body:     #3a3840;
       --white:    #FFFFFF;
       --offwhite: #f7f7f7;
       --border:   #E4E5E9;
@@ -44,7 +43,6 @@
       text-wrap: balance;
       letter-spacing: -0.02em;
       width: 100%;
-      height: auto;
       white-space: pre-wrap;
       word-wrap: break-word;
       word-break: break-word;
@@ -53,7 +51,6 @@
 
     p {
       width: 100%;
-      height: auto;
       white-space: pre-wrap;
       word-wrap: break-word;
       word-break: break-word;
@@ -62,13 +59,8 @@
     }
 
     /* ── SECTION WRAPPERS ── */
-    .section-pad {
-      padding: 100px 5vw;
-    }
-    .section-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
+    .section-pad { padding: 100px 5vw; }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
 
     /* ── NAV ── */
     nav {
@@ -123,20 +115,9 @@
       color: var(--teal);
       margin-bottom: 1.2rem;
     }
-    .hero h1 {
-      font-size: clamp(2.6rem, 4.5vw, 4rem);
-      font-weight: 500;
-      color: var(--dark);
-      margin-bottom: 1.4rem;
-    }
+    .hero h1 { font-size: clamp(2.6rem, 4.5vw, 4rem); font-weight: 500; color: var(--dark); margin-bottom: 1.4rem; }
     .hero h1 em { font-style: normal; font-weight: 500; color: var(--blue); }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--slate);
-      max-width: 520px;
-      margin-bottom: 2.2rem;
-      line-height: 1.75;
-    }
+    .hero-sub { font-size: 1.05rem; color: var(--slate); max-width: 520px; margin-bottom: 2.2rem; line-height: 1.75; }
     .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
     .hero-image {
       position: relative;
@@ -150,95 +131,38 @@
     .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* ── TRUST BAR ── */
-    .trust {
-      background: var(--offwhite);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 28px 5vw;
-    }
-    .trust-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .trust-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
+    .trust { background: var(--offwhite); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 5vw; }
+    .trust-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .trust-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
     .trust-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
     .trust-clients { display: flex; gap: 2.2rem; flex-wrap: wrap; align-items: center; }
-    .trust-client {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--slate);
-      letter-spacing: 0.03em;
-      opacity: 0.7;
-    }
+    .trust-client { font-size: 0.85rem; font-weight: 600; color: var(--slate); letter-spacing: 0.03em; opacity: 0.7; }
 
     /* ── STATS ── */
-    .stats {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 60px 5vw;
-    }
-    .stats-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
+    .stats { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 5vw; }
+    .stats-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
     .stat { text-align: center; }
-    .stat-number {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      font-size: 3.5rem;
-      color: var(--dark);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
+    .stat-number { font-family: 'Outfit', sans-serif; font-weight: 300; letter-spacing: -0.03em; font-size: 3.5rem; color: var(--dark); line-height: 1; margin-bottom: 0.4rem; }
     .stat-number span { color: var(--blue); font-size: 2.5rem; vertical-align: super; }
     .stat-label { font-size: 1rem; color: var(--dark); font-weight: 700; letter-spacing: -0.01em; }
 
     /* ── SECTION HEADER ── */
     .section-header { margin-bottom: 3.5rem; }
-    .section-eyebrow {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 0.9rem;
-    }
+    .section-eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.9rem; }
     .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 500; }
     .section-header p { margin-top: 0.8rem; color: var(--slate); max-width: 560px; font-size: 1rem; }
 
-    /* ── BENTO CARD SYSTEM ── */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    .bento-grid--3 { grid-template-columns: repeat(3, 1fr); }
-    .bento-span-2 { grid-column: span 2; }
-    .bento-span-3 { grid-column: span 3; }
+    /* ── BENTO GRID ── */
+    .bento-grid     { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .bento-grid--3  { grid-template-columns: repeat(3, 1fr); }
+    .bento-span-2   { grid-column: span 2; }
+    .bento-span-3   { grid-column: span 3; }
 
+    /* Outer shell */
     .bento-card {
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      align-items: stretch;
       padding: 4px;
       border-radius: 52px;
       corner-shape: superellipse(1.5);
@@ -247,16 +171,13 @@
       overflow: visible;
       transition: box-shadow 0.2s, transform 0.2s;
     }
-    .bento-card:hover {
-      box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.10);
-      transform: translateY(-2px);
-    }
+    .bento-card:hover { box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.10); transform: translateY(-2px); }
 
+    /* Inner container */
     .sc-inner {
       width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
       align-items: flex-start;
       padding: 30px;
       border-radius: 48px;
@@ -267,228 +188,89 @@
       flex: 1;
     }
 
-    .sc-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px;
-      border-radius: 20px;
-      corner-shape: superellipse(1.5);
-      background: radial-gradient(75% 75% at 50% 50%, #000000 37%, rgb(69,69,69) 100%);
-      box-shadow:
-        0 0 0 3px #ffffff,
-        0px 0.42px 1.26px rgba(0,0,0,0.09),
-        0px 1.6px 4.8px rgba(0,0,0,0.12),
-        0px 7px 21px rgba(0,0,0,0.24);
-      flex-shrink: 0;
-    }
-    .sc-icon i { font-size: 18px; color: #ffffff; display: block; line-height: 1; }
+    /* Icon — bare, no container */
+    .sc-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .sc-icon i { font-size: 28px; color: var(--dark); display: block; line-height: 1; }
 
-    .bento-card h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--dark);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin: 0;
-    }
-    .bento-card p {
-      font-size: 0.92rem;
-      color: #6b6f7a;
-      line-height: 1.65;
-      margin: 0;
-      flex: 1;
-    }
-    .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 4px; }
-    .tag {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--slate);
-      background: rgba(0,0,0,0.04);
-      border: 1px solid rgba(0,0,0,0.07);
-      border-radius: 100px;
-      padding: 0.25rem 0.65rem;
-    }
+    /* Icon colour on dark/coloured cards */
+    .bento-featured .sc-icon i,
+    .bento-teal .sc-icon i,
+    .bento-blue .sc-icon i,
+    .bento-gold .sc-icon i { color: rgba(255,255,255,0.88); }
+
+    .bento-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--dark); letter-spacing: -0.02em; line-height: 1.2; margin: 0; }
+    .bento-card p  { font-size: 0.92rem; color: #6b6f7a; line-height: 1.65; margin: 0; flex: 1; }
+    .service-tags  { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 4px; }
+    .tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em; color: var(--slate); background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.07); border-radius: 100px; padding: 0.25rem 0.65rem; }
 
     /* Featured — dark */
-    .bento-featured .sc-inner {
-      background: linear-gradient(180deg, #0d1117 0%, #1a2235 100%);
-      border-color: rgba(255,255,255,0.08);
-    }
+    .bento-featured .sc-inner { background: linear-gradient(180deg, #0d1117 0%, #1a2235 100%); border-color: rgba(255,255,255,0.08); }
     .bento-featured h3 { color: #ffffff; }
     .bento-featured p  { color: rgba(255,255,255,0.55); }
-    .bento-featured .sc-icon { background: radial-gradient(75% 75% at 50% 50%, #1e3a8a 37%, #2d4fa8 100%); width: 52px; height: 52px; border-radius: 26px; }
-    .bento-featured .sc-icon i { font-size: 24px; }
-    .bento-featured h3 { font-size: 1.5rem; }
-    .bento-featured p  { font-size: 0.96rem; }
     .bento-featured .tag { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.65); }
 
     /* Teal */
     .bento-teal .sc-inner { background: linear-gradient(180deg, #44847C 0%, #336860 100%); border-color: rgba(255,255,255,0.12); }
     .bento-teal h3 { color: #ffffff; }
     .bento-teal p  { color: rgba(255,255,255,0.7); }
-    .bento-teal .sc-icon { background: radial-gradient(75% 75% at 50% 50%, #215952 37%, #2e7068 100%); }
     .bento-teal .tag { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
 
     /* Blue */
     .bento-blue .sc-inner { background: linear-gradient(180deg, #0F4EB2 0%, #0a3d8f 100%); border-color: rgba(255,255,255,0.12); }
     .bento-blue h3 { color: #ffffff; }
     .bento-blue p  { color: rgba(255,255,255,0.7); }
-    .bento-blue .sc-icon { background: radial-gradient(75% 75% at 50% 50%, #073080 37%, #0a3d9e 100%); }
     .bento-blue .tag { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
 
     /* Gold */
     .bento-gold .sc-inner { background: linear-gradient(180deg, #957340 0%, #7a5c2e 100%); border-color: rgba(255,255,255,0.12); }
     .bento-gold h3 { color: #ffffff; }
     .bento-gold p  { color: rgba(255,255,255,0.75); }
-    .bento-gold .sc-icon { background: radial-gradient(75% 75% at 50% 50%, #5c3e14 37%, #7a5520 100%); }
     .bento-gold .tag { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
 
-    /* ── CASE STUDY CARDS ── */
-    .cs-client {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 4px;
-    }
+    /* ── CASE STUDY EXTRAS ── */
+    .cs-client { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
     .bento-featured .cs-client { color: rgba(100,200,180,0.9); }
     .bento-blue .cs-client    { color: rgba(160,200,255,0.9); }
     .bento-teal .cs-client    { color: rgba(200,240,230,0.9); }
-    .cs-stat {
-      display: flex;
-      align-items: baseline;
-      gap: 0.4rem;
-      margin-top: auto;
-      padding-top: 16px;
-      border-top: 1px solid rgba(0,0,0,0.07);
-    }
+    .cs-stat { display: flex; align-items: baseline; gap: 0.4rem; margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.07); }
     .bento-featured .cs-stat,
     .bento-blue .cs-stat,
     .bento-teal .cs-stat { border-color: rgba(255,255,255,0.12); }
-    .cs-stat-num {
-      font-family: 'Outfit', sans-serif;
-      font-size: 2rem;
-      font-weight: 300;
-      letter-spacing: -0.04em;
-      color: var(--dark);
-      line-height: 1;
-    }
+    .cs-stat-num { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 300; letter-spacing: -0.04em; color: var(--dark); line-height: 1; }
     .bento-featured .cs-stat-num,
     .bento-blue .cs-stat-num,
     .bento-teal .cs-stat-num { color: #ffffff; }
-    .cs-stat-label {
-      font-size: 0.82rem;
-      color: var(--slate);
-      line-height: 1.3;
-      max-width: 160px;
-    }
+    .cs-stat-label { font-size: 0.82rem; color: var(--slate); line-height: 1.3; max-width: 160px; }
     .bento-featured .cs-stat-label,
     .bento-blue .cs-stat-label,
     .bento-teal .cs-stat-label { color: rgba(255,255,255,0.6); }
 
-    /* ── LOCATION CARDS ── */
-    .loc-address {
-      font-size: 0.88rem;
-      color: var(--slate);
-      line-height: 1.75;
-      font-style: normal;
-    }
+    /* ── LOCATION EXTRAS ── */
+    .loc-address { font-size: 0.88rem; color: var(--slate); line-height: 1.75; font-style: normal; }
     .bento-featured .loc-address { color: rgba(255,255,255,0.55); }
-    .loc-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: rgba(15,78,178,0.1);
-      color: var(--blue);
-      border: 1px solid rgba(15,78,178,0.2);
-      border-radius: 100px;
-      padding: 0.3rem 0.7rem;
-    }
-    .loc-badge--hq { background: rgba(15,78,178,0.12); color: var(--blue); border-color: rgba(15,78,178,0.25); }
-    .loc-badge--regional { background: rgba(68,132,124,0.1); color: var(--teal); border-color: rgba(68,132,124,0.25); }
-    .loc-contact a {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--slate);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
+    .loc-badge { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; padding: 0.3rem 0.7rem; }
+    .loc-badge--hq       { background: rgba(15,78,178,0.12); color: var(--blue); border: 1px solid rgba(15,78,178,0.25); }
+    .loc-badge--hq-dark  { background: rgba(255,255,255,0.12); color: rgba(200,220,255,0.9); border: 1px solid rgba(255,255,255,0.2); }
+    .loc-badge--regional { background: rgba(68,132,124,0.1); color: var(--teal); border: 1px solid rgba(68,132,124,0.25); }
+    .loc-contact { display: flex; flex-direction: column; gap: 0.5rem; }
+    .loc-contact a { display: flex; align-items: center; gap: 0.4rem; color: var(--slate); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
     .loc-contact a:hover { color: var(--blue); }
     .loc-contact a i { font-size: 15px; color: var(--muted); }
-    .loc-contact { display: flex; flex-direction: column; gap: 0.5rem; }
-
-    /* reach card */
-    .reach-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      width: 100%;
-    }
-    .reach-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-    }
+    .reach-list { display: flex; flex-direction: column; gap: 0; width: 100%; }
+    .reach-item { display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem; padding: 10px 0; border-bottom: 1px solid var(--border); }
     .reach-item:last-child { border-bottom: none; }
     .reach-country { font-weight: 600; color: var(--dark); }
     .reach-type { font-size: 0.78rem; color: var(--muted); }
 
-    /* ── PROJECT CARDS ── */
-    .proj-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border-radius: 100px;
-      padding: 0.25rem 0.65rem;
-    }
-    .proj-status--active {
-      background: rgba(68,132,124,0.1);
-      color: var(--teal);
-      border: 1px solid rgba(68,132,124,0.25);
-    }
-    .proj-status--active::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--teal);
-    }
-    .proj-meta {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
+    /* ── PROJECT EXTRAS ── */
+    .proj-status { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; padding: 0.25rem 0.65rem; }
+    .proj-status--active { background: rgba(68,132,124,0.1); color: var(--teal); border: 1px solid rgba(68,132,124,0.25); }
+    .proj-status--active::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+    .proj-meta { display: flex; gap: 1.2rem; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--border); }
     .bento-featured .proj-meta,
     .bento-blue .proj-meta,
     .bento-teal .proj-meta { border-color: rgba(255,255,255,0.12); }
-    .proj-meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.78rem;
-      color: var(--slate);
-      font-weight: 500;
-    }
+    .proj-meta-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--slate); font-weight: 500; }
     .proj-meta-item i { font-size: 13px; color: var(--muted); }
     .bento-featured .proj-meta-item,
     .bento-blue .proj-meta-item,
@@ -496,17 +278,12 @@
     .bento-featured .proj-meta-item i,
     .bento-blue .proj-meta-item i,
     .bento-teal .proj-meta-item i { color: rgba(255,255,255,0.35); }
+    .proj-status--active-dark { background: rgba(255,255,255,0.15); color: rgba(200,220,255,0.95); border: 1px solid rgba(255,255,255,0.2); }
+    .proj-status--active-dark::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: rgba(180,210,255,0.8); }
 
     /* ── WHY AMC ── */
     .why { background: var(--dark); padding: 100px 5vw; color: var(--white); }
-    .why-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
+    .why-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .why .section-eyebrow { color: var(--teal); }
     .why h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 500; color: #ffffff; }
     .why .section-header p { color: rgba(255,255,255,0.75); max-width: 480px; }
@@ -515,26 +292,8 @@
     .diff-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 0.55rem; flex-shrink: 0; }
     .diff-text h4 { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
     .diff-text p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
-    .why-visual {
-      position: relative;
-      border-radius: 28px;
-      corner-shape: superellipse(1.25);
-      overflow: hidden;
-      aspect-ratio: 4/5;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-    }
-    .why-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(255,255,255,0.02) 12px, rgba(255,255,255,0.02) 13px);
-    }
+    .why-visual { position: relative; border-radius: 28px; corner-shape: superellipse(1.25); overflow: hidden; aspect-ratio: 4/5; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
+    .why-visual::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(255,255,255,0.02) 12px, rgba(255,255,255,0.02) 13px); }
     .why-visual .placeholder-label { color: rgba(255,255,255,0.25); }
     .placeholder-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: center; padding: 0 1.5rem; }
 
@@ -547,28 +306,69 @@
     .step h4 { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
     .step p { font-size: 0.88rem; color: var(--slate); line-height: 1.6; }
 
-    /* ── TEAM ── */
+    /* ── TEAM — photo-background card style ── */
     .team { background: var(--offwhite); padding: 100px 5vw; border-top: 1px solid var(--border); }
     .team-inner { max-width: 1280px; margin: 0 auto; }
-    .team-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 3.5rem; max-width: 680px; }
-    .team-card { box-sizing: border-box; display: flex; flex-direction: column; padding: 4px; border-radius: 52px; corner-shape: superellipse(1.5); box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.05); background: #ffffff; overflow: visible; transition: box-shadow 0.2s, transform 0.2s; }
-    .team-card:hover { box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.10); transform: translateY(-2px); }
-    .team-card .sc-inner { width: 100%; display: flex; flex-direction: column; padding: 12px 12px 20px; border-radius: 48px; corner-shape: superellipse(1.5); background: linear-gradient(180deg, #ffffff 52%, rgb(250,251,248) 100%); border: 1px solid #edeff3; gap: 0; flex: 1; }
-    .team-avatar { width: 100%; aspect-ratio: 3/4; background: #e8eaee; border-radius: 38px; corner-shape: superellipse(1.5); flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 16px; }
-    .team-avatar::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.025) 10px, rgba(0,0,0,0.025) 11px); }
-    .team-avatar img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; }
-    .team-avatar-label { font-size: 0.68rem; color: var(--muted); z-index: 1; letter-spacing: 0.08em; text-transform: uppercase; }
-    .team-info { padding: 0 8px; }
-    .team-name-row { display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.25rem; }
-    .team-name { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--dark); }
+    .team-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 3.5rem;
+    }
+    .team-card {
+      position: relative;
+      border-radius: 52px;
+      corner-shape: superellipse(1.5);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: #c0c5d0;
+    }
+    .team-card:hover { transform: translateY(-3px); box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.16); }
+
+    /* Photo background layer */
+    .team-photo {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center top;
+    }
+    .team-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.03) 10px, rgba(0,0,0,0.03) 11px);
+    }
+
+    /* Gradient overlay — clear at top, dark at bottom */
+    .team-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0) 30%,
+        rgba(0,0,0,0.55) 60%,
+        rgba(0,0,0,0.85) 100%
+      );
+    }
+
+    /* Content at bottom */
+    .team-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      z-index: 2;
+    }
+    .team-name-row { display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.3rem; }
+    .team-name { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 600; color: #ffffff; }
     .team-badge { width: 18px; height: 18px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .team-role { font-size: 0.82rem; color: var(--slate); margin-bottom: 1rem; line-height: 1.45; }
-    .team-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid var(--border); }
-    .team-stats { display: flex; gap: 1rem; }
-    .team-stat { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--slate); font-weight: 500; }
-    .team-stat i { font-size: 13px; color: var(--muted); }
-    .team-cta { background: var(--dark); border-radius: 100px; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; color: #ffffff; text-decoration: none; font-family: 'Outfit', sans-serif; letter-spacing: -0.01em; transition: opacity 0.15s; white-space: nowrap; }
-    .team-cta:hover { opacity: 0.8; }
+    .team-role { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-bottom: 1rem; line-height: 1.45; }
+    .team-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .team-stats { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .team-stat { display: flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); font-weight: 500; }
+    .team-stat i { font-size: 12px; color: rgba(255,255,255,0.35); }
 
     /* ── CTA ── */
     .cta-section { background: var(--blue); padding: 100px 5vw; text-align: center; }
@@ -577,7 +377,7 @@
     .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     /* ── FOOTER ── */
-    footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 50px 5vw 36px; }
+    footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 100px 5vw 64px; }
     .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; }
     .footer-brand { font-family: 'Outfit', sans-serif; font-weight: 300; letter-spacing: 0.05em; font-size: 1.2rem; color: var(--white); margin-bottom: 0.8rem; }
     .footer-brand span { color: var(--teal); }
@@ -610,20 +410,66 @@
     .amc-btn-label { padding: 12px 22px; white-space: nowrap; }
     .amc-btn-icon { background: rgb(33,33,33); border-radius: 12px; corner-shape: superellipse(1.25); border: 1px solid rgb(102,102,102); padding: 6px; margin-left: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .amc-btn-icon i { font-size: 16px; line-height: 1; filter: brightness(0) invert(1); }
-    .amc-btn--primary { background: rgb(0,0,0); color: #ffffff; box-shadow: 0px 1px 2px 0px rgba(23,24,28,0.24), 0px 6px 12px -8px rgba(23,24,28,0.70), 0px 12px 32px -8px rgba(23,24,28,0.40); }
-    .amc-btn--blue { background: var(--blue); color: #ffffff; box-shadow: 0px 1px 2px 0px rgba(15,78,178,0.30), 0px 6px 12px -8px rgba(15,78,178,0.60), 0px 12px 32px -8px rgba(15,78,178,0.35); }
+
+    /* Natural dark shadows on all button variants */
+    .amc-btn--primary {
+      background: rgb(0,0,0);
+      color: #ffffff;
+      box-shadow:
+        0px 1px 2px rgba(0,0,0,0.22),
+        0px 4px 12px -2px rgba(0,0,0,0.28),
+        0px 8px 24px -4px rgba(0,0,0,0.18);
+    }
+    .amc-btn--blue {
+      background: var(--blue);
+      color: #ffffff;
+      box-shadow:
+        0px 1px 2px rgba(0,0,0,0.18),
+        0px 4px 12px -2px rgba(0,0,0,0.22),
+        0px 8px 24px -4px rgba(0,0,0,0.14);
+    }
     .amc-btn--blue .amc-btn-icon { background: rgba(0,0,0,0.25); border-color: rgba(255,255,255,0.25); }
-    .amc-btn--secondary { background: rgb(255,255,255); color: rgb(0,0,0); }
+    .amc-btn--secondary { background: rgb(255,255,255); color: rgb(0,0,0); box-shadow: 0px 1px 2px rgba(0,0,0,0.08), 0px 4px 12px -2px rgba(0,0,0,0.1); }
     .amc-btn--ghost-white { background: rgba(255,255,255,0.12); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); }
+    .amc-btn--white {
+      background: #ffffff;
+      color: var(--dark);
+      box-shadow:
+        0px 1px 2px rgba(0,0,0,0.22),
+        0px 4px 12px -2px rgba(0,0,0,0.28),
+        0px 8px 24px -4px rgba(0,0,0,0.18);
+    }
+
     .amc-btn--sm { font-size: 14px; }
     .amc-btn--sm .amc-btn-label { padding: 9px 16px; }
     .amc-btn--sm .amc-btn-icon { padding: 5px; border-radius: 9px; margin-left: 4px; }
     .amc-btn--sm .amc-btn-icon i { font-size: 14px; }
 
+    /* Team CTA — squircle pill */
+    .team-cta {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 14px;
+      corner-shape: superellipse(1.5);
+      padding: 0.45rem 1.1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.01em;
+      transition: background 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .team-cta:hover { background: rgba(255,255,255,0.26); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
       .hero { gap: 3rem; }
-      .stats-inner { grid-template-columns: repeat(4, 1fr); }
     }
     @media (max-width: 900px) {
       .hero, .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -635,9 +481,13 @@
       nav .nav-links { display: none; }
       .trust-inner { gap: 1rem; }
       .trust-clients { gap: 1.2rem; }
-      .team-cards { max-width: 100%; }
       .bento-grid--3 { grid-template-columns: repeat(2, 1fr); }
-      .bento-span-3 { grid-column: span 2; }
+      .bento-span-3  { grid-column: span 2; }
+      .team-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .bento-grid, .bento-grid--3 { grid-template-columns: 1fr; }
+      .bento-span-2, .bento-span-3 { grid-column: span 1; }
     }
     @media (max-width: 680px) {
       .hero { padding: 60px 5vw 50px; }
@@ -645,7 +495,6 @@
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .stat-number { font-size: 2.5rem; }
       .steps { grid-template-columns: 1fr; }
-      .team-cards { grid-template-columns: 1fr 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
       .cta-section, .why, .process, .team, .section-pad { padding: 60px 5vw; }
     }
@@ -660,8 +509,6 @@
       .amc-btn { width: 100%; justify-content: center; }
       .footer-inner { grid-template-columns: 1fr; }
       .section-header h2 { font-size: 1.6rem; }
-      .bento-grid, .bento-grid--3 { grid-template-columns: 1fr; }
-      .bento-span-2, .bento-span-3 { grid-column: span 1; }
     }
   </style>
 </head>
@@ -689,12 +536,8 @@
       <h1>Mining expertise<br/>built on the<br/><em>Copperbelt</em></h1>
       <p class="hero-sub">AMC Africa is a full-service mining consultancy — geological, engineering, environmental, and advisory — trusted by Glencore, Anglo American and Ivanhoe Mines for over 30 years.</p>
       <div class="hero-actions">
-        <a class="amc-btn amc-btn--blue" href="#book">
-          <span class="amc-btn-label">Book a free consultation</span>
-        </a>
-        <a class="amc-btn amc-btn--secondary" href="#services">
-          <span class="amc-btn-label">See our services</span>
-        </a>
+        <a class="amc-btn amc-btn--blue" href="#book"><span class="amc-btn-label">Book a free consultation</span></a>
+        <a class="amc-btn amc-btn--secondary" href="#services"><span class="amc-btn-label">See our services</span></a>
       </div>
     </div>
     <div class="hero-image">
@@ -751,7 +594,7 @@
     </div>
     <div class="bento-grid">
 
-      <div class="bento-card bento-featured bento-span-2">
+      <div class="bento-card bento-span-2">
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-wrench-01"></i></div>
           <h3>Mining Engineering</h3>
@@ -849,7 +692,7 @@
           <div class="sc-icon"><i class="hgi-stroke hgi-mine-01"></i></div>
           <div class="cs-client">Glencore · Mopani Copper</div>
           <h3>Open Pit Optimisation &amp; Production Scheduling</h3>
-          <p>Full mine re-sequencing study for the Nkana open pit — delivered updated life-of-mine schedule, pit shell optimisation, and revised reserve estimate ahead of financing round.</p>
+          <p>Full mine re-sequencing study for the Nkana open pit — updated life-of-mine schedule, pit shell optimisation, and revised reserve estimate ahead of financing round.</p>
           <div class="service-tags">
             <span class="tag">Mine Planning</span>
             <span class="tag">Reserve Audit</span>
@@ -866,7 +709,7 @@
           <div class="sc-icon"><i class="hgi-stroke hgi-compass"></i></div>
           <div class="cs-client">First Quantum · Kansanshi</div>
           <h3>Greenfield Exploration Programme</h3>
-          <p>Managed a 12-month drill programme across 3 target zones — geological mapping, core processing, and statutory reporting for Zambia Environmental Management Agency.</p>
+          <p>Managed a 12-month drill programme across 3 target zones — geological mapping, core processing, and statutory reporting for the Zambia Environmental Management Agency.</p>
           <div class="service-tags">
             <span class="tag">Drilling</span>
             <span class="tag">Core Processing</span>
@@ -883,14 +726,14 @@
           <div class="sc-icon"><i class="hgi-stroke hgi-maps-location-01"></i></div>
           <div class="cs-client">Ivanhoe Mines · DRC</div>
           <h3>Environmental Impact Assessment</h3>
-          <p>Full EIA and Environmental Management Plan for a copper-cobalt operation in Lualaba Province — submitted to and approved by the DRC Mines Ministry within the project's required timeline.</p>
+          <p>Full EIA and Environmental Management Plan for a copper-cobalt operation in Lualaba Province — approved by the DRC Mines Ministry on first submission.</p>
           <div class="service-tags">
             <span class="tag">EIA</span>
             <span class="tag">DRC Compliance</span>
           </div>
           <div class="cs-stat">
             <div class="cs-stat-num">100<span style="font-size:1.2rem;color:rgba(255,255,255,0.6);">%</span></div>
-            <div class="cs-stat-label">regulatory approval, on first submission</div>
+            <div class="cs-stat-label">regulatory approval, first submission</div>
           </div>
         </div>
       </div>
@@ -912,9 +755,9 @@
       <div class="bento-card bento-featured">
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-hard-hat-01"></i></div>
-          <div class="proj-status proj-status--active" style="background:rgba(68,132,124,0.25);color:rgba(180,230,220,0.95);border-color:rgba(68,132,124,0.4);">Active</div>
-          <h3>Mine Production Scheduling — Open Pit Operation</h3>
-          <p>On-site mine planning support for a 15 Mtpa open pit copper operation on the Zambian Copperbelt. Delivering updated monthly schedules, blast hole reconciliation, and grade control protocol review.</p>
+          <div class="proj-status proj-status--active-dark">Active</div>
+          <h3>Mine Production Scheduling — Open Pit</h3>
+          <p>On-site mine planning support for a 15 Mtpa open pit copper operation. Delivering updated monthly schedules, blast hole reconciliation, and grade control protocol review.</p>
           <div class="proj-meta">
             <span class="proj-meta-item"><i class="hgi-stroke hgi-location-01"></i> Copperbelt, Zambia</span>
             <span class="proj-meta-item"><i class="hgi-stroke hgi-wrench-01"></i> Mining Engineering</span>
@@ -927,7 +770,7 @@
           <div class="sc-icon"><i class="hgi-stroke hgi-leaf-01"></i></div>
           <div class="proj-status proj-status--active">Active</div>
           <h3>Environmental Baseline Study — Northern Zambia</h3>
-          <p>Conducting a full environmental baseline and EPB for a new copper prospect in Muchinga Province ahead of licence application and community consultation.</p>
+          <p>Full environmental baseline and EPB for a new copper prospect in Muchinga Province ahead of licence application and community consultation.</p>
           <div class="proj-meta">
             <span class="proj-meta-item"><i class="hgi-stroke hgi-location-01"></i> Muchinga, Zambia</span>
             <span class="proj-meta-item"><i class="hgi-stroke hgi-maps-location-01"></i> GIS &amp; Environmental</span>
@@ -939,8 +782,8 @@
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-mountain"></i></div>
           <div class="proj-status proj-status--active">Active</div>
-          <h3>Tailings Dam Design Review — DRC Operation</h3>
-          <p>Independent geotechnical review of an existing TSF for a cobalt producer in Katanga Province — slope stability modelling, drainage assessment, and raise design for the next 3-year cycle.</p>
+          <h3>Tailings Dam Design Review — DRC</h3>
+          <p>Independent geotechnical review of an existing TSF for a cobalt producer in Katanga — slope stability modelling, drainage assessment, and raise design for the next 3-year cycle.</p>
           <div class="proj-meta">
             <span class="proj-meta-item"><i class="hgi-stroke hgi-location-01"></i> Katanga, DRC</span>
             <span class="proj-meta-item"><i class="hgi-stroke hgi-building-01"></i> Geotechnical</span>
@@ -951,9 +794,9 @@
       <div class="bento-card bento-blue">
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-test-tube-01"></i></div>
-          <div class="proj-status proj-status--active" style="background:rgba(255,255,255,0.15);color:rgba(200,220,255,0.95);border-color:rgba(255,255,255,0.2);">Active</div>
+          <div class="proj-status proj-status--active-dark">Active</div>
           <h3>Reagent Optimisation — Flotation Plant</h3>
-          <p>Plant-side metallurgical advisory for a copper concentrator — reviewing collector and frother dosing rates through our Kemira SA partnership, targeting a 2–3% recovery improvement.</p>
+          <p>Plant-side metallurgical advisory for a copper concentrator — reviewing collector and frother dosing rates via Kemira SA, targeting a 2–3% recovery improvement.</p>
           <div class="proj-meta">
             <span class="proj-meta-item"><i class="hgi-stroke hgi-location-01"></i> Copperbelt, Zambia</span>
             <span class="proj-meta-item"><i class="hgi-stroke hgi-test-tube-01"></i> Metallurgical</span>
@@ -978,16 +821,16 @@
       <div class="bento-card bento-featured">
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-building-04"></i></div>
-          <span class="loc-badge loc-badge--hq" style="background:rgba(255,255,255,0.12);color:rgba(200,220,255,0.9);border-color:rgba(255,255,255,0.2);">Headquarters</span>
+          <span class="loc-badge loc-badge--hq-dark">Headquarters</span>
           <h3>Kitwe, Zambia</h3>
           <address class="loc-address">
             Units D&amp;E, 1st Floor<br/>
             Building 2, ECL Business Park<br/>
             Freedom Avenue, Kitwe
           </address>
-          <div class="loc-contact">
-            <a href="tel:+260966825144"><i class="hgi-stroke hgi-call"></i> +260 96 682 5144</a>
-            <a href="mailto:info@amc-africa.com"><i class="hgi-stroke hgi-mail-01"></i> info@amc-africa.com</a>
+          <div class="loc-contact" style="margin-top: auto;">
+            <a href="tel:+260966825144" style="color:rgba(255,255,255,0.6);"><i class="hgi-stroke hgi-call" style="color:rgba(255,255,255,0.35);"></i> +260 96 682 5144</a>
+            <a href="mailto:info@amc-africa.com" style="color:rgba(255,255,255,0.6);"><i class="hgi-stroke hgi-mail-01" style="color:rgba(255,255,255,0.35);"></i> info@amc-africa.com</a>
           </div>
         </div>
       </div>
@@ -1002,7 +845,7 @@
             Katanga Province<br/>
             Democratic Republic of Congo
           </address>
-          <div class="loc-contact">
+          <div class="loc-contact" style="margin-top: auto;">
             <a href="mailto:info@amc-africa.com"><i class="hgi-stroke hgi-mail-01"></i> info@amc-africa.com</a>
           </div>
         </div>
@@ -1013,26 +856,11 @@
           <div class="sc-icon"><i class="hgi-stroke hgi-global"></i></div>
           <h3>Project Reach</h3>
           <div class="reach-list">
-            <div class="reach-item">
-              <span class="reach-country">Zambia</span>
-              <span class="reach-type">Primary market · HQ</span>
-            </div>
-            <div class="reach-item">
-              <span class="reach-country">DR Congo</span>
-              <span class="reach-type">Registered office · active projects</span>
-            </div>
-            <div class="reach-item">
-              <span class="reach-country">Zimbabwe</span>
-              <span class="reach-type">Exploration projects</span>
-            </div>
-            <div class="reach-item">
-              <span class="reach-country">Tanzania</span>
-              <span class="reach-type">Advisory engagements</span>
-            </div>
-            <div class="reach-item">
-              <span class="reach-country">South Africa</span>
-              <span class="reach-type">Kemira SA partnership</span>
-            </div>
+            <div class="reach-item"><span class="reach-country">Zambia</span><span class="reach-type">Primary market · HQ</span></div>
+            <div class="reach-item"><span class="reach-country">DR Congo</span><span class="reach-type">Registered office · active</span></div>
+            <div class="reach-item"><span class="reach-country">Zimbabwe</span><span class="reach-type">Exploration projects</span></div>
+            <div class="reach-item"><span class="reach-country">Tanzania</span><span class="reach-type">Advisory engagements</span></div>
+            <div class="reach-item"><span class="reach-country">South Africa</span><span class="reach-type">Kemira SA partnership</span></div>
           </div>
         </div>
       </div>
@@ -1132,56 +960,127 @@
       <p>Led by engineers who built their careers inside Zambia's copper industry.</p>
     </div>
     <div class="team-cards">
+
+      <!-- Edwin Mukonka -->
       <div class="team-card">
-        <div class="sc-inner">
-          <div class="team-avatar">
-            <span class="team-avatar-label">Portrait photo</span>
+        <div class="team-photo" style="background-color: #6b7d95;"></div>
+        <div class="team-overlay"></div>
+        <div class="team-content">
+          <div class="team-name-row">
+            <div class="team-name">Edwin Mukonka</div>
+            <div class="team-badge">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
           </div>
-          <div class="team-info">
-            <div class="team-name-row">
-              <div class="team-name">Edwin Mukonka</div>
-              <div class="team-badge">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                  <path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
+          <div class="team-role">GM &amp; Principal Consultant, 30+ years Copperbelt experience</div>
+          <div class="team-footer">
+            <div class="team-stats">
+              <span class="team-stat"><i class="hgi-stroke hgi-briefcase-01"></i> Mining</span>
+              <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
             </div>
-            <div class="team-role">GM &amp; Principal Consultant, 30+ years Copperbelt experience</div>
-            <div class="team-meta">
-              <div class="team-stats">
-                <span class="team-stat"><i class="hgi-stroke hgi-briefcase-01"></i> Mining</span>
-                <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
-              </div>
-              <a class="team-cta" href="#book">Book call</a>
-            </div>
+            <a class="team-cta" href="#book">Book call</a>
           </div>
         </div>
       </div>
+
+      <!-- Dr. Yotam Hara -->
       <div class="team-card">
-        <div class="sc-inner">
-          <div class="team-avatar">
-            <span class="team-avatar-label">Portrait photo</span>
+        <div class="team-photo" style="background-color: #5a8a82;"></div>
+        <div class="team-overlay"></div>
+        <div class="team-content">
+          <div class="team-name-row">
+            <div class="team-name">Dr. Yotam Hara</div>
+            <div class="team-badge">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
           </div>
-          <div class="team-info">
-            <div class="team-name-row">
-              <div class="team-name">Dr. Yotam Hara</div>
-              <div class="team-badge">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                  <path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
+          <div class="team-role">Senior Metallurgical Consultant, Kemira SA specialist</div>
+          <div class="team-footer">
+            <div class="team-stats">
+              <span class="team-stat"><i class="hgi-stroke hgi-test-tube-01"></i> Metallurgy</span>
+              <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
             </div>
-            <div class="team-role">Senior Metallurgical Consultant, Kemira SA specialist</div>
-            <div class="team-meta">
-              <div class="team-stats">
-                <span class="team-stat"><i class="hgi-stroke hgi-test-tube-01"></i> Metallurgy</span>
-                <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
-              </div>
-              <a class="team-cta" href="#book">Book call</a>
-            </div>
+            <a class="team-cta" href="#book">Book call</a>
           </div>
         </div>
       </div>
+
+      <!-- Demo: Principal Geologist -->
+      <div class="team-card">
+        <div class="team-photo" style="background-color: #7a6e5a;"></div>
+        <div class="team-overlay"></div>
+        <div class="team-content">
+          <div class="team-name-row">
+            <div class="team-name">A. Banda</div>
+          </div>
+          <div class="team-role">Principal Geologist, 20 years Copperbelt exploration</div>
+          <div class="team-footer">
+            <div class="team-stats">
+              <span class="team-stat"><i class="hgi-stroke hgi-compass"></i> Geology</span>
+              <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
+            </div>
+            <a class="team-cta" href="#book">Book call</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo: Environmental Manager -->
+      <div class="team-card">
+        <div class="team-photo" style="background-color: #4e7a72;"></div>
+        <div class="team-overlay"></div>
+        <div class="team-content">
+          <div class="team-name-row">
+            <div class="team-name">C. Mwale</div>
+          </div>
+          <div class="team-role">Environmental Manager, GIS &amp; EIA specialist</div>
+          <div class="team-footer">
+            <div class="team-stats">
+              <span class="team-stat"><i class="hgi-stroke hgi-leaf-01"></i> Environmental</span>
+              <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
+            </div>
+            <a class="team-cta" href="#book">Book call</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo: Geotechnical Engineer -->
+      <div class="team-card">
+        <div class="team-photo" style="background-color: #5a6478;"></div>
+        <div class="team-overlay"></div>
+        <div class="team-content">
+          <div class="team-name-row">
+            <div class="team-name">R. Tembo</div>
+          </div>
+          <div class="team-role">Senior Geotechnical Engineer, tailings &amp; slope stability</div>
+          <div class="team-footer">
+            <div class="team-stats">
+              <span class="team-stat"><i class="hgi-stroke hgi-mountain"></i> Geotechnical</span>
+              <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Kitwe</span>
+            </div>
+            <a class="team-cta" href="#book">Book call</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo: Investment Advisory -->
+      <div class="team-card">
+        <div class="team-photo" style="background-color: #6a5878;"></div>
+        <div class="team-overlay"></div>
+        <div class="team-content">
+          <div class="team-name-row">
+            <div class="team-name">P. Ngosa</div>
+          </div>
+          <div class="team-role">Strategy &amp; Investment Advisory, ESG &amp; market entry</div>
+          <div class="team-footer">
+            <div class="team-stats">
+              <span class="team-stat"><i class="hgi-stroke hgi-chart-increase"></i> Advisory</span>
+              <span class="team-stat"><i class="hgi-stroke hgi-location-01"></i> Lusaka</span>
+            </div>
+            <a class="team-cta" href="#book">Book call</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1194,7 +1093,7 @@
     <a class="amc-btn amc-btn--primary" href="https://calendly.com/amc-africa" target="_blank" rel="noopener">
       <span class="amc-btn-label">Book a call — it's free</span>
     </a>
-    <a class="amc-btn amc-btn--ghost-white" href="mailto:info@amc-africa.com">
+    <a class="amc-btn amc-btn--white" href="mailto:info@amc-africa.com">
       <span class="amc-btn-label">Email us directly</span>
     </a>
   </div>
