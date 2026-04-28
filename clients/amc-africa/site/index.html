@@ -140,61 +140,6 @@
       border-radius: 0;
       z-index: 1;
       pointer-events: none;
-      filter: grayscale(1) contrast(1.2);
-    }
-    .hero-figure::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: #5b9cf6;
-      mix-blend-mode: color;
-      opacity: 0.68;
-      pointer-events: none;
-    }
-
-    /* Gradual blur — bottom of hero, figure fades into background */
-    .hero-blur {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 220px;
-      z-index: 3;
-      pointer-events: none;
-    }
-    .hero-blur > div {
-      position: absolute;
-      inset: 0;
-    }
-    .hero-blur > div:nth-child(1) {
-      backdrop-filter: blur(1px);
-      -webkit-mask-image: linear-gradient(to top, black 0%, transparent 16.67%);
-      mask-image: linear-gradient(to top, black 0%, transparent 16.67%);
-    }
-    .hero-blur > div:nth-child(2) {
-      backdrop-filter: blur(2px);
-      -webkit-mask-image: linear-gradient(to top, black 16.67%, transparent 33.33%);
-      mask-image: linear-gradient(to top, black 16.67%, transparent 33.33%);
-    }
-    .hero-blur > div:nth-child(3) {
-      backdrop-filter: blur(4px);
-      -webkit-mask-image: linear-gradient(to top, black 33.33%, transparent 50%);
-      mask-image: linear-gradient(to top, black 33.33%, transparent 50%);
-    }
-    .hero-blur > div:nth-child(4) {
-      backdrop-filter: blur(8px);
-      -webkit-mask-image: linear-gradient(to top, black 50%, transparent 66.67%);
-      mask-image: linear-gradient(to top, black 50%, transparent 66.67%);
-    }
-    .hero-blur > div:nth-child(5) {
-      backdrop-filter: blur(16px);
-      -webkit-mask-image: linear-gradient(to top, black 66.67%, transparent 83.33%);
-      mask-image: linear-gradient(to top, black 66.67%, transparent 83.33%);
-    }
-    .hero-blur > div:nth-child(6) {
-      backdrop-filter: blur(32px);
-      -webkit-mask-image: linear-gradient(to top, black 83.33%, transparent 100%);
-      mask-image: linear-gradient(to top, black 83.33%, transparent 100%);
     }
 
     /* ── TRUST BAR ── */
@@ -630,14 +575,6 @@
     </div>
   </div>
   <div class="hero-figure"></div>
-  <div class="hero-blur">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
 </section>
 
 <!-- TRUST BAR -->
