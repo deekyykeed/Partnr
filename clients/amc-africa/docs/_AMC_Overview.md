@@ -1,14 +1,14 @@
 ---
 type: client-overview
 tags: [amc, active]
-updated: 2026-04-26
+updated: 2026-04-28
 ---
 
 # AMC Africa — Client Overview
 
 **Company:** African Mining Consultants Ltd
 **Live site:** amc-africa.com
-**Status:** Active Deal — new website build starting from scratch
+**Status:** Active Deal — full site rebuilt and ready to send to Edwin
 
 ---
 
@@ -29,63 +29,65 @@ updated: 2026-04-26
 | 2 Apr 2026 | Call 2 — green light to build concept |
 | 12–25 Apr 2026 | First concept built (HTML/CSS) and deployed to Vercel. Scrapped — starting fresh. |
 | 26 Apr 2026 | Full reset. Old site deleted. New build begins from scratch with component library. |
+| 27–28 Apr 2026 | Full redesign implemented from Claude Design bundle. All sections built. Site live and ready to show Edwin. |
 
 ---
 
 ## Active Project — Website (New Build)
 
 **Stack:** Vanilla HTML/CSS/JS — no framework, no build step
-**Deployment:** Vercel — partnr-five.vercel.app (auto-deploys on push to `main`)
+**Deployment:** Vercel — amc-africa-deekymvula-gmailcoms-projects.vercel.app (auto-deploys on push to `main`)
 **Root directory in Vercel:** `clients/amc-africa/site/`
-**Component library:** `components/` — import buttons and future components from shared library
+**Design:** Outfit (display) + DM Sans (body) + Syne (labels). Palette: `#0A0A0A` / `#FAFAFA` / `#4285F4` (AMC blue). Squircle corners throughout (`corner-shape: superellipse(1.5)`). Hugeicons CDN for icons.
 
 ### Build Status
 
 | Section | Status | Notes |
 |---|---|---|
 | Nav | Done | Logo + links + mobile toggle |
-| Hero | Done | Blue bg, left copy, right image slot, Framer dims matched |
-| Clients bar | Done | Dark strip, 3 logos + 3 wordmarks |
-| Services | Not started | — |
-| Stats | Not started | — |
-| About | Not started | — |
-| CTA / Contact | Not started | — |
-| Footer | Not started | — |
+| Hero | Done | Dark bg, left copy, right image slot, CTA buttons |
+| Clients bar | Done | Dark strip, logos |
+| Services | Done | 2-col grid, 6 cards, bare Hugeicons, service tags |
+| Stats / KPIs | Done | 4 stat placeholders, count-up animation on scroll |
+| Case Studies | Done | 2-col card layout |
+| Active Projects | Done | Card grid |
+| Where We Work | Done | Offices — Kitwe HQ + Lubumbashi |
+| Team | Done | Photo-bg cards, gradient overlay, bottom-anchored text |
+| Why AMC | Done | Visual placeholder — needs real photo |
+| Contact / CTA | Done | White email button, dark shadow |
+| Footer | Done | Extra breathing room added |
 
 ### Pending — Awaiting Real Data from Edwin
 
 | Item | Notes |
 |---|---|
-| KPI stats | Projects delivered, countries, capex advised, senior engineers |
-| Team bios | Real AMC principals — Edwin to provide names and roles |
+| KPI stats | Successful Projects, Countries, Capex advised, Senior Engineers — 4 placeholders on site |
+| Team names | Real AMC principals — Edwin to provide names and roles |
 | Client logos | Still need: Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals |
-| Contact address | Real Kitwe office address |
-| Est. year | 1994 (not 1998) |
+| Hero engineer image | Generate with `ops/prompts/background-replacement.md` using `#0A0A0A` |
+| Why AMC visual | Replace placeholder with real site/team photo |
 
 ---
 
 ## Brand & Design
 
-### Color Palette
-
-Source: `_AMC_Colors.md` + `palette.css` — extracted from live amc-africa.com
+### Color Palette (new build)
 
 | Role | Hex | Notes |
 |---|---|---|
-| Primary brand / Royal Blue | `#0F4EB2` | Logo color — buttons, highlights, links |
-| Background | `#0A0D14` | Near-black — dark site |
-| Dark section fill | `#384562` | Secondary dark |
-| Slate (secondary text) | `#5F657A` | Subtitles, captions |
-| Steel Blue | `#355891` | Accents, mid-level links |
-| Teal | `#44847C` | Supporting accent |
-| Warm Gold | `#957340` | Earthy accent, use sparingly |
-| Body text (mid) | `#827F88` | Paragraph text on dark bg |
-| Borders / muted | `#A9A7AC` | Dividers |
-| White | `#FFFFFF` | Headings, high-contrast on dark |
+| Background | `#0A0A0A` | Near-black — dark site |
+| Foreground / text | `#FAFAFA` | Off-white |
+| AMC Blue (primary) | `#4285F4` | Buttons, highlights, links |
+| Muted text | `#888` / `#999` | Body copy on dark |
+| Borders | `rgba(255,255,255,0.08)` | Subtle dividers on dark |
 
-### Typography (TBD for new build)
+### Typography
 
-Direction: professional, technical, authoritative. Mining/engineering sector.
+| Role | Font | Notes |
+|---|---|---|
+| Display / headings | Outfit | Primary display face |
+| Body | DM Sans | Readable on dark |
+| Labels / eyebrows | Syne | Technical feel |
 
 ### Assets on Hand
 

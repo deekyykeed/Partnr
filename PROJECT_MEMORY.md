@@ -6,18 +6,17 @@ updated: 2026-04-25
 
 # Partnr — Project Memory
 
-**Last updated:** 26 April 2026
+**Last updated:** 28 April 2026
 
 ---
 
 ## Next Session
 
-- [ ] **Vercel — fix Root Directory**: go to vercel.com → project "partnr" → Settings → General → Root Directory → set to `clients/amc-africa/site`. **DO THIS FIRST.**
-- [ ] **Vercel — rename project**: rename "partnr" → "amc-africa" so URL becomes `amc-africa.vercel.app`
-- [ ] **AMC — hero engineer image**: generate using prompt at `ops/prompts/background-replacement.md`, drop at `clients/amc-africa/site/assets/hero/engineer.png`
-- [ ] **AMC — continue sections**: hero is done — next add services, stats, about, CTA, footer one at a time. Match Framer reference dimensions as user provides them.
-- [ ] **AMC — send live URL to Edwin**: once root directory is fixed and site looks right
-- [ ] **AMC — get real stats from Edwin**: Projects delivered, Countries, Capex advised, Engineers
+- [ ] **AMC — send live URL to Edwin**: `amc-africa-deekymvula-gmailcoms-projects.vercel.app` — site is ready to show
+- [ ] **AMC — get real stats from Edwin**: Successful Projects, Countries, Capex advised, Senior Engineers (4 KPI placeholders on site)
+- [ ] **AMC — hero engineer image**: generate with `ops/prompts/background-replacement.md` using `#0A0A0A` background → drop at `clients/amc-africa/site/assets/hero/engineer.png`
+- [ ] **AMC — replace demo team names**: Edwin to provide real principal names/roles → update team section
+- [ ] **AMC — Why AMC visual**: replace placeholder with real site photo or team photo
 - [ ] **AMC — client logos**: still need Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals
 - [ ] **M&J Zambia — draft reply to Tamuka**: 5 specific improvements + grand slam offer framing — HOT, still unsent
 - [ ] **NGM — check updated ngmzambia.com and respond to Serge**
@@ -36,11 +35,11 @@ A web design + AI agency targeting established SMEs in Zambia (Kitwe & Lusaka). 
 ## Active Deal
 
 ### [[AMC Africa Client File|AMC Africa]] (African Mining Consultants Ltd)
-- **Status:** Active Deal — concept built and live, pending Edwin review
+- **Status:** Active Deal — full site rebuilt and live, ready to send to Edwin
 - **Contact:** Edwin Mukonka, GM / Principal Consultant — emukonka@amc-africa.com · +260 96 682 5144
-- **Live concept:** partnr-five.vercel.app
-- **History:** Cold email sent ~late Mar 2026 → Edwin replied same day (24 Mar) → Call 1 Apr (underprepared) → Call 2 Apr (green light to build concept) → Site built and deployed 19 Apr
-- **Next:** Send Edwin the live URL, book review call, get real stats for KPI placeholders
+- **Live concept:** amc-africa-deekymvula-gmailcoms-projects.vercel.app
+- **History:** Cold email ~late Mar 2026 → Edwin replied same day → Call 1 Apr → Call 2 Apr (green light) → First build scrapped 26 Apr → Full redesign built 27 Apr (Claude Design bundle base)
+- **Next:** Send Edwin the live URL, get real stats for KPI placeholders, get real team names
 - **Notes:** Edwin forwarded the cold email himself. First Partnr client to reply. Strong case study potential — clients include Glencore, Anglo American, FQM.
 
 ---
@@ -80,6 +79,21 @@ Note: `02_Business/archive/partnr_leads_master.xlsx` is stale (only reflects ~10
 ---
 
 ## Session Log
+
+### 27–28 Apr 2026
+- **AMC site — full redesign from Claude Design bundle** — fetched design handoff from Anthropic API (gzip tarball, extracted via Python), read the README, implemented the full landing page. New stack: Outfit (display) + DM Sans (body), palette `#0A0A0A` / `#FAFAFA` / `#4285F4` (AMC blue), Syne for labels. Replaced `index.html` completely; `design_bundle_index.html` staging file deleted.
+- **New sections added**: Services 2-col grid (6 cards, squircle icons, service tags), Case Studies (2-col cards), Active Projects, Where We Work / Offices (Kitwe HQ + Lubumbashi), Team (photo-bg cards), Why AMC, Stats band (4 KPIs with count-up animation), Contact / CTA, Footer.
+- **Service card icons** — bare icon approach: no container, no box. `hgi-stroke` Hugeicons CDN. Color-inverted to white on dark bento tiles. Tags inside cards given `corner-shape: superellipse(1.5)` squircle.
+- **Team cards redesigned** — full-bleed colored background photo (`position: absolute; inset: 0`), gradient overlay transparent→dark, bottom-anchored white text. Mobile: stack 2-col.
+- **Button system built** — `.amc-btn` base + variants: `--blue`, `--primary`, `--secondary`, `--white`, `--ghost-white` + `--sm` size modifier. `.amc-btn-label` + `.amc-btn-icon` sub-elements. All variants use natural dark `rgba(0,0,0,...)` box-shadows — no colored glows.
+- **Blue button polish** — stripped icon container box/border (same pattern as service card bare icons). Icon size 22px (sm: 18px). Gap architecture refactored to container-gap pattern: `gap: 8px` on container, no label right-padding override, `padding: 0 8px 0 0` on icon (end clearance only). Single number to tune.
+- **Hugeicons arrow** — `hgi-arrow-right-01` in all primary blue buttons, 22px.
+- **Hero shadow** — ring + layered drop shadow: `0px 0px 0px 4px #fff, 0px 4px 16px rgba(0,0,0,0.08), ...`
+- **Stats** — `font-weight: 600`. IntersectionObserver count-up on scroll.
+- **Mobile** — secondary hero button hidden on `max-width: 480px`. All buttons fit on one line.
+- **Footer** — extra padding added. "Email us directly" button changed to white variant with dark shadow.
+- **Background replacement prompt location confirmed** — `ops/prompts/background-replacement.md`. Engineer photo not yet generated.
+- **Vercel** — auto-deploys on push. Live: `amc-africa-deekymvula-gmailcoms-projects.vercel.app`. Not yet sent to Edwin.
 
 ### 26 Apr 2026
 - **Full AMC site reset** — scrapped old copper-palette build entirely. Deleted `index.html`, `main.css`, all `pages/`, `_Website_Copy.md`. Nothing from the old build carried forward.
