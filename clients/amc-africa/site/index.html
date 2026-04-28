@@ -100,7 +100,7 @@
     .hero-section {
       position: relative;
       overflow: hidden;
-      background: var(--dark);
+      background: #0A1B2F;
       min-height: 700px;
     }
     .hero {
@@ -129,25 +129,72 @@
       position: absolute;
       bottom: 0;
       right: 6vw;
-      width: 42%;
-      max-width: 520px;
+      width: 700px;
+      height: 467px;
+      display: block;
+      overflow: var(--overflow-clip-fallback, clip);
+      background-image: url('assets/hero/hero-bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 0;
       z-index: 1;
       pointer-events: none;
-    }
-    .hero-figure img {
-      display: block;
-      width: 100%;
-      height: auto;
       filter: grayscale(1) contrast(1.2);
     }
     .hero-figure::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--blue);
+      background: #5b9cf6;
       mix-blend-mode: color;
-      opacity: 0.72;
+      opacity: 0.68;
       pointer-events: none;
+    }
+
+    /* Gradual blur — bottom of hero, figure fades into background */
+    .hero-blur {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 220px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .hero-blur > div {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-blur > div:nth-child(1) {
+      backdrop-filter: blur(1px);
+      -webkit-mask-image: linear-gradient(to top, black 0%, transparent 16.67%);
+      mask-image: linear-gradient(to top, black 0%, transparent 16.67%);
+    }
+    .hero-blur > div:nth-child(2) {
+      backdrop-filter: blur(2px);
+      -webkit-mask-image: linear-gradient(to top, black 16.67%, transparent 33.33%);
+      mask-image: linear-gradient(to top, black 16.67%, transparent 33.33%);
+    }
+    .hero-blur > div:nth-child(3) {
+      backdrop-filter: blur(4px);
+      -webkit-mask-image: linear-gradient(to top, black 33.33%, transparent 50%);
+      mask-image: linear-gradient(to top, black 33.33%, transparent 50%);
+    }
+    .hero-blur > div:nth-child(4) {
+      backdrop-filter: blur(8px);
+      -webkit-mask-image: linear-gradient(to top, black 50%, transparent 66.67%);
+      mask-image: linear-gradient(to top, black 50%, transparent 66.67%);
+    }
+    .hero-blur > div:nth-child(5) {
+      backdrop-filter: blur(16px);
+      -webkit-mask-image: linear-gradient(to top, black 66.67%, transparent 83.33%);
+      mask-image: linear-gradient(to top, black 66.67%, transparent 83.33%);
+    }
+    .hero-blur > div:nth-child(6) {
+      backdrop-filter: blur(32px);
+      -webkit-mask-image: linear-gradient(to top, black 83.33%, transparent 100%);
+      mask-image: linear-gradient(to top, black 83.33%, transparent 100%);
     }
 
     /* ── TRUST BAR ── */
@@ -496,14 +543,22 @@
     @media (max-width: 900px) {
       .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-section { min-height: unset; }
-      .hero { padding-bottom: 0; }
+      .hero { padding-bottom: calc(100vw * 467 / 700); }
       .hero-figure {
-        position: relative;
-        bottom: auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
         right: auto;
-        width: 72%;
-        max-width: 340px;
-        margin: 32px auto 0;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 700 / 467;
+        display: block;
+        overflow: var(--overflow-clip-fallback, clip);
+        background-image: url('assets/hero/hero-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 0;
       }
       .why-visual { aspect-ratio: 16/9; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -574,8 +629,14 @@
       </div>
     </div>
   </div>
-  <div class="hero-figure">
-    <img src="assets/hero/hero-bg.png" alt="AMC Africa engineer" />
+  <div class="hero-figure"></div>
+  <div class="hero-blur">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </section>
 
