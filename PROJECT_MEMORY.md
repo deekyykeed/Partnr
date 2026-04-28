@@ -6,7 +6,7 @@ updated: 2026-04-25
 
 # Partnr — Project Memory
 
-**Last updated:** 28 April 2026
+**Last updated:** 28 April 2026 (session 2)
 
 ---
 
@@ -14,9 +14,9 @@ updated: 2026-04-25
 
 - [ ] **AMC — send live URL to Edwin**: `amc-africa-deekymvula-gmailcoms-projects.vercel.app` — site is ready to show
 - [ ] **AMC — get real stats from Edwin**: Successful Projects, Countries, Capex advised, Senior Engineers (4 KPI placeholders on site)
-- [ ] **AMC — hero engineer image**: generate with `ops/prompts/background-replacement.md` using `#0A0A0A` background → drop at `clients/amc-africa/site/assets/hero/engineer.png`
+- [ ] **AMC — hero figure image**: need cutout of engineer on dark/transparent bg for new `.hero-figure` layout — generate with `ops/prompts/background-replacement.md` → `clients/amc-africa/site/assets/hero/engineer.png`
+- [ ] **AMC — mining-site.png**: filed from bucket to `clients/amc-africa/site/assets/mining-site.png` — use as "Why AMC" visual or case studies bg
 - [ ] **AMC — replace demo team names**: Edwin to provide real principal names/roles → update team section
-- [ ] **AMC — Why AMC visual**: replace placeholder with real site photo or team photo
 - [ ] **AMC — client logos**: still need Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals
 - [ ] **M&J Zambia — draft reply to Tamuka**: 5 specific improvements + grand slam offer framing — HOT, still unsent
 - [ ] **NGM — check updated ngmzambia.com and respond to Serge**
@@ -79,6 +79,13 @@ Note: `02_Business/archive/partnr_leads_master.xlsx` is stale (only reflects ~10
 ---
 
 ## Session Log
+
+### 28 Apr 2026 (session 2)
+- **AMC hero — layout redesign**: converted from 2-col grid (copy left, image right) to full-width dark hero (`background: var(--dark)`) with absolutely positioned `.hero-figure` element (engineer silhouette) emerging from bottom-right. `.hero-copy` now single-column max 580px. Text colors updated to white/rgba-white for dark background.
+- **Hero figure overlay**: `.hero-figure::after` applies `mix-blend-mode: color` blue tint (`var(--blue)` at 72% opacity) over the image — gives engineer photo an AMC-blue cast without editing the source file. `filter: grayscale(1) contrast(1.2)` on the img itself.
+- **Mobile hero**: figure drops to `position: relative`, centred, 72% width below copy on `max-width: 900px`.
+- **Bento card cleanup**: removed `.bento-teal` from GIS card and `.bento-blue` from Strategy card — both now plain default cards (reduces visual noise in the services section).
+- **Bucket filed**: `Gemini_Generated_Image_lj3eselj3eselj3e.png` → `clients/amc-africa/site/assets/mining-site.png`. Open-pit mining scene (grader + dump truck, dramatic sunset). Good candidate for Why AMC visual or case studies background.
 
 ### 27–28 Apr 2026
 - **AMC site — full redesign from Claude Design bundle** — fetched design handoff from Anthropic API (gzip tarball, extracted via Python), read the README, implemented the full landing page. New stack: Outfit (display) + DM Sans (body), palette `#0A0A0A` / `#FAFAFA` / `#4285F4` (AMC blue), Syne for labels. Replaced `index.html` completely; `design_bundle_index.html` staging file deleted.

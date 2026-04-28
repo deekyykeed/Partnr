@@ -97,43 +97,58 @@
     .nav-links a:hover { color: var(--blue); }
 
     /* ── HERO ── */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+      min-height: 700px;
+    }
     .hero {
-      background: var(--white);
-      padding: 100px 5vw 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
       max-width: 1280px;
       margin: 0 auto;
+      padding: 130px 5vw 100px;
+      position: relative;
+      z-index: 2;
     }
+    .hero-copy { max-width: 580px; }
     .hero-eyebrow {
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--teal);
+      color: rgba(255,255,255,0.38);
       margin-bottom: 1.2rem;
     }
-    .hero h1 { font-size: clamp(2.6rem, 4.5vw, 4rem); font-weight: 500; color: var(--dark); margin-bottom: 1.4rem; }
-    .hero h1 em { font-style: normal; font-weight: 500; color: var(--blue); }
-    .hero-sub { font-size: 1.05rem; color: var(--slate); max-width: 520px; margin-bottom: 2.2rem; line-height: 1.75; }
+    .hero h1 { font-size: clamp(2.6rem, 4.5vw, 4rem); font-weight: 500; color: #ffffff; margin-bottom: 1.4rem; }
+    .hero h1 em { font-style: normal; font-weight: 500; color: #5b9cf6; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.48); max-width: 520px; margin-bottom: 2.2rem; line-height: 1.75; }
     .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-    .hero-image {
-      position: relative;
-      border-radius: 28px;
-      corner-shape: superellipse(1.25);
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      background: var(--offwhite);
-      border: 1px solid var(--border);
-      box-shadow:
-        0px 0px 0px 4px #ffffff,
-        0px 4px 16px rgba(0,0,0,0.08),
-        0px 16px 48px rgba(0,0,0,0.12),
-        0px 32px 80px rgba(0,0,0,0.08);
+
+    /* Figure — person emerges from bottom of hero */
+    .hero-figure {
+      position: absolute;
+      bottom: 0;
+      right: 6vw;
+      width: 42%;
+      max-width: 520px;
+      z-index: 1;
+      pointer-events: none;
     }
-    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: grayscale(1) contrast(1.2);
+    }
+    .hero-figure::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--blue);
+      mix-blend-mode: color;
+      opacity: 0.72;
+      pointer-events: none;
+    }
 
     /* ── TRUST BAR ── */
     .trust { background: var(--offwhite); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 5vw; }
@@ -478,12 +493,19 @@
     .team-cta:hover { background: rgba(255,255,255,0.26); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 1100px) {
-      .hero { gap: 3rem; }
-    }
     @media (max-width: 900px) {
-      .hero, .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-image, .why-visual { aspect-ratio: 16/9; }
+      .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-section { min-height: unset; }
+      .hero { padding-bottom: 0; }
+      .hero-figure {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        width: 72%;
+        max-width: 340px;
+        margin: 32px auto 0;
+      }
+      .why-visual { aspect-ratio: 16/9; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
       .steps { grid-template-columns: 1fr 1fr; }
       .steps::before { display: none; }
@@ -500,7 +522,7 @@
       .bento-span-2, .bento-span-3 { grid-column: span 1; }
     }
     @media (max-width: 680px) {
-      .hero { padding: 60px 5vw 50px; }
+      .hero { padding: 70px 5vw 0; }
       .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .stat-number { font-size: 2.5rem; }
@@ -540,9 +562,9 @@
 </nav>
 
 <!-- HERO -->
-<section style="background: var(--white);">
+<section class="hero-section">
   <div class="hero">
-    <div>
+    <div class="hero-copy">
       <div class="hero-eyebrow">Kitwe · Zambia &nbsp;·&nbsp; Est. 1994</div>
       <h1>Mining expertise<br/>built on the<br/><em>Copperbelt</em></h1>
       <p class="hero-sub">AMC Africa is a full-service mining consultancy — geological, engineering, environmental, and advisory — trusted by Glencore, Anglo American and Ivanhoe Mines for over 30 years.</p>
@@ -551,9 +573,9 @@
         <a class="amc-btn amc-btn--secondary" href="#services"><span class="amc-btn-label">See our services</span></a>
       </div>
     </div>
-    <div class="hero-image">
-      <img src="assets/hero/hero-bg.png" alt="AMC Africa operations" />
-    </div>
+  </div>
+  <div class="hero-figure">
+    <img src="assets/hero/hero-bg.png" alt="AMC Africa engineer" />
   </div>
 </section>
 
@@ -632,7 +654,7 @@
         </div>
       </div>
 
-      <div class="bento-card bento-teal">
+      <div class="bento-card">
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-maps-location-01"></i></div>
           <h3>GIS &amp; Environmental</h3>
@@ -671,7 +693,7 @@
         </div>
       </div>
 
-      <div class="bento-card bento-blue bento-span-2">
+      <div class="bento-card bento-span-2">
         <div class="sc-inner">
           <div class="sc-icon"><i class="hgi-stroke hgi-chart-increase"></i></div>
           <h3>Strategy &amp; Investment Advisory</h3>
