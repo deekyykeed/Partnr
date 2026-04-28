@@ -21,7 +21,7 @@
       --slate:    #5F657A;
       --muted:    #A9A7AC;
       --white:    #FFFFFF;
-      --offwhite: #f7f7f7;
+      --offwhite: #FAFBF8;
       --border:   #E4E5E9;
     }
 
@@ -30,7 +30,7 @@
     body {
       font-family: 'DM Sans', sans-serif;
       color: var(--dark);
-      background: #f7f7f7;
+      background: #FAFBF8;
       font-size: 17px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
@@ -67,7 +67,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.95);
+      background: rgba(250,251,248,0.96);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       padding: 0 5vw;
@@ -76,15 +76,8 @@
       justify-content: space-between;
       height: 68px;
     }
-    .nav-logo {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 300;
-      font-size: 1.25rem;
-      color: var(--blue);
-      letter-spacing: 0.02em;
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--dark); }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       text-decoration: none;
@@ -144,7 +137,7 @@
       height: 467px;
       display: block;
       overflow: var(--overflow-clip-fallback, clip);
-      background-image: url('assets/hero/hero-bg.png');
+      background-image: url('assets/hero/hero-bg.png?v=2');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -499,22 +492,14 @@
     @media (max-width: 900px) {
       .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-section { min-height: unset; }
-      .hero { padding-bottom: calc(100vw * 467 / 700); }
+      .hero { padding-bottom: 0; }
       .hero-figure {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+        position: relative;
+        bottom: auto;
         right: auto;
         width: 100%;
         height: auto;
         aspect-ratio: 700 / 467;
-        display: block;
-        overflow: var(--overflow-clip-fallback, clip);
-        background-image: url('assets/hero/hero-bg.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 0;
       }
       .why-visual { aspect-ratio: 16/9; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -559,7 +544,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">AMC <span>Africa</span></a>
+  <a class="nav-logo" href="#"><img src="assets/logos/amc-logo.png" alt="AMC Africa" /></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Projects</a></li>
