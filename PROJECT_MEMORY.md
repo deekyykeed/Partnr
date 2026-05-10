@@ -6,16 +6,17 @@ updated: 2026-04-25
 
 # Partnr — Project Memory
 
-**Last updated:** 28 April 2026 (session 2)
+**Last updated:** 10 May 2026
 
 ---
 
 ## Next Session
 
+- [ ] **Button library migration** (HIGH): `components/buttons/amc-btn.css` + `clients/amc-africa/site/css/amc-btn.css` exist untracked — commit them. Then: remove old `button.css` (or archive it), update `preview.html` to show `amc-btn` variants, strip inline `.amc-btn` block from `main.css` (now redundant), wire `<link href="../../components/buttons/amc-btn.css">` into `index.html`
+- [ ] **Partnr Bucket** — `Gemini_Generated_Image_lj3eselj3eselj3e.png` still unprocessed — confirm whether it's the engineer hero image and file to `clients/amc-africa/site/assets/hero/engineer.png`
 - [ ] **AMC — send live URL to Edwin**: `amc-africa-deekymvula-gmailcoms-projects.vercel.app` — site is ready to show
 - [ ] **AMC — get real stats from Edwin**: Successful Projects, Countries, Capex advised, Senior Engineers (4 KPI placeholders on site)
-- [ ] **AMC — hero figure image**: need cutout of engineer on dark/transparent bg for new `.hero-figure` layout — generate with `ops/prompts/background-replacement.md` → `clients/amc-africa/site/assets/hero/engineer.png`
-- [ ] **AMC — mining-site.png**: filed from bucket to `clients/amc-africa/site/assets/mining-site.png` — use as "Why AMC" visual or case studies bg
+- [ ] **AMC — hero figure image**: need cutout of engineer on dark/transparent bg for `.hero-figure` — generate with `ops/prompts/background-replacement.md` → `clients/amc-africa/site/assets/hero/engineer.png`
 - [ ] **AMC — replace demo team names**: Edwin to provide real principal names/roles → update team section
 - [ ] **AMC — client logos**: still need Lonmin, Rio Algom, Ivanhoe, Vedanta, Barrick, ZCCM-IH, African Rainbow Minerals
 - [ ] **M&J Zambia — draft reply to Tamuka**: 5 specific improvements + grand slam offer framing — HOT, still unsent
@@ -79,6 +80,11 @@ Note: `02_Business/archive/partnr_leads_master.xlsx` is stale (only reflects ~10
 ---
 
 ## Session Log
+
+### 10 May 2026
+- **Hero background color discussed** — recommended `#0B1628` (deep navy) over current pure `#000000`. Rationale: blue undertone ties to AMC brand blue `#0F4EB2`, reads premium-dark rather than generic black. Not applied yet — pending user review.
+- **Button system breakdown** — full explanation of the `.amc-btn` CSS architecture: `corner-shape: superellipse(1.25)` + `border-radius: 15px` for squircle, split label+icon-pill structure, 3-layer `box-shadow` on primary, icon `filter: brightness(0) invert(1)`.
+- **Button library migration requested** — user wants `amc-btn` to replace the old `.p-btn` library as the cross-site standard. Two identical `amc-btn.css` files found untracked (from prior session work): `components/buttons/amc-btn.css` and `clients/amc-africa/site/css/amc-btn.css`. Migration not completed this session — work needed next session (see Next Session list).
 
 ### 28 Apr 2026 (session 2)
 - **AMC hero — layout redesign**: converted from 2-col grid (copy left, image right) to full-width dark hero (`background: var(--dark)`) with absolutely positioned `.hero-figure` element (engineer silhouette) emerging from bottom-right. `.hero-copy` now single-column max 580px. Text colors updated to white/rgba-white for dark background.
