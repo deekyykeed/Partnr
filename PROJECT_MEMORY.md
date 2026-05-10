@@ -6,12 +6,16 @@ updated: 2026-04-25
 
 # Partnr — Project Memory
 
-**Last updated:** 10 May 2026
+**Last updated:** 10 May 2026 (Session 2)
 
 ---
 
 ## Next Session
 
+- [ ] **Khadzika Framer — manual badge edits**: two component instance badges can't be edited via MCP — must click and type directly in Framer: Hero badge `Trusted manufacturing partner` → `Authorized HYTORC Distributor` | Scrolling section `CREATIVE AGENCY` → `HYTORC DISTRIBUTOR`
+- [ ] **Khadzika Framer — MANUFACT® brand mark**: still showing in white stats circle — find node and replace with `KHADZIKA` or remove
+- [ ] **Khadzika Framer — remaining sections**: Services, Case Study, Industry, Why Choose, Testimonial, Blog sections not yet touched — continue content swap next session
+- [ ] **Khadzika — install poppler** (`winget install poppler`) to enable PDF reading for Technical Competencies profile
 - [ ] **Button library migration** (HIGH): `components/buttons/amc-btn.css` + `clients/amc-africa/site/css/amc-btn.css` exist untracked — commit them. Then: remove old `button.css` (or archive it), update `preview.html` to show `amc-btn` variants, strip inline `.amc-btn` block from `main.css` (now redundant), wire `<link href="../../components/buttons/amc-btn.css">` into `index.html`
 - [ ] **Partnr Bucket** — `Gemini_Generated_Image_lj3eselj3eselj3e.png` still unprocessed — confirm whether it's the engineer hero image and file to `clients/amc-africa/site/assets/hero/engineer.png`
 - [ ] **AMC — send live URL to Edwin**: `amc-africa-deekymvula-gmailcoms-projects.vercel.app` — site is ready to show
@@ -80,6 +84,16 @@ Note: `02_Business/archive/partnr_leads_master.xlsx` is stale (only reflects ~10
 ---
 
 ## Session Log
+
+### 10 May 2026 (Session 2)
+- **Khadzika onboarded as Partnr client** — `clients/khadzika/` created in Partnr. Company profile PDF copied from Desktop/Khadzika. `_Khadzika_Overview.md` created with full node map.
+- **Design Bridge MCP registered** — `.mcp.json` added at Partnr root pointing at `framer-mcp-relay.orange-lamp-studio.workers.dev` with user ID. Server connected and confirmed live.
+- **Design Bridge vs Unframer compared** — Design Bridge wins for text work: `nodes_setText` is a direct string write vs Unframer's XML approach. Design Bridge also has full CMS, localization, and style system access.
+- **Khadzika Framer template mapped** — "Manufact (copy)" at khadzika.framer.ai. 13 web pages. All text nodes on home page read and catalogued.
+- **12 text nodes updated via MCP** — Home page content swapped to Khadzika: year badge (2005→2019), both year stamps (2005-2K26→2019-2026), location (Los Angeles→Kitwe Zambia), coordinates (Vietnam→Kitwe 12.8024°S 28.2132°E), hero body copy, stats labels, About body copy, "Ideas Made Visual" section.
+- **Component instances identified as MCP limitation** — "Title Badge" components can't be edited via `nodes_setText` or `setAttributes`. Need manual edit in Framer. Two badges pending: hero + scrolling section.
+- **Copy rule established** — match length, rhythm, and sentence structure of original. Swap specifics, not the shape.
+- **Global skill created** — `~/.claude/skills/framer-content-swap.md` documents the full Framer content swap workflow for reuse on any future project.
 
 ### 10 May 2026
 - **Hero background color discussed** — recommended `#0B1628` (deep navy) over current pure `#000000`. Rationale: blue undertone ties to AMC brand blue `#0F4EB2`, reads premium-dark rather than generic black. Not applied yet — pending user review.
