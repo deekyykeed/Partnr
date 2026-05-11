@@ -6,15 +6,23 @@ updated: 2026-04-25
 
 # Partnr — Project Memory
 
-**Last updated:** 10 May 2026 (Session 2)
+**Last updated:** 11 May 2026 (Session 3)
 
 ---
 
 ## Next Session
 
-- [ ] **Khadzika Framer — manual badge edits**: two component instance badges can't be edited via MCP — must click and type directly in Framer: Hero badge `Trusted manufacturing partner` → `Authorized HYTORC Distributor` | Scrolling section `CREATIVE AGENCY` → `HYTORC DISTRIBUTOR`
-- [ ] **Khadzika Framer — MANUFACT® brand mark**: still showing in white stats circle — find node and replace with `KHADZIKA` or remove
-- [ ] **Khadzika Framer — remaining sections**: Services, Case Study, Industry, Why Choose, Testimonial, Blog sections not yet touched — continue content swap next session
+- [ ] **Khadzika Framer — Unframer component pass** (connect Unframer to do these — Design Bridge cannot reach component props):
+  - Why Choose: 6 checklist items → Authorized HYTORC distributor / Supply, hire, and repair / Zambia-wide coverage / On-site technical support / HYTORC-certified tooling / Rapid response service
+  - Why Choose button: "Our Capabilities" → "View Our Services"
+  - Testimonial card `lndFT0IrQ`: quote text, reviewer name, job title
+  - Testimonial badge `lK6dr4ITe`: update section label
+  - CTA BG `YkSkEqLlP`: Title + button text
+  - Hero badge `UUo4YparA`: "Trusted manufacturing partner" → "Authorized HYTORC Distributor"
+  - Scrolling ticker `jvvoRek0t`: "CREATIVE AGENCY" → "HYTORC DISTRIBUTOR"
+- [ ] **Khadzika Framer — MANUFACT® brand mark**: still showing in testimonial section image — find and replace or remove
+- [ ] **Khadzika Framer — product section header**: "What we manufacture" badge + "50,000+" stat still need updating
+- [ ] **Khadzika Framer — verify stats push**: `wndhJ2DzF` "Trusted by Zambia's biggest operators" — confirm it landed correctly in Framer
 - [ ] **Khadzika — install poppler** (`winget install poppler`) to enable PDF reading for Technical Competencies profile
 - [ ] **Button library migration** (HIGH): `components/buttons/amc-btn.css` + `clients/amc-africa/site/css/amc-btn.css` exist untracked — commit them. Then: remove old `button.css` (or archive it), update `preview.html` to show `amc-btn` variants, strip inline `.amc-btn` block from `main.css` (now redundant), wire `<link href="../../components/buttons/amc-btn.css">` into `index.html`
 - [ ] **Partnr Bucket** — `Gemini_Generated_Image_lj3eselj3eselj3e.png` still unprocessed — confirm whether it's the engineer hero image and file to `clients/amc-africa/site/assets/hero/engineer.png`
@@ -84,6 +92,12 @@ Note: `02_Business/archive/partnr_leads_master.xlsx` is stale (only reflects ~10
 ---
 
 ## Session Log
+
+### 11 May 2026 (Session 3)
+- **Blog CMS updated** — 8 HYTORC/industrial blog articles written and pushed to Framer collection `QPz26w_mL`. Titles: hydraulic vs manual methods, choosing the right tool, controlled bolting in shutdowns, hire vs purchase, torque specifications, HYTORC Avanti, industrial services in mining, bolt tensioning vs torquing.
+- **Case study formattedText added** — all 7 case study items now have full Project Overview + Project Insight body content (previously only string fields were populated). Clients: Mopani, CEC, Dangote, Zambia Sugar, KCM, ZESCO, FQM Trident. Used `contentType: "html"` after `"plain"` was rejected.
+- **Footer contact info updated** — 9 text nodes pushed via Design Bridge: address (Plot 7020, Suite A, Euclid Road, Kitwe, Zambia), phone (+260 763 665 966), email (sales@khadzika.co.zm) across all location/contact nodes; copyright updated to © 2025 Khadzika Enterprises Limited.
+- **Unframer component pass pending** — 7 component instance props still need updating (Why Choose checklist x6, button, testimonial card, section badges, CTA, hero badge, scrolling ticker). Requires Unframer reconnected — Design Bridge cannot reach component props.
 
 ### 10 May 2026 (Session 2)
 - **Khadzika onboarded as Partnr client** — `clients/khadzika/` created in Partnr. Company profile PDF copied from Desktop/Khadzika. `_Khadzika_Overview.md` created with full node map.
