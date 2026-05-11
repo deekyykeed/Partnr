@@ -48,6 +48,21 @@ Client-first layout — everything for a client lives together:
 
 ---
 
+## Framer Work (all clients)
+
+Framer projects use **two MCPs** — they have non-overlapping capabilities:
+
+| Task | MCP |
+|---|---|
+| TextNodes, CMS fields, CMS formattedText | Design Bridge |
+| Component instance props (badges, checklists, button labels, testimonial slots) | Unframer |
+
+Full workflow and decision guide: invoke `/framer-content-swap` skill.
+
+**Rule:** Design Bridge first (TextNodes + CMS), then Unframer (component props). Only one plugin active at a time in Framer. Each client's node map lives in `clients/[client]/docs/_[Client]_Overview.md`.
+
+---
+
 ## Standing Rules
 
 - Gmail: create drafts only, never send

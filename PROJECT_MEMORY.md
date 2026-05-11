@@ -6,23 +6,16 @@ updated: 2026-04-25
 
 # Partnr — Project Memory
 
-**Last updated:** 11 May 2026 (Session 3)
+**Last updated:** 11 May 2026 (Session 4)
 
 ---
 
 ## Next Session
 
-- [ ] **Khadzika Framer — Unframer component pass** (connect Unframer to do these — Design Bridge cannot reach component props):
-  - Why Choose: 6 checklist items → Authorized HYTORC distributor / Supply, hire, and repair / Zambia-wide coverage / On-site technical support / HYTORC-certified tooling / Rapid response service
-  - Why Choose button: "Our Capabilities" → "View Our Services"
-  - Testimonial card `lndFT0IrQ`: quote text, reviewer name, job title
-  - Testimonial badge `lK6dr4ITe`: update section label
-  - CTA BG `YkSkEqLlP`: Title + button text
-  - Hero badge `UUo4YparA`: "Trusted manufacturing partner" → "Authorized HYTORC Distributor"
-  - Scrolling ticker `jvvoRek0t`: "CREATIVE AGENCY" → "HYTORC DISTRIBUTOR"
-- [ ] **Khadzika Framer — MANUFACT® brand mark**: still showing in testimonial section image — find and replace or remove
-- [ ] **Khadzika Framer — product section header**: "What we manufacture" badge + "50,000+" stat still need updating
-- [ ] **Khadzika Framer — verify stats push**: `wndhJ2DzF` "Trusted by Zambia's biggest operators" — confirm it landed correctly in Framer
+- [ ] **Khadzika Framer — MANUFACT® brand mark**: still showing in testimonial section image — baked into image asset, needs replacing with Khadzika-branded image or removal
+- [ ] **Khadzika Framer — mobile dividers**: hide BgItem divider lines on Phone breakpoint across all sections — interrupted mid-investigation. BgItem node IDs: Product `MgxTnQM2z`, others need reading. Phone frame is a replica node — need to figure out correct Framer breakpoint override approach.
+- [ ] **Khadzika Framer — team names**: template names still showing (James Anderson, Michael Turner etc.) — need real Khadzika team or remove section
+- [ ] **Khadzika Framer — client logo ticker**: template logos still showing — replace with real client logos (Mopani, CEC, KCM, BIA, Zambia Sugar, FQM, Dangote, ZESCO)
 - [ ] **Khadzika — install poppler** (`winget install poppler`) to enable PDF reading for Technical Competencies profile
 - [ ] **Button library migration** (HIGH): `components/buttons/amc-btn.css` + `clients/amc-africa/site/css/amc-btn.css` exist untracked — commit them. Then: remove old `button.css` (or archive it), update `preview.html` to show `amc-btn` variants, strip inline `.amc-btn` block from `main.css` (now redundant), wire `<link href="../../components/buttons/amc-btn.css">` into `index.html`
 - [ ] **Partnr Bucket** — `Gemini_Generated_Image_lj3eselj3eselj3e.png` still unprocessed — confirm whether it's the engineer hero image and file to `clients/amc-africa/site/assets/hero/engineer.png`
@@ -92,6 +85,22 @@ Note: `02_Business/archive/partnr_leads_master.xlsx` is stale (only reflects ~10
 ---
 
 ## Session Log
+
+### 11 May 2026 (Session 4)
+**Done:**
+- Unframer component pass complete: hero badge ("Authorized HYTORC Distributor"), 6 Why Choose checklist items, Why Choose button ("View Our Services"), testimonial badge ("What our clients say"), testimonial card (5 slots with Khadzika client testimonials), CTA title + button text, product section badge ("What we supply") + counter ("20,000+") + body text
+- Product section body text node `rHV4xf0n_` — previously "Node not found" due to zero-width char in ID — successfully written via Unframer `updateXmlForNode` on parent container
+- Framer MCP capability split documented globally: full two-phase workflow embedded in `~/.claude/skills/framer-content-swap.md`, Framer Work section added to `CLAUDE.md`, Khadzika-specific duplicate deleted
+
+**What Worked:**
+- Batching all 6 checklist nodes in one `updateXmlForNode` call by targeting their parent container (`YaSwIhz2Z`) and passing all children in the XML — faster and cleaner than one call per node
+- `rHV4xf0n_` node (previously unfindable) was reachable via Unframer by targeting its parent `NFmgtcWzM` — bypassed the zero-width character issue entirely
+- Design Bridge `cms_addItems` with `contentType: "html"` for formattedText fields — works cleanly where Unframer `upsertCMSItem` fails
+
+**Dead Ends (do not retry):**
+- Unframer `upsertCMSItem` with formattedText fields containing HTML/special chars → parse error. Use Design Bridge `cms_addItems` with `contentType: "html"` instead.
+- Design Bridge `nodes_setText` on ComponentInstanceNode → empty children, no effect. Use Unframer `getNodeXml` + `updateXmlForNode` for all component props.
+- Scrolling ticker `jvvoRek0t` — was already showing "Who we are" (updated in a prior session), not "CREATIVE AGENCY". No action needed.
 
 ### 11 May 2026 (Session 3)
 - **Blog CMS updated** — 8 HYTORC/industrial blog articles written and pushed to Framer collection `QPz26w_mL`. Titles: hydraulic vs manual methods, choosing the right tool, controlled bolting in shutdowns, hire vs purchase, torque specifications, HYTORC Avanti, industrial services in mining, bolt tensioning vs torquing.

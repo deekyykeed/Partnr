@@ -52,23 +52,26 @@ Status key: ✅ Done | ⏳ Pending Unframer | 🔲 Not started
 | ✅ | `QEqtCHv5h` | Contact phone 2 | `+260 763 665 966` |
 | ✅ | `fcfOMHMym` | Copyright | `© 2025 Khadzika Enterprises Limited. All rights reserved.` |
 
-### Component Instance Props (Unframer — pending)
+### Component Instance Props (Unframer — complete)
 
-| Status | Node ID | Layer | Target text |
+| Status | Node ID | Layer | Value set |
 |---|---|---|---|
-| ⏳ | `UUo4YparA` | Hero badge | `Authorized HYTORC Distributor` |
-| ⏳ | `jvvoRek0t` | Scrolling ticker | `HYTORC DISTRIBUTOR` |
-| ⏳ | `RX1q43PHo` (prop) | Industry badge | `Built for every sector` |
-| ⏳ | `Ye8aDjEQF` | Checklist item 1 | `Authorized HYTORC distributor` |
-| ⏳ | `d0jIqVu3p` | Checklist item 2 | `Supply, hire, and repair` |
-| ⏳ | `otjbuw8i0` | Checklist item 3 | `Zambia-wide coverage` |
-| ⏳ | `utBksoNX0` | Checklist item 4 | `On-site technical support` |
-| ⏳ | `g6qQc15eU` | Checklist item 5 | `HYTORC-certified tooling` |
-| ⏳ | `cDPapW8iS` | Checklist item 6 | `Rapid response service` |
-| ⏳ | `lndFT0IrQ` | Testimonial card | Quote, reviewer name, job title |
-| ⏳ | `lK6dr4ITe` | Testimonial badge | Section label |
-| ⏳ | `YkSkEqLlP` | CTA BG | Title + button text |
-| ⏳ | Why Choose btn | CTA button | `Our Capabilities` → `View Our Services` |
+| ✅ | `UUo4YparA` | Hero badge | `Authorized HYTORC Distributor` |
+| ✅ | `jvvoRek0t` | Scrolling ticker / About badge | `Who we are` (was already set) |
+| ✅ | `A3MzTgJIa` | Industry section | 5-tab content (all sectors + clients) |
+| ✅ | `Ye8aDjEQF` | Checklist item 1 | `Authorized HYTORC distributor` |
+| ✅ | `d0jIqVu3p` | Checklist item 2 | `Supply, hire, and repair` |
+| ✅ | `otjbuw8i0` | Checklist item 3 | `Zambia-wide coverage` |
+| ✅ | `utBksoNX0` | Checklist item 4 | `On-site technical support` |
+| ✅ | `g6qQc15eU` | Checklist item 5 | `HYTORC-certified tooling` |
+| ✅ | `cDPapW8iS` | Checklist item 6 | `Rapid response service` |
+| ✅ | `Xk3P_u7Ga` | Why Choose button | `View Our Services` |
+| ✅ | `lndFT0IrQ` | Testimonial card | 5 Khadzika client testimonials |
+| ✅ | `lK6dr4ITe` | Testimonial badge | `What our clients say` |
+| ✅ | `YkSkEqLlP` | CTA BG | `Need HYTORC tools...` + `Request a Quote` |
+| ✅ | `qi_15krg9` | Product badge | `What we supply` |
+| ✅ | `zERdUee0S` | Product counter | `20,000+` |
+| ✅ | `rHV4xf0n_` | Product body | `Maximum Nm torque range...` |
 
 ---
 
@@ -104,15 +107,21 @@ Status key: ✅ Done | ⏳ Pending Unframer | 🔲 Not started
 
 ## Still Pending
 
-- MANUFACT® brand mark still visible in testimonial section image — find node and replace or remove
-- Product section header: "What we manufacture" badge + "50,000+" stat
-- Unframer component pass (all items in component props table above)
+- MANUFACT® brand mark in testimonial image — baked into asset, needs Khadzika-branded replacement image
+- Mobile dividers — BgItem divider lines need hiding on Phone breakpoint across all sections (Product BgItem: `MgxTnQM2z`)
+- Team section — template names showing (James Anderson, Michael Turner etc.) — replace with real Khadzika team or remove section
+- Client logo ticker — template logos showing — replace with Mopani, CEC, KCM, BIA, Zambia Sugar, FQM, Dangote, ZESCO logos
 
 ---
 
 ## Session Log
 
-### 11 May 2026
+### 11 May 2026 (Session 4)
+- Unframer component pass complete — all 14 component props updated (hero badge, 6 checklist items, Why Choose button, testimonial card ×5 slots, testimonial badge, CTA, product badge/counter/body)
+- Product body text node `rHV4xf0n_` — fixed via Unframer parent-container approach (was unreachable via Design Bridge due to zero-width char in ID)
+- Framer MCP capability split moved to global skill file (`~/.claude/skills/framer-content-swap.md`) and referenced in `CLAUDE.md` — no longer Khadzika-specific
+
+### 11 May 2026 (Session 3)
 - Blog CMS: 8 articles written and pushed
 - Case study formattedText: Project Overview + Project Insight added to all 7 items
 - Footer: all contact nodes updated (address, phone ×2, email ×2, copyright)
